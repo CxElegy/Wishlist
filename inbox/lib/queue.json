@@ -1,846 +1,281 @@
 {
 "done": {
 "day": "2026-11-27",
-"n": 39
+"n": 47
 },
 "boards": [
 {
-"id": 156,
-"name": "大相撲",
+"id": 14045,
+"name": "ドラゴンクエストモンスターズ４　枯れ木の国のビアンカ・フローラ",
 "day": "2026-11-27",
-"fp": "0d764e372e74",
+"fp": "c6387f8fa722",
 "fresh": false,
 "rows": [
 {
-"title": "皆さんにいい報告ができて良かった 大相撲九州場所で敢闘賞に輝き史上最年長４２歳で三賞受賞 玉鷲一朗さん ひと",
-"date": "2026-11-26T20:00:00+00:00",
-"source": "福井新聞社",
+"title": "『ドラクエモンスターズ4』ファイナルトレーラー公開。ボイス付きのストーリーハイライト、ゾーマやバラモスの姿も確認できる ...",
+"date": "2026-11-25T17:25:00+00:00",
+"source": "ファミ通.com",
+"summary": "2026年12月3日発売予定となっている『ドラゴンクエストモンスターズ４ 枯れ木の国のビアンカ・フローラ』のファイナルトレーラーが公開。ビアンカたちがモンスターと戦う場面や配合シーンのほか、オリジナルキャラクターたちのボイスも確認できる。",
+"url": "https://www.famitsu.com/article/202611/95159",
+"image": "https://www.bing.com/th?id=ONUT.2crmqcLAPfeWGhDXapwVXw&pid=News&w=480"
+},
+{
+"title": "『ドラゴンクエスト アイランド』×『ドラゴンクエストモンスターズ４ 枯れ木の国のビアンカ・フローラ』発売記念コラボフードわたぼう＆ワルぼうがコラボドリンクになって登場！",
+"date": "2026-11-25T07:15:00+00:00",
+"source": "Excite エキサイト",
 "summary": "",
-"url": "https://www.fukuishimbun.co.jp/articles/-/2757191",
-"image": "https://fki.ismcdn.jp/mwimgs/6/f/-/img_6f9e05b4b6a5b20615201989190372aa78863.jpg"
+"url": "http://www.excite.co.jp/news/article/Prtimes_2026-11-25-128966-871/",
+"image": "https://image.news.livedoor.com/newsimage/stf/9/3/93c80_1876_fb38dbdc_74c81b83.jpg"
 },
 {
-"title": "大相撲・若ノ勝、地元ファンへ感謝 宇都宮で湊川親方と対談 来場所での幕内復帰誓う",
-"date": "2026-11-26T12:00:00+00:00",
-"source": "下野新聞社",
+"title": "あなたはビアンカ派？フローラ派？ 発売1週間前『ドラゴンクエストモンスターズ4』",
+"date": "2026-11-25T01:00:00+00:00",
+"source": "ASCII.jp on MSN",
+"summary": "Amazon.co.jpにて、スクウェア・エニックスが12月3日に発売する『ドラゴンクエストモンスターズ４ 枯れ木の国のビアンカ・フローラ』が予約受付中です。Nintendo Switch 2版が14％オフでお買い得！",
+"url": "https://www.msn.com/ja-jp/gaming/%E5%85%A8%E8%88%AC/%E3%81%82%E3%81%AA%E3%81%9F%E3%81%AF%E3%83%93%E3%82%A2%E3%83%B3%E3%82%AB%E6%B4%BE-%E3%83%95%E3%83%AD%E3%83%BC%E3%83%A9%E6%B4%BE-%E7%99%BA%E5%A3%B21%E9%80%B1%E9%96%93%E5%89%8D-%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%83%A2%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%BC%E3%82%BA%EF%BC%94/ar-AA2ibmcM",
+"image": "https://www.bing.com/th?id=ONUT.iMT-3V6si-Sl05qfoeO1Ng&pid=News&w=1200"
+},
+{
+"title": "『ドラクエモンスターズ4』コラボカフェ開催決定 ビアンカ・フローラをイメージしたメニューが登場",
+"date": "2026-11-24T20:17:47+00:00",
+"source": "リアルサウンド on MSN",
+"summary": "『Officially Licensed SQUARE ENIX Cafe & Shop SHINJUKU』および『SQUARE ENIX POP UP CAFE』において、『ドラゴンクエストモンスターズ４ 枯れ木の国のビアンカ・フローラ』とのコラボカフェが12月3日より開催されることが発表された。",
+"url": "https://www.msn.com/ja-jp/food-and-drink/beverages/%E3%83%89%E3%83%A9%E3%82%AF%E3%82%A8%E3%83%A2%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%BC%E3%82%BA%EF%BC%94-%E3%82%B3%E3%83%A9%E3%83%9C%E3%82%AB%E3%83%95%E3%82%A7%E9%96%8B%E5%82%AC%E6%B1%BA%E5%AE%9A-%E3%83%93%E3%82%A2%E3%83%B3%E3%82%AB-%E3%83%95%E3%83%AD%E3%83%BC%E3%83%A9%E3%82%92%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8%E3%81%97%E3%81%9F%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC%E3%81%8C%E7%99%BB%E5%A0%B4/ar-AA2iaDEp",
+"image": "https://www.bing.com/th?id=ONUT.PfinoGVinthGO9qE_NwRJQ&pid=News&w=700"
+},
+{
+"title": "『ドラゴンクエスト アイランド』×『ドラゴンクエストモンスターズ4 枯れ木の国のビアンカ・フローラ』発売記念コラボフード ...",
+"date": "2026-11-24T15:59:00+00:00",
+"source": "PR TIMES",
+"summary": "株式会社ニジゲンノモリのプレスリリース（2026年11月25日 12時00分）『ドラゴンクエスト アイランド』×『ドラゴンクエストモンスターズ４ 枯れ木の国のビアンカ・フローラ』発売記念コラボフードわたぼう＆ワルぼうがコラボドリンクになって登場！",
+"url": "https://prtimes.jp/main/html/rd/p/000000871.000128966.html",
+"image": "https://prcdn.freetls.fastly.net/release_image/128966/871/128966-871-036c69eeb5a231f08ca74d099b18ad2c-1920x1080.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260"
+},
+{
+"title": "「ドラゴンクエストモンスターズ４ 枯れ木の国のビアンカ・フローラ」，一ノ瀬美空さん（乃木坂46），トム・ブラウンを起用したTVCMを11月27日よりオンエア",
+"date": "2026-11-25T00:00:00+09:00",
+"source": "4Gamer.net",
+"summary": "スクウェア・エニックスは，2026年12月3日に発売を予定している「ドラゴンクエストモンスターズ４」について，「乃木坂46」メンバーの一ノ瀬美空さん，お笑いコンビ「トム・ブラウン」（布川ひろきさん，みちおさん）を起用したTVCMを11月27日よりオンエアすると発表した。",
+"url": "https://www.4gamer.net/games/010/G101057/20261124043/",
+"image": "https://www.4gamer.net/games/010/G101057/20261124043/SS/001.jpg"
+},
+{
+"title": "『ドラゴンクエストモンスターズ４ 枯れ木の国のビアンカ・フローラ』予約購入者への注意喚起が公開！",
+"date": "2026-11-24T10:39:18+00:00",
+"source": "GameWith",
 "summary": "",
-"url": "https://www.shimotsuke.co.jp/articles/-/1466795",
-"image": "https://soon.ismcdn.jp/mwimgs/f/2/1200wm/img_f22cabf802c8e606dbfa2a865db32da52648917.jpg"
+"url": "https://gamewith.jp/gamedb/17071/articles/66188",
+"image": "https://img.gamewith.jp/article/thumbnail/gamearticle/17071/rectangle/66188.jpg?t=1795517989"
 },
 {
-"title": "「行ってたんだ！」 実は大相撲九州場所にいた超大物に驚き グラサン着用でも「絶対分かっちゃう」（THE ANSWER）",
-"date": "2026-11-26T11:33:00+00:00",
-"source": "Yahoo!ニュース",
+"title": "『ドラゴンクエストモンスターズ４ 枯れ木の国のビアンカ・フローラ』コラボカフェが12月3日より新宿・横浜・大阪・名古屋で開催♪ ビアンカとフローラのパフェも登場",
+"date": "2026-11-24T10:21:00+00:00",
+"source": "にじめん",
 "summary": "",
-"url": "https://news.yahoo.co.jp/articles/7f670d8bffb4920350c721b79517011e5e5cd6cd",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261126-00757642-theanswer-000-2-view.jpg?exp=10800"
+"url": "https://nijimen.kusuguru.co.jp/topics/666480",
+"image": "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/81d4cf95967f404184629ca5df8aec5d.jpg"
 },
 {
-"title": "大相撲 若ノ勝関（宇都宮市出身）地元で湊川親方とトークショー（とちぎテレビ）",
-"date": "2026-11-26T10:18:02+00:00",
-"source": "Yahoo!ニュース",
+"title": "【東京・横浜・大阪・名古屋】2026年12月3日(木)より『ドラゴンクエストモンスターズ４ 枯れ木の国のビアンカ・フローラ』コラボカフェの開催が決定！",
+"date": "2026-11-24T09:01:00+00:00",
+"source": "AERA DIGITAL",
 "summary": "",
-"url": "https://news.yahoo.co.jp/articles/a67efc8996a447f55958ea5913be2fca1bccae8c",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/default.jpg?exp=10800"
+"url": "https://dot.asahi.com/articles/-/298399",
+"image": "https://aeradot.ismcdn.jp/mwimgs/a/7/1200xm/img_a712d750e9caa4ca743388f1687d4c1d251450.jpg"
 },
 {
-"title": "自己最高位で10勝5敗の好成績!大相撲・風賢央が県庁で九州場所を報告 1月場所へ「二桁勝利、優勝目指す」",
-"date": "2026-11-26T10:06:00+00:00",
-"source": "TBS NEWS DIG",
-"summary": "",
-"url": "https://newsdig.tbs.co.jp/articles/gallery/3114994",
-"image": "https://newsdig.ismcdn.jp/mwimgs/a/0/1200w/img_a05e42e873bfd72d6a5930a5062e135268903.jpg"
+"title": "11月25日までに対応を！スイッチ2/スイッチ版『ドラゴンクエストモンスターズ4』で特典「アーリーアクセス」を利用するための ...",
+"date": "2026-11-24T05:17:27+00:00",
+"source": "Game*Spark on MSN",
+"summary": "スクウェア・エニックスは、『ドラゴンクエストモンスターズ４ 枯れ木の国のビアンカ・フローラ』のニンテンドースイッチ2/ニンテンドースイッチ向けダウンロード版について、「通常版」と「マスターズ版」の両方を予約している場合は「通常版」の予約を11月25日までにキャンセルしなければ「マスターズ版」特典の「アーリーアクセス」を",
+"url": "https://www.msn.com/ja-jp/news/other/11%E6%9C%8825%E6%97%A5%E3%81%BE%E3%81%A7%E3%81%AB%E5%AF%BE%E5%BF%9C%E3%82%92-%E3%82%B9%E3%82%A4%E3%83%83%E3%83%812%E3%82%B9%E3%82%A4%E3%83%83%E3%83%81%E7%89%88-%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%83%A2%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%BC%E3%82%BA%EF%BC%94-%E3%81%A7%E7%89%B9%E5%85%B8-%E3%82%A2%E3%83%BC%E3%83%AA%E3%83%BC%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9-%E3%82%92%E5%88%A9%E7%94%A8%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AE%E6%B3%A8%E6%84%8F%E5%96%9A%E8%B5%B7/ar-AA2i7qqr",
+"image": "https://www.bing.com/th?id=ONUT.HEhKUoKnYTkxQNvevsdDmw&pid=News&w=640"
 },
 {
-"title": "大相撲冬巡業の休場力士を発表【日本相撲協会】 (デイリースポーツ)",
-"date": "2026-11-26T07:07:58+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/e74daf3e48b415a9e236281ea97cfa9ae760a46e/images/000",
-"image": "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y32aKHaE9S6KKOAHNM7AL26jvoQEiTPwdhnWDlEUMlwnB7s2mwXGW0YIJXiHwLYlKb1GYu2v0jFzBtqr6pXTWb32dlmmmGcstKK2QkmMoMPVpplGdBacZUd3B9x412tXjx"
-},
-{
-"title": "【大相撲】くまモンとコラボグッズ売上等約４７８万円を熊本県に寄付 熊本地震災害支援（デイリースポーツ）",
-"date": "2026-11-26T06:15:55+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/ac3d9089ca9dc6b0fb615e3138e9380e8ececfc5",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261126-00000087-dal-000-7-view.jpg?exp=10800"
-},
-{
-"title": "「ん…化粧まわし変だゾ」“斬新すぎる”絵柄が話題 人気力士の土俵入りでの一コマ「こんなに凝った、素敵な化粧まわし」/大相撲十一月場所（ABEMA TIMES）",
-"date": "2026-11-26T02:03:15+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/e342bf43d82a94cb1a016d120f202454925f660d",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261126-10292303-abemav-000-1-view.jpg?exp=10800"
-},
-{
-"title": "大相撲九州場所千秋楽がトップ サッカー日本代表・森保一監督ラストゲームが4位に",
-"date": "2026-11-26T00:00:00+00:00",
-"source": "産経ニュース",
-"summary": "横綱大の里が優勝決定戦で連覇を決めた大相撲九州場所千秋楽がトップ。サッカー日本代表・森保一監督のラストゲームとなった惜敗のパラグアイ戦は4位に。5位の「イッテQ！」はメンバー総勢21人による秋のお祭り体育合宿SP。",
-"url": "https://www.sankei.com/article/20261126-YTOCQBCPK5OFNKQ63PFYPPBFC4/?outputType=asynd",
-"image": "https://www.bing.com/th?id=ONUT.bh3nObr_p4Iex_2NaVzM5A&pid=News&w=1200"
-},
-{
-"title": "大相撲九州場所千秋楽がトップ サッカー日本代表・森保一監督ラストゲームが4位に 週間視聴率トップ10（産経新聞）",
-"date": "2026-11-25T23:19:49+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/36bd555b58eff2e0c07fb9c19db592816f9ed985",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261126-00000031-san-000-1-view.jpg?exp=10800"
-},
-{
-"title": "沖縄県、大相撲・美ノ海関にスポーツ栄光賞 初の三役昇進で",
-"date": "2026-11-25T16:41:00+00:00",
-"source": "日本経済新聞",
-"summary": "沖縄県の古謝玄太知事は26日、大相撲九州場所で同県出身として初の三役昇進を果たした美ノ海関に県スポーツ栄光賞を授与すると発表した。「新たな歴史の一ページを刻み、広く県民に活力を与えるものだ」と祝った。美ノ海関は9月の大相撲秋場所で1 ...",
-"url": "https://www.nikkei.com/article/DGXZQOJC262XC0W6A121C2000000/",
-"image": "https://article-image-ix.nikkei.com/https%3A%2F%2Fimgix-proxy.n8s.jp%2FDSXZQO3936555026112026000000-1.jpg?auto=compress&bg=FFFF&crop=focalpoint&fit=crop&fm=jpg&fp-x=0.94&fp-y=0.07&h=630&w=1200&s=d039978694856088385a67b0d3e0ed94"
-},
-{
-"title": "【特集】大相撲九州場所 優勝争った熱海富士 その成長は",
-"date": "2026-11-25T12:17:59+00:00",
-"source": "NHKニュース",
-"summary": "",
-"url": "https://news.web.nhk/newsweb/na/nd-20261125de81500",
-"image": "https://imgu.web.nhk/news/u/news/nd/kiji/20261125de81500/20261125de81500_E0000210730_1_l.jpg"
-}
-]
-},
-{
-"id": 159,
-"name": "Nintendo Switch 2",
-"day": "2026-11-27",
-"fp": "f8b68873ce5a",
-"fresh": false,
-"rows": [
-{
-"title": "Samsung Nintendo Switch 2 MicroSD Express Memory Cards Have Dropped in Price for Black Friday",
-"date": "2026-11-26T11:25:18+00:00",
-"source": "IGN",
-"summary": "",
-"url": "https://www.ign.com/articles/samsung-nintendo-switch-2-memory-card-deal-black-friday-2026",
-"image": "https://assets-prd.ignimgs.com/2026/11/26/samsungp9512-1795683301266.jpg?width=1280&format=jpg&auto=webp&quality=80"
-},
-{
-"title": "Nintendo Switch 2/Switch向けセールに約390本どっさり追加。『System Shock 2』リマスター『テトリス フォーエバー』など名作がお安く遊べる、ディズニーのゲームも最安値級",
-"date": "2026-11-26T05:59:50+00:00",
-"source": "AUTOMATON",
-"summary": "",
-"url": "https://automaton-media.com/articles/newsjp/20261126-481090/",
-"image": "https://automaton-media.com/wp-content/uploads/2026/11/20261126-481090-header.jpg"
-},
-{
-"title": "『ゼノブレイド3 Nintendo Switch 2 Edition』紹介映像公開！ 4K・60fps対応で12月3日発売",
-"date": "2026-11-26T04:14:33+00:00",
-"source": "AppBank",
-"summary": "",
-"url": "https://www.appbank.net/2026/11/26/game/3178194.php",
-"image": "https://www.appbank.net/wp-content/uploads/2026/11/20261126_115630_141_01.webp"
-},
-{
-"title": "『テーブルゲームワールド CCFOLIA for Nintendo Switch 2』プレイレビュー、評価、感想",
-"date": "2026-11-26T03:00:00+00:00",
-"source": "電ファミニコゲーマー",
-"summary": "",
-"url": "https://news.denfaminicogamer.jp/kikakuthetower/261126t/2",
-"image": "https://news.denfaminicogamer.jp/wp-content/uploads/2026/11/image_002-14.jpg"
-},
-{
-"title": "『ゼノブレイド3 Nintendo Switch 2 Edition』紹介映像が公開！サバイバー系の新たなゲームモードや新ヒーローの詳細が明らかに",
-"date": "2026-11-26T02:01:30+00:00",
-"source": "Game*Spark",
-"summary": "",
-"url": "https://www.gamespark.jp/article/2026/11/26/175316.html",
-"image": "https://www.gamespark.jp/imgs/p/PseAHU_gq3GEwRLM5htwMwoLvAaDYAQDAgEA/1223597.jpg"
-},
-{
-"title": "Watch the Xenoblade Chronicles 3 – Nintendo Switch 2 Edition Overview trailer ahead of the game launch on Dec. 3!",
-"date": "2026-11-26T01:26:54+00:00",
-"source": "Nintendo",
-"summary": "",
-"url": "https://www.nintendo.com/us/whatsnew/watch-the-xenoblade-chronicles-3-nintendo-switch-2-edition-overview-trailer-ahead-of-the-game-launch-on-dec-3/",
-"image": "https://assets.nintendo.com/image/upload/v1643742733/ncom/global/social-share.jpg"
-},
-{
-"title": "Another Almost-Free Nintendo Switch 2 Game Drops, This Time It’s Resident Evil Requiem (Amazon Exclusive Edition)",
-"date": "2026-11-26T01:15:00+00:00",
-"source": "Kotaku",
-"summary": "That’s the plot of the latest Resident Evil game actually, who knew that NDAs were doing so much work? Alright, that might not be the plot of Resident Evil Requ",
-"url": "https://kotaku.com/another-almost-free-nintendo-switch-2-game-drops-this-time-its-resident-evil-requiem-amazon-exclusive-edition-2001000563",
-"image": "https://www.bing.com/th?id=ONUT.MCKiV7NQHl4L9zYmn5DaKA&pid=News&w=700"
-},
-{
-"title": "Nintendo Switch 2のバトルアクションゲーム『最強王図鑑 クラッシュバトルキングス』本日2026年11月26日（木）発売のお知らせ",
-"date": "2026-11-26T01:00:00+00:00",
-"source": "Koubo",
-"summary": "",
-"url": "https://koubo.jp/press-release/prtimes/c19470_r5222",
-"image": "https://prtimes.jp/img/19470/5222/resize/d19470-5222-696881a4b62c0d5df342-1.png"
-},
-{
-"title": "The 10 Best Nintendo Switch 2 Black Friday Deals You Can Get Right Now",
-"date": "2026-11-25T21:59:52+00:00",
-"source": "Nintendo Wire",
-"summary": "",
-"url": "https://nintendowire.com/news/2026/11/25/the-10-best-nintendo-switch-2-black-friday-deals-you-can-get-right-now/",
-"image": "https://nintendowire.com/wp-content/uploads/2026/11/top-10-black-friday-deals.jpg"
-},
-{
-"title": "Race to checkout: Nintendo Switch 2 just got a rare Black Friday price cut, with Mario Kart included",
-"date": "2026-11-25T18:21:00+00:00",
-"source": "New York Post",
-"summary": "",
-"url": "https://nypost.com/2026/11/25/shopping/nintendo-switch-2-mario-kart-world-bundle-is-50-off-for-black-friday-2026/",
-"image": "https://nypost.com/wp-content/uploads/sites/2/2026/11/nintendo-switc-cbuncle-.jpg?quality=75&strip=all&w=1024"
-},
-{
-"title": "Best Nintendo deal: Save $50.99 on the Nintendo Switch 2 and Mario Kart World bundle",
-"date": "2026-11-25T16:50:28+00:00",
-"source": "Mashable",
-"summary": "",
-"url": "https://mashable.com/tech/nov-25-nintendo-switch-2-mario-kart-black-friday-deal",
-"image": "https://helios-i.mashable.com/imagery/articles/02eHQ228t8MaFuT54WlKWCt/hero-image.fill.size_1200x675.v1795607852.jpg"
-},
-{
-"title": "Get your hands on a Switch 2 at the Nintendo Switch 2 Holiday Experience",
-"date": "2026-11-25T16:42:18+00:00",
-"source": "Pixelkin",
-"summary": "",
-"url": "https://pixelkin.org/2026/11/25/get-your-hands-on-a-switch-2-at-the-nintendo-switch-2-holiday-experience/",
-"image": "https://pixelkin.org/wp-content/uploads/2026/11/nintendo-switch-2-holiday-experience-1024x575.png"
-}
-]
-},
-{
-"id": 169,
-"name": "東京ディズニーリゾート",
-"day": "2026-11-27",
-"fp": "586e447468a2",
-"fresh": false,
-"rows": [
-{
-"title": "【きょうから】東京ディズニーリゾート、Mrs. GREEN APPLEと今年もコラボ 新グッズきょう販売、テーマソングは「Carrying Happiness」",
-"date": "2026-11-26T09:57:59+00:00",
-"source": "山陽新聞",
-"summary": "",
-"url": "https://www.sanyonews.jp/article/1947330?kw=2024%3Cbr",
-"image": "https://static.sanyonews.jp/image/article/size1/c/1/0/e/c10ed3aa4988043f96b136d5e33a3154_1.jpg"
-},
-{
-"title": "【2026年11月更新】東京ディズニーリゾート最新情報まとめ",
-"date": "2026-11-26T09:26:12+00:00",
-"source": "るるぶWeb",
-"summary": "",
-"url": "https://rurubu.jp/andmore/article/24885",
-"image": "https://rurubu.jp/img_srw/andmore/images/0000757530/l_tjswh1zvabJBf25ClAG7HKziYxPPDjRkYti5ZuK5.jpg"
-},
-{
-"title": "1,000円以内で買える！東京ディズニーリゾートのお土産にぴったりな「クリスマス限定グッズ」まとめ",
-"date": "2026-11-26T05:02:09+00:00",
-"source": "ぴあエンタメ情報",
-"summary": "",
-"url": "https://lp.p.pia.jp/article/news/517648/index.html",
-"image": "https://lp.p.pia.jp/shared/materials/656f4b3e-4b8c-45ce-8a3f-fa5a73453885/origin.jpg"
-},
-{
-"title": "「東京ディズニーリゾート」2027年度イベント情報！ハロウィーンは期間拡大＆世界初導入アトラクションも",
-"date": "2026-11-26T04:00:00+00:00",
-"source": "ぴあエンタメ情報",
-"summary": "",
-"url": "https://lp.p.pia.jp/article/news/517636/index.html",
-"image": "https://lp.p.pia.jp/shared/materials/99256cbd-6dfc-4aa2-865d-eed535ff5799/origin.jpg"
-},
-{
-"title": "【東京ディズニーリゾート】レトロで可愛いよ！「新作文具グッズ」ペンケースやボールペンなど豊富に登場",
-"date": "2026-11-26T03:30:00+00:00",
-"source": "ウレぴあ総研 on MSN",
-"summary": "東京ディズニーリゾートは、ミッキー&フレンズのステーショナリーグッズを、2026年11月26日（木）に発売します。 レトロデザインのステーショナリー ミッキーたちがカルーセルを楽しんでいるデザインの新作グッズが登場。 レトロアートのミッキーたちが可愛らしいグッズです。 「ディズニー新作ステーショナリーグッズ」各デザイン",
-"url": "https://www.msn.com/ja-jp/news/other/%E6%9D%B1%E4%BA%AC%E3%83%87%E3%82%A3%E3%82%BA%E3%83%8B%E3%83%BC%E3%83%AA%E3%82%BE%E3%83%BC%E3%83%88-%E3%83%AC%E3%83%88%E3%83%AD%E3%81%A7%E5%8F%AF%E6%84%9B%E3%81%84%E3%82%88-%E6%96%B0%E4%BD%9C%E6%96%87%E5%85%B7%E3%82%B0%E3%83%83%E3%82%BA-%E3%83%9A%E3%83%B3%E3%82%B1%E3%83%BC%E3%82%B9%E3%82%84%E3%83%9C%E3%83%BC%E3%83%AB%E3%83%9A%E3%83%B3%E3%81%AA%E3%81%A9%E8%B1%8A%E5%AF%8C%E3%81%AB%E7%99%BB%E5%A0%B4/ar-AA2ih4IH",
-"image": "https://www.bing.com/th?id=ONUT.Y2YLUl8N09fBzZYvm4afjA&pid=News&w=1200"
-},
-{
-"title": "東京ディズニーリゾート(R)「ビビディ・バビディ・ブティック」に新コスチューム「ナイト」と「パイレーツ」が登場！（PR TIMES）",
-"date": "2026-11-26T01:53:00+00:00",
-"source": "毎日新聞デジタル",
-"summary": "東京ディズニーランド(R)と東京ディズニーランドホテルにある、夢がかなう魔法のサロン「ビビディ・バビディ・ブティック」に、2027年2月8日（月）から新たなコスチュームとして「ナイト」と「パイレーツ」が登場します。 「ビビディ・バビディ・ブティック」は、お子さまがあこがれのディズニープリン ...",
-"url": "https://mainichi.jp/articles/20261126/pr1/00m/020/380000c",
-"image": "https://www.bing.com/th?id=ONUT.1nZUz5DfESr4rsFhn8duNA&pid=News&w=1200"
-},
-{
-"title": "「とうとう！」ディズニーの“子ども向け変身サービス”に新展開 「女の子も可なのね」「あと50年早ければなあ」",
-"date": "2026-11-26T01:06:00+00:00",
-"source": "Yahoo!ニュース",
-"summary": "東京ディズニーランドと東京ディズニーランドホテルにあるサロン「ビビディ・バビディ・ブティック」に、新たなコスチューム「ナイト」と「パイレーツ」が登場することが東京ディズニーリゾートの公式サイトで発表されました。同サロンにドレス以外がラインアップに加わるのは初めてのことです。【画像】新登場する「ナイト」と「パイレーツ」を",
-"url": "https://news.yahoo.co.jp/articles/faf2764e0c5a307477247eaec6b46b8775a3596c",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261126-10179070-it_nlab-000-4-view.jpg?exp=10800"
-},
-{
-"title": "ミッキー＆フレンズがカルーセルに乗って超～キュート♪ 東京ディズニーリゾート新作グッズ登場【11月26日（木）より】",
-"date": "2026-11-25T18:53:06+00:00",
-"source": "アニメ！アニメ！ on MSN",
-"summary": "東京ディズニーリゾートでは、カラフルなカルーセルに乗ったミッキーマウスと仲間たちがデザインされた新作グッズ全20種類が、2026年11月26日（木）より発売されます。 毎日使いたくなる！充実のステーショナリーラインナップ 学校やオフィス、自宅でのデスクワークが華やぎそうな文房具類が豊富に登場します！",
-"url": "https://www.msn.com/ja-jp/entertainment/%E5%85%A8%E8%88%AC/%E3%83%9F%E3%83%83%E3%82%AD%E3%83%BC-%E3%83%95%E3%83%AC%E3%83%B3%E3%82%BA%E3%81%8C%E3%82%AB%E3%83%AB%E3%83%BC%E3%82%BB%E3%83%AB%E3%81%AB%E4%B9%97%E3%81%A3%E3%81%A6%E8%B6%85-%E3%82%AD%E3%83%A5%E3%83%BC%E3%83%88-%E6%9D%B1%E4%BA%AC%E3%83%87%E3%82%A3%E3%82%BA%E3%83%8B%E3%83%BC%E3%83%AA%E3%82%BE%E3%83%BC%E3%83%88%E6%96%B0%E4%BD%9C%E3%82%B0%E3%83%83%E3%82%BA%E7%99%BB%E5%A0%B4-11%E6%9C%8826%E6%97%A5-%E6%9C%A8-%E3%82%88%E3%82%8A/ar-AA2iew2m",
-"image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2ifT3X.img"
-},
-{
-"title": "東京ディズニーシー新グッズ、2027年1月12日に発売！ 「ダングロ」衣装のミッキーたちをデザイン",
-"date": "2026-11-25T09:09:00+00:00",
-"source": "クランクイン！",
-"summary": "東京ディズニーシー25周年を記念した「イマジニング・ザ・マジック」の第3弾のグッズが、2027年1月12日（火）に同パークのショップ「エンポーリオ」で発売される。 【写真】開くと思わず笑顔になりそうな傘も登場東京ディズニーシー新グッズ一覧 ■ショー鑑賞時にも活躍する新グッズ 東京ディズニーリゾートのさまざまな夢と魔法が",
-"url": "https://www.crank-in.net/trend/trip/194867/1",
-"image": "https://www.bing.com/th?id=ONUT.Zqhvs7fC7oFgU-eZzBrFUg&pid=News&w=1200"
-},
-{
-"title": "ブランケットやトートバッグなど全16アイテム！東京ディズニーリゾート「イマジニング・ザ・マジック」東京ディズニーシー25周年グッズ第3弾",
-"date": "2026-11-25T07:18:35+00:00",
-"source": "Dtimes",
-"summary": "",
-"url": "https://dtimes.jp/post-1479978/",
-"image": "https://dtimes.jp/wp-content/uploads/2026/11/imagining-magic-tds25-goods3-20261125-f2347f-scaled.jpg"
-},
-{
-"title": "東京ディズニーシー・ホテルミラコスタにダッフィー＆フレンズ初の常設客室 来年5月から宿泊開始",
-"date": "2026-11-24T19:09:00+00:00",
-"source": "Web東奥",
-"summary": "東京ディズニーシー・ホテルミラコスタに、ダッフィー＆フレンズをテーマにした常設客室「ダッフィー＆フレンズ・スーペリアルーム・リコルド」が登場する。宿泊開始は2027年5月12日。東京ディズニーリゾートで、ダッフィー＆フレンズをテーマにした常設客室が設けられるのは初めてとなる。【写真】ダッフィー＆フレンズが大集合した壁紙",
-"url": "https://www.toonippo.co.jp/articles/-/2410429",
-"image": "https://www.bing.com/th?id=ONUT.Ixs5MTZHjD6eXT9X_q1jMQ&pid=News&w=640"
-},
-{
-"title": "【東京ディズニーリゾート】ダッフィーの「2027年版手帳」は雰囲気ガラリ！ 買ってわかったおすすめポイント（ぴあ）",
-"date": "2026-11-24T11:30:10+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/b08091116898ae0dbbaf65c3b8bddc4aa6daf991?page=2",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261124-00010014-piaeigat-000-1-view.jpg?exp=10800"
-}
-]
-},
-{
-"id": 175,
-"name": "生成AI",
-"day": "2026-11-27",
-"fp": "a92f01fbbbf8",
-"fresh": false,
-"rows": [
-{
-"title": "育碧、新規プロジェクト立ち上げにAI活用の説明を要求 生成AI不使用なら理由を提示へ",
-"date": "2026-11-26T15:05:00+00:00",
-"source": "BigGo ファイナンス",
-"summary": "",
-"url": "https://finance.biggo.jp/news/7d148d3d-e0d1-4318-af5f-abe5dd541385",
-"image": "https://img.biggo.com/1_VhuZCRrFf98P578TouutWPI9fpRop1KieI1HCwgck/fit/1200/0/sm/0/aHR0cHM6Ly9pbWcuYmdvLm9uZS9uZXdzLWltYWdlL2FpX2dlbmVyYXRlZC8yMDI2LTExLzdkMTQ4ZDNkLWUwZDEtNDMxOC1hZjVmLWFiZTVkZDU0MTM4NV8xNzk1NzA1ODQyX2RlZmF1bHQuanBn.jpg"
-},
-{
-"title": "NYT、写真部に「Photoshop 2027を使うな」 不可視の生成AIがメタデータに残すリスク",
-"date": "2026-11-26T13:25:00+00:00",
-"source": "BigGo ファイナンス",
-"summary": "",
-"url": "https://finance.biggo.jp/news/40c98c78-a179-46db-8372-9d41480a92df",
-"image": "https://img.biggo.com/axrYjbbokhHjbWpfPlmrKO8SYJ_heJDy4neaXxFH-qY/fit/1200/0/sm/0/aHR0cHM6Ly9pbWcuYmdvLm9uZS9uZXdzLWltYWdlL2FpX2dlbmVyYXRlZC8yMDI2LTExLzQwYzk4Yzc4LWExNzktNDZkYi04MzcyLTlkNDE0ODBhOTJkZl8xNzk1NzAwMDI5X2RlZmF1bHQuanBn.jpg"
-},
-{
-"title": "小学校の授業で生成AI活用 滋賀 長浜",
-"date": "2026-11-26T10:47:47+00:00",
-"source": "NHKニュース",
-"summary": "",
-"url": "https://news.web.nhk/newsweb/na/nd-20261126de81798",
-"image": "https://imgu.web.nhk/news/u/news/nd/kiji/20261126de81798/20261126de81798_E0000214309_1_l.jpg"
-},
-{
-"title": "生成AIを活用し自分で立てた計画に沿って学ぶ「マイプラン学習」の公開授業（NBC長崎放送）",
-"date": "2026-11-26T10:12:17+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/21354a2a6f4daa58acd9b9e2c2b800aca005eac9",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261126-23114339-nbcv-000-1-thumb.jpg?exp=10800"
-},
-{
-"title": "義務化された「カスハラ対策」や「生成AI」の悩み解決へ!NTT西日本が松山市で最新ICT展示会を開催（あいテレビ）",
-"date": "2026-11-26T10:04:44+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/2988f9ad1c081474a8fa7e34ef635dbe15c50fb2",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261126-00009308-itv-000-2-thumb.jpg?exp=10800"
-},
-{
-"title": "性的いじめ8158件、初集計 文科省、生成AI普及で危機感",
-"date": "2026-11-26T08:07:26+00:00",
-"source": "47NEWS",
-"summary": "",
-"url": "https://www.47news.jp/15290564.html",
-"image": "https://img.cf.47news.jp/public/photo/cce712dedac70934e666d444850e61bd/photo.jpg"
-},
-{
-"title": "「AIに仕事を丸投げ」「日中はエステやプールに…」2.5時間労働で年収2000万円、タイで悠々自適な生活…25歳女性経営者の“生成AIとの付き合い方”（文春オンライン）",
-"date": "2026-11-26T08:00:37+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/9c8882ac27628731295e64f3601691804027fa70",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261126-00093684-bunshun-000-5-view.jpg?exp=10800"
-},
-{
-"title": "EY新日本、監査チームごとの知見を生成AIで共有する仕組みを導入。メールや資料に埋もれた暗黙知を形式知化",
-"date": "2026-11-26T07:53:21+00:00",
-"source": "AIsmiley",
-"summary": "",
-"url": "https://aismiley.co.jp/ai_news/ey-audit-generative-ai/",
-"image": "https://aismiley.co.jp/wp-content/uploads/2026/11/EY-Japan.png"
-},
-{
-"title": "【アーカイブ録画配信】いまさら聞けない生成AI ChatGPTやGeminiをもっと便利に使うための 生成AIの基本とプロンプト入門",
-"date": "2026-11-26T07:28:39+00:00",
-"source": "CREATIVE VILLAGE",
-"summary": "",
-"url": "https://www.creativevillage.ne.jp/category/crv_event/180810/",
-"image": "https://www.creativevillage.ne.jp/wp-content/uploads/2026/11/26122512a_seiseiai_0724.jpg"
-},
-{
-"title": "EY新日本、生成AIで開示書類チェックツールを強化 チェック時間を1時間以内に短縮",
-"date": "2026-11-26T06:06:39+00:00",
-"source": "EY",
-"summary": "",
-"url": "https://www.ey.com/ja_jp/newsroom/2026/11/ey-japan-news-release-2026-11-26",
-"image": "https://www.ey.com/content/dam/ey-unified-site/ey-com/ja-jp/newsroom/2026/11/images/ey-japan-news-release-2026-11-26-thumbnail.jpg"
-},
-{
-"title": "【ヤフコメで話題】「生成AIとデータセンターの急拡大が社会に与える影響」「電力・水資源や地域経済への懸念」 - AIインフラの拡大と規制の必要性を巡る議論（Yahoo!ニュース オリジナル THE PAGE）",
-"date": "2026-11-26T05:28:53+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/7df0e9a0cef0753a4c71c06323c6895ed0062988",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/default.jpg?exp=10800"
-},
-{
-"title": "旅行会社に残る価値は？ 生成AIに「旅の相談」が当たり前の今、業界の生存戦略（1/3 ページ）",
-"date": "2026-11-26T03:00:00+00:00",
-"source": "ITmedia",
-"summary": "",
-"url": "https://www.itmedia.co.jp/business/articles/2611/26/news033.html",
-"image": "https://image.itmedia.co.jp/business/articles/2611/26/cover_news033.jpg"
-}
-]
-},
-{
-"id": 176,
-"name": "将棋",
-"day": "2026-11-27",
-"fp": "59786aab1622",
-"fresh": false,
-"rows": [
-{
-"title": "将棋のまち瀬戸市のスタバで「王手！」 店のマネジャー発案「楽しむ会」に小学生集まり熱戦",
-"date": "2026-11-26T13:04:26+00:00",
-"source": "中日新聞Web",
-"summary": "",
-"url": "https://www.chunichi.co.jp/article/1345250",
-"image": "https://static.chunichi.co.jp/image/article/size1/a/2/1/0/a2102f60461d899b26d2db2a4808e367_1.jpg"
-},
-{
-"title": "エスコンで将棋の女流名人戦 来年1月17日 プロ野球本拠地で初開催",
-"date": "2026-11-26T11:11:15+00:00",
-"source": "北海道新聞デジタル",
-"summary": "",
-"url": "https://www.hokkaido-np.co.jp/article/1415703/",
-"image": "https://static.hokkaido-np.co.jp/image/article/size1/b/7/f/4/b7f445b544d0e7cd6ecf0787e1e94b0f_1.webp?20261127022046"
-},
-{
-"title": "将棋王将戦の新主催者はマイナビ 序列第3位「棋譜のオープン化」も（朝日新聞）",
-"date": "2026-11-26T09:52:25+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/2fb0f4d6d908b93cc9573af126e65eab14ec987a",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261126-00000114-asahi-000-2-view.jpg?exp=10800"
-},
-{
-"title": "囲碁将棋チャンネルが「第77期 王将戦」に特別協賛｜プレスリリース・お知らせ",
-"date": "2026-11-26T09:31:42+00:00",
-"source": "東北新社",
-"summary": "",
-"url": "https://www.tfc.co.jp/news/2026/11/25265/",
-"image": "https://www.tfc.co.jp/cms/ogp.png"
-},
-{
-"title": "王将戦、第７７期から日本将棋連盟とマイナビの共同主催に…序列は竜王・名人に次ぐ３番目に (読売新聞オンライン)",
-"date": "2026-11-26T09:03:34+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/92f04af9355addfdc70560bd1d973b1fb7fe7b46/images/000",
-"image": "https://s.yimg.jp/images/news-web/versions/20261126-edbff13/all/images/jsonld_image_1244x700.png"
-},
-{
-"title": "将棋「王将戦」主催にマイナビ 八大タイトル戦の一つ",
-"date": "2026-11-26T07:45:00+00:00",
-"source": "産経ニュース",
-"summary": "日本将棋連盟は26日、八大タイトル戦の一つ、王将戦について第77期から就職情報会社のマイナビと共同で主催すると発表した。王将戦は毎日新聞社とスポーツニッポン新聞社が主催だったが、第75期から両社は特別協力となり、連盟は共催相手を探していた。",
-"url": "https://www.sankei.com/article/20261126-MIBAUUHGKVPBBPB5XJRVC4HPHQ/",
-"image": "https://www.bing.com/th?id=ONUT.waFEmmtN5yJSqxG4dqkxoA&pid=News&w=480"
-},
-{
-"title": "将棋の王将戦 来期からマイナビが主催に加わる",
-"date": "2026-11-26T07:09:00+00:00",
-"source": "毎日新聞デジタル",
-"summary": "日本将棋連盟とともに王将戦の主催に決まり、記者会見するマイナビの粟井俊介社長執行役員（中央）。右は特別協賛の囲碁将棋チャンネル・山口哲史社長、左は日本将棋連盟の清水市代会長＝東京都渋谷区の将棋会館で2026年11月26日午後1時40分、滝川大貴撮影 ...",
-"url": "https://mainichi.jp/graphs/20261126/mpj/00m/040/130000f/20261126mpj00m040119000p",
-"image": "https://www.bing.com/th?id=ONUT.q5nk1rqOJlcodF5YZ5mpUw&pid=News&w=1200"
-},
-{
-"title": "将棋の王将戦 来期からマイナビが主催に加わる [写真特集1/11]",
-"date": "2026-11-26T06:09:41+00:00",
-"source": "毎日新聞",
-"summary": "",
-"url": "https://mainichi.jp/graphs/20261126/mpj/00m/040/130000f",
-"image": "https://cdn.mainichi.jp/vol1/2026/11/26/20261126mpj00m040119000p/0c10.jpg?1"
-},
-{
-"title": "【王将戦】日本将棋連盟とマイナビが来期77期から共同主催、棋譜オープン化、女流棋士も参加へ",
-"date": "2026-11-25T22:00:45+00:00",
-"source": "日刊スポーツ on MSN",
-"summary": "公益社団法人日本将棋連盟は26日、都内の将棋会館で将棋の8大タイトル戦、王将戦についての記者会見を行った。",
-"url": "https://www.msn.com/ja-jp/news/other/%E7%8E%8B%E5%B0%86%E6%88%A6-%E6%97%A5%E6%9C%AC%E5%B0%86%E6%A3%8B%E9%80%A3%E7%9B%9F%E3%81%A8%E3%83%9E%E3%82%A4%E3%83%8A%E3%83%93%E3%81%8C%E6%9D%A5%E6%9C%9F77%E6%9C%9F%E3%81%8B%E3%82%89%E5%85%B1%E5%90%8C%E4%B8%BB%E5%82%AC-%E6%A3%8B%E8%AD%9C%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E5%8C%96-%E5%A5%B3%E6%B5%81%E6%A3%8B%E5%A3%AB%E3%82%82%E5%8F%82%E5%8A%A0%E3%81%B8/ar-AA2ifGW2",
-"image": "https://www.bing.com/th?id=ONUT.UBqcYi7sPkE5D7UdZzFGsQ&pid=News&w=500"
-},
-{
-"title": "大手企業を退社し「将棋講師」に 収入はキープ、生きた会社員の経験",
-"date": "2026-11-25T21:00:00+00:00",
-"source": "朝日新聞",
-"summary": "",
-"url": "https://www.asahi.com/articles/ASVCS2219VCSUCVL03BM.html",
-"image": "https://imgopt.asahi.com/ogp/AS20261124002332_comm.jpg"
-},
-{
-"title": "囲碁将棋×ニューヨーク DATE MASAMUNE",
-"date": "2026-11-25T20:41:54+00:00",
-"source": "レッツエンジョイ東京",
-"summary": "",
-"url": "https://www.enjoytokyo.jp/event/2093866/",
-"image": "https://rstatic.enjoytokyo.jp/assets/images/event_draft/b0/2093866/img_1.jpg?1795512862&p=t&w=1200"
-},
-{
-"title": "深夜の失着 第８５期将棋名人戦Ａ級順位戦４回戦 第２３局第６譜",
-"date": "2026-11-25T20:00:00+00:00",
-"source": "朝日新聞",
-"summary": "",
-"url": "https://www.asahi.com/articles/DA3S16595604.html",
-"image": "https://imgopt.asahi.com/ogp/AS20261126000170_comm.jpg"
-}
-]
-},
-{
-"id": 177,
-"name": "恐竜",
-"day": "2026-11-27",
-"fp": "b3c525dae530",
-"fresh": false,
-"rows": [
-{
-"title": "恐竜化石の王国 誕生の秘密 〜モンゴル・ゴビ砂漠〜",
-"date": "2026-11-26T15:02:41+00:00",
-"source": "NHK ONE",
-"summary": "",
-"url": "https://www.web.nhk/tv/an/greatnature/pl/series-tep-J8QQ63X7V1/ep/C7HWSGAXYG",
-"image": "https://imgu.web.nhk/static/assets/images/tvepisode/te/C7HWSGAXYG/C7HWSGAXYG-eyecatch_ad59eb682ff24ba4272cca49a26fe712.png"
-},
-{
-"title": "くつがえる恐竜像 新発見が明かした意外な姿",
-"date": "2026-11-26T12:02:03+00:00",
-"source": "日経サイエンス",
-"summary": "",
-"url": "https://www.nikkei-science.com/sci_book/bessatu/b293.html",
-"image": "https://www.nikkei-science.com/wp-content/uploads/2026/11/B293_cover1111.jpg"
-},
-{
-"title": "恐竜が新潟に！ギガノトサウルスvsティラノサウルスが激突！『新潟県民会館』大ホールで『恐竜ラボ！ギガ・ミッション from DINO-A-LIVE』開催！3月6日。先行予約受付中！12月6日まで【PR】",
-"date": "2026-11-26T09:00:45+00:00",
-"source": "にいがた速報",
-"summary": "",
-"url": "https://gata21.jp/archives/97997878.html",
-"image": "https://livedoor.blogimg.jp/itotaku77/imgs/f/f/ff0c6d3a-s.jpg"
-},
-{
-"title": "『ドラゴンボール』より、TVアニメのエンディングに登場した「孫悟空＆ブルマ＆恐竜」をフィギュア化。あみあみ含む一部流通限定でご案内中。",
-"date": "2026-11-26T04:30:01+00:00",
+"title": "『「ドラゴンクエスト アイランド」×『ドラゴンクエストモンスターズ４ 枯れ木の国のビアンカ・フローラ』記念写真で、あの“選択”を再現！『ビアンカ・フローラと一緒に撮影できるコラボ記念写真』",
+"date": "2026-11-24T05:00:02+00:00",
 "source": "PR TIMES",
 "summary": "",
-"url": "https://prtimes.jp/main/html/rd/p/000004007.000025615.html",
-"image": "https://prcdn.freetls.fastly.net/release_image/25615/4007/25615-4007-02b88ef4a2a8c0138b20539b71a31bc9-600x549.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260"
+"url": "https://prtimes.jp/main/html/rd/p/000000862.000128966.html",
+"image": "https://prcdn.freetls.fastly.net/release_image/128966/862/128966-862-dc94c26faa2523f9bb679454372146ea-2736x1824.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260"
 },
 {
-"title": "恐竜時代に、アメンボのように水面を歩くバッタがいた",
-"date": "2026-11-26T03:30:28+00:00",
-"source": "ナゾロジー",
-"summary": "",
-"url": "https://nazology.kusuguru.co.jp/archives/211987",
-"image": "https://nazology.kusuguru.co.jp/wp-content/uploads/2026/11/43f8d3890e8941eaa0c6b86f4bdb1293.jpg"
-},
-{
-"title": "大型VR体験施設「イマーシブジャーニー 横浜」新作は35億年の歴史を辿る未知の旅 恐竜時代や太古の海など、9つの時代へタイムスリップ",
-"date": "2026-11-26T02:01:43+00:00",
-"source": "Infoseek",
-"summary": "",
-"url": "https://news.infoseek.co.jp/article/modelpress_4883428/",
-"image": "https://media.image.infoseek.co.jp/isnews/photos/modelpress/modelpress_4883428_0-enlarge.jpg"
-},
-{
-"title": "映画『オークストリートの異変』武器なし、知識なしの家族が恐竜に立ち向かう、アン・ハサウェイ主演",
-"date": "2026-11-26T01:36:09+00:00",
-"source": "ファッションプレス",
-"summary": "",
-"url": "https://www.fashion-press.net/news/146027",
-"image": "https://www.fashion-press.net/img/news/146027/top.jpg?1777530794"
-},
-{
-"title": "中国内モンゴルで1億年前の草食恐竜化石発見 新種の可能性も (2026年11月26日掲載)",
-"date": "2026-11-26T01:19:56+00:00",
-"source": "ライブドアニュース",
-"summary": "",
-"url": "https://news.livedoor.com/topics/detail/32904019/",
-"image": "https://image.news.livedoor.com/newsimage/stf/0/4/04322_1693_e5109fdc9d718d4e22d0d5d4dd6ea69b.jpg"
-},
-{
-"title": "恐竜や海洋生物 擁壁アート続々完成 天草市御所浦町 地元の町づくりグループ制作（熊本日日新聞）",
-"date": "2026-11-26T00:45:25+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/9ef366199f1ca55e513f482012c42fbadc8c3db5",
-"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261126-00000012-kumanichi-000-1-view.jpg?exp=10800"
-},
-{
-"title": "犬をシャンプー中、泡で『恐竜みたいなヘアスタイル』にした結果→納得がいっていない『表情』に13万いいね「可愛いｗ」「やるせない顔で草」",
-"date": "2026-11-26T00:04:26+00:00",
-"source": "千葉テレビ放送株式会社",
-"summary": "",
-"url": "https://www.chiba-tv.com/plus/detail/2026112260119",
-"image": "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1498474921814214209/origin_1.jpg"
-},
-{
-"title": "地球最古の大陸の1つで、 恐竜時代の地割れが再び開き始めている",
-"date": "2026-11-25T23:00:00+00:00",
-"source": "カラパイア",
-"summary": "",
-"url": "https://karapaia.com/archives/639976.html",
-"image": "https://karapaia.com/wp-content/uploads/2026/11/1-101.jpg"
-},
-{
-"title": "「イマーシブジャーニー 横浜」恐竜が生きる世界を歩く新作VR、太古の海や森で“進化の物語”を体験",
-"date": "2026-11-25T20:02:31+00:00",
-"source": "ファッションプレス on MSN",
-"summary": "「イマーシブジャーニー 横浜」で、新作VRコンテンツ『ライフクロニクルズ いのちの起源をめぐる旅』を2026年12月15日(火)より常設公開する。 35億年の生命の進化を体験、自分の足で歩いて巡るVR 『ライフクロニクルズ ...",
-"url": "https://www.msn.com/ja-jp/news/other/%E3%82%A4%E3%83%9E%E3%83%BC%E3%82%B7%E3%83%96%E3%82%B8%E3%83%A3%E3%83%BC%E3%83%8B%E3%83%BC-%E6%A8%AA%E6%B5%9C-%E6%81%90%E7%AB%9C%E3%81%8C%E7%94%9F%E3%81%8D%E3%82%8B%E4%B8%96%E7%95%8C%E3%82%92%E6%AD%A9%E3%81%8F%E6%96%B0%E4%BD%9Cvr-%E5%A4%AA%E5%8F%A4%E3%81%AE%E6%B5%B7%E3%82%84%E6%A3%AE%E3%81%A7-%E9%80%B2%E5%8C%96%E3%81%AE%E7%89%A9%E8%AA%9E-%E3%82%92%E4%BD%93%E9%A8%93/ar-AA2ifosJ",
-"image": "https://www.bing.com/th?id=ONUT.s2XkCSNV6kKXY33rFoV4xg&pid=News&w=1200"
+"title": "『ドラクエモンスターズ4』トム・ブラウン出演のCM映像が公開。布川とマドハンドに「ダメー！」とツッコミを入れられるみちお",
+"date": "2026-11-24T02:00:00+00:00",
+"source": "ファミ通.com",
+"summary": "CMにはトム・ブラウンのふたりと、乃木坂46の一ノ瀬美空さんが出演。配合、推しモンスター、バトルにフィーチャーした全6本の映像が公開されている。 『ドラゴンクエストモンスターズ４ 枯れ木の国のビアンカ・フローラ』は12月3日に発売予定（※Steam版のみ12月4日発売）。対応機種は、Nintendo Switch 2、",
+"url": "https://www.famitsu.com/article/202611/94945",
+"image": "https://www.bing.com/th?id=ONUT.LX7xrs0KzW4_EIggy_Ro-A&pid=News&w=1200"
 }
 ]
 },
 {
-"id": 13592,
-"name": "藤井風",
+"id": 179,
+"name": "広島旅行",
 "day": "2026-11-27",
-"fp": "8960e26eb987",
+"fp": "cd979e088f56",
 "fresh": false,
 "rows": [
 {
-"title": "藤井 風、台湾公演が海外チャートを押し上げ 国内は「ガーデン」が底堅く推移 (Billboard JAPAN)",
-"date": "2026-11-26T09:05:04+00:00",
-"source": "Yahoo!ニュース",
+"title": "広島信金、豊田信金の旅行団歓迎 相互交流の契機に",
+"date": "2026-11-25T10:31:00+00:00",
+"source": "ニッキンONLINE",
 "summary": "",
-"url": "https://news.yahoo.co.jp/articles/40da1abcc2413c75f0c8abd3e49a6ca1965b05f2/images/000",
-"image": "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y32aKHaE9S6KKOAHNM7AL26i7qYNbY9CGGCSa0OegyqPUYPJUNh-OSbgus4m19Jh_bD5ynHUQosJBmz0indOicAbTF5I30BDSsoDdv3pzUFxIzbanEacZIifWaYat-UZgp"
+"url": "https://www.nikkinonline.com/article/442588",
+"image": "https://img.nikkinonline.com/wp/wp-content/uploads/2026/11/h20261125hiroshimanenkin.webp"
 },
 {
-"title": "藤井風ドーム公演、同接78万人超の原点回帰 (2026年11月26日掲載)",
-"date": "2026-11-26T09:01:31+00:00",
+"title": "【3連休が最後のチャンス】『頭文字D』ポップアップストア広島、初週末2日間で大盛況。AE86実車展示は11月23日まで",
+"date": "2026-11-23T08:00:00+00:00",
+"source": "Newscast.jp",
+"summary": "",
+"url": "https://newscast.jp/smart/news/1289963",
+"image": "https://newscast.jp/attachments/yceYS38E8oX5gY2srV3J.png?w=940&h=940&a=1"
+},
+{
+"title": "予定変更から始まった、広島旅行①",
+"date": "2026-11-22T14:12:00+00:00",
+"source": "note",
+"summary": "三連休は一泊二日で広島へ。 当初は日帰りで、京都の伊根と天橋立に行く予定だった。 でも、金曜日の朝、夫の後輩君から「サンフレッチェ広島VS横浜F・マリノスのチケットがあるから来ませんか？」と連絡があり、サンフレッチェ広島のホーム・エディオンピースウイング広島に行くことになったのだ。 2024年2月に新スタジアムになった",
+"url": "https://note.com/mami_kyotoshoen/n/n320a84659447",
+"image": "https://www.bing.com/th?id=ONUT.WechAbPPz-kOw_zZOcEOug&pid=News&w=700"
+},
+{
+"title": "写真と言葉で広島旅行 −世界遺産と、そのまわり編−",
+"date": "2026-11-21T10:01:00+00:00",
+"source": "note",
+"summary": "はじめに 今年の夏は２泊３日で広島旅行に行きました。少し肌寒くなってきたので、その振り返りをしています。広島には「厳島神社」と「原爆ドーム」という２つの世界遺産があります。世界遺産とその周辺の建築には心が動かされるものが多くありました。 厳島神社をめざす 朝一番。まずはフェリー乗り場から厳島へ渡ります。 船の移動、ワク",
+"url": "https://note.com/broccoli_lab/n/n8f28925ede5c",
+"image": "https://www.bing.com/th?id=ONUT.GD6tts0ow7s4BlKlDekjWQ&pid=News&w=700"
+},
+{
+"title": "犬連れ旅行の食事に！ペット同伴で楽しめる広島のお好み焼き店と観光ルート",
+"date": "2026-11-20T09:00:08+00:00",
 "source": "ライブドアニュース",
 "summary": "",
-"url": "https://news.livedoor.com/topics/detail/32907765/",
-"image": "https://image.news.livedoor.com/newsimage/stf/1/6/16ab8_1896_c7dbd5ac_b20d1ba1.jpg"
+"url": "https://news.livedoor.com/article/detail/32864138/",
+"image": "https://image.news.livedoor.com/newsimage/stf/9/7/970e4_1845_740b5689_385bc3e3.jpg"
 },
 {
-"title": "藤井 風、台湾公演が海外チャートを押し上げ 国内は「ガーデン」が底堅く推移＜11/26修正＞",
-"date": "2026-11-26T09:00:00+00:00",
-"source": "Billboard JAPAN",
+"title": "「推し活」需要を観光に、ANAが松山・広島でアイドル参加のツアー",
+"date": "2026-11-19T08:15:00+00:00",
+"source": "日本経済新聞",
 "summary": "",
-"url": "https://www.billboard-japan.com/d_news/detail/167632",
-"image": "https://www.billboard-japan.com/common/sys/img/news/00000167/167632/image.jpg"
+"url": "https://www.nikkei.com/article/DGXZQOCC167V80W6A111C2000000/",
+"image": "https://article-image-ix.nikkei.com/https%3A%2F%2Fimgix-proxy.n8s.jp%2FDSXZQO3904798019112026000000-1.jpg?auto=compress&bg=FFFF&crop=focalpoint&fit=crop&fm=jpg&fp-x=0.54&fp-y=0.7&h=630&w=1200&s=d9135dc9575884e680818acaf2c9eca0"
 },
 {
-"title": "藤井 風、台湾公演が海外チャートを押し上げ 国内は「ガーデン」が底堅く推移",
-"date": "2026-11-26T01:02:52+00:00",
-"source": "Billboard JAPAN on MSN",
-"summary": "藤井 風は10月31日、自身最大規模となるワールドツアー【Prema World Tour】を高雄国家スタジアムで開幕した。今回は、2026年9月から11月初旬にかけてのチャート推移を、台湾公演前後の変化に着目しながら国内外で比較する。 まず国内のBillboard JAPAN総合ソング・チャート「JAPAN Hot ",
-"url": "https://www.msn.com/ja-jp/entertainment/%E5%85%A8%E8%88%AC/%E8%97%A4%E4%BA%95-%E9%A2%A8-%E5%8F%B0%E6%B9%BE%E5%85%AC%E6%BC%94%E3%81%8C%E6%B5%B7%E5%A4%96%E3%83%81%E3%83%A3%E3%83%BC%E3%83%88%E3%82%92%E6%8A%BC%E3%81%97%E4%B8%8A%E3%81%92-%E5%9B%BD%E5%86%85%E3%81%AF-%E3%82%AC%E3%83%BC%E3%83%87%E3%83%B3-%E3%81%8C%E5%BA%95%E5%A0%85%E3%81%8F%E6%8E%A8%E7%A7%BB/ar-AA2igQLO",
-"image": "https://www.bing.com/th?id=ONUT.ew7xuY9N5na5B4YlO9JSKw&pid=News&w=800"
+"title": "水盤の上のカラフルなキューブ…実はこれ、美術館の展示室！「世界で最も美しい美術館」に選ばれた下瀬美術館は広島観光するならマストで訪れたい新名所",
+"date": "2026-11-19T08:00:00+00:00",
+"source": "ウォーカープラス",
+"summary": "",
+"url": "https://www.walkerplus.com/article/1335064/",
+"image": "https://image.news.livedoor.com/newsimage/stf/8/7/87630_230_776bfee8a070dc1bb4804307b4e7726f.jpg"
 },
 {
-"title": "bby、Glassnote Recordsからリリースした2ndアルバム『2』よりリード曲「Shadows」MVプレミア公開",
-"date": "2026-11-25T19:18:18+00:00",
-"source": "Real Sound",
-"summary": "bbyが、11月20日にリリースした2ndアルバム『2』より、リード曲「Shadows」のMVを日本時間11月26日4時に公開する。 （関連：YOASOBI、Fujii Kaze（藤井 風）、ONE OK ROCK……日本に止まらない熱狂 アジアでのスタジアム公演） Glassnote Recordsよりリリースした本",
-"url": "https://realsound.jp/2026/11/post-2594830.html",
-"image": "https://realsound.jp/wp-content/uploads/2026/11/20261125-bby-99.jpeg"
+"title": "広島の修学旅行生を乗せた遊覧船「定員を大幅超過し運航」壱岐市勝本町の漁協を海保が捜査《長崎》（長崎国際テレビ）",
+"date": "2026-11-18T15:02:00+00:00",
+"source": "Yahoo!ニュース",
+"summary": "",
+"url": "https://news.yahoo.co.jp/articles/a400011bf4eaf2020d5d726936674bc21d99c3b4",
+"image": "https://www.bing.com/th?id=ONUT.Yu1mCU_C5ufHQyGhMPcOLQ&pid=News&w=1200"
 },
 {
-"title": "Fujii Kaze（藤井 風）、東京ドーム“きょう公演”のみYouTubeで生中継",
-"date": "2026-11-25T17:23:50+00:00",
+"title": "広島から島根へのインバウンド周遊促進へ 一畑バスなど4社と自治体が高速バス利用拡大プロモーションを開始",
+"date": "2026-11-17T14:00:00+00:00",
+"source": "訪日ラボ",
+"summary": "一畑バス、広島電鉄、JRバス中国、WILLER ACROSSの4社は11月9日、広島から島根へのインバウンド周遊を促進するプロモーションを開始すると発表しました。 島根県、出雲市、松江市とも連携し、広島を訪れるインバウンド観光客の島根への周遊拡大と、高速バス「広島～松江線」「広島～出雲線」の利用促進を図ります。 関連記",
+"url": "https://honichi.com/news/2026/11/18/hiroshima-shimane-bus-promotion/",
+"image": "https://www.bing.com/th?id=ONUT.2ACq-T9f1giiDppK-qoVJw&pid=News&w=1200"
+},
+{
+"title": "原爆の悲惨さを生徒教員が熱演 島田高・公開授業で「父と暮せば」 広島への修学旅行控え事前学習",
+"date": "2026-11-15T21:00:00+00:00",
+"source": "静岡新聞DIGITAL",
+"summary": "",
+"url": "https://news.at-s.com/article/2099196",
+"image": ""
+},
+{
+"title": "「平和教育ってこれでいいの？」８月６日に生まれ、広島で育って感じた疑問 「戦争はダメだね」だけで終わらせたくない。新しい修学旅行に挑戦する高校も",
+"date": "2026-11-14T08:00:00+00:00",
 "source": "山陽新聞",
 "summary": "",
-"url": "https://www.sanyonews.jp/article/2024698?kw=2025",
-"image": "https://static.sanyonews.jp/image/article/size1/7/8/2/3/78239dff6382e6054f5fb2da7a6da671_1.jpg"
-},
-{
-"title": "SATTU CREW、『カウボーイビバップ』OP「Tank!」を再解釈 クリス・ゲーリンジャーがマスタリング参加",
-"date": "2026-11-25T12:50:59+00:00",
-"source": "Real Sound",
-"summary": "SATTU CREWが、新曲「Tank! -SATTU Rework-」を本日11月25日に配信リリースした。 （関連：YOASOBI、Fujii Kaze（藤井 風）、ONE OK ROCK……日本に止まらない熱狂 アジアでのスタジアム公演） SATTU CREWは、2018年に大阪で結成。90年代のブームバップHI",
-"url": "https://realsound.jp/2026/11/post-2593851.html",
-"image": "https://realsound.jp/wp-content/uploads/2026/11/20261125-sattucrew-99.jpeg"
-},
-{
-"title": "なぜ藤井風はライブを無料で配信するのか。歌とライブで伝え続ける「執着しない生き方」(徳力基彦)へのコメント",
-"date": "2026-11-25T10:47:23+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/profile/expert/comments/2e445bd8-c8b8-4a06-a23e-96b3fd67187a",
-"image": "https://s.yimg.jp/images/news-web/versions/20261125-0f1c0fc/all/images/ogp_user_commentPerma.jpg"
-},
-{
-"title": "『フジロック’26』XG、藤井 風、Hi-STANDARDら45組のライブ映像を一夜限り配信 5時間超えの特別番組 (オリコン)",
-"date": "2026-11-25T07:00:00+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/articles/8dc45dc6e08fd2f732b122f5ac5daf89dd9e9d4a/images/000",
-"image": "https://news-pctr.c.yimg.jp/uUzvQ3lML_bkIqyakc1vFhNrRI0RUQxg5aFkrX0xDg1_T0wXrbEJjtNGtrf1o9y32aKHaE9S6KKOAHNM7AL26k3IBgtLp2foIwqgkLrGVypC2iKeqq16EoIJUgOllr1jYHEjK3y9FISCVAkLshJ9HUhPMzhSB9BA6kn4uM3sO4ggJSC_qzLSv52wKkBjSDvW"
-},
-{
-"title": "『フジロック’26』XG、藤井 風、Hi-STANDARDら45組のライブ映像を一夜限り配信 5時間超えの特別番組",
-"date": "2026-11-25T07:00:00+00:00",
-"source": "オリコンニュース",
-"summary": "",
-"url": "https://www.oricon.co.jp/news/2495158/full/",
-"image": "https://contents.oricon.co.jp/upimg/news/2496000/2495158/20261125_155207_p_o_43688284.jpg"
-},
-{
-"title": "藤井風さんのライブ配信を見ましたか？",
-"date": "2026-11-25T05:40:40+00:00",
-"source": "Yahoo!ニュース",
-"summary": "",
-"url": "https://news.yahoo.co.jp/polls/77392",
-"image": "https://news-pctr.c.yimg.jp/dk/news-polls/2026/11/25/ad127e9ef2367bffc4c09ad89b8c9ce262f3a127161838c50aa7273bc93b6e3b.jpg"
-},
-{
-"title": "藤井風「東京ドームにピアノ1台」の底力と天才の秘密",
-"date": "2026-11-25T05:33:44+00:00",
-"source": "zakⅡ",
-"summary": "",
-"url": "https://www.zakzak.co.jp/article/20261124-Z7GHM5BKBREVFFYC5C3TEBCRM4/",
-"image": "https://www.zakzak.co.jp/resizer/v2/4R4MXHHF5RLDTLIHUZ5MG2EFUM.jpg?auth=b72a84b80f2daa42064eeb1bb9ff45d7ef140d173abeb4c43b26fa0bbb21c5ae&quality=40&focal=260%2C214&width=1200"
+"url": "https://www.sanyonews.jp/article/1971022",
+"image": "https://static.sanyonews.jp/image/article/size1/a/a/8/0/aa8057fdf6b56a604365ee04736efa4f_1.jpg"
 }
 ]
 },
 {
-"id": 13766,
-"name": "世界最強の魔女、始めました",
+"id": 13594,
+"name": "牧野植物園",
 "day": "2026-11-27",
-"fp": "70b14f634b8c",
+"fp": "83110687a1a1",
 "fresh": false,
 "rows": [
 {
-"title": "世界最強の魔女、始めました第8話 転移してみた！",
-"date": "2026-11-25T05:06:00+00:00",
-"source": "ABEMA",
-"summary": "新たに手に入れたスキル『ファストトラベル』でイフォネの町へ戻ったローナ。そこでは上位魔族ラーヴァデーモンが暴れ回り、かつてない危機に瀕していた！ 疲弊したラインハルテやエリミナが絶体絶命の状況に陥る中、ローナはうっかり魔法反射スキルを張りっぱなしで戦闘に割り込んでしまい！？ またしてもローナに翻弄されるエリミナの運命は",
-"url": "https://abema.tv/video/episode/189-92_s1_p8",
-"image": "https://www.bing.com/th?id=ONUT.cMsHCcBDH7URkjCZ89YtBA&pid=News&w=1200"
-},
-{
-"title": "【前Qの「いいアニメを見に行こう」】第69回 品のよい面白さがある「世界最強の魔女、始めました」",
-"date": "2026-11-21T10:00:30+00:00",
-"source": "ニコニコニュース",
+"title": "牧野植物園の指定管理 候補者に記念財団 １２月定例会に議案提出",
+"date": "2026-11-26T20:00:00+00:00",
+"source": "高知新聞",
 "summary": "",
-"url": "https://news.nicovideo.jp/watch/nw20019328?news_ref=search_search",
-"image": "https://media.eiga.com/images/anime/news/127895/photo/cb6c83785a8f397c/640.jpg"
+"url": "https://www.kochinews.co.jp/article/detail/1069870",
+"image": "https://www.bing.com/th?id=ONUT.vSla_HLvdPhJMXnl2RjKpA&pid=News&w=800"
 },
 {
-"title": "『世界最強の魔女、始めました』を観ると、なぜ元気になれるのか。",
-"date": "2026-11-21T04:13:00+00:00",
-"source": "note",
-"summary": "秋アニメの『世界最強の魔女、始めました』は、ググレカース辺境伯家の娘であるローナ・ハーミットが主人公の物語です。 ローナは最弱スキルを発現したせいで実家から追放されますが、そのスキルが実はSSSランクの「インターネット」。 スキルのおかげでSSSランクの杖も入手し、無自覚の内に世界最強の魔女となってしまう作品です。 そ",
-"url": "https://note.com/tasty_aster504/n/ne546da92a453",
-"image": "https://www.bing.com/th?id=ONUT.bZ_wseq1oaXfacYeRvMErA&pid=News&w=1200"
+"title": "東豊永を「薬草のまち」に 小林製薬などが薬用植物「トウキ」の栽培委託、産地化に期待 高知県大豊町",
+"date": "2026-11-23T19:52:00+00:00",
+"source": "高知新聞",
+"summary": "大豊町の東豊永地区で栽培されている薬用植物、トウキがこのほど、同町大平の畑で収穫された。高知県立牧野植物園（高知市）や小林製薬（大阪市）が… 「創部１００年」高知高野球部飛躍を記念式典でＯＢら２５０人祝う 高知市 ウオーキング後、高知と愛媛の食満喫 「歩歩歩（ぽぽぽ）食堂」に９０人参加 高知県宿毛市・愛媛県愛南町 高知",
+"url": "https://www.kochinews.co.jp/article/detail/1068904",
+"image": "https://www.bing.com/th?id=ONUT.CG8FYKtPpbxkYAyXNL_VTg&pid=News&w=1200"
 },
 {
-"title": "世界最強の魔女、始めました #8【地上波同時・WEB最速】",
-"date": "2026-11-20T15:16:23+00:00",
-"source": "ABEMA",
+"title": "博士の仮装でプレゼントも、高知市の高知県立牧野植物園で「よるまきのハロウィーン」開催",
+"date": "2026-11-19T23:35:34+00:00",
+"source": "ウォーカープラス",
 "summary": "",
-"url": "https://abema.tv/channels/abema-anime/slots/9rEvPpzzgidUDm",
+"url": "https://www.walkerplus.com/article/1007933/",
+"image": "https://news.walkerplus.com/article/1007933/10062891_615.jpg"
+},
+{
+"title": "《全盲の芸術家》光島貴之さんの作品展【高知】",
+"date": "2026-11-19T02:07:00+00:00",
+"source": "Yahoo!ニュース",
+"summary": "全盲でありながら、自らが感じ取った風景などを木版に釘や画びょうを使って表現する、京都府出身の作家の企画展が高知市の牧野植物園で開かれています。 大阪・伊丹空港のロビーを通り、高知に航空機で向かう様子を木版に釘を打って表現した作品。 これらは京都府出身で全盲の芸術家、光島貴之さんが音や手触り、また、感じ取った雰囲気などを",
+"url": "https://news.yahoo.co.jp/articles/33e20ae60fa35373dc550b9253c4669b0464e1de",
+"image": "https://www.bing.com/th?id=ONUT.5FSmoXKh6vhSnPS5Ihfwog&pid=News&w=640"
+},
+{
+"title": "画像3 / 4＞博士の仮装でプレゼントも、高知市の高知県立牧野植物園で「よるまきのハロウィーン」開催",
+"date": "2026-11-16T08:18:17+00:00",
+"source": "ウォーカープラス",
+"summary": "",
+"url": "https://www.walkerplus.com/article/1007933/image10062892.html",
+"image": "https://news.walkerplus.com/article/1007933/10062894_615.jpg"
+},
+{
+"title": "「家族みたいな存在」 ベトナム人新婚夫婦に香南市の雇用農家がフォトウェディングをプレゼント 高知市の竹林寺や牧野植物園で撮影",
+"date": "2026-11-15T23:45:00+00:00",
+"source": "高知新聞",
+"summary": "",
+"url": "https://www.kochinews.co.jp/article/detail/1064159",
+"image": "https://www.bing.com/th?id=ONUT.QAmwUjMAjYiWNH-jHRcZSw&pid=News&w=810"
+},
+{
+"title": "個性が豊か！香りも魅力「寒蘭」１４３鉢ずらり 高知市の牧野植物園で１１／１５まで展示",
+"date": "2026-11-14T08:00:00+00:00",
+"source": "高知新聞",
+"summary": "",
+"url": "https://www.kochinews.co.jp/article/detail/1063673",
 "image": ""
 },
 {
-"title": "幸福は義務です「世界最強の魔女、始めました」第77話が月マガ基地で無料公開。異世界コラボ開催！ (2026年11月20日掲載)",
-"date": "2026-11-20T05:39:27+00:00",
-"source": "ライブドアニュース",
+"title": "「秋が来たなみたいな」牧野植物園が秋色に 鮮やかなツワブキや可憐な野生菊など見頃 【高知】（高知さんさんテレビ）",
+"date": "2026-11-13T10:43:02+00:00",
+"source": "Yahoo!ニュース",
 "summary": "",
-"url": "https://news.livedoor.com/topics/detail/32861651/",
-"image": "https://image.news.livedoor.com/newsimage/stf/9/2/92383_1843_64555c146d6ac83dc7788f072bb57367.jpg"
-},
-{
-"title": "幸福は義務です「世界最強の魔女、始めました」第77話が月マガ基地で無料公開。異世界コラボ開催！",
-"date": "2026-11-19T16:00:00+00:00",
-"source": "ライブドアニュース",
-"summary": "【拡大画像へ】 講談社は11月20日、「世界最強の魔女、始めました ～私だけ『攻略サイト』を見れる世界で自由に生きます～」の第77話「旅行の準備をしてみた」を月マガ基地で無料公開した。なお、最新話はマガポケでも同時公開されている。",
-"url": "https://news.livedoor.com/article/detail/32861651/",
-"image": "https://www.bing.com/th?id=ONUT.A7EROUEe2o5__FjtBwECQQ&pid=News&w=320"
-},
-{
-"title": "【世界最強の魔女、始めました】アニメ放送日・放送局一覧!いつからスタート!?",
-"date": "2026-11-19T08:43:47+00:00",
-"source": "サブカルウォーカー",
-"summary": "",
-"url": "https://subculwalker.com/archives/105900/",
-"image": "https://subculwalker.com/wp-content/uploads/2026/10/sekamajo-housoubi.webp"
-},
-{
-"title": "【世界最強の魔女、始めました】配信サイトはどこ?無料で視聴する方法はある?",
-"date": "2026-11-19T08:43:22+00:00",
-"source": "サブカルウォーカー",
-"summary": "",
-"url": "https://subculwalker.com/archives/106527/",
-"image": "https://subculwalker.com/wp-content/uploads/2026/11/sekamajo-haishin.webp"
-},
-{
-"title": "『世界最強の魔女、始めました』",
-"date": "2026-11-19T03:03:00+00:00",
-"source": "ORICON NEWS",
-"summary": "10月7日スタートTOKYO MXほか 水曜日 後10:00 アニメ『世界最強の魔女、始めました』。追放された少女ローナが、最弱と誤解されたスキルで再起を図る物語。放送日、あらすじ、キャスト ...",
-"url": "https://www.oricon.co.jp/anime/1218/",
-"image": "https://contents.oricon.co.jp/anime/img/1000/1218/base/img1200/tv-program-image-92d832393dbdda43543d3b5d3a70126c69936a40b43642dfce95e98cb33a4665.jpg"
-},
-{
-"title": "世界最強の魔女、始めました - シーズン1 - 7話 (アニメ) | 無料動画・見逃し配信を見るなら",
-"date": "2026-11-18T13:00:00+00:00",
-"source": "ABEMA",
-"summary": "",
-"url": "https://abema.tv/video/episode/189-92_s1_p7",
-"image": ""
-},
-{
-"title": "2026年11月18日(水)22:00～「世界最強の魔女、始めました」＃７「秘密兵器を作ってみた！」",
-"date": "2026-11-18T13:00:00+00:00",
-"source": "TOKYO MX",
-"summary": "",
-"url": "https://s.mxtv.jp/bangumi/program.html?date=20261118&ch=1&hm=2200",
-"image": ""
-},
-{
-"title": "第7話 世界最強の魔女、始めました「秘密兵器を作ってみた！」",
-"date": "2026-11-18T09:30:00+00:00",
-"source": "WEBザテレビジョン",
-"summary": "アクアスの仲間たちの協力と鍛冶師ドワーゴの復活により、ローナはロマン溢れる強力な魔剣“殺刀・斬一文字”を手に入れる。ついに水曜日クエスト当日を迎えるが、何と出現ゲートが上空に現れる前代未聞の異常事態が発生してしまう。予期せぬパターンの変化にパニックに陥るアリエスだが、ローナは攻略wikiに記されたネット知識を頼りに、あ",
-"url": "https://thetv.jp/program/0001077830/7/",
-"image": "https://www.bing.com/th?id=ONUT.ELfyCF4tE0v9ZeqJarjGCw&pid=News&w=640"
+"url": "https://news.yahoo.co.jp/articles/9bc674bbe3889ac9e942020a35ab17601059f89e",
+"image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261113-90015496-newskss-000-1-thumb.jpg?exp=10800"
 }
 ]
 }
