@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-27T08:34:53+00:00",
+ "changed": true,
+ "checked": "2026-11-27T09:18:12+00:00",
  "fired": {
   "at": "2026-11-27T08:34:53+00:00",
   "results": {
@@ -85,39 +85,36 @@
     "sig": "d9a780702300"
    },
    "items": [
-    "FROM",
     "MMORPG 新作",
     "Vaundy",
     "dota2",
     "gelato pique",
-    "lib:King Gnu",
-    "lib:Mrs. GREEN APPLE",
-    "lib:スプラトゥーン3",
-    "lib:ゼルダの伝説",
-    "lib:原神",
-    "lib:呪術廻戦",
-    "lib:葬送のフリーレン",
-    "lib:鬼滅の刃",
+    "lib:F1",
+    "lib:NBA",
+    "lib:YOASOBI",
+    "lib:ガンプラ",
+    "lib:キャンプ",
+    "lib:サッカー日本代表",
+    "lib:大谷翔平",
+    "lib:無印良品",
     "ぐでたま",
     "哈利波特剧集",
     "星巴克马克杯",
     "绝区零"
    ],
-   "last_batch": "2026-11-27T07:50:20+00:00",
+   "last_batch": "2026-11-27T08:41:17+00:00",
    "last_error": {
     "at": "2026-11-26T06:40:55+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 472,
+   "prog": 481,
    "prog_day": "2026-11-27",
-   "ripe": [
-    "FROM"
-   ],
-   "sig": "d9a780702300",
+   "ripe": [],
+   "sig": "61ad56ae32bb",
    "token_cap": 1000000,
-   "tokens_today": 428014,
-   "why": "整理待ちの記事 109 件（17 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 480640,
+   "why": "整理待ちの記事 108 件（16 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -322,12 +319,12 @@
    "runs": 12
   },
   "2026-11-27": {
-   "batches": 23,
-   "cr": 9040420,
-   "cw": 386974,
-   "in": 238,
-   "out": 40802,
-   "runs": 7
+   "batches": 24,
+   "cr": 9628556,
+   "cw": 437745,
+   "in": 255,
+   "out": 42640,
+   "runs": 8
   }
  }
 }
