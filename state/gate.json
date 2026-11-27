@@ -1,8 +1,8 @@
 {
  "changed": true,
- "checked": "2026-11-27T17:18:11+00:00",
+ "checked": "2026-11-27T17:29:33+00:00",
  "fired": {
-  "at": "2026-11-27T15:21:17+00:00",
+  "at": "2026-11-27T17:29:33+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -71,20 +71,30 @@
   },
   "2026-11-27": {
    "edit": 14
+  },
+  "2026-11-28": {
+   "edit": 1
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-27T15:21:17+00:00",
+    "at": "2026-11-27T17:29:33+00:00",
     "attempts": 1,
-    "day": "2026-11-27",
-    "prog": 581,
-    "resp": "cse_01W4x6f6Uqyzod3MfTnfMpFp",
-    "sig": "a29bfe88814d"
+    "day": "2026-11-28",
+    "prog": 8,
+    "resp": "",
+    "sig": "d76fd81b17cd"
    },
    "items": [
+    "A2O LITE",
+    "BLEACH Mirrors High",
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "The Mandalorian",
+    "dota2",
     "lib:Ado",
     "lib:BTS",
     "lib:ポケットモンスター",
@@ -92,42 +102,59 @@
     "lib:ミャクミャク",
     "lib:恐竜",
     "lib:羽生善治",
-    "lib:藤井風"
+    "lib:藤井風",
+    "あつ森",
+    "チェーンソーマン",
+    "三星手机",
+    "周杰伦",
+    "哈利波特剧集",
+    "星巴克马克杯",
+    "滑雪",
+    "漫威电影",
+    "绝区零"
    ],
    "last_batch": "2026-11-27T15:55:19+00:00",
    "last_error": {},
    "need": true,
    "prog": 8,
    "prog_day": "2026-11-28",
-   "ripe": [],
-   "sig": "e9256c5042ea",
+   "ripe": [
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "The Mandalorian",
+    "三星手机",
+    "周杰伦",
+    "漫威电影"
+   ],
+   "sig": "d76fd81b17cd",
    "token_cap": 1000000,
    "tokens_today": 0,
-   "why": "整理待ちの記事 96 件（8 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 173 件（24 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
-   "waiting": [
-    "A2O LITE",
-    "Astrae Oratio",
+   "items": [
     "BLEACH Mirrors High",
-    "FROM",
-    "GTA 6",
-    "The Mandalorian",
-    "Vaundy",
-    "dota2",
-    "あつ森",
-    "ぐでたま",
     "チェーンソーマン",
-    "周杰伦",
+    "dota2",
     "哈利波特剧集",
     "漫威电影",
-    "绝区零"
+    "FROM",
+    "GTA 6",
+    "あつ森",
+    "A2O LITE",
+    "Astrae Oratio",
+    "The Mandalorian",
+    "绝区零",
+    "Vaundy",
+    "周杰伦",
+    "ぐでたま"
    ],
-   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "need": true,
+   "sig": "cb42a3e6fde7",
+   "waiting": [],
+   "why": "足りない 15 版面（Actions で Python が埋める）"
   },
   "photos": {
    "claude": true,
