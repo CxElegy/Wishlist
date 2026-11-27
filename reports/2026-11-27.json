@@ -1,6 +1,6 @@
 {
  "date": "2026-11-27",
- "edit_sig": "6ebd140a7aba",
+ "edit_sig": "59c6f3ecabbc",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -823,31 +823,34 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
-     "date": "2026-11-25",
-     "n": 1,
-     "source": "ABEMA",
-     "title": "ルカ／フィンランド(12/12) 男女 モーグル【フリースタイルスキー FIS ワールドカップ 2026/27】",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9RZVdsZDMzWWIwbDFrSkI3aDZWaHVSN2t3TXB0VklRRlN6ZW53dGVrSXUwNU41b3NkcjFIWURwdkJCWldhb241RS1HTEZqOWVtTnpZNHRxX01iOS0wcW4zTHUwZ1NfX1RGVUw0X3hnUEJXQQ?oc=5"
+     "blurb": "数日来の自然降雪と人工降雪により一部ゲレンデのオープンが可能となり、12月5日（土）に2026-27シーズンの営業を開始します。",
+     "date": "2026-11-26",
+     "event": {
+      "date": "2026-12-05",
+      "label": "オープン",
+      "place": "安比高原スキー場"
+     },
+     "headline": "安比高原スキー場 2026-27シーズン、12月5日（土）オープン！",
+     "highlight": "12月5日（土）オープン",
+     "image": "https://prcdn.freetls.fastly.net/release_image/92870/26/92870-26-030e0c36967b9a1828163582a5b83319-3900x2059.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+     "image_via": "AI 挑选",
+     "url": "https://prtimes.jp/main/html/rd/p/000000026.000092870.html",
+     "weight": "hero"
     },
     {
+     "blurb": "",
      "date": "2026-11-26",
-     "n": 2,
-     "source": "タビリス",
-     "title": "ニセコ、新ゴンドラが12月運行開始、リフトも更新。宿泊者、9割が外国人に",
-     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1wWFVKWnBtYU42aUNuOUJsSEhqemd2WVV0SEk2YTE4Yzd5MlVQR0hhLTdqdlFCZ0w3RkRvb1hfVkZMemxfVXBYT012MmhMa0JtY3dYUQ?oc=5"
-    },
-    {
-     "date": "2026-11-26",
-     "n": 3,
-     "source": "PR TIMES",
-     "title": "安比高原スキー場 2026-27シーズン、12月5日（土）オープン！",
-     "url": "https://prtimes.jp/main/html/rd/p/000000026.000092870.html"
+     "headline": "ニセコ、新ゴンドラが12月運行開始、リフトも更新。宿泊者、9割が外国人に",
+     "highlight": "新ゴンドラが12月運行開始",
+     "image": "https://tabiris.com/wp1/images/2026/11/niseko2026gondla.webp",
+     "image_via": "og:image",
+     "url": "https://tabiris.com/archives/niseko202611/",
+     "weight": "normal"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",
    "theme": {
     "accent": "#D9412B",

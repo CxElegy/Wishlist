@@ -5402,6 +5402,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/165726/367/165726-367-2bf2f7d3ae69325d10c091286c61a3e4-3405x1817.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 2361,
+  "h": 1260,
+  "target": 720,
+  "v": 3
+ },
  "https://prcdn.freetls.fastly.net/release_image/18505/4522/18505-4522-07e624aa4e3f158508c312e7abc24baf-2160x2700.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 1008,
   "h": 1260,
@@ -5454,6 +5460,12 @@
   "w": 3900,
   "h": 2925,
   "target": 720,
+  "v": 3
+ },
+ "https://prcdn.freetls.fastly.net/release_image/92870/26/92870-26-030e0c36967b9a1828163582a5b83319-3900x2059.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 2387,
+  "h": 1260,
+  "target": 1280,
   "v": 3
  },
  "https://q0.itc.cn/q_70/images03/20260628/075522392593446799b29e6263affc54.jpeg": {
@@ -6091,6 +6103,12 @@
   "target": 720,
   "v": 3
  },
+ "https://storage.tenki.jp/storage/static-images/suppl/article/image/3/32/328/32850/1/large.jpg": {
+  "w": 692,
+  "h": 519,
+  "target": 720,
+  "v": 3
+ },
  "https://sumahodigest.com/wp-content/uploads/2026/11/43534rwewr.jpg": {
   "w": 1786,
   "h": 987,
@@ -6526,12 +6544,6 @@
    0.809,
    0.694
   ]
- },
- "https://www.bing.com/th?id=ONUT.2_Rg2Gj5x8tFyd93FqTfcw&pid=News&w=700": {
-  "w": 700,
-  "h": 466,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.4JxiWMvoAswbIm6bJMkHCA&pid=News&w=1200": {
   "w": 700,
