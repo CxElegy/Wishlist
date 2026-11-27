@@ -75,10 +75,10 @@
   "https://www.sankei.com/pressrelease/prtimes/FLOTZETEZ5PYJAUPIC5MI2HZCU/": "https://www.bing.com/th?id=ONUT.YFWtdaUas9XKvLOvv2Dgrg&pid=News&w=1200",
   "https://www.setn.com/news/897693": "https://attach.setn.com/newsimages/2021/02/16/3028114-PH.jpg",
   "https://www.sina.cn/news/detail/5369525912207572.html": "http://wx4.sinaimg.cn/middle/6f5ef307gy1ijfjvmeg3kj20xc18gjxg.jpg",
-  "https://www.sina.cn/news/detail/5369657818613069.html": "http://wx3.sinaimg.cn/middle/008eZAxIly1ijg1s316o7j30y10k0wlx.jpg",
   "https://www.sina.cn/news/detail/5369681122690340.html": "http://wx2.sinaimg.cn/middle/006ZneWLly1ijg4fyolf6j30ml0hl46v.jpg",
   "https://www.sina.cn/news/detail/5369887268540327.html": "http://wx4.sinaimg.cn/middle/bfa06fdbgy1ijgs50goofj20gw0903yz.jpg",
   "https://www.sina.cn/news/detail/5369971578507559.html": "http://wx2.sinaimg.cn/middle/002I0yDzly1ijh1ttgxt1j60k60k6gmo02.jpg",
+  "https://www.sina.cn/news/detail/5369974806020674.html": "http://wx4.sinaimg.cn/middle/9b213501gy1ijh2717fmtj20k20k2t9s.jpg",
   "https://www.sohu.com/a/1106599455_100033958": "https://www.bing.com/th?id=ONUT.-HS8acaIM0I6P-jfA86RMA&pid=News&w=568",
   "https://www.sportsdunia.com/gaming/honkai-nexus-anima-closed-beta-download": "https://sdprodstorage.blob.core.windows.net/sd-cms-prod/cms-post/Honkai%20Nexus%20Anima%20CBT-1795555183364.webp",
   "https://www.superherohype.com/news/708323-batman-knightfall-part-1-hbo-max-streaming-release-date": "https://www.superherohype.com/wp-content/uploads/sites/4/2026/09/Untitled-design-2026-09-21T171424.351.jpg?resize=1200,630",
@@ -1382,6 +1382,27 @@
    "because": "A2O LITE",
    "date": "2026-11-27",
    "hits": [],
+   "image": "http://wx4.sinaimg.cn/middle/9b213501gy1ijh2717fmtj20k20k2t9s.jpg",
+   "kind": "board",
+   "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
+   "score": 6,
+   "source": "新浪网",
+   "taste": [
+    [
+     "作品:A2O LITE",
+     2
+    ]
+   ],
+   "title": "A2O LITE 自我介绍简历",
+   "url": "https://www.sina.cn/news/detail/5369974806020674.html",
+   "words": [],
+   "work": "A2O LITE"
+  },
+  {
+   "batch": 5,
+   "because": "A2O LITE",
+   "date": "2026-11-27",
+   "hits": [],
    "image": "http://wx2.sinaimg.cn/middle/002I0yDzly1ijh1ttgxt1j60k60k6gmo02.jpg",
    "kind": "board",
    "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
@@ -1481,27 +1502,6 @@
    "url": "https://www.imdb.com/de/list/ls4112430034/mediaviewer/rm3133505537/?ref_=ls_3_2",
    "words": [],
    "work": "The Mandalorian"
-  },
-  {
-   "batch": 5,
-   "because": "A2O LITE",
-   "date": "2026-11-26",
-   "hits": [],
-   "image": "http://wx3.sinaimg.cn/middle/008eZAxIly1ijg1s316o7j30y10k0wlx.jpg",
-   "kind": "board",
-   "liked": "J Black: \"Lee Soo-man asked for A2O LITE's intro choreography to be more difficult... I was worried\"",
-   "score": 6,
-   "source": "手机新浪网",
-   "taste": [
-    [
-     "作品:A2O LITE",
-     2
-    ]
-   ],
-   "title": "Spotify 全球及区域日榜流媒数据播报|A2O LITE|Spotify|ILLIT|BTS|日榜_新浪新闻",
-   "url": "https://www.sina.cn/news/detail/5369657818613069.html",
-   "words": [],
-   "work": "A2O LITE"
   },
   {
    "batch": 6,
@@ -2124,11 +2124,11 @@
    9
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
@@ -2136,11 +2136,11 @@
    8
   ],
   [
-   "galaxy",
+   "作品:三星手机",
    7
   ],
   [
-   "作品:三星手机",
+   "galaxy",
    7
   ],
   [

@@ -596,57 +596,6 @@
    0.334
   ]
  },
- "http://wx3.sinaimg.cn/middle/008eZAxIly1ijg1s316o7j30y10k0wlx.jpg": {
-  "w": 1225,
-  "h": 720,
-  "target": 720,
-  "v": 3,
-  "local": "pics/7fb3517c2374f6df.webp",
-  "out": [
-   1225,
-   720
-  ],
-  "why": "防盗链",
-  "ref": true,
-  "m": [
-   [
-    6,
-    11,
-    11,
-    5,
-    9,
-    11,
-    8,
-    3,
-    5,
-    11,
-    9,
-    9
-   ],
-   [
-    3,
-    19,
-    13,
-    12,
-    7,
-    8,
-    7,
-    7,
-    7,
-    7,
-    5,
-    3
-   ]
-  ],
-  "c": "#d2d5d2",
-  "k": [
-   0.132,
-   0.067,
-   0.581,
-   0.847
-  ],
-  "p": null
- },
  "http://wx4.sinaimg.cn/middle/0067sxldgy1ij5a9htiozj30j60nvtcx.jpg": {
   "w": 690,
   "h": 859,
@@ -854,6 +803,62 @@
    0.156,
    1.0,
    1.0
+  ]
+ },
+ "http://wx4.sinaimg.cn/middle/9b213501gy1ijh2717fmtj20k20k2t9s.jpg": {
+  "w": 722,
+  "h": 722,
+  "target": 720,
+  "v": 3,
+  "local": "pics/2fa64a03bfccfa71.webp",
+  "out": [
+   722,
+   722
+  ],
+  "why": "防盗链",
+  "ref": true,
+  "m": [
+   [
+    2,
+    4,
+    21,
+    24,
+    21,
+    8,
+    1,
+    1,
+    7,
+    8,
+    1,
+    2
+   ],
+   [
+    4,
+    1,
+    3,
+    11,
+    22,
+    21,
+    15,
+    6,
+    3,
+    7,
+    7,
+    0
+   ]
+  ],
+  "c": "#bec7d3",
+  "k": [
+   0.841,
+   0.04,
+   0.922,
+   0.133
+  ],
+  "p": [
+   0.08,
+   0.209,
+   0.537,
+   0.846
   ]
  },
  "http://wx4.sinaimg.cn/middle/bfa06fdbgy1ijgs50goofj20gw0903yz.jpg": {
@@ -1801,12 +1806,6 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.theplaylist.net/wp-content/uploads/2026/11/26090217/SHANG-CHI-2_UPDATE_DAVE-CALLAHAM_SIMU-LIU_AVENGERS-DOOMSDAY_.jpg": {
-  "w": 1500,
-  "h": 896,
-  "target": 720,
-  "v": 3
- },
  "https://cdn.upmedia.mg/upfile/img/2026/1120/202611201248136537.webp": {
   "w": 1264,
   "h": 848,
@@ -2192,6 +2191,12 @@
   "v": 3
  },
  "https://escharts.com/metaImage/tournaments/epl-championship-season-1?v=1795141706": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
+ "https://escharts.com/metaImage/tournaments/esports-nations-cup-2026-europe-west-qualifier-dota2-2?v=1795729309": {
   "w": 1200,
   "h": 630,
   "target": 720,
@@ -3265,6 +3270,12 @@
   "v": 3
  },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2iiyiV.img": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2imbiz.img": {
   "w": 1280,
   "h": 720,
   "target": 1280,
