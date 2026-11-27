@@ -951,6 +951,12 @@
   "target": 720,
   "v": 3
  },
+ "https://ascendants.in/wp-content/uploads/2026/11/s27-ultra.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://ascii.jp/img/2019/05/13/1510511/xl/5e76a3dd2752b473.jpg?20200122": {
   "w": 800,
   "h": 600,
@@ -966,12 +972,6 @@
  "https://assets-prd.ignimgs.com/2026/11/23/hailee-steinfeld-kate-bishop-1795398586995.png?width=1280&format=jpg&auto=webp&quality=80": {
   "w": 1280,
   "h": 720,
-  "target": 1280,
-  "v": 3
- },
- "https://assets-prd.ignimgs.com/2026/11/27/doom-1795796509604.png?width=1280&format=jpg&auto=webp&quality=80": {
-  "w": 997,
-  "h": 558,
   "target": 1280,
   "v": 3
  },
@@ -1799,6 +1799,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://comicbook.com/wp-content/uploads/sites/4/2026/09/harry-potter-1.jpg?resize=2000,1125": {
+  "w": 2000,
+  "h": 1125,
+  "target": 720,
+  "v": 3
+ },
  "https://comicbook.com/wp-content/uploads/sites/4/2026/11/Harry-Potter-HBO-TV-Series-Diagon-Alley-1990s-Fashion.jpg?w=1200": {
   "w": 1200,
   "h": 675,
@@ -1808,6 +1814,12 @@
  "https://comicbook.com/wp-content/uploads/sites/4/2026/11/Harry-Potter-HBO-TV-Show-Forbidden-Forest-Set-Facts-2.jpg?w=1200": {
   "w": 1200,
   "h": 675,
+  "target": 720,
+  "v": 3
+ },
+ "https://comicbookmovie.com/images/articles/banners/avengers-doomsday-doom-unmasked-teaser-may-confirm-a-major-character-death---spoilers-ab231229.jpg": {
+  "w": 1575,
+  "h": 844,
   "target": 720,
   "v": 3
  },
@@ -3071,6 +3083,12 @@
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2imOar.img": {
   "w": 1280,
   "h": 720,
+  "target": 720,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2imwt5.img": {
+  "w": 1005,
+  "h": 1565,
   "target": 720,
   "v": 3
  },
@@ -5725,6 +5743,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://s.yimg.com/lo/mysterio/api/3bcce12fa707bf1d8ed04243992cc7e73c8f5a4b29dd3b753d1ecf3527bdc0e3/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fforbes_contributor_845%2F88cbe5ca27958ec6124f9ac2e40bad5a.jpg_up.jpg": {
+  "w": 1200,
+  "h": 800,
+  "target": 720,
+  "v": 3
+ },
  "https://s.yimg.com/lo/mysterio/api/63cfb4f8eed3148b8be79b3f320c7bf20f9784ab19b7ef486cef870e7b6071b2/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fmoneywise_327%2Fa9b0902cadd54ab73d787d9899f43fd2.jpg": {
   "w": 1200,
   "h": 675,
@@ -5926,6 +5950,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://startefacts.com/k2/news/canvas/1200x630/upload/upload/news/221788292947.jpg": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://startefacts.com/k2/news/canvas/1200x630/upload/upload/news/671683521188.jpg": {
   "w": 1200,
   "h": 630,
@@ -6113,6 +6143,12 @@
   "v": 3
  },
  "https://static0.polygonimages.com/wordpress/wp-content/uploads/2025/12/avengers_-doomsday-_-only-in-theaters-december-18-2026-0-52-screenshot.jpeg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
+ "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/11/grand-theft-auto-6-jason-and-lucia-dancing.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
   "target": 720,
@@ -6729,6 +6765,12 @@
   "v": 3,
   "blur": 0.401
  },
+ "https://www.bing.com/th?id=ONUT.7iKLFzotTkBjey5jwsMKWQ&pid=News&w=700": {
+  "w": 700,
+  "h": 366,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.889u-8VWT14BKF74jIsDhw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -7148,6 +7190,57 @@
    1.0
   ]
  },
+ "https://www.bing.com/th?id=ONUT.cJTXvdkmP71Z9a4veb9C5A&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.534,
+  "local": "pics/af2c8181f060025d.webp",
+  "out": [
+   1280,
+   719
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    2,
+    0,
+    1,
+    7,
+    6,
+    50,
+    28,
+    3,
+    1,
+    1,
+    1,
+    0
+   ],
+   [
+    5,
+    5,
+    4,
+    3,
+    19,
+    32,
+    25,
+    5,
+    1,
+    0,
+    0,
+    0
+   ]
+  ],
+  "c": "#181614",
+  "k": null,
+  "p": [
+   0.398,
+   0.317,
+   0.598,
+   0.795
+  ]
+ },
  "https://www.bing.com/th?id=ONUT.ccmLD2fGGZK2AXa8MHkabA&pid=News&w=450": {
   "w": 450,
   "h": 450,
@@ -7301,12 +7394,6 @@
   "c": "#645c51",
   "k": null,
   "p": null
- },
- "https://www.bing.com/th?id=ONUT.iZzhyb_k4Nsc2vcZ4quuIA&pid=News&w=1005": {
-  "w": 449,
-  "h": 700,
-  "target": 720,
-  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.lnSndiMWFEbIO7nSDNSnog&pid=News&w=1200": {
   "w": 700,
@@ -7924,6 +8011,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.livemint.com/lm-img/img/2026/11/27/600x338/Avengers_Doomsday_infinity_vision_1795799416698_oyj0_1795799416823_FsPC_5184e7d3-1b8d-4e37-9e1d-4ab13437ac32_pg7j.png": {
+  "w": 600,
+  "h": 338,
+  "target": 720,
+  "v": 3
+ },
  "https://www.michigandaily.com/wp-content/uploads/2026/11/The-rise-of-rookie-girl-group-A2O-LITE.jpg": {
   "w": 2400,
   "h": 1600,
@@ -7985,10 +8078,10 @@
   "target": 720,
   "v": 3
  },
- "https://www.superherohype.com/wp-content/uploads/sites/4/2026/11/Deepesh-personal-1200-_-675-2026-11-27T235530.867.png?resize=1200,630": {
+ "https://www.superherohype.com/wp-content/uploads/sites/4/2026/11/J.K.-Rowling-Reveals-What-She-Honestly-Thinks-Of-HBOs-New-Harry-Potter-Show.jpg?resize=1200,630": {
   "w": 1200,
   "h": 630,
-  "target": 1280,
+  "target": 720,
   "v": 3
  },
  "https://www.superherohype.com/wp-content/uploads/sites/4/2026/11/doomsday_39dafd.jpg?resize=1200,630": {
