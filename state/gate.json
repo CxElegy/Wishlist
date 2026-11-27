@@ -1,10 +1,10 @@
 {
- "changed": false,
- "checked": "2026-11-27T03:22:51+00:00",
+ "changed": true,
+ "checked": "2026-11-27T04:26:55+00:00",
  "fired": {
-  "at": "2026-11-27T03:22:51+00:00",
+  "at": "2026-11-27T04:26:55+00:00",
   "results": {
-   "edit": "Claude を起こした（2 回目：前は動かなかった）",
+   "edit": "Claude を起こした（3 回目：前は動かなかった）",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -70,23 +70,27 @@
    "edit": 12
   },
   "2026-11-27": {
-   "edit": 7
+   "edit": 8
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-27T03:22:51+00:00",
-    "attempts": 2,
+    "at": "2026-11-27T04:26:55+00:00",
+    "attempts": 3,
     "day": "2026-11-27",
     "prog": 288,
-    "resp": "cse_01W4x6f88AL4tcEHTHdX6Q93",
-    "sig": "08abe566809b"
+    "resp": "",
+    "sig": "4f040a056cbc"
    },
    "items": [
     "A2O LITE",
+    "Astrae Oratio",
     "BLEACH Mirrors High",
+    "FROM",
+    "GTA 6",
+    "ILLIT",
     "MMORPG 新作",
     "The Mandalorian",
     "dota2",
@@ -94,7 +98,13 @@
     "lib:ドラゴンクエストモンスターズ４　枯れ木の国のビアンカ・フローラ",
     "lib:広島旅行",
     "lib:牧野植物園",
+    "あつ森",
+    "チェーンソーマン",
+    "三星手机",
+    "周杰伦",
     "哈利波特剧集",
+    "滑雪",
+    "漫威电影",
     "猫用品",
     "绝区零"
    ],
@@ -107,39 +117,51 @@
    "prog": 288,
    "prog_day": "2026-11-27",
    "ripe": [
+    "A2O LITE",
     "BLEACH Mirrors High",
+    "GTA 6",
+    "ILLIT",
     "MMORPG 新作",
+    "The Mandalorian",
+    "dota2",
     "gelato pique",
-    "猫用品"
+    "三星手机",
+    "周杰伦",
+    "哈利波特剧集",
+    "滑雪",
+    "漫威电影",
+    "猫用品",
+    "绝区零"
    ],
-   "sig": "08abe566809b",
+   "sig": "4f040a056cbc",
    "token_cap": 1000000,
    "tokens_today": 299246,
-   "why": "整理待ちの記事 41 件（12 版面・AI 編集まで版面に載らない）"
+   "why": "整理待ちの記事 150 件（22 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
-   "waiting": [
-    "A2O LITE",
-    "Astrae Oratio",
-    "BLEACH Mirrors High",
+   "items": [
+    "チェーンソーマン",
+    "dota2",
+    "漫威电影",
     "FROM",
     "GTA 6",
-    "The Mandalorian",
-    "Vaundy",
-    "dota2",
     "あつ森",
-    "ぐでたま",
-    "チェーンソーマン",
-    "周杰伦",
-    "哈利波特剧集",
-    "漫威电影",
-    "绝区零"
+    "Astrae Oratio",
+    "A2O LITE",
+    "The Mandalorian",
+    "绝区零",
+    "周杰伦"
    ],
-   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "need": true,
+   "sig": "093be99613cb",
+   "waiting": [
+    "BLEACH Mirrors High",
+    "Vaundy",
+    "ぐでたま",
+    "哈利波特剧集"
+   ],
+   "why": "足りない 11 版面（Actions で Python が埋める）・失敗 4 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
