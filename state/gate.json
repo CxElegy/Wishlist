@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-27T04:25:59+00:00",
+ "checked": "2026-11-27T04:44:29+00:00",
  "fired": {
   "at": "2026-11-27T04:26:55+00:00",
   "results": {
@@ -88,6 +88,7 @@
     "A2O LITE",
     "Astrae Oratio",
     "BLEACH Mirrors High",
+    "FROM",
     "GTA 6",
     "ILLIT",
     "MMORPG 新作",
@@ -103,6 +104,7 @@
     "lib:台風・天気",
     "lib:宮崎駿",
     "あつ森",
+    "チェーンソーマン",
     "三星手机",
     "周杰伦",
     "哈利波特剧集",
@@ -136,35 +138,34 @@
     "猫用品",
     "绝区零"
    ],
-   "sig": "d8c63abc01de",
+   "sig": "0a03f0d10fff",
    "token_cap": 1000000,
    "tokens_today": 299246,
-   "why": "整理待ちの記事 177 件（24 版面・AI 編集まで版面に載らない）"
+   "why": "整理待ちの記事 215 件（27 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "チェーンソーマン",
-    "dota2",
-    "漫威电影",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
+   "waiting": [
+    "A2O LITE",
+    "Astrae Oratio",
+    "BLEACH Mirrors High",
     "FROM",
     "GTA 6",
-    "あつ森",
-    "Astrae Oratio",
-    "A2O LITE",
     "The Mandalorian",
-    "绝区零",
-    "周杰伦"
-   ],
-   "need": true,
-   "sig": "093be99613cb",
-   "waiting": [
-    "BLEACH Mirrors High",
     "Vaundy",
+    "dota2",
+    "あつ森",
     "ぐでたま",
-    "哈利波特剧集"
+    "チェーンソーマン",
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
+    "绝区零"
    ],
-   "why": "足りない 11 版面（Actions で Python が埋める）・失敗 4 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
