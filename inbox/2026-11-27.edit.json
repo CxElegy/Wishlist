@@ -51,7 +51,9 @@
     6,
     38,
     41,
-    35
+    35,
+    98,
+    106
    ]
   },
   {
@@ -110,7 +112,8 @@
    "weight": "normal",
    "refs": [
     7,
-    34
+    34,
+    83
    ]
   },
   {
@@ -139,7 +142,17 @@
     11,
     7,
     15,
-    16
+    16,
+    29,
+    30,
+    25,
+    31,
+    26,
+    28,
+    22,
+    19,
+    20,
+    21
    ],
    "image": "https://www.bing.com/th?id=ONUT.NftOrlMlp0dZymF9YFbJsw&pid=News&w=1200"
   },
@@ -163,7 +176,8 @@
    "refs": [
     6,
     12,
-    18
+    18,
+    23
    ]
   },
   {
@@ -173,6 +187,15 @@
    "weight": "normal",
    "refs": [
     14
+   ]
+  },
+  {
+   "headline": "갤럭시S27, 새로운 AI 카메라 기능 탑재하나…'줌 인핸서' 포착",
+   "highlight": "'줌 인핸서'",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    27
    ]
   }
  ],
@@ -227,14 +250,14 @@
   }
  ],
  "_covered": {
-  "漫威电影": 89,
-  "GTA 6": 67,
-  "三星手机": 18,
+  "漫威电影": 107,
+  "GTA 6": 100,
+  "三星手机": 33,
   "周杰伦": 16,
   "Astrae Oratio": 3,
-  "MMORPG 新作": 6,
+  "MMORPG 新作": 15,
   "哈利波特剧集": 8,
-  "ILLIT": 5,
+  "ILLIT": 14,
   "The Mandalorian": 4,
   "チェーンソーマン": 4,
   "星巴克马克杯": 1,
@@ -320,7 +343,12 @@
    "weight": "lead",
    "refs": [
     5,
-    4
+    4,
+    12,
+    13,
+    8,
+    9,
+    14
    ],
    "image": "https://www.bing.com/th?id=ONUT.qWiATvEw15puPVYDxWtgUA&pid=News&w=1024"
   },
@@ -349,6 +377,26 @@
    "weight": "normal",
    "refs": [
     3
+   ]
+  },
+  {
+   "headline": "活動休止中のILLIT・MOKA、Weverse再開 復帰を予告「ゆっくり待っていていただけたらと思います…!!」",
+   "highlight": "Weverse再開 復帰を予告",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10,
+    6,
+    11
+   ]
+  },
+  {
+   "headline": "Stray Kids、ILLITら総勢42組が出演！「ベストアーティスト2026」タイムテーブル解禁",
+   "highlight": "タイムテーブル解禁",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
    ]
   }
  ],

@@ -1578,6 +1578,12 @@
   "v": 3,
   "blur": 0.378
  },
+ "https://cdn.livedoor.jp/kstyle/b3baee50bfc99cae4eeb99678af1698d_WI.jpg": {
+  "w": 1024,
+  "h": 576,
+  "target": 1280,
+  "v": 3
+ },
  "https://cdn.mmoculture.com/mmo-images/2026/10/azur-promilia_release-guide_JA01.jpeg": {
   "w": 1200,
   "h": 675,
@@ -2095,12 +2101,6 @@
   "v": 3
  },
  "https://escharts.com/metaImage/tournaments/epl-championship-season-1?v=1795141706": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
-  "v": 3
- },
- "https://escharts.com/metaImage/tournaments/esports-nations-cup-2026-europe-west-qualifier-dota2-2?v=1795729309": {
   "w": 1200,
   "h": 630,
   "target": 720,
@@ -5391,6 +5391,61 @@
   ],
   "p": null
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261127-00000443-oric-000-1-view.jpg?exp=10800": {
+  "w": 641,
+  "h": 960,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/b7c85708a7b57b25.webp",
+  "out": [
+   641,
+   960
+  ],
+  "why": "期限付きの網址",
+  "m": [
+   [
+    3,
+    3,
+    3,
+    7,
+    16,
+    16,
+    16,
+    19,
+    11,
+    3,
+    2,
+    1
+   ],
+   [
+    0,
+    5,
+    15,
+    22,
+    21,
+    9,
+    8,
+    7,
+    6,
+    3,
+    2,
+    2
+   ]
+  ],
+  "c": "#7f7b77",
+  "k": [
+   0.096,
+   0.164,
+   0.192,
+   0.249
+  ],
+  "p": [
+   0.157,
+   0.086,
+   0.855,
+   0.727
+  ]
+ },
  "https://ni.yam.com/20261123/dota2-online-tournament-streaming-studio-20261123-88b55bb77031cc11.webp": {
   "w": 1200,
   "h": 675,
@@ -7284,6 +7339,12 @@
  "https://www.bing.com/th?id=ONUT.hdcN_qqkHErDWLILgTB6NA&pid=News&w=500": {
   "w": 500,
   "h": 281,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.k-Irmlbli9Hh2ubAiKRsUA&pid=News&w=480": {
+  "w": 480,
+  "h": 480,
   "target": 720,
   "v": 3
  },
