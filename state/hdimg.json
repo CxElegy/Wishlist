@@ -2075,6 +2075,12 @@
   "target": 720,
   "v": 3
  },
+ "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/madarao.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/rhythm-japan-summit-hakuba-store-expansion-2026.jpg": {
   "w": 1962,
   "h": 1308,
@@ -2612,6 +2618,12 @@
  "https://iimono.town/wp-content/uploads/2026/11/main_R-5.jpg": {
   "w": 1200,
   "h": 800,
+  "target": 1280,
+  "v": 3
+ },
+ "https://image.entabe.jp/upload/20261125/images/starbucks-holiday2-cup-17.jpg": {
+  "w": 1280,
+  "h": 960,
   "target": 1280,
   "v": 3
  },
@@ -5604,6 +5616,56 @@
    0.727
   ]
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261127-10179144-it_nlab-000-1-view.jpg?exp=10800": {
+  "w": 2200,
+  "h": 1826,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/9ca3a953230ba5dc.webp",
+  "out": [
+   1280,
+   1062
+  ],
+  "why": "期限付きの網址",
+  "m": [
+   [
+    0,
+    0,
+    4,
+    4,
+    14,
+    30,
+    30,
+    10,
+    3,
+    4,
+    0,
+    0
+   ],
+   [
+    0,
+    1,
+    2,
+    14,
+    28,
+    28,
+    10,
+    6,
+    6,
+    4,
+    1,
+    0
+   ]
+  ],
+  "c": "#2b4534",
+  "k": [
+   0.169,
+   0.183,
+   0.908,
+   0.855
+  ],
+  "p": null
+ },
  "https://ni.yam.com/20261123/dota2-online-tournament-streaming-studio-20261123-88b55bb77031cc11.webp": {
   "w": 1200,
   "h": 675,
@@ -7953,6 +8015,12 @@
   ],
   "p": null
  },
+ "https://www.bing.com/th?id=ONUT.zitYyKzH3OKI3mfvG8WiTg&pid=News&w=800": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.zpzIQHIxb78D-xTotVG9KA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -8149,6 +8217,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.diarypoint.com/news/photo/202610/6286_5865_2045.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://www.digitbin.com/wp-content/uploads/2026/11/galaxy-s27-now-bar-dynamic-island-redesign-1280x714.jpg": {
   "w": 1280,
   "h": 714,
@@ -8176,6 +8250,12 @@
  "https://www.fashion-press.net/img/news/153772/top.jpg?1795500792": {
   "w": 1088,
   "h": 726,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.fashion-press.net/img/news/153968/top.jpg?1795758266": {
+  "w": 1500,
+  "h": 1000,
   "target": 1280,
   "v": 3
  },
