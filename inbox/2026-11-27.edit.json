@@ -234,7 +234,7 @@
   "Astrae Oratio": 3,
   "MMORPG 新作": 6,
   "哈利波特剧集": 8,
-  "ILLIT": 2,
+  "ILLIT": 5,
   "The Mandalorian": 4,
   "チェーンソーマン": 4,
   "星巴克马克杯": 1,
@@ -313,10 +313,21 @@
  ],
  "ILLIT": [
   {
+   "headline": "ILLIT「It’s Me」、日本で1億回再生…2026年発売の海外アーティストの曲で初のプラチナ認定",
+   "highlight": "1億回再生",
+   "blurb": "ILLITの「It’s Me」が日本レコード協会のストリーミング部門でプラチナ認定。10月までの累計再生数が1億回を超えた。",
+   "weight": "lead",
+   "refs": [
+    5,
+    4
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.qWiATvEw15puPVYDxWtgUA&pid=News&w=1024"
+  },
+  {
    "headline": "[Exclusive] ILLIT, whom I met on 'Mama,' says, \"I have many new challenges this year\"",
    "highlight": "many new challenges this year",
-   "blurb": "Sportal Korea interview with ILLIT on their year and what they hope fans feel.",
-   "weight": "lead",
+   "blurb": "",
+   "weight": "normal",
    "refs": [
     1
    ]
@@ -328,6 +339,15 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "ILLIT「It's Me」でMAMA・BP賞など受賞 イロハ「これからも皆さんの愛にお返しを」",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
    ]
   }
  ],
