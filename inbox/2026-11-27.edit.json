@@ -212,17 +212,19 @@
     8,
     9,
     12,
-    15
+    15,
+    19,
+    17
    ],
    "image": "https://inews.gtimg.com/news_ls/O-W9SvRzLrl0AWkOU22nFjHs7dtycvo9N88WR5zHL3OQUAA/0"
   },
   {
-   "headline": "早期综艺我没养马，周杰伦小S演绎双刀MV，大S笑到扶墙",
-   "highlight": "",
+   "headline": "速来抢周杰伦三亚演唱会门票！海南更多精彩活动",
+   "highlight": "三亚演唱会门票",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    3
+    20
    ]
   },
   {
@@ -253,7 +255,7 @@
   "漫威电影": 107,
   "GTA 6": 100,
   "三星手机": 33,
-  "周杰伦": 16,
+  "周杰伦": 22,
   "Astrae Oratio": 3,
   "MMORPG 新作": 15,
   "哈利波特剧集": 8,
@@ -261,14 +263,14 @@
   "The Mandalorian": 4,
   "チェーンソーマン": 4,
   "星巴克马克杯": 1,
-  "猫用品": 1,
-  "dota2": 8,
+  "猫用品": 4,
+  "dota2": 12,
   "BLEACH Mirrors High": 3,
   "绝区零": 2,
   "A2O LITE": 1,
-  "gelato pique": 1,
+  "gelato pique": 4,
   "あつ森": 1,
-  "滑雪": 3
+  "滑雪": 8
  },
  "MMORPG 新作": [
   {
@@ -452,6 +454,15 @@
    "refs": [
     1
    ]
+  },
+  {
+   "headline": "「もふもふねこ展」 （DAZZLE）",
+   "highlight": "もふもふねこ展",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
   }
  ],
  "dota2": [
@@ -471,6 +482,15 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "Dota 2 BLAST Slam IX季後賽首日 GamerLegion爆冷橫掃Aurora Yandex晉勝部決賽",
+   "highlight": "爆冷橫掃",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10
    ]
   }
  ],
@@ -524,6 +544,24 @@
    "refs": [
     1
    ]
+  },
+  {
+   "headline": "【スタバ新作】ふわふわ・もこもこ！見た目もかわいい“ジェラピケ”コラボの新ビバレッジ",
+   "highlight": "新ビバレッジ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "ジェラピケ×ドラゴンクエストで癒しレベルMAX【ジェラート ピケ】のふわもこルームウェア",
+   "highlight": "ドラゴンクエスト",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
   }
  ],
  "あつ森": [],
@@ -550,6 +588,33 @@
    "weight": "normal",
    "refs": [
     2
+   ]
+  },
+  {
+   "headline": "たんばらスキーパーク、11月27日（金）に2026-27シーズン開幕！小学生リフト券は最初の2週末も無料",
+   "highlight": "11月27日（金）",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "世界中のゲストを魅了する冬シーズンが開幕 ニセコ東急 グラン・ヒラフが 11 月 28 日（土）オープン",
+   "highlight": "11 月 28 日（土）",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  },
+  {
+   "headline": "ふじてんスノーリゾート、12月5日から「富士山展望リフト＆デッキ」先行営業開始！スキー場オープンは12月中旬予定",
+   "highlight": "12月5日",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
    ]
   }
  ]

@@ -784,6 +784,12 @@
    0.39
   ]
  },
+ "https://MKnews.com.tw/wp-content/uploads/2026/11/dota-2-blast-slam-ix-playoffs-tournament-stage-lights-20261127-1024x576-1.jpg": {
+  "w": 1024,
+  "h": 576,
+  "target": 1280,
+  "v": 3
+ },
  "https://andro-news.com/wp-content/uploads/2026/11/One-UI-9.5-samsung-2.webp": {
   "w": 1120,
   "h": 630,
@@ -2046,6 +2052,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/fujiten-1.jpg": {
+  "w": 1500,
+  "h": 1000,
+  "target": 720,
+  "v": 3
+ },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/fukushima-ski.jpg": {
   "w": 1920,
   "h": 1080,
@@ -2067,7 +2079,7 @@
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/tanbara.jpg": {
   "w": 1962,
   "h": 1308,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/yachihokogen.jpg": {
@@ -2592,6 +2604,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://image.entabe.jp/upload/20260518/images/000_1.jpg": {
+  "w": 1280,
+  "h": 853,
+  "target": 720,
+  "v": 3
+ },
  "https://image.gallery.play.jp/knb-news/articles/d2e68ec95ab844e4a54a60f468bc55d5/aab9d0a3-ef57-434b-95c2-04f04d04c86c.jpg?w=1200": {
   "w": 1024,
   "h": 576,
@@ -2775,6 +2793,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.411
+ },
+ "https://image.news.livedoor.com/newsimage/stf/8/0/80955_1847_5a3e1f5ca6ef51290a9e1dfadc261f1d.jpg": {
+  "w": 1000,
+  "h": 667,
+  "target": 720,
+  "v": 3
  },
  "https://image.news.livedoor.com/newsimage/stf/9/9/992be_1838_52303757c3fef1b5ce51d52f2bfde838.jpg": {
   "w": 799,
@@ -4468,6 +4492,19 @@
   "target": 720,
   "v": 3
  },
+ "https://news.walkerplus.com/article/1296185/15377947_615.jpg": {
+  "w": 615,
+  "h": 420,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.392
+ },
+ "https://news.walkerplus.com/article/1301078/15509573_615.jpg": {
+  "w": 615,
+  "h": 526,
+  "target": 720,
+  "v": 3
+ },
  "https://news.walkerplus.com/article/139337/781089_615.jpg": {
   "w": 615,
   "h": 331,
@@ -5573,6 +5610,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://prcdn.freetls.fastly.net/release_image/165726/367/165726-367-2bf2f7d3ae69325d10c091286c61a3e4-3405x1817.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 2361,
+  "h": 1260,
+  "target": 720,
+  "v": 3
+ },
  "https://prcdn.freetls.fastly.net/release_image/18505/4522/18505-4522-07e624aa4e3f158508c312e7abc24baf-2160x2700.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 1008,
   "h": 1260,
@@ -5624,12 +5667,18 @@
  "https://prcdn.freetls.fastly.net/release_image/55787/1091/55787-1091-e1678edfd639729f3933fd7489a0533e-3900x2600.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 1890,
   "h": 1260,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://prcdn.freetls.fastly.net/release_image/60409/70/60409-70-e9ce2650e3d971a5e093ee593e5b7d16-3900x2925.jpg": {
   "w": 3900,
   "h": 2925,
+  "target": 720,
+  "v": 3
+ },
+ "https://prcdn.freetls.fastly.net/release_image/85653/850/85653-850-4a5a7176583db62831b9567a184dd217-3888x2592.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 1890,
+  "h": 1260,
   "target": 720,
   "v": 3
  },

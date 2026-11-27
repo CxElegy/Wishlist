@@ -1,32 +1,32 @@
 {
- "admin": "fe8f52d4b4f1",
- "admin-ai": "098f3b44f2c0",
+ "admin": "f0a3b9325bce",
+ "admin-ai": "99d23b437849",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "4edbbfb0"
+   "f0f1701f"
   ],
   "tokens": [
    "AI 編集のトークン",
    "ac88ba7e"
   ]
  },
- "admin-boards": "1ef8f964daa1",
+ "admin-boards": "6263738ba1b2",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "7d8bdc0e"
+   "3ecaaa63"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "85acde6cc253",
+ "admin-emblem": "b361327ed6dc",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "d3a392ea"
+   "9b94c979"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "029670f014e8",
+ "admin-now": "f6756e3fbebb",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "09db0858"
+   "5041c24c"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "34d8e6c6"
   ]
  },
- "admin-system": "a8ce98ebc1b6",
+ "admin-system": "e06e2a02f458",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "bddf23a0"
+   "d483079b"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -78,7 +78,7 @@
   ]
  },
  "admin_marks": {},
- "heat": "4f5ae804d0cb",
+ "heat": "835c3704d71a",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "f4937e55"
+   "9bfccef4"
   ],
   "ranking": [
    "ランキング",
-   "05d40dc6"
+   "04818096"
   ]
  },
- "index": "6c008dd8593d",
+ "index": "0c4026e2b4c0",
  "index_marks": {
   "front": [
    "トップ",
-   "5739c939"
+   "91912a0b"
   ],
   "picks": [
    "気になるかも？",
@@ -105,11 +105,11 @@
   ],
   "w-0242c181": [
    "dota2",
-   "8e93df66"
+   "920fcd51"
   ],
   "w-130724c0": [
    "猫用品",
-   "0b72915e"
+   "768d6dbe"
   ],
   "w-2309d720": [
    "ぐでたま",
@@ -141,11 +141,11 @@
   ],
   "w-79b3c280": [
    "滑雪",
-   "3556be15"
+   "78a2f889"
   ],
   "w-7a894105": [
    "周杰伦",
-   "1274a238"
+   "9cc7335a"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "796e1a90"
+   "089a9f8f"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -196,6 +196,6 @@
    "2748e0de"
   ]
  },
- "updated": "11.27 13:33",
+ "updated": "11.27 13:40",
  "wishlist": "4d609aab1fcf"
 }
