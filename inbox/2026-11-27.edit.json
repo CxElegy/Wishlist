@@ -137,7 +137,9 @@
     3,
     5,
     11,
-    7
+    7,
+    15,
+    16
    ],
    "image": "https://www.bing.com/th?id=ONUT.NftOrlMlp0dZymF9YFbJsw&pid=News&w=1200"
   },
@@ -160,7 +162,17 @@
    "weight": "normal",
    "refs": [
     6,
-    12
+    12,
+    18
+   ]
+  },
+  {
+   "headline": "Galaxy S27 Ultraの充電速度は60Wのまま発売か。日本向けも安全認証を通過",
+   "highlight": "60Wのまま",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    14
    ]
   }
  ],
@@ -217,7 +229,7 @@
  "_covered": {
   "漫威电影": 89,
   "GTA 6": 67,
-  "三星手机": 13,
+  "三星手机": 18,
   "周杰伦": 16,
   "Astrae Oratio": 3,
   "MMORPG 新作": 6,

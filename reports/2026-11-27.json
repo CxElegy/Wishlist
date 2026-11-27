@@ -1,6 +1,6 @@
 {
  "date": "2026-11-27",
- "edit_sig": "d3ff88ac6a9c",
+ "edit_sig": "774033de62cf",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -409,43 +409,6 @@
    "cover": "https://news.samsung.com/global/wp-content/themes/newsroom/images/default_image.png",
    "facts": [],
    "name": "三星手机",
-   "pending": [
-    {
-     "date": "2026-11-27",
-     "n": 14,
-     "source": "GAZLOG",
-     "title": "Galaxy S27 Ultraの充電速度は60Wのまま発売か。日本向けも安全認証を通過",
-     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5obGZma0NVZFA1bmlfMGhaRk1YOVplc0JQTFJhSHF3Z01VNm02X0twR3pwdTBBZXMtb2ZQaHF0VF8yZWJ3amFIUHpPbjU0OUFPZm1UMV8zM0pxU1pCMWZFaVpTNEhNa3JNeHJJZGpJbDllNEk?oc=5"
-    },
-    {
-     "date": "2026-11-26",
-     "n": 15,
-     "source": "Sohu",
-     "title": "三星Galaxy S27 Pro / Ultra手机机模再曝：矩阵相机岛设计",
-     "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPSnZYakppMGpCNlB0YlVlLTM1RXJrcVJPNEtNNjJibF93Zjl3NGcxX2d4VFoyRHVIbWpfREJoc2RkeUNCelg3V1hkMkVqTHZHamJRcUc1bEktVjA1eGNKSmRScFJJaHB6RUtzMTg0LXN3WjhMWnlSclJWVVNGRkVIc3NqdGVQMi1uaGVFdA?oc=5"
-    },
-    {
-     "date": "2026-11-26",
-     "n": 16,
-     "source": "지디넷코리아 on MSN",
-     "title": "갤럭시S27 울트라·프로 모형 나란히 포착…후면 디자인 보니",
-     "url": "https://www.msn.com/ko-kr/%EA%B8%B0%EC%88%A0/%EC%86%8C%EB%B9%84%EC%9E%90-%EC%A0%84%EC%9E%90-%EA%B8%B0%EA%B8%B0/%EA%B0%A4%EB%9F%AD%EC%8B%9Cs27-%EC%9A%B8%ED%8A%B8%EB%9D%BC-%ED%94%84%EB%A1%9C-%EB%AA%A8%ED%98%95-%EB%82%98%EB%9E%80%ED%9E%88-%ED%8F%AC%EC%B0%A9-%ED%9B%84%EB%A9%B4-%EB%94%94%EC%9E%90%EC%9D%B8-%EB%B3%B4%EB%8B%88/ar-AA2ik8Se"
-    },
-    {
-     "date": "2026-11-26",
-     "n": 17,
-     "source": "케이벤치",
-     "title": "갤럭시S27 프로·울트라 내부 모습 드러났다…충전포트·메인보드 케이블 포착",
-     "url": "https://kbench.com/?q=node/283688"
-    },
-    {
-     "date": "2026-11-26",
-     "n": 18,
-     "source": "Samsung Magazine",
-     "title": "Which chip will have which Galaxy S27 in which market? Find out here",
-     "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPcjQ0TXg2TUlrUzB4UkVNS2RPVGxQVFpxNkZZeF90RV9rUzF1Um02WnMwYm1IcURyMmk5OVRmSTNLU0pUTnFDSldPZEVLWVgzZTBOQUM4Z00tRlRabWlLZjJtY3VaQnRNdG5MbzRlMk9FbkF6Q1BJcndZWFdlV01oQjVTbjVfb0ZMV2Nhb2NDSUV1eHcxUVRVRGtfVE8xLVpZT2ZlNS1pRWdzSE5T?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
     {
@@ -470,12 +433,22 @@
     },
     {
      "blurb": "",
-     "date": "2026-11-20",
-     "headline": "三星 S27 Pro 欧洲版跑分曝光，Exynos 2700 单核3061 分",
-     "highlight": "单核3061 分",
-     "image": "http://wx2.sinaimg.cn/middle/006bWoNYly1ij8ooyr58nj30pg1kwdjf.jpg",
-     "image_via": "正文图（本站保存）",
-     "url": "https://www.sina.cn/news/detail/5367349604520894.html",
+     "date": "2026-11-26",
+     "headline": "Which chip will have which Galaxy S27 in which market? Find out here",
+     "highlight": "",
+     "image": "https://samsungmagazine.eu/wp-content/uploads/2026/08/Exclusive-Samsung-Galaxy-S27-AH-997-1420x799-1.webp",
+     "image_via": "og:image",
+     "url": "https://samsungmagazine.eu/en/2026/11/26/jaky-cip-bude-mit-jaky-galaxy-s27-na-jakem-trhu-tady-se-to-dozvite/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-27",
+     "headline": "Galaxy S27 Ultraの充電速度は60Wのまま発売か。日本向けも安全認証を通過",
+     "highlight": "60Wのまま",
+     "image": "https://gazlog.jp/wp-content/uploads/2026/11/image-172.png",
+     "image_via": "og:image",
+     "url": "https://gazlog.jp/entry/galaxy-s27-ultra-60w-confirmed-for-japan/",
      "weight": "normal"
     }
    ],

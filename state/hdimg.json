@@ -376,57 +376,6 @@
   "k": null,
   "p": null
  },
- "http://wx2.sinaimg.cn/middle/006bWoNYly1ij8ooyr58nj30pg1kwdjf.jpg": {
-  "w": 916,
-  "h": 2048,
-  "target": 720,
-  "v": 3,
-  "local": "pics/b7b305763d125ead.webp",
-  "out": [
-   572,
-   1280
-  ],
-  "why": "防盗链",
-  "ref": true,
-  "m": [
-   [
-    4,
-    10,
-    17,
-    13,
-    10,
-    13,
-    7,
-    6,
-    6,
-    7,
-    4,
-    2
-   ],
-   [
-    18,
-    32,
-    13,
-    4,
-    4,
-    3,
-    4,
-    4,
-    4,
-    5,
-    5,
-    5
-   ]
-  ],
-  "c": "#ebecee",
-  "k": [
-   0.043,
-   0.015,
-   0.925,
-   0.24
-  ],
-  "p": null
- },
  "http://wx2.sinaimg.cn/middle/006dNg2Pgy1ijciuvbjqxj30xi1cn440.jpg": {
   "w": 1206,
   "h": 1751,
@@ -2270,6 +2219,12 @@
  "https://games.gg/api/og/content/?kind=news&key=dota-2742-%E6%9B%B4%E6%96%B0%E4%B8%8A%E7%B7%9A%E9%81%8A%E6%88%B2%E7%AF%80%E5%A5%8F%E5%8A%A0%E5%BF%AB%E4%B8%A6%E6%96%B0%E5%A2%9E%E5%BF%AB%E6%8D%B7%E9%8D%B5&lang=zh-Hant&u=torcjg&v=3": {
   "w": 1200,
   "h": 630,
+  "target": 1280,
+  "v": 3
+ },
+ "https://gazlog.jp/wp-content/uploads/2026/11/image-172.png": {
+  "w": 1920,
+  "h": 1080,
   "target": 1280,
   "v": 3
  },
