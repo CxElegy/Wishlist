@@ -1,32 +1,32 @@
 {
- "admin": "e2163c2f1646",
- "admin-ai": "aeeec10180ad",
+ "admin": "c6fdc3f189ba",
+ "admin-ai": "7462455932f6",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "d38276db"
+   "c9999cea"
   ],
   "tokens": [
    "AI 編集のトークン",
    "f7ab8187"
   ]
  },
- "admin-boards": "9a192b4b8eae",
+ "admin-boards": "9fda59cb2023",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "4732ee65"
+   "564106f4"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "a13a5164a460",
+ "admin-emblem": "f4d0b46f9ca9",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "3a743123"
+   "569fd018"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "04292fb49c8a",
+ "admin-now": "b89c1e687341",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "aa98c250"
+   "494dd93e"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "f0a770c1"
+   "018245f6"
   ],
   "term-panel": [
    "ライブログ",
-   "1c82d9ea"
+   "417a7e08"
   ]
  },
- "admin-system": "d56886468aad",
+ "admin-system": "f5204e8bbaa2",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "9e02d3de"
+   "47ed49fa"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "aeb149f5"
+   "464aaea7"
   ]
  },
  "admin_marks": {},
- "heat": "1b994f471c74",
+ "heat": "8db14c132dc0",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "0a3c57c6"
+   "affe9d02"
   ],
   "ranking": [
    "ランキング",
-   "8f9c6e09"
+   "5667d2ab"
   ]
  },
- "index": "496432d558a5",
+ "index": "c69e62b37aa4",
  "index_marks": {
   "front": [
    "トップ",
-   "994c55e0"
+   "b7de359c"
   ],
   "picks": [
    "気になるかも？",
@@ -105,7 +105,7 @@
   ],
   "w-0242c181": [
    "dota2",
-   "0411b8b7"
+   "f11e3069"
   ],
   "w-130724c0": [
    "猫用品",
@@ -113,7 +113,7 @@
   ],
   "w-2309d720": [
    "ぐでたま",
-   "6bd4762d"
+   "306d0dbb"
   ],
   "w-34f2ed9f": [
    "GTA 6",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "6b4d7338"
+   "a3dcdefb"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "9cc7335a"
+   "d530f2b3"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -196,6 +196,6 @@
    "b96a3194"
   ]
  },
- "updated": "11.27 19:18",
+ "updated": "11.27 19:30",
  "wishlist": "4d609aab1fcf"
 }
