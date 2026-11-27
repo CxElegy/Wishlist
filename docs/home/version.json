@@ -1,6 +1,6 @@
 {
  "admin": "31fbd23e2150",
- "admin-ai": "1bb3a85c686f",
+ "admin-ai": "b5fa0782644b",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,7 +8,7 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "3c2e48e4"
+   "3c341acb"
   ]
  },
  "admin-boards": "c3659045b892",
@@ -22,11 +22,11 @@
    "8068ac57"
   ]
  },
- "admin-emblem": "d7ff1337f540",
+ "admin-emblem": "9dbac6e740f7",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "d3bc3240"
+   "bc63b755"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,7 +43,7 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "232712a8201c",
+ "admin-now": "9517f836f3ef",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "589edc61"
+   "529935db"
   ]
  },
- "admin-system": "cc2b6eae4b65",
+ "admin-system": "d3b587e54d5a",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "eed50168"
+   "53ed491e"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "8c32fed8"
+   "5aa024b7"
   ]
  },
  "admin_marks": {},
@@ -93,11 +93,11 @@
    "8b4bb663"
   ]
  },
- "index": "22e762fe43ab",
+ "index": "38d2cb9e0f15",
  "index_marks": {
   "front": [
    "トップ",
-   "be36a7ca"
+   "ace89917"
   ],
   "picks": [
    "気になるかも？",
@@ -117,11 +117,11 @@
   ],
   "w-34f2ed9f": [
    "GTA 6",
-   "2d1aa579"
+   "5233daf6"
   ],
   "w-3f993d04": [
    "漫威电影",
-   "dad163a5"
+   "1b4064b5"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -137,7 +137,7 @@
   ],
   "w-6676e624": [
    "三星手机",
-   "f83094ed"
+   "68cc3d38"
   ],
   "w-79b3c280": [
    "滑雪",
@@ -145,7 +145,7 @@
   ],
   "w-7a894105": [
    "周杰伦",
-   "a7bb8bf6"
+   "b2f26995"
   ],
   "w-9cb26dba": [
    "FROM",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "bb8ff353"
+   "75072a4e"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "b72ff1c6"
+   "cb5b21f6"
   ],
   "w-f303ad09": [
    "绝区零",
    "a6f8bc80"
   ]
  },
- "updated": "11.28 03:35",
+ "updated": "11.28 03:39",
  "wishlist": "950fa4a3c42b"
 }
