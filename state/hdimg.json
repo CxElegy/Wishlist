@@ -158,19 +158,58 @@
  "http://n.sinaimg.cn/sinakd20261126ac/320/w480h640/20261126/239a-777ec902aab9dd131fbc9094d32022b2.jpg": {
   "w": 480,
   "h": 640,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.45,
+  "local": "pics/6a00181a4a1594ec.webp",
+  "out": [
+   960,
+   1280
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    3,
+    3,
+    7,
+    13,
+    14,
+    12,
+    13,
+    13,
+    11,
+    7,
+    3,
+    2
+   ],
+   [
+    24,
+    12,
+    6,
+    0,
+    1,
+    10,
+    4,
+    5,
+    5,
+    14,
+    13,
+    6
+   ]
+  ],
+  "c": "#d6c3ba",
+  "k": [
+   0.157,
+   0.033,
+   0.987,
+   0.901
+  ],
+  "p": null
  },
  "http://n.sinaimg.cn/sinakd20261126ac/40/w480h360/20261126/a234-df66933bd99b64ae14921441625b25a7.jpg": {
   "w": 480,
   "h": 360,
   "target": 720,
-  "v": 3
- },
- "http://n.sinaimg.cn/sinakd20261126ac/533/w480h853/20261126/4492-349c2d266697b523b05388614666de90.jpg": {
-  "w": 480,
-  "h": 853,
-  "target": 1280,
   "v": 3
  },
  "http://n.sinaimg.cn/sinakd20261126ac/534/w480h854/20261126/0773-211c67410fa8f174606f1838ecbce4fe.jpg": {
@@ -879,6 +918,62 @@
    0.846
   ]
  },
+ "http://wx4.sinaimg.cn/middle/9b213501ly1ijehipvcd2j21qi265h35.jpg": {
+  "w": 2000,
+  "h": 2500,
+  "target": 720,
+  "v": 3,
+  "local": "pics/0fc2900dc191e54a.webp",
+  "out": [
+   1024,
+   1280
+  ],
+  "why": "防盗链",
+  "ref": true,
+  "m": [
+   [
+    4,
+    18,
+    9,
+    8,
+    9,
+    6,
+    9,
+    9,
+    10,
+    9,
+    10,
+    1
+   ],
+   [
+    7,
+    6,
+    2,
+    16,
+    21,
+    16,
+    12,
+    8,
+    3,
+    1,
+    4,
+    3
+   ]
+  ],
+  "c": "#d1bfb1",
+  "k": [
+   0.075,
+   0.893,
+   0.373,
+   0.935
+  ],
+  "p": [
+   0.311,
+   0.321,
+   0.705,
+   0.439
+  ]
+ },
  "https://MKnews.com.tw/wp-content/uploads/2026/11/dota-2-blast-slam-ix-playoffs-tournament-stage-lights-20261127-1024x576-1.jpg": {
   "w": 1024,
   "h": 576,
@@ -1041,6 +1136,12 @@
   "w": 1200,
   "h": 628,
   "target": 720,
+  "v": 3
+ },
+ "https://assets.juksy.com/files/articles/155950/6b098b4599079.jpg": {
+  "w": 1200,
+  "h": 900,
+  "target": 1280,
   "v": 3
  },
  "https://assets.st-note.com/production/uploads/images/336983412/rectangle_large_type_2_6ab3f3f2b8f17348b881bc944d8c523f.jpeg?fit=bounds&quality=85&width=1280": {
@@ -2785,6 +2886,12 @@
   "w": 805,
   "h": 500,
   "target": 1280,
+  "v": 3
+ },
+ "https://image.news.livedoor.com/newsimage/stf/c/e/ce9bf_1867_057c94e0_956de976.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
   "v": 3
  },
  "https://image.news.livedoor.com/newsimage/stf/f/4/f4330_1717_10f53be6_a0e4830e.jpg": {
@@ -5530,6 +5637,56 @@
   ],
   "p": null
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261128-00010000-finders-000-1-view.jpg?exp=10800": {
+  "w": 2200,
+  "h": 1650,
+  "target": 720,
+  "v": 3,
+  "local": "pics/f34f203292e17afa.webp",
+  "out": [
+   1280,
+   960
+  ],
+  "why": "期限付きの網址",
+  "m": [
+   [
+    5,
+    9,
+    8,
+    9,
+    8,
+    8,
+    10,
+    7,
+    9,
+    6,
+    11,
+    11
+   ],
+   [
+    1,
+    3,
+    5,
+    5,
+    10,
+    19,
+    20,
+    16,
+    11,
+    4,
+    4,
+    3
+   ]
+  ],
+  "c": "#c2c8cd",
+  "k": [
+   0.705,
+   0.671,
+   0.745,
+   0.73
+  ],
+  "p": null
+ },
  "https://ni.yam.com/20261123/dota2-online-tournament-streaming-studio-20261123-88b55bb77031cc11.webp": {
   "w": 1200,
   "h": 675,
@@ -6093,6 +6250,62 @@
   "target": 1280,
   "v": 3
  },
+ "https://static.hkcna.hk/dams-res/editing/image/202611/26/6b07fdf1e4b0855d0a39fbd6.jpg": {
+  "w": 640,
+  "h": 360,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.435,
+  "local": "pics/849c396502bba354.webp",
+  "out": [
+   1280,
+   720
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    4,
+    7,
+    10,
+    12,
+    11,
+    11,
+    11,
+    9,
+    9,
+    6,
+    7,
+    4
+   ],
+   [
+    6,
+    7,
+    4,
+    5,
+    5,
+    7,
+    8,
+    10,
+    12,
+    10,
+    11,
+    15
+   ]
+  ],
+  "c": "#9c9298",
+  "k": [
+   0.02,
+   0.053,
+   0.973,
+   0.89
+  ],
+  "p": [
+   0.294,
+   0.106,
+   0.609,
+   0.301
+  ]
+ },
  "https://static.invenglobal.com/upload/image/2026/11/20/i1795189386895637.jpeg": {
   "w": 1672,
   "h": 941,
@@ -6291,12 +6504,6 @@
   "target": 720,
   "v": 3
  },
- "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/11/thor-steve-rogers-doomsday.jpeg?w=1600&h=900&fit=crop": {
-  "w": 1600,
-  "h": 900,
-  "target": 1280,
-  "v": 3
- },
  "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/09/draco-malfoy-in-harry-potter-tv-show-season-1.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -6354,6 +6561,18 @@
  "https://statics-prod.mirrordaily.news/images/5c203aae-6135-4971-a789-c99845168cbd.jpg": {
   "w": 3000,
   "h": 2000,
+  "target": 720,
+  "v": 3
+ },
+ "https://storage.tenki.jp/storage/static-images/suppl/article/image/3/32/328/32846/1/large.jpg": {
+  "w": 692,
+  "h": 519,
+  "target": 720,
+  "v": 3
+ },
+ "https://stupiddope.com/wp-content/uploads/2026/11/01-featured-13.jpg": {
+  "w": 1600,
+  "h": 1067,
   "target": 720,
   "v": 3
  },
@@ -7538,12 +7757,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.mfFXoQIPx2zuuhMMvBQ_mw&pid=News&w=1200": {
-  "w": 700,
-  "h": 510,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.qWiATvEw15puPVYDxWtgUA&pid=News&w=1024": {
   "w": 700,
   "h": 525,
@@ -8142,6 +8355,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.livemint.com/lm-img/img/2026/11/27/600x338/Avengers_Doomsday_infinity_vision_1795799416698_oyj0_1795799416823_FsPC_5184e7d3-1b8d-4e37-9e1d-4ab13437ac32_pg7j.png": {
+  "w": 600,
+  "h": 338,
+  "target": 720,
+  "v": 3
+ },
  "https://www.michigandaily.com/wp-content/uploads/2026/11/The-rise-of-rookie-girl-group-A2O-LITE.jpg": {
   "w": 2400,
   "h": 1600,
@@ -8272,6 +8491,12 @@
  "https://www.vice.com/wp-content/uploads/sites/2/2026/11/How-Much-Money-Has-GTA-6-Made-So-Far-Launch-Sales-Explained.jpg?w=1280": {
   "w": 1280,
   "h": 720,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.wowkorea.jp/img/news/107/539189/455734_1280W.webp": {
+  "w": 1280,
+  "h": 960,
   "target": 1280,
   "v": 3
  },

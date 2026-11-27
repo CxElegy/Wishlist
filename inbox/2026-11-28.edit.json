@@ -17,7 +17,8 @@
     29,
     41,
     32,
-    45
+    45,
+    52
    ],
    "image": "https://www.bing.com/th?id=ONUT.crFJIxIdAQOvBnTtsHo_Fw&pid=News&w=997"
   },
@@ -31,7 +32,8 @@
     20,
     48,
     31,
-    42
+    42,
+    65
    ]
   },
   {
@@ -99,7 +101,11 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    16
+    16,
+    45,
+    41,
+    51,
+    42
    ]
   },
   {
@@ -110,7 +116,8 @@
    "refs": [
     22,
     32,
-    30
+    30,
+    39
    ]
   }
  ],
@@ -201,8 +208,11 @@
    "blurb": "周杰伦转发中国台北预告，定档11月28日。",
    "weight": "lead",
    "refs": [
-    2
-   ]
+    2,
+    8,
+    10
+   ],
+   "image": "https://static.hkcna.hk/dams-res/editing/image/202611/26/6b07fdf1e4b0855d0a39fbd6.jpg"
   },
   {
    "headline": "格莱美新增亚洲流行奖项，周杰伦林俊杰赵露思报名未入围",
@@ -220,6 +230,15 @@
    "weight": "normal",
    "refs": [
     1
+   ]
+  },
+  {
+   "headline": "周杰伦携老友团再出发，《周游记4》嘉宾名单曝光，林俊杰、杨迪、吴尊等将参与",
+   "highlight": "《周游记4》嘉宾名单曝光",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
    ]
   }
  ],
@@ -246,15 +265,15 @@
   }
  ],
  "_covered": {
-  "漫威电影": 50,
-  "GTA 6": 36,
+  "漫威电影": 73,
+  "GTA 6": 52,
   "三星手机": 13,
-  "周杰伦": 5,
+  "周杰伦": 10,
   "ILLIT": 4,
   "MMORPG 新作": 4,
   "The Mandalorian": 1,
-  "A2O LITE": 1,
-  "滑雪": 1,
+  "A2O LITE": 4,
+  "滑雪": 6,
   "哈利波特剧集": 6,
   "dota2": 4,
   "あつ森": 4,
@@ -284,7 +303,27 @@
   }
  ],
  "The Mandalorian": [],
- "A2O LITE": [],
+ "A2O LITE": [
+  {
+   "headline": "「A2O LITE」のデビュー曲「NEON」をキレッキレで踊るイ・スマン？ サニー（少女時代）、叔父のAI動画をさらし、テギョン（2PM）も「大丈夫？」",
+   "highlight": "デビュー曲「NEON」",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "A2O LITE获得金唱片新人奖提名，2027.01.09-10颁奖礼举办，期待！",
+   "highlight": "金唱片新人奖提名",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4,
+    3
+   ]
+  }
+ ],
  "滑雪": [
   {
    "headline": "「凍えるような寒さ」冷え込み強まる スキー場ではオープンへ\"雪づくり\"本格化 愛媛",
@@ -295,6 +334,33 @@
     1
    ],
    "image": "https://img.topics.smt.news.goo.ne.jp/picture/itv6/m_itv6-3111660.jpg"
+  },
+  {
+   "headline": "白馬五竜と八方尾根が天然雪で営業開始 新エリアも",
+   "highlight": "天然雪で営業開始",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "シーズン目前「スキー場」の準備は？今後の雪に〝期待と不安〟【新潟】",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "Niseko in December: 4 Resorts, 1 Pass and the Season’s First Powder",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
   }
  ],
  "哈利波特剧集": [

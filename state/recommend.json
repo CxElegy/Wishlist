@@ -1,7 +1,6 @@
 {
  "image_misses": {
   "https://lee.hpplus.jp/column/3457347/?utm_source=news.yahoo.co.jp&utm_medium=referral&utm_campaign=lee_ynews.261124.4": "2026-11-27",
-  "https://stupiddope.com/2026/11/niseko-in-december-niseko-united-guide/": "2026-11-27",
   "https://www.falstaff.com/en/news/skiing-is-getting-more-expensive-ski-pass-prices-for-202627": "2026-11-27",
   "https://www.i-boss.co.kr/ab-6141-73667": "2026-11-27",
   "https://www.imdb.com/de/list/ls4112430034/mediaviewer/rm3133505537/?ref_=ls_3_2": "2026-11-27",
@@ -46,7 +45,7 @@
   "https://prtimes.jp/main/html/rd/p/000000093.000047181.html": "https://prcdn.freetls.fastly.net/release_image/47181/93/47181-93-a0654a9ddc6e0f6861e734a0a36fa37a-3000x1688.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
   "https://rurubu.jp/andmore/article/16584?page=3": "https://rurubu.jp/img_srw/andmore/images/0000757572/l_uBtSB0lIfY8JoBIu1xbN4PDVOXBCcinzSEY1tvpT.jpg",
   "https://sporked.com/article/starbucks-just-dropped-the-cutest-cloudy-cups-mugs/": "https://sporked.com/wp-content/uploads/2026/04/starbucks-65-subscription.jpg",
-  "https://stupiddope.com/2026/11/niseko-in-december-niseko-united-guide/": null,
+  "https://tenki.jp/season/ski/column/tenkijp_pr/2026/11/27/32846.html": "https://storage.tenki.jp/storage/static-images/suppl/article/image/3/32/328/32846/1/large.jpg",
   "https://thepakistanconnect.com/mohsin-raza-khan-bunny/": "https://thepakistanconnect.com/wp-content/uploads/2026/11/Untitled-Design-27-1.png",
   "https://today.line.me/tw/v3/article/LXoXxQr": "https://today-obs.line-scdn.net/0hgCuBZnPvOGxIOyUCOlRHO3BtNB17XSJlagh2Am48M1tiF3Y_cQprDzpvMkA1Cyw-aAp3CWo4YQxiWHw4fA/w1200",
   "https://tribune.com.pk/story/2642656/illits-moka-announces-gradual-return-after-5-month-health-hiatus": "https://www.bing.com/th?id=ONUT.mGBibvs8C1sq-geQqiz_Tw&pid=News&w=640",
@@ -64,7 +63,6 @@
   "https://www.falstaff.com/en/news/skiing-is-getting-more-expensive-ski-pass-prices-for-202627": null,
   "https://www.fashion-press.net/news/153772": "https://www.fashion-press.net/img/news/153772/top.jpg?1795500792",
   "https://www.financialpost.co.kr/news/articleView.html?idxno=302340": "https://cdn.financialpost.co.kr/news/photo/202611/302340_404553_255.jpg",
-  "https://www.forbes.com/sites/danidiplacido/2026/11/27/the-strange-backlash-against-gta-6-explained/": "https://www.bing.com/th?id=ONUT.mfFXoQIPx2zuuhMMvBQ_mw&pid=News&w=1200",
   "https://www.i-boss.co.kr/ab-6141-73667": null,
   "https://www.imdb.com/de/list/ls4112430034/mediaviewer/rm3133505537/?ref_=ls_3_2": null,
   "https://www.investify.pk/company/BNL/profile": "https://www.investify.pk/api/og/company/BNL",
@@ -99,7 +97,8 @@
   "https://www.walkerplus.com/article/50019/image269744.html": "https://news.walkerplus.com/article/50019/269743_615.jpg",
   "https://www.walkerplus.com/article/56657/image312478.html": "https://image.news.livedoor.com/newsimage/8/0/806c5_230_7eb57112_e8b0fa39.jpg",
   "https://www.yahoo.com/lifestyle/articles/petsmarts-polar-bear-cat-bed-233400618.html": "https://s.yimg.com/lo/mysterio/api/df7afc1c33ea3c8d1dec34cb07a7e95bff3b4ea3a2a5c55726af754a6b250628/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fparade_pets_ecomm_articles_782%2F3627631fc6a12d52f808d5cc9f8ef7a4.jpg",
-  "https://www.youtube.com/watch?v=uzF0_Jfy4h0": "https://i2.ytimg.com/vi/uzF0_Jfy4h0/hqdefault.jpg"
+  "https://www.youtube.com/watch?v=uzF0_Jfy4h0": "https://i2.ytimg.com/vi/uzF0_Jfy4h0/hqdefault.jpg",
+  "https://zh-tw.root-nation.com/en/news-en/it-news-en/en-fake-gta-vi-pc-ports-on-github/": "https://root-nation.com/wp-content/uploads/2026/08/gta-vi-1.jpg"
  },
  "picks": [
   {
@@ -980,6 +979,27 @@
   },
   {
    "batch": 1,
+   "because": "GTA 6",
+   "date": "2026-11-27",
+   "hits": [],
+   "image": "https://root-nation.com/wp-content/uploads/2026/08/gta-vi-1.jpg",
+   "kind": "board",
+   "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
+   "score": 8,
+   "source": "Root-Nation.com",
+   "taste": [
+    [
+     "作品:GTA 6",
+     6
+    ]
+   ],
+   "title": "GitHub 上發現假冒 GTA VI PC 移植版：騙子散播惡意軟體而非遊戲",
+   "url": "https://zh-tw.root-nation.com/en/news-en/it-news-en/en-fake-gta-vi-pc-ports-on-github/",
+   "words": [],
+   "work": "GTA 6"
+  },
+  {
+   "batch": 1,
    "because": "Astrae Oratio",
    "date": "2026-11-27",
    "hits": [],
@@ -1038,27 +1058,6 @@
    ],
    "title": "Grand Theft Auto VI writer behind female protagonist deletes X account after online hate",
    "url": "https://www.msn.com/en-ca/news/other/grand-theft-auto-vi-writer-behind-female-protagonist-deletes-x-account-after-online-hate/ar-AA2inOeD",
-   "words": [],
-   "work": "GTA 6"
-  },
-  {
-   "batch": 1,
-   "because": "GTA 6",
-   "date": "2026-11-27",
-   "hits": [],
-   "image": "https://www.bing.com/th?id=ONUT.mfFXoQIPx2zuuhMMvBQ_mw&pid=News&w=1200",
-   "kind": "board",
-   "liked": "GTA 6 could come to PC as early as Q1 2027, leak claims — January-March launch window a huge improvement over 18-month GTA V wait",
-   "score": 8,
-   "source": "Forbes",
-   "taste": [
-    [
-     "作品:GTA 6",
-     6
-    ]
-   ],
-   "title": "The Strange Backlash Against ‘GTA 6,’ Explained",
-   "url": "https://www.forbes.com/sites/danidiplacido/2026/11/27/the-strange-backlash-against-gta-6-explained/",
    "words": [],
    "work": "GTA 6"
   },
@@ -1774,10 +1773,10 @@
    "image": null,
    "kind": "board",
    "score": 4,
-   "source": "stupidDOPE",
+   "source": "Falstaff",
    "taste": [],
-   "title": "Niseko in December: 4 Resorts, 1 Pass and the Season’s First Powder",
-   "url": "https://stupiddope.com/2026/11/niseko-in-december-niseko-united-guide/",
+   "title": "Skiing Is Getting More Expensive: Ski Pass Prices for 2026/27",
+   "url": "https://www.falstaff.com/en/news/skiing-is-getting-more-expensive-ski-pass-prices-for-202627",
    "words": [],
    "work": "滑雪"
   },
@@ -1786,13 +1785,13 @@
    "because": "滑雪",
    "date": "2026-11-27",
    "hits": [],
-   "image": null,
+   "image": "https://storage.tenki.jp/storage/static-images/suppl/article/image/3/32/328/32846/1/large.jpg",
    "kind": "board",
    "score": 4,
-   "source": "Falstaff",
+   "source": "tenki.jp",
    "taste": [],
-   "title": "Skiing Is Getting More Expensive: Ski Pass Prices for 2026/27",
-   "url": "https://www.falstaff.com/en/news/skiing-is-getting-more-expensive-ski-pass-prices-for-202627",
+   "title": "ゲレンデ併設で移動最小限！ 食事や温泉が楽しめるおすすめホテル10選(季節・暮らしの話題 2026年11月27日)",
+   "url": "https://tenki.jp/season/ski/column/tenkijp_pr/2026/11/27/32846.html",
    "words": [],
    "work": "滑雪"
   },
@@ -2284,15 +2283,15 @@
    8
   ],
   [
-   "三星 Galaxy",
-   7
-  ],
-  [
    "galaxy",
    7
   ],
   [
    "作品:三星手机",
+   7
+  ],
+  [
+   "三星 Galaxy",
    7
   ]
  ]
