@@ -1,10 +1,10 @@
 {
- "admin": "c6aefa9384d3",
- "admin-ai": "b5d790a7255c",
+ "admin": "6f929b2a6ebf",
+ "admin-ai": "21f999b61041",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "d0f3f4a9"
+   "17f7ed69"
   ],
   "tokens": [
    "AI 編集のトークン",
@@ -22,11 +22,11 @@
    "8068ac57"
   ]
  },
- "admin-emblem": "6b509f087665",
+ "admin-emblem": "ed78dae41bc6",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "26fa87b6"
+   "d5649a8e"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "53e74dff2cad",
+ "admin-now": "460a3f8b03f5",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "e412af4b"
+   "e9fffe16"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "32670174"
   ]
  },
- "admin-system": "a044f462dcaf",
+ "admin-system": "0b3c7ffec05e",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "fe81c6e2"
+   "cd22bf4e"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "206f42d5"
+   "e41f48f3"
   ]
  },
  "admin_marks": {},
- "heat": "2a1fc25c423e",
+ "heat": "d0da7f742530",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,14 +86,14 @@
   ],
   "movers": [
    "前週比",
-   "b76b4b3f"
+   "632e80ec"
   ],
   "ranking": [
    "ランキング",
-   "4e1f106f"
+   "adb2daaf"
   ]
  },
- "index": "66704860b988",
+ "index": "016e51b9598a",
  "index_marks": {
   "front": [
    "トップ",
@@ -141,7 +141,7 @@
   ],
   "w-79b3c280": [
    "滑雪",
-   "140a3d67"
+   "b84ae0a9"
   ],
   "w-7a894105": [
    "周杰伦",
@@ -157,7 +157,7 @@
   ],
   "w-bf928230": [
    "Astrae Oratio",
-   "c429daa1"
+   "b97dfdee"
   ],
   "w-c1c3e0ed": [
    "BLEACH Mirrors High",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "7eb19ea9"
+   "bd2d9503"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -193,9 +193,9 @@
   ],
   "w-f303ad09": [
    "绝区零",
-   "585dea74"
+   "fb1e4a29"
   ]
  },
- "updated": "11.27 22:45",
+ "updated": "11.27 22:55",
  "wishlist": "2bb653d77712"
 }
