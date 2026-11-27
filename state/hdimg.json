@@ -1790,12 +1790,6 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.theplaylist.net/wp-content/uploads/2026/11/26090217/SHANG-CHI-2_UPDATE_DAVE-CALLAHAM_SIMU-LIU_AVENGERS-DOOMSDAY_.jpg": {
-  "w": 1500,
-  "h": 896,
-  "target": 720,
-  "v": 3
- },
  "https://cdn.upmedia.mg/upfile/img/2026/1120/202611201248136537.webp": {
   "w": 1264,
   "h": 848,
@@ -2126,6 +2120,12 @@
   "target": 720,
   "v": 3
  },
+ "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/madarao.jpg": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/rhythm-japan-summit-hakuba-store-expansion-2026.jpg": {
   "w": 1962,
   "h": 1308,
@@ -2169,6 +2169,12 @@
   "v": 3
  },
  "https://escharts.com/metaImage/tournaments/epl-championship-season-1?v=1795141706": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
+ "https://escharts.com/metaImage/tournaments/esports-nations-cup-2026-europe-west-qualifier-dota2-2?v=1795729309": {
   "w": 1200,
   "h": 630,
   "target": 720,
@@ -2493,6 +2499,12 @@
   "target": 720,
   "v": 3
  },
+ "https://i.abcnewsfe.com/a/3f4d22ad-8045-4791-a537-3773774a4769/doomsday-1-ht-jef-260720_1784553718149_hpMain_16x9.jpg?w=1600": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
  "https://i.abcnewsfe.com/a/77b6f167-999d-433a-9332-93938dc147c3/MANDO1-DISNEY-AB-260513_1778708196774_hpMain_16x9.jpg?w=1600": {
   "w": 1600,
   "h": 900,
@@ -2529,16 +2541,16 @@
   "target": 720,
   "v": 3
  },
+ "https://i2-prod.bristolpost.co.uk/incoming/article11231091.ece/ALTERNATES/s1200/1_Jason_and_Lucia_20.jpg": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://i2.ytimg.com/vi/Y7T4zr_A9WQ/maxresdefault.jpg": {
   "w": 1280,
   "h": 720,
   "target": 1280,
-  "v": 3
- },
- "https://i2.ytimg.com/vi/YFzfou-8GGo/hqdefault.jpg": {
-  "w": 480,
-  "h": 360,
-  "target": 720,
   "v": 3
  },
  "https://i3.ytimg.com/vi/BaLU8RQ1GEo/hqdefault.jpg": {
@@ -2664,12 +2676,6 @@
   "w": 1200,
   "h": 800,
   "target": 1280,
-  "v": 3
- },
- "https://image.entabe.jp/upload/20260518/images/000_1.jpg": {
-  "w": 1280,
-  "h": 853,
-  "target": 720,
   "v": 3
  },
  "https://image.gallery.play.jp/knb-news/articles/d2e68ec95ab844e4a54a60f468bc55d5/aab9d0a3-ef57-434b-95c2-04f04d04c86c.jpg?w=1200": {
@@ -2856,6 +2862,12 @@
   "v": 3,
   "blur": 0.411
  },
+ "https://image.news.livedoor.com/newsimage/stf/7/7/778cd_1604_1926b238_04d3d8ee.jpg": {
+  "w": 1200,
+  "h": 560,
+  "target": 720,
+  "v": 3
+ },
  "https://image.news.livedoor.com/newsimage/stf/8/0/80955_1847_5a3e1f5ca6ef51290a9e1dfadc261f1d.jpg": {
   "w": 1000,
   "h": 667,
@@ -2989,12 +3001,6 @@
   "w": 1280,
   "h": 720,
   "target": 1280,
-  "v": 3
- },
- "https://images.pushsquare.com/9d5530aadf314/1280x720.jpg": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
   "v": 3
  },
  "https://images.storm.mg/cloud/199eb2b816401612d93438c558f48a0682545c5d.jpg?url=s3%3A%2F%2Fnew-storm-public-resource%2Fgallery%2F2259385%2FK1xGqW9weX0Jwah1ROr0qjAp93hqEK0I9ZKSFVF2.jpeg&g=sm&h=900&resize=fill&w=1600&format=jpg": {
@@ -4005,12 +4011,6 @@
   "target": 1280,
   "v": 3
  },
- "https://l-files.livejournal.net/og_image/3616053/520274?v=1795723060": {
-  "w": 1200,
-  "h": 538,
-  "target": 720,
-  "v": 3
- },
  "https://levolant.jp/wp-content/uploads/2026/11/33_LV_260803_Volvo_EX90-1024x682-1.jpg": {
   "w": 1280,
   "h": 853,
@@ -4707,6 +4707,12 @@
    0.616
   ],
   "p": null
+ },
+ "https://news.walkerplus.com/article/63163/351953_615.jpg": {
+  "w": 615,
+  "h": 854,
+  "target": 1280,
+  "v": 3
  },
  "https://news.walkerplus.com/article/68792/385520_615.jpg": {
   "w": 615,
@@ -5490,12 +5496,12 @@
   ],
   "p": null
  },
- "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261127-00000443-oric-000-1-view.jpg?exp=10800": {
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261127-00000443-oric-000-3-view.jpg?exp=10800": {
   "w": 641,
   "h": 960,
   "target": 1280,
   "v": 3,
-  "local": "pics/b7c85708a7b57b25.webp",
+  "local": "pics/757575b563a6b657.webp",
   "out": [
    641,
    960
@@ -5672,9 +5678,9 @@
   "target": 1280,
   "v": 3
  },
- "https://prcdn.freetls.fastly.net/release_image/165726/367/165726-367-2bf2f7d3ae69325d10c091286c61a3e4-3405x1817.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
-  "w": 2361,
-  "h": 1260,
+ "https://prcdn.freetls.fastly.net/release_image/15916/463/15916-463-d8b06456e69c675e70c9fb5150f59f90-1024x683.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 1024,
+  "h": 683,
   "target": 720,
   "v": 3
  },
@@ -5735,12 +5741,6 @@
  "https://prcdn.freetls.fastly.net/release_image/60409/70/60409-70-e9ce2650e3d971a5e093ee593e5b7d16-3900x2925.jpg": {
   "w": 3900,
   "h": 2925,
-  "target": 720,
-  "v": 3
- },
- "https://prcdn.freetls.fastly.net/release_image/85653/850/85653-850-4a5a7176583db62831b9567a184dd217-3888x2592.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
-  "w": 1890,
-  "h": 1260,
   "target": 720,
   "v": 3
  },
@@ -6821,6 +6821,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.1JOvIHHXJRfhLEUCDeaOLw&pid=News&w=710": {
+  "w": 700,
+  "h": 525,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.2Zbyf4oTJ8KqhH9pWFjs9w&pid=News&w=650": {
   "w": 537,
   "h": 700,
@@ -6878,6 +6884,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.401
+ },
+ "https://www.bing.com/th?id=ONUT.5H5uXMA0kzqXboWf7YadZQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 366,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.6ZQ5hCPYiKuLMQdkbx_JOQ&pid=News&w=1200": {
   "w": 700,
@@ -7241,6 +7253,12 @@
   "v": 3,
   "blur": 0.391
  },
+ "https://www.bing.com/th?id=ONUT.Q6x_Uv8OtNRn4vbytr7PzA&pid=News&w=708": {
+  "w": 700,
+  "h": 492,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.QMAtfj6cWAIw78S-tPk5aA&pid=News&w=640": {
   "w": 640,
   "h": 363,
@@ -7248,12 +7266,6 @@
   "v": 3
  },
  "https://www.bing.com/th?id=ONUT.V9oUOErfpMDYxDF0Sjo6Hg&pid=News&w=800": {
-  "w": 700,
-  "h": 700,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.WvRSVGWnczRTfP44khCNog&pid=News&w=800": {
   "w": 700,
   "h": 700,
   "target": 720,
@@ -8389,6 +8401,12 @@
   "w": 1260,
   "h": 400,
   "target": 1280,
+  "v": 3
+ },
+ "https://zalebs.com/wp-content/uploads/2026/11/where-is-the-buckingham-jubilee-in-gta-6-guides-point-to-starfish-island.webp": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
   "v": 3
  }
 }
