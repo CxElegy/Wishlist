@@ -1,6 +1,6 @@
 {
  "date": "2026-11-27",
- "edit_sig": "a2dafd2285f2",
+ "edit_sig": "85e061f4f59a",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -1109,17 +1109,19 @@
    "cover": null,
    "facts": [],
    "name": "FROM",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "The Netflix release of MGM+’s FROM continues to be a massive success this Thanksgiving weekend.",
      "date": "2026-11-26",
-     "n": 1,
-     "source": "Collider",
-     "title": "TV’s Best Sci-Fi Thriller Is Officially the New King of Netflix",
-     "url": "https://collider.com/from-streaming-success-netflix-november-2026/"
+     "headline": "TV’s Best Sci-Fi Thriller Is Officially the New King of Netflix",
+     "highlight": "New King of Netflix",
+     "image": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/05/from-season-4-episode-3-catalina-sandino-moreno.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://collider.com/from-streaming-success-netflix-november-2026/",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "美剧 · MGM+ 恐怖悬疑",
    "theme": {
     "accent": "#E3B04B",
