@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-27T13:36:34+00:00",
+ "checked": "2026-11-27T14:30:14+00:00",
  "fired": {
   "at": "2026-11-27T13:36:34+00:00",
   "results": {
@@ -86,78 +86,70 @@
    },
    "items": [
     "A2O LITE",
-    "Astrae Oratio",
     "GTA 6",
     "ILLIT",
     "MMORPG 新作",
     "The Mandalorian",
-    "lib:Nintendo Switch 2",
-    "lib:ガンプラ",
-    "lib:キャンプ",
-    "lib:コーヒー",
-    "lib:ユニクロ",
-    "lib:ラーメン",
-    "lib:大相撲",
-    "lib:無印良品",
+    "lib:ユニバーサル・スタジオ・ジャパン",
+    "lib:京都",
+    "lib:宇宙・ロケット",
+    "lib:将棋",
+    "lib:東京ディズニーリゾート",
+    "lib:温泉",
+    "lib:生成AI",
+    "lib:筋トレ",
     "ぐでたま",
-    "チェーンソーマン",
     "三星手机",
     "周杰伦",
     "哈利波特剧集",
     "滑雪",
     "漫威电影",
-    "猫用品",
-    "绝区零"
+    "猫用品"
    ],
-   "last_batch": "2026-11-27T11:42:47+00:00",
+   "last_batch": "2026-11-27T13:56:09+00:00",
    "last_error": {
     "at": "2026-11-26T06:40:55+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 570,
+   "prog": 657,
    "prog_day": "2026-11-27",
    "ripe": [
-    "A2O LITE",
-    "Astrae Oratio",
     "GTA 6",
-    "ILLIT",
-    "チェーンソーマン",
     "三星手机",
     "周杰伦",
-    "滑雪",
+    "哈利波特剧集",
     "漫威电影",
-    "绝区零"
+    "猫用品"
    ],
-   "sig": "3f986b7a3ac2",
+   "sig": "a29bfe88814d",
    "token_cap": 1000000,
-   "tokens_today": 590499,
-   "why": "整理待ちの記事 182 件（23 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 653916,
+   "why": "整理待ちの記事 139 件（20 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "チェーンソーマン",
-    "哈利波特剧集",
-    "漫威电影",
-    "GTA 6",
-    "The Mandalorian",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
+   "waiting": [
     "A2O LITE",
     "Astrae Oratio",
-    "绝区零",
-    "周杰伦",
-    "ぐでたま"
-   ],
-   "need": true,
-   "sig": "d50b9ba476a3",
-   "waiting": [
     "BLEACH Mirrors High",
     "FROM",
+    "GTA 6",
+    "The Mandalorian",
     "Vaundy",
     "dota2",
-    "あつ森"
+    "あつ森",
+    "ぐでたま",
+    "チェーンソーマン",
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
+    "绝区零"
    ],
-   "why": "足りない 10 版面（Actions で Python が埋める）・失敗 5 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
@@ -338,12 +330,12 @@
    "runs": 12
   },
   "2026-11-27": {
-   "batches": 27,
-   "cr": 11577515,
-   "cw": 539255,
-   "in": 308,
-   "out": 50936,
-   "runs": 10
+   "batches": 29,
+   "cr": 12432686,
+   "cw": 597360,
+   "in": 332,
+   "out": 56224,
+   "runs": 11
   }
  }
 }
