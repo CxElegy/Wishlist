@@ -1,6 +1,6 @@
 {
  "admin": "29ed4638aaaa",
- "admin-ai": "242287b05a38",
+ "admin-ai": "89d319672e76",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,14 +8,14 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "e8b29fee"
+   "78aacf4e"
   ]
  },
- "admin-boards": "8824e6f36881",
+ "admin-boards": "7b2d59d7f0c7",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "7a8ff122"
+   "651b1e5f"
   ],
   "votes": [
    "投票",
@@ -43,7 +43,7 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "bab5669abf34",
+ "admin-now": "ed398b567c92",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -55,14 +55,14 @@
   ],
   "status": [
    "運行状況",
-   "9f73027f"
+   "a6e70971"
   ],
   "term-panel": [
    "ライブログ",
    "f40d49f5"
   ]
  },
- "admin-system": "ef8846df5565",
+ "admin-system": "d32cc43ad3c2",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "581d1a0a"
+   "14c65fed"
   ]
  },
  "admin_marks": {},
@@ -196,6 +196,6 @@
    "27c69680"
   ]
  },
- "updated": "11.27 23:30",
+ "updated": "11.28 00:18",
  "wishlist": "2bb653d77712"
 }
