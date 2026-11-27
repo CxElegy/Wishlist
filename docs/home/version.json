@@ -1,32 +1,32 @@
 {
- "admin": "31fbd23e2150",
- "admin-ai": "6ba48a708990",
+ "admin": "98f0c955fbe1",
+ "admin-ai": "79f7932b9911",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "8c8fd4a2"
+   "0e903af9"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "f7fc643d"
+   "33efc417"
   ]
  },
- "admin-boards": "0f8cdf6fbffd",
+ "admin-boards": "c25a826717a1",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "5c3f410c"
+   "8a8c2cec"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "0a34fecefcb5",
+ "admin-emblem": "69adb7f0bdcf",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "feec195b"
+   "e4c6b6d9"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "aa1cff58da92",
+ "admin-now": "f3a11c3e577f",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "84ba280f"
+   "fd66b409"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "b2652e80"
+   "1abbb912"
   ]
  },
- "admin-system": "fba228c305b0",
+ "admin-system": "de346995b783",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "645605ae"
+   "de6a65fa"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "5ef0ad22"
+   "060b2070"
   ]
  },
  "admin_marks": {},
- "heat": "7c55c748fb26",
+ "heat": "d6474c7ff09c",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "974660ea"
+   "785b7343"
   ],
   "ranking": [
    "ランキング",
-   "dde3544b"
+   "5d4a51bd"
   ]
  },
- "index": "3a6da7df497a",
+ "index": "c89e8d2fcb29",
  "index_marks": {
   "front": [
    "トップ",
-   "994c55e0"
+   "79ac559d"
   ],
   "picks": [
    "気になるかも？",
@@ -113,7 +113,7 @@
   ],
   "w-2309d720": [
    "ぐでたま",
-   "306d0dbb"
+   "d90e24a4"
   ],
   "w-34f2ed9f": [
    "GTA 6",
@@ -185,7 +185,7 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "a2cf4970"
+   "e54c661e"
   ],
   "w-edd2b6ae": [
    "ILLIT",
@@ -196,6 +196,6 @@
    "d172fb13"
   ]
  },
- "updated": "11.27 20:35",
+ "updated": "11.27 20:42",
  "wishlist": "2bb653d77712"
 }

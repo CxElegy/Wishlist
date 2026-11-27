@@ -312,7 +312,7 @@
   "周杰伦": 32,
   "Astrae Oratio": 10,
   "MMORPG 新作": 25,
-  "哈利波特剧集": 9,
+  "哈利波特剧集": 11,
   "ILLIT": 28,
   "The Mandalorian": 6,
   "チェーンソーマン": 7,
@@ -325,7 +325,9 @@
   "gelato pique": 8,
   "あつ森": 2,
   "滑雪": 15,
-  "FROM": 1
+  "FROM": 1,
+  "ぐでたま": 2,
+  "Vaundy": 1
  },
  "MMORPG 新作": [
   {
@@ -424,6 +426,15 @@
    "weight": "normal",
    "refs": [
     9
+   ]
+  },
+  {
+   "headline": "パーパ・エッシードゥ、ドラマ版ハリー・ポッターでスネイプを演じる英国俳優の素顔",
+   "highlight": "スネイプ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10
    ]
   }
  ],
@@ -860,5 +871,27 @@
    ],
    "image": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/05/from-season-4-episode-3-catalina-sandino-moreno.jpg"
   }
- ]
+ ],
+ "ぐでたま": [
+  {
+   "headline": "“ぐでたま哲学キャンディ”第二弾が登場！",
+   "highlight": "第二弾",
+   "blurb": "ぐでたまの哲学キャンディに第二弾が登場。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://news.walkerplus.com/article/63163/351953_615.jpg"
+  },
+  {
+   "headline": "店頭が“ぐでたま”だらけ！ローソン春の新商品続々登場",
+   "highlight": "ローソン春の新商品",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "Vaundy": []
 }

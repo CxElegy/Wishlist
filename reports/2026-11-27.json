@@ -1,6 +1,6 @@
 {
  "date": "2026-11-27",
- "edit_sig": "115697b271de",
+ "edit_sig": "a22cdc4899f2",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -285,22 +285,6 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
-    {
-     "date": "2026-11-27",
-     "n": 10,
-     "source": "Martin Cid Magazine",
-     "title": "パーパ・エッシードゥ、ドラマ版ハリー・ポッターでスネイプを演じる英国俳優の素顔",
-     "url": "https://news.google.com/rss/articles/CBMiuAJBVV95cUxQUGZKbzByYzVtYXFYbG1JQ2JpdVhCVm0zTDdUcEM4Wk9UcUJiVzZwRkkxc2lTUFV0TTR4TkpGekcwc3FveGYxZ3JJYnU4VVFBUzRTVnFQaUxqNEpuRk9keTJjQ2ZoaGV4bkJ5Wjc5SEFYajhoaGhXVm9zUjZKOFpnZ1d6TmVxWjBac2RGdGxfR2R1dVNFVUUxai1YUTVMQkhWQ2tfRWl6aXdJVkc2eV9FM0s3WXhXb3N6dERTRktsakhBQ3hpdk5UYTJiNHdoRHR3UWtySXBIN054aFdJWXdGbVZkVi1nS3loVndpb3dkN3puQnlXUFJ2OElnbUNVQ2YwSlpWdW5faXBQNWVhTVRCR19BdDN5Q1ZKSGhOVUNENS1aYXY0emRUX3o5T1VPd3JWZDRxYjBrTkM?oc=5"
-    },
-    {
-     "date": "2026-11-26",
-     "n": 11,
-     "source": "Foro3D",
-     "title": "Daniel Radcliffe does not know if he will watch the new Harry Potter series on HBO Max",
-     "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNT0hHMHptbkNnaTFEZGxVc0lkdlhwY2ZNYVkya3dlM3VtbmFTUVA2Vm05MTlscTRxLUZuSm1ZMDZBX3pKSzE5TDRUN1RNaXdNNktxcjRoWFZDNHBsLUhpMDBTVExKYk5EcndKbG9IQ1RNeVRHS21hTHhuOG9uWlN4bUxXVXBvWVNxSVE5WlB6VW00bnZWcjZ0UGNncVlVQ0lHc2wwWVRDUTBJcXVVWTZYVWN3?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -341,6 +325,16 @@
      "image": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/11/copy-of-collider-template-2026-11-26t130106-546.jpg?w=1600&h=900&fit=crop",
      "image_via": "og:image",
      "url": "https://collider.com/hbo-harry-potter-reboot-fandom-melissa-anelli/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-27",
+     "headline": "パーパ・エッシードゥ、ドラマ版ハリー・ポッターでスネイプを演じる英国俳優の素顔",
+     "highlight": "スネイプ",
+     "image": "https://images.martincid.com/2026/11/paapa-essiedu.jpg?f=orig",
+     "image_via": "og:image",
+     "url": "https://ja.martincid.com/people/%E3%83%91%E3%83%BC%E3%83%91%E3%83%BB%E3%82%A8%E3%83%83%E3%82%B7%E3%83%BC%E3%83%89%E3%82%A5%E3%80%81%E3%83%89%E3%83%A9%E3%83%9E%E7%89%88%E3%83%8F%E3%83%AA%E3%83%BC%E3%83%BB%E3%83%9D/",
      "weight": "normal"
     }
    ],
@@ -590,24 +584,24 @@
    "section": "好物",
    "stories": [
     {
-     "blurb": "",
+     "blurb": "ぐでたまの哲学キャンディに第二弾が登場。",
      "date": "2026-11-27",
-     "headline": "＜画像1 / 2＞“ぐでたま哲学キャンディ”第二弾が登場！",
-     "highlight": "",
+     "headline": "“ぐでたま哲学キャンディ”第二弾が登場！",
+     "highlight": "第二弾",
      "image": "https://news.walkerplus.com/article/63163/351953_615.jpg",
      "image_via": "og:image",
      "url": "https://www.walkerplus.com/article/63163/image351953.html",
-     "weight": "hero"
+     "weight": "lead"
     },
     {
      "blurb": "",
      "date": "2026-11-27",
-     "headline": "＜画像2 / 7＞店頭が“ぐでたま”だらけ！ローソン春の新商品続々登場",
-     "highlight": "",
+     "headline": "店頭が“ぐでたま”だらけ！ローソン春の新商品続々登場",
+     "highlight": "ローソン春の新商品",
      "image": "https://news.walkerplus.com/article/56484/311454_615.jpg",
      "image_via": "og:image",
      "url": "https://www.walkerplus.com/article/56484/image311455.html",
-     "weight": "hero"
+     "weight": "normal"
     }
    ],
    "subtitle": "Gudetama",
@@ -764,33 +758,6 @@
     "bg": "#F7EFE9",
     "fg": "#1E1A18",
     "font": "sans",
-    "split": true
-   }
-  },
-  {
-   "cover": "https://vaundy.jp/og_image.png",
-   "facts": [],
-   "name": "Vaundy",
-   "pending": [
-    {
-     "date": "2026-11-27",
-     "n": 1,
-     "source": "Real Sound",
-     "title": "菅田将暉、映画『人生を変えたコント』主題歌「君が笑うまで」配信リリース 書家東京によるジャケ写も",
-     "url": "https://realsound.jp/2026/11/post-2596729.html"
-    }
-   ],
-   "section": "演出",
-   "stories": [],
-   "subtitle": "演唱会",
-   "theme": {
-    "accent": "#B9A6F2",
-    "alt_accent": "#5B43A8",
-    "alt_bg": "#F1EEF8",
-    "alt_fg": "#1C1826",
-    "bg": "#15131C",
-    "fg": "#EEEAF4",
-    "font": "serif",
     "split": true
    }
   },
@@ -1224,6 +1191,31 @@
     "fg": "#F5F7F2",
     "font": "sans",
     "split": false
+   }
+  },
+  {
+   "cover": "https://vaundy.jp/og_image.png",
+   "facts": [],
+   "last": {
+    "date": "2026-11-26",
+    "headline": "Vaundy、DAOKO、ピーナッツくんなどのMVを手がけるディレクターデュオNIOが個展「THE MOMENT WE SHINE 2 MUCH」を12月5日、6日に渋谷で開催",
+    "url": "https://videosalon.jp/news/nio_soloexh/"
+   },
+   "name": "Vaundy",
+   "quiet": true,
+   "section": "演出",
+   "status": "",
+   "stories": [],
+   "subtitle": "演唱会",
+   "theme": {
+    "accent": "#B9A6F2",
+    "alt_accent": "#5B43A8",
+    "alt_bg": "#F1EEF8",
+    "alt_fg": "#1C1826",
+    "bg": "#15131C",
+    "fg": "#EEEAF4",
+    "font": "serif",
+    "split": true
    }
   }
  ],
