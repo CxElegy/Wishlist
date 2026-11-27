@@ -2508,6 +2508,18 @@
   "target": 1280,
   "v": 3
  },
+ "https://i0.wp.com/news.qoo-app.com/wp-content/uploads/2026/11/1yeRcS70HpE-HD.jpg": {
+  "w": 1280,
+  "h": 723,
+  "target": 720,
+  "v": 3
+ },
+ "https://i0.wp.com/news.qoo-app.com/wp-content/uploads/2026/11/ogp01cover.jpg": {
+  "w": 1116,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://i2-prod.birminghammail.co.uk/incoming/article34957733.ece/ALTERNATES/s1200/0_GettyImages-2206898952.jpg": {
   "w": 1200,
   "h": 630,
@@ -2974,6 +2986,12 @@
   "w": 1280,
   "h": 720,
   "target": 1280,
+  "v": 3
+ },
+ "https://images.pushsquare.com/9d5530aadf314/1280x720.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
   "v": 3
  },
  "https://images.storm.mg/cloud/199eb2b816401612d93438c558f48a0682545c5d.jpg?url=s3%3A%2F%2Fnew-storm-public-resource%2Fgallery%2F2259385%2FK1xGqW9weX0Jwah1ROr0qjAp93hqEK0I9ZKSFVF2.jpeg&g=sm&h=900&resize=fill&w=1600&format=jpg": {
@@ -3988,6 +4006,12 @@
   "w": 1280,
   "h": 720,
   "target": 1280,
+  "v": 3
+ },
+ "https://l-files.livejournal.net/og_image/3616053/520274?v=1795723060": {
+  "w": 1200,
+  "h": 538,
+  "target": 720,
   "v": 3
  },
  "https://massivelyop.com/wp-content/uploads/2026/07/necesse-love.jpg": {
@@ -5374,12 +5398,6 @@
   "target": 1280,
   "v": 3
  },
- "https://prcdn.freetls.fastly.net/release_image/165726/367/165726-367-2bf2f7d3ae69325d10c091286c61a3e4-3405x1817.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
-  "w": 2361,
-  "h": 1260,
-  "target": 720,
-  "v": 3
- },
  "https://prcdn.freetls.fastly.net/release_image/18505/4522/18505-4522-07e624aa4e3f158508c312e7abc24baf-2160x2700.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 1008,
   "h": 1260,
@@ -6448,12 +6466,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.2EEYjo6rSd2uyaNWtbTc2w&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.2Zbyf4oTJ8KqhH9pWFjs9w&pid=News&w=650": {
   "w": 537,
   "h": 700,
@@ -6504,6 +6516,12 @@
    0.809,
    0.694
   ]
+ },
+ "https://www.bing.com/th?id=ONUT.2_Rg2Gj5x8tFyd93FqTfcw&pid=News&w=700": {
+  "w": 700,
+  "h": 466,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.4JxiWMvoAswbIm6bJMkHCA&pid=News&w=1200": {
   "w": 700,
@@ -6784,57 +6802,6 @@
    0.607
   ]
  },
- "https://www.bing.com/th?id=ONUT.CxnPybknNpWoA7HVWzHZlQ&pid=News&w=404": {
-  "w": 404,
-  "h": 227,
-  "target": 720,
-  "v": 3,
-  "blur": 0.51,
-  "local": "pics/664cf0149bfefaed.webp",
-  "out": [
-   720,
-   405
-  ],
-  "why": "看不清",
-  "m": [
-   [
-    10,
-    13,
-    15,
-    9,
-    7,
-    7,
-    8,
-    7,
-    6,
-    4,
-    6,
-    8
-   ],
-   [
-    4,
-    6,
-    10,
-    9,
-    10,
-    10,
-    12,
-    11,
-    12,
-    7,
-    5,
-    5
-   ]
-  ],
-  "c": "#8e8377",
-  "k": null,
-  "p": [
-   0.412,
-   0.035,
-   0.773,
-   0.403
-  ]
- },
  "https://www.bing.com/th?id=ONUT.EU78r-YTXYYRvTu7bNz3gw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -6912,7 +6879,19 @@
   "v": 3,
   "blur": 0.391
  },
+ "https://www.bing.com/th?id=ONUT.QMAtfj6cWAIw78S-tPk5aA&pid=News&w=640": {
+  "w": 640,
+  "h": 363,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.V9oUOErfpMDYxDF0Sjo6Hg&pid=News&w=800": {
+  "w": 700,
+  "h": 700,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.WvRSVGWnczRTfP44khCNog&pid=News&w=800": {
   "w": 700,
   "h": 700,
   "target": 720,
@@ -6967,12 +6946,6 @@
  "https://www.bing.com/th?id=ONUT.Z69zFYxxEHpPjgo4yiUpQg&pid=News&w=900": {
   "w": 525,
   "h": 700,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.b9ZyMAcn2gUy1ktY8P8ZrQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
   "target": 720,
   "v": 3
  },
