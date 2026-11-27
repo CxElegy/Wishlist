@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-27T07:33:38+00:00",
+ "checked": "2026-11-27T08:29:58+00:00",
  "fired": {
   "at": "2026-11-27T07:33:38+00:00",
   "results": {
@@ -85,81 +85,63 @@
     "sig": "76d7ce927535"
    },
    "items": [
-    "Astrae Oratio",
     "FROM",
-    "GTA 6",
-    "ILLIT",
     "MMORPG 新作",
     "Vaundy",
     "dota2",
     "gelato pique",
-    "lib:F1",
     "lib:King Gnu",
     "lib:Mrs. GREEN APPLE",
+    "lib:スプラトゥーン3",
     "lib:ゼルダの伝説",
     "lib:原神",
     "lib:呪術廻戦",
     "lib:葬送のフリーレン",
     "lib:鬼滅の刃",
-    "あつ森",
     "ぐでたま",
-    "チェーンソーマン",
-    "三星手机",
-    "周杰伦",
     "哈利波特剧集",
     "星巴克马克杯",
-    "滑雪",
-    "漫威电影",
     "绝区零"
    ],
-   "last_batch": "2026-11-27T04:46:23+00:00",
+   "last_batch": "2026-11-27T07:50:20+00:00",
    "last_error": {
     "at": "2026-11-26T06:40:55+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 409,
+   "prog": 472,
    "prog_day": "2026-11-27",
    "ripe": [
-    "Astrae Oratio",
-    "GTA 6",
-    "ILLIT",
-    "あつ森",
-    "チェーンソーマン",
-    "三星手机",
-    "周杰伦",
-    "滑雪",
-    "漫威电影"
+    "FROM"
    ],
-   "sig": "76d7ce927535",
+   "sig": "d9a780702300",
    "token_cap": 1000000,
-   "tokens_today": 365533,
-   "why": "整理待ちの記事 172 件（26 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 428014,
+   "why": "整理待ちの記事 109 件（17 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "チェーンソーマン",
-    "dota2",
-    "哈利波特剧集",
-    "漫威电影",
-    "GTA 6",
-    "Astrae Oratio",
-    "绝区零",
-    "ぐでたま",
-    "Vaundy",
-    "周杰伦"
-   ],
-   "need": true,
-   "sig": "b87af282144e",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
    "waiting": [
     "A2O LITE",
+    "Astrae Oratio",
     "BLEACH Mirrors High",
     "FROM",
+    "GTA 6",
     "The Mandalorian",
-    "あつ森"
+    "Vaundy",
+    "dota2",
+    "あつ森",
+    "ぐでたま",
+    "チェーンソーマン",
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
+    "绝区零"
    ],
-   "why": "足りない 10 版面（Actions で Python が埋める）・失敗 5 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
@@ -340,12 +322,12 @@
    "runs": 12
   },
   "2026-11-27": {
-   "batches": 21,
-   "cr": 7482515,
-   "cw": 329974,
-   "in": 198,
-   "out": 35361,
-   "runs": 6
+   "batches": 23,
+   "cr": 9040420,
+   "cw": 386974,
+   "in": 238,
+   "out": 40802,
+   "runs": 7
   }
  }
 }
