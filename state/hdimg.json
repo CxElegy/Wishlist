@@ -6709,12 +6709,6 @@
   "target": 1280,
   "v": 3
  },
- "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/11/copy-of-collider-template-2026-11-26t130106-546.jpg?w=1600&h=900&fit=crop": {
-  "w": 1600,
-  "h": 900,
-  "target": 720,
-  "v": 3
- },
  "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2026/11/chris-evans-steve-rogers-avengers-doomsday.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -6764,6 +6758,12 @@
   "v": 3
  },
  "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/09/draco-malfoy-in-harry-potter-tv-show-season-1.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
+ "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/09/harry-potter-1.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
   "target": 1280,
