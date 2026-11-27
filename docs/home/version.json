@@ -1,32 +1,32 @@
 {
- "admin": "850626a0462c",
- "admin-ai": "0c3d63ff9eca",
+ "admin": "4d66eaab30c5",
+ "admin-ai": "c20b8c0b1f6a",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "9fe55eec"
+   "f6c299f2"
   ],
   "tokens": [
    "AI 編集のトークン",
    "a7145972"
   ]
  },
- "admin-boards": "bd615288d105",
+ "admin-boards": "79c28acafeb2",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "461390b2"
+   "94b28cf3"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "fd022761655f",
+ "admin-emblem": "6bb880f87d97",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "f957de85"
+   "6bf1a9e2"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "c68ad4b68b27",
+ "admin-now": "00710dd5ff37",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "7f5e117c"
+   "ebfba43e"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "88857651"
   ]
  },
- "admin-system": "499268c8149e",
+ "admin-system": "5c15f046aec9",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "b17fe536"
+   "5cfcc69a"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -78,7 +78,7 @@
   ]
  },
  "admin_marks": {},
- "heat": "8b384d0b0174",
+ "heat": "863703f7836a",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,14 +86,14 @@
   ],
   "movers": [
    "前週比",
-   "f9b8e8aa"
+   "9824d758"
   ],
   "ranking": [
    "ランキング",
-   "0a0044cf"
+   "2d409f69"
   ]
  },
- "index": "6da8ee3c097f",
+ "index": "9d133f2c7975",
  "index_marks": {
   "front": [
    "トップ",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "75072a4e"
+   "9973d442"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "7ead3d79"
+   "b8378625"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -185,17 +185,17 @@
   ],
   "w-e62bf5cd": [
    "哈利波特剧集",
-   "2d2f2d63"
+   "1dd531fa"
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "cb5b21f6"
+   "ad0e4dcb"
   ],
   "w-f303ad09": [
    "绝区零",
    "71b1045f"
   ]
  },
- "updated": "11.28 08:00",
+ "updated": "11.28 08:07",
  "wishlist": "4839aa10ed00"
 }

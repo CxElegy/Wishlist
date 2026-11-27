@@ -4713,6 +4713,12 @@
   "target": 720,
   "v": 3
  },
+ "https://news.walkerplus.com/article/1304828/15600677_615.jpg": {
+  "w": 615,
+  "h": 410,
+  "target": 720,
+  "v": 3
+ },
  "https://news.walkerplus.com/article/139337/781089_615.jpg": {
   "w": 615,
   "h": 331,
@@ -7413,12 +7419,6 @@
   "v": 3,
   "blur": 0.391
  },
- "https://www.bing.com/th?id=ONUT.OJ_ejkoLshFfbgOtdOeDJA&pid=News&w=1200": {
-  "w": 700,
-  "h": 367,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.Q6x_Uv8OtNRn4vbytr7PzA&pid=News&w=708": {
   "w": 700,
   "h": 492,
@@ -8161,6 +8161,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.comingsoon.net/wp-content/uploads/sites/3/2026/11/13_d1b948.jpg?resize=1200,630": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
  "https://www.dailysunny.com/wp-content/uploads/2026/11/20261008Holiday_shoot_Tryer027-1.jpg": {
   "w": 1200,
   "h": 800,
@@ -8415,6 +8421,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.376
+ },
+ "https://www.sportsworldi.com/content/image/2026/11/26/20261126515159.jpg": {
+  "w": 1200,
+  "h": 900,
+  "target": 720,
+  "v": 3
  },
  "https://www.superherohype.com/wp-content/uploads/sites/4/2026/09/Untitled-design-2026-09-21T171424.351.jpg?resize=1200,630": {
   "w": 1200,

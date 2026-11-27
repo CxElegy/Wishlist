@@ -132,7 +132,9 @@
     1,
     3,
     11,
-    13
+    13,
+    15,
+    16
    ],
    "image": "https://www.androidauthority.com/wp-content/uploads/2026/05/Samsung-Galaxy-S26-Ultra-camera-closeup-scaled.jpg"
   },
@@ -170,7 +172,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    8
+    8,
+    14
    ]
   },
   {
@@ -250,7 +253,9 @@
    "weight": "lead",
    "refs": [
     1,
-    2
+    2,
+    5,
+    7
    ],
    "image": "https://image.bastillepost.com/640x/wp-content/uploads/hongkong/2026/11/20261127_EN_illit-FB_source-web_.jpg"
   },
@@ -262,25 +267,35 @@
    "refs": [
     4
    ]
+  },
+  {
+   "headline": "아일릿 ‘잇츠 미’, 日 플래티넘 인증…올해 해외 가수 곡 중 유일",
+   "highlight": "日 플래티넘 인증",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
   }
  ],
  "_covered": {
   "漫威电影": 73,
   "GTA 6": 52,
-  "三星手机": 13,
+  "三星手机": 16,
   "周杰伦": 10,
-  "ILLIT": 4,
+  "ILLIT": 7,
   "MMORPG 新作": 4,
   "The Mandalorian": 1,
   "A2O LITE": 4,
   "滑雪": 6,
-  "哈利波特剧集": 6,
+  "哈利波特剧集": 9,
   "dota2": 4,
   "あつ森": 4,
   "BLEACH Mirrors High": 2,
   "绝区零": 2,
   "チェーンソーマン": 1,
-  "星巴克马克杯": 1
+  "星巴克马克杯": 1,
+  "gelato pique": 3
  },
  "MMORPG 新作": [
   {
@@ -407,12 +422,12 @@
    ]
   },
   {
-   "headline": "The original Dumbledore's son has a blunt verdict on HBO's Harry Potter",
-   "highlight": "",
+   "headline": "HBO’s Harry Potter TV Show Has a Wild 10-Year Plan for 1 Iconic Book Location",
+   "highlight": "10-Year Plan",
    "blurb": "",
    "weight": "normal",
    "refs": [
-    2
+    7
    ]
   }
  ],
@@ -485,6 +500,35 @@
     "place": "中国"
    },
    "image": "https://assets.juksy.com/files/articles/155950/6b098b4599079.jpg"
+  }
+ ],
+ "gelato pique": [
+  {
+   "headline": "ジェラート ピケ×ポケモン、コラボ第3弾 ピッピ＆マリルなどが新登場",
+   "highlight": "コラボ第3弾",
+   "blurb": "ピッピ＆マリルなどが新登場するジェラート ピケ×ポケモンのコラボ第3弾。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "ジェラピケ×セサミストリートのコラボアイテム新作が発売！本田翼の着こなしがかわいすぎるルームウェアなど全67アイテム",
+   "highlight": "全67アイテム",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "ジェラート ピケ カフェに「スヌーピー」のクレープが登場！ジェラピケのルームウェア着た限定アート雑貨も",
+   "highlight": "「スヌーピー」のクレープ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
   }
  ]
 }
