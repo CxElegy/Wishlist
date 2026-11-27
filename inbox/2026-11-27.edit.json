@@ -68,10 +68,20 @@
  ],
  "GTA 6": [
   {
+   "headline": "Grand Theft Auto VI Becomes Biggest Launch Ever, With 30 Million Players and $3.79 Billion Sales",
+   "highlight": "30 Million Players and $3.79 Billion",
+   "blurb": "Grand Theft Auto VI has become the biggest launch ever, with 30 million players and $3.79 billion in sales, according to a comparison of five outlets.",
+   "weight": "lead",
+   "refs": [
+    50,
+    54
+   ]
+  },
+  {
    "headline": "《GTA6》PC盜版移植代碼遭Take-Two重拳下架 GitHub連帶刪除3007組衍生複製專案",
    "highlight": "GitHub連帶刪除3007組",
-   "blurb": "《GTA6》完整檔案傳遭外流，玩家搶做PC盜版移植；Take-Two發DMCA通知，GitHub下架3,007個儲存庫。",
-   "weight": "lead",
+   "blurb": "",
+   "weight": "normal",
    "refs": [
     1,
     13,
@@ -110,16 +120,8 @@
    "refs": [
     46,
     45,
-    42
-   ]
-  },
-  {
-   "headline": "Why GTA VI’s version of Florida feels so real",
-   "highlight": "",
-   "blurb": "",
-   "weight": "normal",
-   "refs": [
-    38
+    42,
+    53
    ]
   }
  ],
@@ -211,7 +213,7 @@
  ],
  "_covered": {
   "漫威电影": 89,
-  "GTA 6": 49,
+  "GTA 6": 67,
   "三星手机": 13,
   "周杰伦": 9,
   "Astrae Oratio": 3,
