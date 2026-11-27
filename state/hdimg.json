@@ -161,6 +161,12 @@
   "target": 720,
   "v": 3
  },
+ "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6b06eea4f5172560ea312ac7/1795707054117/Kevin+Feige+Confirms+Battleworld+for+AVENGERS-+SECRET+WARS+and+Tells+Fans+Where+to+Find+Spoilers.jpg?format=1500w": {
+  "w": 1920,
+  "h": 1080,
+  "target": 720,
+  "v": 3
+ },
  "http://tu.duoduocdn.com/uploads/day_220926/m_63314fc54ec6e.jpg": {
   "w": 480,
   "h": 480,
@@ -583,6 +589,57 @@
    0.164,
    0.334
   ]
+ },
+ "http://wx3.sinaimg.cn/middle/008eZAxIly1ijg1s316o7j30y10k0wlx.jpg": {
+  "w": 1225,
+  "h": 720,
+  "target": 720,
+  "v": 3,
+  "local": "pics/7fb3517c2374f6df.webp",
+  "out": [
+   1225,
+   720
+  ],
+  "why": "防盗链",
+  "ref": true,
+  "m": [
+   [
+    6,
+    11,
+    11,
+    5,
+    9,
+    11,
+    8,
+    3,
+    5,
+    11,
+    9,
+    9
+   ],
+   [
+    3,
+    19,
+    13,
+    12,
+    7,
+    8,
+    7,
+    7,
+    7,
+    7,
+    5,
+    3
+   ]
+  ],
+  "c": "#d2d5d2",
+  "k": [
+   0.132,
+   0.067,
+   0.581,
+   0.847
+  ],
+  "p": null
  },
  "http://wx4.sinaimg.cn/middle/0067sxldgy1ij5a9htiozj30j60nvtcx.jpg": {
   "w": 690,
@@ -1682,6 +1739,12 @@
   "target": 720,
   "v": 3
  },
+ "https://cdn.theplaylist.net/wp-content/uploads/2026/11/26090217/SHANG-CHI-2_UPDATE_DAVE-CALLAHAM_SIMU-LIU_AVENGERS-DOOMSDAY_.jpg": {
+  "w": 1500,
+  "h": 896,
+  "target": 720,
+  "v": 3
+ },
  "https://cdn.upmedia.mg/upfile/img/2026/1120/202611201248136537.webp": {
   "w": 1264,
   "h": 848,
@@ -2061,12 +2124,6 @@
   "v": 3
  },
  "https://escharts.com/metaImage/tournaments/epl-championship-season-1?v=1795141706": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
-  "v": 3
- },
- "https://escharts.com/metaImage/tournaments/esports-nations-cup-2026-europe-west-qualifier-dota2-2?v=1795729309": {
   "w": 1200,
   "h": 630,
   "target": 720,
@@ -6203,6 +6260,12 @@
   "target": 720,
   "v": 3
  },
+ "https://sm.ign.com/t/ign_in/news/s/spider-man/spider-man-brand-new-day-rerelease-includes-a-scene-cut-from_846f.1200.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://sm.ign.com/t/ign_nordic/feature/i/ive-played/ive-played-gta-6-for-110-hours-here-are-the-weirdest-things_4488.1200.jpg": {
   "w": 1200,
   "h": 675,
@@ -7085,12 +7148,6 @@
   "blur": 0.401
  },
  "https://www.bing.com/th?id=ONUT.5voEw_8l02b_jer_GqYMwQ&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.6ZQ5hCPYiKuLMQdkbx_JOQ&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -8170,8 +8227,58 @@
  "https://www.cbci.co.kr/news/thumbnail/202611/631423_434204_349_v150.jpg": {
   "w": 300,
   "h": 527,
-  "target": 720,
-  "v": 3
+  "target": 1280,
+  "v": 3,
+  "blur": 0.488,
+  "local": "pics/17d69e72c35f8283.webp",
+  "out": [
+   729,
+   1280
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    3,
+    16,
+    14,
+    4,
+    4,
+    6,
+    6,
+    14,
+    8,
+    14,
+    8,
+    4
+   ],
+   [
+    9,
+    7,
+    8,
+    24,
+    4,
+    5,
+    5,
+    15,
+    19,
+    3,
+    1,
+    0
+   ]
+  ],
+  "c": "#2e2021",
+  "k": [
+   0.244,
+   0.054,
+   0.687,
+   0.177
+  ],
+  "p": [
+   0.0,
+   0.217,
+   1.0,
+   0.837
+  ]
  },
  "https://www.chiba-tv.com/cache/images/news/56/56/3cea7e223ffadc75e6dfbaed8dc60f5269925656.1000x600.none.png": {
   "w": 1000,
