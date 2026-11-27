@@ -5,6 +5,12 @@
   "target": 720,
   "v": 3
  },
+ "http://n.sinaimg.cn/sinakd/sni/726/w690h836/20261117/389b-939fbf983c2bdeb35eea80c9b86d3690.jpg": {
+  "w": 690,
+  "h": 836,
+  "target": 1280,
+  "v": 3
+ },
  "http://n.sinaimg.cn/sinakd20261121ac/527/w480h847/20261121/12f6-b601b96312763218391dfd5459522875.jpg": {
   "w": 480,
   "h": 847,
@@ -149,10 +155,22 @@
   "target": 1280,
   "v": 3
  },
+ "http://n.sinaimg.cn/sinakd20261126ac/320/w480h640/20261126/239a-777ec902aab9dd131fbc9094d32022b2.jpg": {
+  "w": 480,
+  "h": 640,
+  "target": 720,
+  "v": 3
+ },
  "http://n.sinaimg.cn/sinakd20261126ac/40/w480h360/20261126/a234-df66933bd99b64ae14921441625b25a7.jpg": {
   "w": 480,
   "h": 360,
   "target": 720,
+  "v": 3
+ },
+ "http://n.sinaimg.cn/sinakd20261126ac/533/w480h853/20261126/4492-349c2d266697b523b05388614666de90.jpg": {
+  "w": 480,
+  "h": 853,
+  "target": 1280,
   "v": 3
  },
  "http://n.sinaimg.cn/sinakd20261126ac/534/w480h854/20261126/0773-211c67410fa8f174606f1838ecbce4fe.jpg": {
@@ -951,12 +969,6 @@
   "target": 1280,
   "v": 3
  },
- "https://assets-prd.ignimgs.com/2026/11/27/doom-1795796509604.png?width=1280&format=jpg&auto=webp&quality=80": {
-  "w": 997,
-  "h": 558,
-  "target": 1280,
-  "v": 3
- },
  "https://assets.hldycdn.com/b203cda0-1eab-4304-8df8-85af6e1e8abc.jpeg": {
   "w": 1800,
   "h": 1350,
@@ -1637,6 +1649,12 @@
  "https://cdn.upmedia.mg/upfile/img/2026/1126/202611261256355726.webp": {
   "w": 1200,
   "h": 800,
+  "target": 1280,
+  "v": 3
+ },
+ "https://cdn.wccftech.com/wp-content/uploads/2026/11/Grand-Theft-Auto-VI-Unlocked-Framerate-Mod-1920x1080.jpg": {
+  "w": 1920,
+  "h": 1080,
   "target": 1280,
   "v": 3
  },
@@ -2406,6 +2424,57 @@
   "target": 1280,
   "v": 3
  },
+ "https://image.bastillepost.com/640x/wp-content/uploads/hongkong/2026/11/20261127_EN_illit-FB_source-web_.jpg": {
+  "w": 640,
+  "h": 335,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.554,
+  "local": "pics/8d603d6173d4a2b9.webp",
+  "out": [
+   1280,
+   670
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    2,
+    7,
+    7,
+    7,
+    8,
+    4,
+    2,
+    4,
+    22,
+    22,
+    13,
+    1
+   ],
+   [
+    1,
+    1,
+    13,
+    18,
+    18,
+    15,
+    15,
+    4,
+    5,
+    4,
+    4,
+    3
+   ]
+  ],
+  "c": "#b3a39d",
+  "k": null,
+  "p": [
+   0.063,
+   0.031,
+   0.963,
+   1.0
+  ]
+ },
  "https://image.blocktempo.com/2026/11/pet-the-cat-bt16x9.jpg": {
   "w": 1910,
   "h": 1074,
@@ -2713,6 +2782,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://images.macrumors.com/t/AhU9icbL2Ue-nq06g5CShE4zyy0=/3840x/article-new/2026/11/grand-theft-auto-iv.jpg": {
+  "w": 3840,
+  "h": 2160,
+  "target": 720,
+  "v": 3
+ },
  "https://images.martincid.com/2026/11/paapa-essiedu.jpg?f=orig": {
   "w": 1280,
   "h": 853,
@@ -2981,6 +3056,24 @@
   "target": 1280,
   "v": 3
  },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2imOar.img": {
+  "w": 1280,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2ind2n.img": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
+ "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2inlF7.img": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2hU8TF.img": {
   "w": 1920,
   "h": 1023,
@@ -3044,6 +3137,12 @@
   "c": "#88807e",
   "k": null,
   "p": null
+ },
+ "https://img.biggo.com/GdxtIBHnNRg4UXqKd0y--IwRSBrBMUQQSP7B8e-tyPg/fit/1200/0/sm/0/aHR0cHM6Ly9pbWcuYmdvLm9uZS9uZXdzLWltYWdlL2FpX2dlbmVyYXRlZC8yMDI2LTExLzljY2UyMGZiLTEwMjAtNDQ1OC04YWU5LTdkZDg1MTAxNjVlNF8xNzk1Nzk3NTU0X2RlZmF1bHQuanBn.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
  },
  "https://img.biggo.com/TgeuKrgvszmTqhu2tbtVI2VCWGSrUGfIa7pDmJiSpQg/fit/1200/0/sm/0/aHR0cHM6Ly9pbWcuYmdvLm9uZS9uZXdzLWltYWdlL2FpX2dlbmVyYXRlZC8yMDI2LTExLzdkNzkzYjkzLTc1NWYtNGVmNS04MTdhLTcwZTAyYjhjMDE5OV8xNzk1NzQ5MDQ2X2RlZmF1bHQuanBn.jpg": {
   "w": 1200,
@@ -5576,6 +5675,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://root-nation.com/wp-content/uploads/2026/08/gta-vi-1.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 720,
+  "v": 3
+ },
  "https://root-nation.com/wp-content/uploads/2026/11/new-one-ui-9.5-leaks-show-samsungs-vision-for-the-galaxy-s27-series.jpg": {
   "w": 1200,
   "h": 675,
@@ -6247,6 +6352,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://www.3elife.net/Uploads/Article/images/202611/26/1728467488381.jpg": {
+  "w": 600,
+  "h": 455,
+  "target": 720,
+  "v": 3
+ },
  "https://www.4gamer.net/games/579/G057943/20261120052/SS/001.jpg": {
   "w": 1920,
   "h": 1080,
@@ -6256,6 +6367,12 @@
  "https://www.4gamer.net/games/579/G057943/20261124047/SS/006.jpg": {
   "w": 1920,
   "h": 1081,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.androidauthority.com/wp-content/uploads/2026/05/Samsung-Galaxy-S26-Ultra-camera-closeup-scaled.jpg": {
+  "w": 2560,
+  "h": 1440,
   "target": 1280,
   "v": 3
  },
@@ -6450,6 +6567,12 @@
   "w": 1600,
   "h": 899,
   "target": 1280,
+  "v": 3
+ },
+ "https://www.billboard-japan.com/common/sys/img/news/00000167/167862/image.jpeg": {
+  "w": 999,
+  "h": 999,
+  "target": 720,
   "v": 3
  },
  "https://www.billboard.com/wp-content/uploads/2026/11/illit.jpg?w=1024": {
@@ -6852,6 +6975,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.LUIgV8oe_eTZA-Nh2nxnTg&pid=News&w=1200": {
+  "w": 700,
+  "h": 394,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.N7fw1dA9xM_la0pD1pmieQ&pid=News&w=1200": {
   "w": 700,
   "h": 525,
@@ -6932,12 +7061,6 @@
  "https://www.bing.com/th?id=ONUT.Z69zFYxxEHpPjgo4yiUpQg&pid=News&w=900": {
   "w": 525,
   "h": 700,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.aB4ovbJtidQ32vVtEDDh8w&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
   "target": 720,
   "v": 3
  },
@@ -7041,6 +7164,57 @@
    0.374,
    0.716,
    0.741
+  ]
+ },
+ "https://www.bing.com/th?id=ONUT.crFJIxIdAQOvBnTtsHo_Fw&pid=News&w=997": {
+  "w": 700,
+  "h": 391,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.527,
+  "local": "pics/50906ace480ed692.webp",
+  "out": [
+   1280,
+   715
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    2,
+    9,
+    8,
+    7,
+    14,
+    18,
+    9,
+    10,
+    6,
+    5,
+    10,
+    1
+   ],
+   [
+    8,
+    6,
+    7,
+    8,
+    8,
+    8,
+    18,
+    12,
+    6,
+    3,
+    8,
+    8
+   ]
+  ],
+  "c": "#5b5148",
+  "k": null,
+  "p": [
+   0.354,
+   0.236,
+   0.522,
+   0.644
   ]
  },
  "https://www.bing.com/th?id=ONUT.d3BmJJkvTBtX746T15WOIw&pid=News&w=820": {
@@ -7650,6 +7824,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.geeky-gadgets.com/wp-content/uploads/2026/11/samsung-galaxy-s27-ai-shorts.jpg": {
+  "w": 1278,
+  "h": 720,
+  "target": 720,
+  "v": 3
+ },
  "https://www.gizmochina.com/wp-content/uploads/2026/11/galaxy-s27-price-hike-2.webp": {
   "w": 2560,
   "h": 1441,
@@ -7671,6 +7851,12 @@
  "https://www.highonfilms.com/wp-content/uploads/2026/11/From-Netflix-Binge-watching.jpg": {
   "w": 1800,
   "h": 1350,
+  "target": 1280,
+  "v": 3
+ },
+ "https://www.hollywoodreporter.com/wp-content/uploads/2026/10/FotoJet-2026-10-21T151438.658.jpg?w=1440&h=810&crop=1": {
+  "w": 1440,
+  "h": 810,
   "target": 1280,
   "v": 3
  },
@@ -7702,6 +7888,12 @@
  "https://www.lanacion.com.ar/resizer/v2/la-oficinas-de-rockstar-north-en-edimburgo-el-dia-6H2XLSKT5FBP7OLF44NGDHUSJE.jpg?auth=e2a3a72a51066a2c6ebf2d7cf8d20efc58cd23703a7befb5501ff193b921b127&width=1200&height=800&quality=70&smart=true": {
   "w": 1200,
   "h": 800,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.livemint.com/lm-img/img/2026/11/27/600x338/Avengers_Doomsday_infinity_vision_1795799416698_oyj0_1795799416823_FsPC_5184e7d3-1b8d-4e37-9e1d-4ab13437ac32_pg7j.png": {
+  "w": 600,
+  "h": 338,
   "target": 720,
   "v": 3
  },

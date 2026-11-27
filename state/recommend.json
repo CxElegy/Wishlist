@@ -72,7 +72,7 @@
   "https://www.msn.com/en-us/gaming/rpg/first-public-pc-demo-revealed-astrae-oratio-agf-booth-info/ar-AA2ikoiS": "https://www.bing.com/th?id=ONUT.Q6x_Uv8OtNRn4vbytr7PzA&pid=News&w=708",
   "https://www.msn.com/en-us/news/other/cat-owners-can-try-tofu-litter-for-30-off-this-black-friday/ar-AA2imHZD": "https://www.bing.com/th?id=ONUT.xUjZn3jRf9Ye3iC3uJjuSw&pid=News&w=1200",
   "https://www.msn.com/en-us/news/other/why-hbos-harry-potter-remake-is-facing-criticism-over-its-cinematography/vi-AA2in0mv": "https://www.bing.com/th?id=ONUT.iZzhyb_k4Nsc2vcZ4quuIA&pid=News&w=1005",
-  "https://www.msn.com/en-us/technology/hardware-and-devices/finally-some-promising-galaxy-s27-ultra-news/ar-AA2inAuw": "https://www.bing.com/th?id=ONUT.aB4ovbJtidQ32vVtEDDh8w&pid=News&w=1200",
+  "https://www.msn.com/ko-kr/%EA%B8%B0%EC%88%A0/%EC%86%8C%EB%B9%84%EC%9E%90-%EC%A0%84%EC%9E%90-%EA%B8%B0%EA%B8%B0/%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%B4-%EC%9B%83%EA%B8%B0%EA%B2%8C-%EB%B0%94%EB%80%90%EA%B2%83%EC%9D%B4-%EC%95%84%EB%8B%88%EB%8B%A4-s27-%EC%9A%B8%ED%8A%B8%EB%9D%BC-%EC%B9%B4%EB%A9%94%EB%9D%BC-%EC%88%A8%EC%9D%80%EB%B0%98%EC%A0%84-3%EA%B0%80%EC%A7%80/ar-AA2ilU7E": "https://www.bing.com/th?id=ONUT.LUIgV8oe_eTZA-Nh2nxnTg&pid=News&w=1200",
   "https://www.pocketgamer.com/weve-gacha-covered/november-27th-2026/": "https://www.bing.com/th?id=ONUT.d3BmJJkvTBtX746T15WOIw&pid=News&w=820",
   "https://www.purexbox.com/news/2026/04/open-world-rpg-the-blood-of-dawnwalker-gets-september-2026-release-date-for-xbox-series-xs": "https://images.purexbox.com/d57e4aaafc1fd/1280x720.jpg",
   "https://www.sankei.com/pressrelease/prtimes/FLOTZETEZ5PYJAUPIC5MI2HZCU/": "https://www.bing.com/th?id=ONUT.YFWtdaUas9XKvLOvv2Dgrg&pid=News&w=1200",
@@ -1042,39 +1042,6 @@
   },
   {
    "batch": 1,
-   "because": "三星手机",
-   "date": "2026-11-27",
-   "hits": [
-    "三星 Galaxy"
-   ],
-   "image": "https://www.bing.com/th?id=ONUT.aB4ovbJtidQ32vVtEDDh8w&pid=News&w=1200",
-   "kind": "board",
-   "liked": "갤럭시S27 프로·울트라, 최신 M16 OLED에 삼성 최초 DC 디밍까지 적용 전망",
-   "score": 8,
-   "source": "PhoneArena on MSN",
-   "taste": [
-    [
-     "galaxy",
-     7
-    ],
-    [
-     "三星 Galaxy",
-     7
-    ],
-    [
-     "作品:三星手机",
-     7
-    ]
-   ],
-   "title": "Finally, some promising Galaxy S27 Ultra news",
-   "url": "https://www.msn.com/en-us/technology/hardware-and-devices/finally-some-promising-galaxy-s27-ultra-news/ar-AA2inAuw",
-   "words": [
-    "galaxy"
-   ],
-   "work": "三星手机"
-  },
-  {
-   "batch": 1,
    "because": "チェーンソーマン",
    "date": "2026-11-27",
    "hits": [],
@@ -1095,7 +1062,7 @@
    "work": "チェーンソーマン"
   },
   {
-   "batch": 2,
+   "batch": 1,
    "because": "GTA 6",
    "date": "2026-11-27",
    "hits": [],
@@ -1198,6 +1165,27 @@
    "url": "https://www.pocketgamer.com/weve-gacha-covered/november-27th-2026/",
    "words": [],
    "work": "绝区零"
+  },
+  {
+   "batch": 2,
+   "because": "三星手机",
+   "date": "2026-11-27",
+   "hits": [],
+   "image": "https://www.bing.com/th?id=ONUT.LUIgV8oe_eTZA-Nh2nxnTg&pid=News&w=1200",
+   "kind": "board",
+   "liked": "갤럭시S27 프로·울트라, 최신 M16 OLED에 삼성 최초 DC 디밍까지 적용 전망",
+   "score": 8,
+   "source": "베타뉴스 on MSN",
+   "taste": [
+    [
+     "作品:三星手机",
+     7
+    ]
+   ],
+   "title": "디자인이 웃기게 바뀐것이 아니다... S27 울트라 카메라 숨은반전 3가지",
+   "url": "https://www.msn.com/ko-kr/%EA%B8%B0%EC%88%A0/%EC%86%8C%EB%B9%84%EC%9E%90-%EC%A0%84%EC%9E%90-%EA%B8%B0%EA%B8%B0/%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%B4-%EC%9B%83%EA%B8%B0%EA%B2%8C-%EB%B0%94%EB%80%90%EA%B2%83%EC%9D%B4-%EC%95%84%EB%8B%88%EB%8B%A4-s27-%EC%9A%B8%ED%8A%B8%EB%9D%BC-%EC%B9%B4%EB%A9%94%EB%9D%BC-%EC%88%A8%EC%9D%80%EB%B0%98%EC%A0%84-3%EA%B0%80%EC%A7%80/ar-AA2ilU7E",
+   "words": [],
+   "work": "三星手机"
   },
   {
    "batch": 3,
@@ -2262,11 +2250,11 @@
    8
   ],
   [
-   "三星 Galaxy",
+   "作品:三星手机",
    7
   ],
   [
-   "作品:三星手机",
+   "三星 Galaxy",
    7
   ],
   [
