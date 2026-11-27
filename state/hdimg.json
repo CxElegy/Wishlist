@@ -1043,12 +1043,6 @@
   "target": 720,
   "v": 3
  },
- "https://assets.juksy.com/files/articles/155950/6b098b4599079.jpg": {
-  "w": 1200,
-  "h": 900,
-  "target": 1280,
-  "v": 3
- },
  "https://assets.st-note.com/production/uploads/images/336983412/rectangle_large_type_2_6ab3f3f2b8f17348b881bc944d8c523f.jpeg?fit=bounds&quality=85&width=1280": {
   "w": 1280,
   "h": 670,
@@ -2050,12 +2044,6 @@
   "target": 720,
   "v": 3
  },
- "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/madarao.jpg": {
-  "w": 1600,
-  "h": 900,
-  "target": 720,
-  "v": 3
- },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/rhythm-japan-summit-hakuba-store-expansion-2026.jpg": {
   "w": 1962,
   "h": 1308,
@@ -2424,12 +2412,6 @@
   "v": 3
  },
  "https://i2-prod.birminghammail.co.uk/incoming/article34957733.ece/ALTERNATES/s1200/0_GettyImages-2206898952.jpg": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
-  "v": 3
- },
- "https://i2-prod.bristolpost.co.uk/incoming/article11231091.ece/ALTERNATES/s1200/1_Jason_and_Lucia_20.jpg": {
   "w": 1200,
   "h": 630,
   "target": 720,
@@ -6309,6 +6291,12 @@
   "target": 720,
   "v": 3
  },
+ "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/11/thor-steve-rogers-doomsday.jpeg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
  "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/09/draco-malfoy-in-harry-potter-tv-show-season-1.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -6908,12 +6896,6 @@
   "v": 3,
   "blur": 0.401
  },
- "https://www.bing.com/th?id=ONUT.7iKLFzotTkBjey5jwsMKWQ&pid=News&w=700": {
-  "w": 700,
-  "h": 366,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.889u-8VWT14BKF74jIsDhw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -7211,6 +7193,12 @@
   "target": 1280,
   "v": 3,
   "blur": 0.391
+ },
+ "https://www.bing.com/th?id=ONUT.OJ_ejkoLshFfbgOtdOeDJA&pid=News&w=1200": {
+  "w": 700,
+  "h": 367,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.Q6x_Uv8OtNRn4vbytr7PzA&pid=News&w=708": {
   "w": 700,
@@ -7550,6 +7538,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.mfFXoQIPx2zuuhMMvBQ_mw&pid=News&w=1200": {
+  "w": 700,
+  "h": 510,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.qWiATvEw15puPVYDxWtgUA&pid=News&w=1024": {
   "w": 700,
   "h": 525,
@@ -7813,6 +7807,12 @@
   "p": null
  },
  "https://www.bing.com/th?id=ONUT.xUjZn3jRf9Ye3iC3uJjuSw&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ORMS.c6b33548541af742cd1f7acf5f05fc01&pid=News&w=700": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -8142,12 +8142,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.livemint.com/lm-img/img/2026/11/27/600x338/Avengers_Doomsday_infinity_vision_1795799416698_oyj0_1795799416823_FsPC_5184e7d3-1b8d-4e37-9e1d-4ab13437ac32_pg7j.png": {
-  "w": 600,
-  "h": 338,
-  "target": 720,
-  "v": 3
- },
  "https://www.michigandaily.com/wp-content/uploads/2026/11/The-rise-of-rookie-girl-group-A2O-LITE.jpg": {
   "w": 2400,
   "h": 1600,
@@ -8366,12 +8360,6 @@
   "w": 1260,
   "h": 400,
   "target": 1280,
-  "v": 3
- },
- "https://zalebs.com/wp-content/uploads/2026/11/where-is-the-buckingham-jubilee-in-gta-6-guides-point-to-starfish-island.webp": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
   "v": 3
  }
 }
