@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-27T21:32:09+00:00",
+ "changed": true,
+ "checked": "2026-11-27T22:18:07+00:00",
  "fired": {
   "at": "2026-11-27T21:32:09+00:00",
   "results": {
@@ -89,7 +89,6 @@
    },
    "items": [
     "A2O LITE",
-    "BLEACH Mirrors High",
     "ILLIT",
     "MMORPG 新作",
     "The Mandalorian",
@@ -97,33 +96,25 @@
     "gelato pique",
     "lib:King Gnu",
     "lib:Mrs. GREEN APPLE",
+    "lib:iPhone",
     "lib:スプラトゥーン3",
     "lib:ゼルダの伝説",
     "lib:原神",
-    "lib:呪術廻戦",
-    "lib:葬送のフリーレン",
+    "lib:観葉植物",
     "lib:鬼滅の刃",
-    "チェーンソーマン",
     "周杰伦",
-    "星巴克马克杯",
-    "滑雪",
-    "绝区零"
+    "滑雪"
    ],
-   "last_batch": "2026-11-27T20:43:01+00:00",
+   "last_batch": "2026-11-27T21:40:25+00:00",
    "last_error": {},
    "need": true,
-   "prog": 153,
+   "prog": 161,
    "prog_day": "2026-11-28",
-   "ripe": [
-    "BLEACH Mirrors High",
-    "チェーンソーマン",
-    "星巴克马克杯",
-    "绝区零"
-   ],
-   "sig": "5569e8e9da0b",
+   "ripe": [],
+   "sig": "e010ff53e6e6",
    "token_cap": 1000000,
-   "tokens_today": 179689,
-   "why": "整理待ちの記事 115 件（20 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 236996,
+   "why": "整理待ちの記事 109 件（16 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -336,12 +327,12 @@
    "runs": 12
   },
   "2026-11-28": {
-   "batches": 6,
-   "cr": 3425401,
-   "cw": 162004,
-   "in": 91,
-   "out": 17594,
-   "runs": 3
+   "batches": 8,
+   "cr": 5009152,
+   "cw": 214493,
+   "in": 135,
+   "out": 22368,
+   "runs": 4
   }
  }
 }
