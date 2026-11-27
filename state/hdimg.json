@@ -614,6 +614,57 @@
   ],
   "p": null
  },
+ "http://wx4.sinaimg.cn/middle/006ZneWLly1ijh8cdqchvj31df0mi7ry.jpg": {
+  "w": 1779,
+  "h": 810,
+  "target": 720,
+  "v": 3,
+  "local": "pics/ee83b6a225e07697.webp",
+  "out": [
+   1280,
+   583
+  ],
+  "why": "防盗链",
+  "ref": true,
+  "m": [
+   [
+    1,
+    6,
+    4,
+    5,
+    5,
+    5,
+    3,
+    37,
+    23,
+    4,
+    5,
+    3
+   ],
+   [
+    1,
+    5,
+    2,
+    15,
+    21,
+    21,
+    17,
+    6,
+    5,
+    4,
+    0,
+    2
+   ]
+  ],
+  "c": "#292927",
+  "k": [
+   0.073,
+   0.11,
+   0.994,
+   0.984
+  ],
+  "p": null
+ },
  "http://wx4.sinaimg.cn/middle/008tBTpAgy1ijdbs18snfj31ba0zg4pu.jpg": {
   "w": 1702,
   "h": 1276,
@@ -772,57 +823,6 @@
    0.846
   ]
  },
- "http://wx4.sinaimg.cn/middle/bfa06fdbgy1ijgs50goofj20gw0903yz.jpg": {
-  "w": 608,
-  "h": 324,
-  "target": 720,
-  "v": 3,
-  "local": "pics/c61105c2443251b9.webp",
-  "out": [
-   608,
-   324
-  ],
-  "why": "防盗链",
-  "ref": true,
-  "m": [
-   [
-    1,
-    11,
-    14,
-    13,
-    12,
-    13,
-    9,
-    13,
-    10,
-    4,
-    0,
-    0
-   ],
-   [
-    0,
-    8,
-    24,
-    4,
-    0,
-    13,
-    14,
-    0,
-    2,
-    23,
-    11,
-    0
-   ]
-  ],
-  "c": "#ebe9e9",
-  "k": [
-   0.074,
-   0.147,
-   0.992,
-   0.981
-  ],
-  "p": null
- },
  "https://MKnews.com.tw/wp-content/uploads/2026/11/dota-2-blast-slam-ix-playoffs-tournament-stage-lights-20261127-1024x576-1.jpg": {
   "w": 1024,
   "h": 576,
@@ -966,6 +966,12 @@
  "https://assets-prd.ignimgs.com/2026/11/23/hailee-steinfeld-kate-bishop-1795398586995.png?width=1280&format=jpg&auto=webp&quality=80": {
   "w": 1280,
   "h": 720,
+  "target": 1280,
+  "v": 3
+ },
+ "https://assets-prd.ignimgs.com/2026/11/27/doom-1795796509604.png?width=1280&format=jpg&auto=webp&quality=80": {
+  "w": 997,
+  "h": 558,
   "target": 1280,
   "v": 3
  },
@@ -1803,12 +1809,6 @@
   "w": 1200,
   "h": 675,
   "target": 720,
-  "v": 3
- },
- "https://comicbookmovie.com/images/articles/banners/avengers-doomsday-doom-unmasked-teaser-may-confirm-a-major-character-death---spoilers-ab231229.jpg": {
-  "w": 1575,
-  "h": 844,
-  "target": 1280,
   "v": 3
  },
  "https://consequence.net/wp-content/uploads/2026/10/Power-Trip.jpg": {
@@ -4404,6 +4404,13 @@
   "k": null,
   "p": null
  },
+ "https://news.walkerplus.com/article/1224658/13665354_615.jpg": {
+  "w": 615,
+  "h": 615,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.355
+ },
  "https://news.walkerplus.com/article/1287244/15147313_615.jpg": {
   "w": 615,
   "h": 456,
@@ -5942,6 +5949,13 @@
   "h": 941,
   "target": 720,
   "v": 3
+ },
+ "https://static.sanyonews.jp/image/article/size1/1/9/a/4/19a437ddf115dcddc38bac417318a495_1.jpg": {
+  "w": 512,
+  "h": 640,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.384
  },
  "https://static.sanyonews.jp/image/article/size1/4/0/9/7/4097c362f104b02fedfba25d41e912a0_1.jpg": {
   "w": 855,
@@ -7910,12 +7924,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.livemint.com/lm-img/img/2026/11/27/600x338/Avengers_Doomsday_infinity_vision_1795799416698_oyj0_1795799416823_FsPC_5184e7d3-1b8d-4e37-9e1d-4ab13437ac32_pg7j.png": {
-  "w": 600,
-  "h": 338,
-  "target": 720,
-  "v": 3
- },
  "https://www.michigandaily.com/wp-content/uploads/2026/11/The-rise-of-rookie-girl-group-A2O-LITE.jpg": {
   "w": 2400,
   "h": 1600,
@@ -7975,6 +7983,12 @@
   "w": 1200,
   "h": 630,
   "target": 720,
+  "v": 3
+ },
+ "https://www.superherohype.com/wp-content/uploads/sites/4/2026/11/Deepesh-personal-1200-_-675-2026-11-27T235530.867.png?resize=1200,630": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
   "v": 3
  },
  "https://www.superherohype.com/wp-content/uploads/sites/4/2026/11/doomsday_39dafd.jpg?resize=1200,630": {
