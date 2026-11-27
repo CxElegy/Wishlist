@@ -1,8 +1,8 @@
 {
- "changed": true,
- "checked": "2026-11-27T14:30:14+00:00",
+ "changed": false,
+ "checked": "2026-11-27T15:21:17+00:00",
  "fired": {
-  "at": "2026-11-27T13:36:34+00:00",
+  "at": "2026-11-27T15:21:17+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -70,19 +70,19 @@
    "edit": 12
   },
   "2026-11-27": {
-   "edit": 13
+   "edit": 14
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-27T13:36:34+00:00",
+    "at": "2026-11-27T15:21:17+00:00",
     "attempts": 1,
     "day": "2026-11-27",
-    "prog": 570,
-    "resp": "cse_01W4x6f8C3k6pWkoTzb1VMsz",
-    "sig": "3f986b7a3ac2"
+    "prog": 581,
+    "resp": "",
+    "sig": "a29bfe88814d"
    },
    "items": [
     "A2O LITE",
@@ -112,7 +112,7 @@
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 657,
+   "prog": 581,
    "prog_day": "2026-11-27",
    "ripe": [
     "GTA 6",
