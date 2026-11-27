@@ -1,8 +1,8 @@
 {
- "changed": false,
- "checked": "2026-11-27T20:17:51+00:00",
+ "changed": true,
+ "checked": "2026-11-27T20:31:06+00:00",
  "fired": {
-  "at": "2026-11-27T18:38:27+00:00",
+  "at": "2026-11-27T20:31:06+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -73,23 +73,30 @@
    "edit": 14
   },
   "2026-11-28": {
-   "edit": 2
+   "edit": 3
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-27T18:38:27+00:00",
+    "at": "2026-11-27T20:31:06+00:00",
     "attempts": 1,
     "day": "2026-11-28",
-    "prog": 75,
-    "resp": "cse_01W4x6f8xyx5BWPr5TpUS6fL",
-    "sig": "c98a81a9d5a2"
+    "prog": 85,
+    "resp": "",
+    "sig": "25e5c3181a3e"
    },
    "items": [
+    "A2O LITE",
     "BLEACH Mirrors High",
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "The Mandalorian",
+    "Vaundy",
     "dota2",
+    "gelato pique",
     "lib:ブラッククローバー 第2期",
     "lib:ミャクミャク",
     "lib:宮崎駿",
@@ -100,8 +107,12 @@
     "lib:貸した魔力は【リボ払い】で強制徴収",
     "あつ森",
     "チェーンソーマン",
+    "三星手机",
+    "周杰伦",
     "哈利波特剧集",
     "星巴克马克杯",
+    "滑雪",
+    "漫威电影",
     "绝区零"
    ],
    "last_batch": "2026-11-27T18:45:43+00:00",
@@ -109,35 +120,43 @@
    "need": true,
    "prog": 85,
    "prog_day": "2026-11-28",
-   "ripe": [],
-   "sig": "c3f5e4f9fcdc",
+   "ripe": [
+    "GTA 6",
+    "dota2",
+    "あつ森",
+    "三星手机",
+    "哈利波特剧集",
+    "漫威电影"
+   ],
+   "sig": "25e5c3181a3e",
    "token_cap": 1000000,
    "tokens_today": 115469,
-   "why": "整理待ちの記事 104 件（15 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 175 件（26 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
-   "waiting": [
-    "A2O LITE",
-    "Astrae Oratio",
+   "items": [
     "BLEACH Mirrors High",
-    "FROM",
-    "GTA 6",
-    "The Mandalorian",
-    "Vaundy",
     "dota2",
-    "あつ森",
-    "ぐでたま",
-    "チェーンソーマン",
-    "周杰伦",
     "哈利波特剧集",
     "漫威电影",
+    "GTA 6",
+    "あつ森",
+    "A2O LITE",
+    "The Mandalorian",
+    "Vaundy",
+    "周杰伦"
+   ],
+   "need": true,
+   "sig": "5561b48e08ec",
+   "waiting": [
+    "Astrae Oratio",
+    "FROM",
+    "ぐでたま",
+    "チェーンソーマン",
     "绝区零"
    ],
-   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "足りない 10 版面（Actions で Python が埋める）・失敗 5 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
