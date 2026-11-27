@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-27T04:44:29+00:00",
+ "checked": "2026-11-27T04:53:10+00:00",
  "fired": {
   "at": "2026-11-27T04:26:55+00:00",
   "results": {
@@ -85,63 +85,29 @@
     "sig": "4f040a056cbc"
    },
    "items": [
-    "A2O LITE",
     "Astrae Oratio",
-    "BLEACH Mirrors High",
     "FROM",
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
-    "The Mandalorian",
-    "dota2",
-    "gelato pique",
-    "lib:Ado",
-    "lib:BTS",
-    "lib:ポケットモンスター",
-    "lib:ポケモンGO",
-    "lib:ミャクミャク",
-    "lib:モンスターハンターワイルズ",
-    "lib:台風・天気",
-    "lib:宮崎駿",
+    "lib:FINAL FANTASY VII REBIRTH",
+    "lib:ドラゴンクエストモンスターズ４　枯れ木の国のビアンカ・フローラ",
+    "lib:広島旅行",
+    "lib:星野源",
+    "lib:牧野植物園",
     "あつ森",
-    "チェーンソーマン",
-    "三星手机",
-    "周杰伦",
-    "哈利波特剧集",
-    "滑雪",
-    "漫威电影",
-    "猫用品",
-    "绝区零"
+    "チェーンソーマン"
    ],
-   "last_batch": "2026-11-27T01:06:08+00:00",
+   "last_batch": "2026-11-27T04:46:23+00:00",
    "last_error": {
     "at": "2026-11-26T06:40:55+00:00",
     "text": "出刊に失敗：No module named 'requests'"
    },
    "need": true,
-   "prog": 288,
+   "prog": 409,
    "prog_day": "2026-11-27",
-   "ripe": [
-    "A2O LITE",
-    "BLEACH Mirrors High",
-    "GTA 6",
-    "ILLIT",
-    "MMORPG 新作",
-    "The Mandalorian",
-    "dota2",
-    "gelato pique",
-    "三星手机",
-    "周杰伦",
-    "哈利波特剧集",
-    "滑雪",
-    "漫威电影",
-    "猫用品",
-    "绝区零"
-   ],
-   "sig": "0a03f0d10fff",
+   "ripe": [],
+   "sig": "56497dd54514",
    "token_cap": 1000000,
-   "tokens_today": 299246,
-   "why": "整理待ちの記事 215 件（27 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 365533,
+   "why": "整理待ちの記事 55 件（9 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -346,12 +312,12 @@
    "runs": 12
   },
   "2026-11-27": {
-   "batches": 18,
-   "cr": 6326067,
-   "cw": 270157,
-   "in": 168,
-   "out": 28921,
-   "runs": 5
+   "batches": 21,
+   "cr": 7482515,
+   "cw": 329974,
+   "in": 198,
+   "out": 35361,
+   "runs": 6
   }
  }
 }
