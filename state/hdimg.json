@@ -5490,6 +5490,57 @@
   ],
   "p": null
  },
+ "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261127-00000019-isd-000-1-view.jpg?exp=10800": {
+  "w": 800,
+  "h": 450,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.363,
+  "local": "pics/2cff84cfea28a112.webp",
+  "out": [
+   800,
+   450
+  ],
+  "why": "期限付きの網址",
+  "m": [
+   [
+    8,
+    9,
+    8,
+    9,
+    10,
+    10,
+    11,
+    10,
+    4,
+    7,
+    9,
+    6
+   ],
+   [
+    4,
+    5,
+    7,
+    7,
+    8,
+    5,
+    9,
+    10,
+    12,
+    12,
+    11,
+    10
+   ]
+  ],
+  "c": "#828683",
+  "k": null,
+  "p": [
+   0.025,
+   0.126,
+   0.709,
+   0.848
+  ]
+ },
  "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261127-00000443-oric-000-3-view.jpg?exp=10800": {
   "w": 641,
   "h": 960,
@@ -5585,6 +5636,12 @@
   "w": 1280,
   "h": 720,
   "target": 720,
+  "v": 3
+ },
+ "https://p2.bahamut.com.tw/B/2KU/57/fb066bfa355de178dad82b1e4e219e15.JPG": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
   "v": 3
  },
  "https://pbs.twimg.com/media/HX-FDyLaMAE6k9t?format=jpg&name=medium": {

@@ -1,6 +1,6 @@
 {
  "date": "2026-11-27",
- "edit_sig": "80df4d04a699",
+ "edit_sig": "a2dafd2285f2",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -615,29 +615,6 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
-    {
-     "date": "2026-11-26",
-     "n": 5,
-     "source": "뉴스탭",
-     "title": "크런치롤, AGF 2026 첫 참가…‘체인소 맨’ 덴지 성우도 한국 팬 만난다",
-     "url": "https://www.newstap.co.kr/news/articleView.html?idxno=338585"
-    },
-    {
-     "date": "2026-11-23",
-     "n": 6,
-     "source": "Looper",
-     "title": "What The Cast Of Chainsaw Man Looks Like In Real Life",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFByNHBJWFRfSmFmczZUejJKb1Ruc01tX0NpczVwZEFxQnYwUjQwRm5WVVlqc19RMXNSdl9BUTdQT01EQkJaSXdGbDBJQ1I4Q2o5N2hfVFRWLXlVY0pkUWVtcDhZYVdEZWZ4TWdyNFpOX2hXdw?oc=5"
-    },
-    {
-     "date": "2026-11-27",
-     "n": 7,
-     "source": "CMoney",
-     "title": "「劇場版《鏈鋸人蕾潔篇》PLAZA」快閃店12 月西門町開幕多項主題限定商品登台- 股市爆料同學會",
-     "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE4zeUlkNjdtUFAwQWJ1UzM5U2RNTXhuOFlLeTlubkxUUG5kWkZvby0wSjlkNUt4d0NJeDdhaUFvZXpWcm12Q2hyU1lrQ0Rici1NQ1A3NzcyNDc?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -658,6 +635,16 @@
      "image": "https://fwmedia.fandomwire.com/wp-content/uploads/2026/11/26162315/chainsaw-man-beats-naruto-in-japan.jpg",
      "image_via": "og:image",
      "url": "https://fandomwire.com/chainsaw-man-officially-goes-on-a-warpath-after-beating-naruto-in-japan/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-27",
+     "headline": "「劇場版《鏈鋸人蕾潔篇》PLAZA」快閃店12 月西門町開幕多項主題限定商品登台",
+     "highlight": "12 月西門町開幕",
+     "image": "https://p2.bahamut.com.tw/B/2KU/57/fb066bfa355de178dad82b1e4e219e15.JPG",
+     "image_via": "og:image",
+     "url": "https://www.cmoney.tw/forum/article/190109155",
      "weight": "normal"
     }
    ],
@@ -726,17 +713,22 @@
    "cover": null,
    "facts": [],
    "name": "あつ森",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "『あつ森』などが2,728円、『ドラクエVIIR』『エリオットの千年物語』は3,278円に。",
      "date": "2026-11-27",
-     "n": 2,
-     "source": "Yahoo!ニュース",
-     "title": "お得に“スイッチ2ライフ”を充実！『ポケモンZ-A』『あつ森』『SQ I・II・III』が2,728円、『ドラクエVIIR』『エリオットの千年物語』は3,278円─ゲオ店舗のブラックフライデーセールを現地調査（インサイド）",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1ZQk94VTh0UmhPeWpvMHBORXc2cG9XVE1URFE0QWRjQnRhZ2NYQnRoRmRkSkhaR1ZUZFVyUVNYYTY3SjlySmhnT0VaRjdEeWRTSkF5N2VaMlFRR2JYS1VPWE1sNUtXSWNFWWVNSUdnbEFxSjdPbExRMFh1REczSEE?oc=5"
+     "headline": "お得に“スイッチ2ライフ”を充実！『ポケモンZ-A』『あつ森』『SQ I・II・III』が2,728円",
+     "highlight": "2,728円",
+     "image": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20261127-00000019-isd-000-1-view.jpg?exp=10800",
+     "image_via": "og:image",
+     "price": {
+      "now": "2,728円"
+     },
+     "url": "https://news.yahoo.co.jp/articles/dca40a33c3edb42dc3f5a4b72b546d8667cd72f8",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "あつまれ どうぶつの森",
    "theme": {
     "accent": "#9B5A22",
@@ -1043,36 +1035,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-11-27",
-     "n": 9,
-     "source": "DMKsnowboard",
-     "title": "斑尾高原スキー場に新エリア「MADARAO SNOW BASE」が12月19日オープン！全長100mのドーム付きスノーベルトを導入",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5GMWY2LWF2OWI3UmVDTG14VG1IQzNZMm0wbjFCRWxibDIxZ1R1M2ZFNnZCT1JwRnN6RE9mODhZTGZZakZNZTdGT2xBSXdSWVE3dVl5eHhuYWhaWURa?oc=5"
-    },
-    {
-     "date": "2026-11-27",
-     "n": 10,
-     "source": "PR TIMES",
-     "title": "国内で雪とアクティビティを楽しむ旅へ― ブッキング・ドットコムがおすすめする、国内スキー・スノーリゾートの宿5選をご紹介",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1xYU5VNDc5RDljNWp2azZhNFlXM3o3emhNVG5wT0RMcmktaEx6MUZvdVNpZnZIY1VaYUozeXBOUlpkdzNTcFp2cFltS25ZR0VhUVdqTU03WTlOanhoa0xGcm8yQXl4UDhUbEE?oc=5"
-    },
-    {
-     "date": "2026-11-26",
-     "n": 11,
-     "source": "PR TIMES",
-     "title": "長野県HAKUBA VALLEY【つがいけマウンテンリゾート】12月1日より「マイナ割」リフト券販売開始！",
-     "url": "https://prtimes.jp/main/html/rd/p/000000234.000031800.html"
-    },
-    {
-     "date": "2026-11-26",
-     "n": 12,
-     "source": "いこーよニュース",
-     "title": "東北在住の小学生以下はリフト無料！安比高原スキー場が12月5日オープン 45周年",
-     "url": "https://report.iko-yo.net/articles/36011"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
