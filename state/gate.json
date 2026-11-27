@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-27T01:28:00+00:00",
+ "checked": "2026-11-27T02:18:06+00:00",
  "fired": {
   "at": "2026-11-27T00:31:27+00:00",
   "results": {
@@ -106,11 +106,16 @@
    "need": true,
    "prog": 288,
    "prog_day": "2026-11-27",
-   "ripe": [],
-   "sig": "c4adadc2ea9a",
+   "ripe": [
+    "BLEACH Mirrors High",
+    "MMORPG 新作",
+    "gelato pique",
+    "猫用品"
+   ],
+   "sig": "08abe566809b",
    "token_cap": 1000000,
    "tokens_today": 299246,
-   "why": "整理待ちの記事 41 件（12 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 41 件（12 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
