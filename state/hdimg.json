@@ -161,12 +161,6 @@
   "target": 720,
   "v": 3
  },
- "http://static1.squarespace.com/static/51b3dc8ee4b051b96ceb10de/51ce6099e4b0d911b4489b79/6b06eea4f5172560ea312ac7/1795707054117/Kevin+Feige+Confirms+Battleworld+for+AVENGERS-+SECRET+WARS+and+Tells+Fans+Where+to+Find+Spoilers.jpg?format=1500w": {
-  "w": 1920,
-  "h": 1080,
-  "target": 720,
-  "v": 3
- },
  "http://tu.duoduocdn.com/uploads/day_220926/m_63314fc54ec6e.jpg": {
   "w": 480,
   "h": 480,
@@ -330,6 +324,62 @@
    0.47
   ]
  },
+ "http://wx2.sinaimg.cn/middle/002I0yDzly1ijh1ttgxt1j60k60k6gmo02.jpg": {
+  "w": 726,
+  "h": 726,
+  "target": 720,
+  "v": 3,
+  "local": "pics/44cdc0406daf2812.webp",
+  "out": [
+   726,
+   726
+  ],
+  "why": "防盗链",
+  "ref": true,
+  "m": [
+   [
+    2,
+    12,
+    18,
+    17,
+    16,
+    11,
+    3,
+    1,
+    7,
+    8,
+    2,
+    3
+   ],
+   [
+    4,
+    1,
+    12,
+    19,
+    15,
+    16,
+    9,
+    6,
+    3,
+    7,
+    6,
+    1
+   ]
+  ],
+  "c": "#bdc5d2",
+  "k": [
+   0.839,
+   0.053,
+   0.922,
+   0.148
+  ],
+  "p": [
+   0.0,
+   0.099,
+   0.607,
+   0.882
+  ]
+ },
  "http://wx2.sinaimg.cn/middle/006ZneWLly1ijg4fyolf6j30ml0hl46v.jpg": {
   "w": 813,
   "h": 633,
@@ -430,57 +480,6 @@
   ],
   "c": "#1e1e23",
   "k": null,
-  "p": null
- },
- "http://wx2.sinaimg.cn/middle/006dNg2Pgy1ijfrkvmnucj31kw1kw44t.jpg": {
-  "w": 2000,
-  "h": 2000,
-  "target": 720,
-  "v": 3,
-  "local": "pics/98f582d43d5d3f1e.webp",
-  "out": [
-   1280,
-   1280
-  ],
-  "why": "防盗链",
-  "ref": true,
-  "m": [
-   [
-    1,
-    14,
-    18,
-    17,
-    10,
-    7,
-    6,
-    3,
-    4,
-    6,
-    13,
-    1
-   ],
-   [
-    5,
-    19,
-    16,
-    12,
-    6,
-    6,
-    9,
-    1,
-    14,
-    3,
-    7,
-    1
-   ]
-  ],
-  "c": "#682029",
-  "k": [
-   0.066,
-   0.133,
-   0.891,
-   0.207
-  ],
   "p": null
  },
  "http://wx2.sinaimg.cn/middle/006kvRjAly1ij92k32xuwj31hy0u4u0x.jpg": {
@@ -681,62 +680,6 @@
   "c": "#455662",
   "k": null,
   "p": null
- },
- "http://wx4.sinaimg.cn/middle/6f5ef307gy1ijfjvmeg3kj20xc18gjxg.jpg": {
-  "w": 1200,
-  "h": 1600,
-  "target": 1280,
-  "v": 3,
-  "local": "pics/2337a68515a04f2f.webp",
-  "out": [
-   960,
-   1280
-  ],
-  "why": "防盗链",
-  "ref": true,
-  "m": [
-   [
-    3,
-    9,
-    9,
-    9,
-    9,
-    8,
-    8,
-    9,
-    11,
-    10,
-    12,
-    4
-   ],
-   [
-    2,
-    14,
-    20,
-    12,
-    7,
-    6,
-    8,
-    11,
-    5,
-    5,
-    6,
-    4
-   ]
-  ],
-  "c": "#504c51",
-  "k": [
-   0.1,
-   0.128,
-   0.917,
-   0.932
-  ],
-  "p": [
-   0.418,
-   0.187,
-   0.625,
-   0.39
-  ]
  },
  "http://wx4.sinaimg.cn/middle/6f5ef307gy1ijgkodympej20p00xcjvf.jpg": {
   "w": 900,
@@ -1739,12 +1682,6 @@
   "target": 720,
   "v": 3
  },
- "https://cdn.theplaylist.net/wp-content/uploads/2026/11/26090217/SHANG-CHI-2_UPDATE_DAVE-CALLAHAM_SIMU-LIU_AVENGERS-DOOMSDAY_.jpg": {
-  "w": 1500,
-  "h": 896,
-  "target": 720,
-  "v": 3
- },
  "https://cdn.upmedia.mg/upfile/img/2026/1120/202611201248136537.webp": {
   "w": 1264,
   "h": 848,
@@ -2075,12 +2012,6 @@
   "target": 720,
   "v": 3
  },
- "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/madarao.jpg": {
-  "w": 1600,
-  "h": 900,
-  "target": 720,
-  "v": 3
- },
  "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/rhythm-japan-summit-hakuba-store-expansion-2026.jpg": {
   "w": 1962,
   "h": 1308,
@@ -2111,6 +2042,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://dw-media.dotdotnews.com/dams/product/image/202611/27/6b096b82e4b08bfc21006d561.jpg": {
+  "w": 1200,
+  "h": 674,
+  "target": 1280,
+  "v": 3
+ },
  "https://e.usen.com/image/2e9c7a8a0dd813bf7dc85e2128be2f8de3baa981.jpg": {
   "w": 837,
   "h": 481,
@@ -2124,6 +2061,12 @@
   "v": 3
  },
  "https://escharts.com/metaImage/tournaments/epl-championship-season-1?v=1795141706": {
+  "w": 1200,
+  "h": 630,
+  "target": 720,
+  "v": 3
+ },
+ "https://escharts.com/metaImage/tournaments/esports-nations-cup-2026-europe-west-qualifier-dota2-2?v=1795729309": {
   "w": 1200,
   "h": 630,
   "target": 720,
@@ -2442,12 +2385,6 @@
   "target": 720,
   "v": 3
  },
- "https://i.17173cdn.com/gdthue/YWxqaGBf/kidhub/20261126/sQuAXbbuiklBCCi.jpg": {
-  "w": 1280,
-  "h": 720,
-  "target": 720,
-  "v": 3
- },
  "https://i.abcnewsfe.com/a/77b6f167-999d-433a-9332-93938dc147c3/MANDO1-DISNEY-AB-260513_1778708196774_hpMain_16x9.jpg?w=1600": {
   "w": 1600,
   "h": 900,
@@ -2494,6 +2431,12 @@
   "w": 1280,
   "h": 720,
   "target": 1280,
+  "v": 3
+ },
+ "https://i2.ytimg.com/vi/uzF0_Jfy4h0/hqdefault.jpg": {
+  "w": 480,
+  "h": 360,
+  "target": 720,
   "v": 3
  },
  "https://i3.ytimg.com/vi/BaLU8RQ1GEo/hqdefault.jpg": {
@@ -2791,12 +2734,6 @@
    0.189
   ],
   "p": null
- },
- "https://image.news.livedoor.com/newsimage/stf/3/1/31da1_1717_b630c9dc_050a354f.jpg": {
-  "w": 600,
-  "h": 1047,
-  "target": 720,
-  "v": 3
  },
  "https://image.news.livedoor.com/newsimage/stf/3/a/3a9e6_1682_e99a10d7_3a64e2c4.jpg": {
   "w": 1200,
@@ -3882,6 +3819,62 @@
   "k": null,
   "p": null
  },
+ "https://img1.mydrivers.com/img/20261127/cca6dc38-ce47-4a1f-a57e-58496c8cde88.jpg": {
+  "w": 600,
+  "h": 399,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.484,
+  "local": "pics/d27aa66367a39b49.webp",
+  "out": [
+   1280,
+   851
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    10,
+    10,
+    10,
+    10,
+    10,
+    9,
+    8,
+    12,
+    6,
+    8,
+    6,
+    2
+   ],
+   [
+    6,
+    10,
+    5,
+    4,
+    9,
+    12,
+    14,
+    12,
+    10,
+    8,
+    6,
+    5
+   ]
+  ],
+  "c": "#556877",
+  "k": [
+   0.695,
+   0.254,
+   0.929,
+   0.847
+  ],
+  "p": [
+   0.27,
+   0.44,
+   0.335,
+   0.594
+  ]
+ },
  "https://imgs.niusnews.com/upload/posts/posts_image3_142881_1795694877.jpg": {
   "w": 1200,
   "h": 628,
@@ -4719,6 +4712,52 @@
    0.842,
    0.616
   ],
+  "p": null
+ },
+ "https://news.walkerplus.com/article/50773/274537_615.jpg": {
+  "w": 615,
+  "h": 410,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.438,
+  "local": "pics/eed49deb722fe7c9.webp",
+  "out": [
+   1280,
+   853
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    3,
+    6,
+    13,
+    11,
+    8,
+    11,
+    16,
+    11,
+    9,
+    5,
+    4,
+    3
+   ],
+   [
+    3,
+    9,
+    10,
+    9,
+    9,
+    9,
+    11,
+    11,
+    11,
+    11,
+    5,
+    4
+   ]
+  ],
+  "c": "#966b4f",
+  "k": null,
   "p": null
  },
  "https://news.walkerplus.com/article/56484/311454_615.jpg": {
@@ -6164,12 +6203,6 @@
   "target": 720,
   "v": 3
  },
- "https://sm.ign.com/t/ign_in/news/s/spider-man/spider-man-brand-new-day-rerelease-includes-a-scene-cut-from_846f.1200.jpg": {
-  "w": 1200,
-  "h": 675,
-  "target": 720,
-  "v": 3
- },
  "https://sm.ign.com/t/ign_nordic/feature/i/ive-played/ive-played-gta-6-for-110-hours-here-are-the-weirdest-things_4488.1200.jpg": {
   "w": 1200,
   "h": 675,
@@ -6942,12 +6975,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.1JOvIHHXJRfhLEUCDeaOLw&pid=News&w=710": {
-  "w": 700,
-  "h": 525,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.2Zbyf4oTJ8KqhH9pWFjs9w&pid=News&w=650": {
   "w": 537,
   "h": 700,
@@ -6999,12 +7026,69 @@
    0.694
   ]
  },
+ "https://www.bing.com/th?id=ONUT.3kbt6yvjrIHBXY1jiHbZdw&pid=News&w=300": {
+  "w": 300,
+  "h": 200,
+  "target": 720,
+  "v": 3,
+  "blur": 0.479,
+  "local": "pics/b9820a520f738187.webp",
+  "out": [
+   720,
+   480
+  ],
+  "why": "看不清",
+  "m": [
+   [
+    1,
+    10,
+    13,
+    12,
+    8,
+    8,
+    10,
+    9,
+    7,
+    11,
+    10,
+    3
+   ],
+   [
+    6,
+    6,
+    4,
+    3,
+    5,
+    5,
+    6,
+    8,
+    15,
+    11,
+    14,
+    18
+   ]
+  ],
+  "c": "#69523c",
+  "k": [
+   0.131,
+   0.701,
+   0.325,
+   0.767
+  ],
+  "p": null
+ },
  "https://www.bing.com/th?id=ONUT.4JxiWMvoAswbIm6bJMkHCA&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 1280,
   "v": 3,
   "blur": 0.401
+ },
+ "https://www.bing.com/th?id=ONUT.5voEw_8l02b_jer_GqYMwQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 393,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.6ZQ5hCPYiKuLMQdkbx_JOQ&pid=News&w=1200": {
   "w": 700,
@@ -7330,12 +7414,6 @@
    0.607
   ]
  },
- "https://www.bing.com/th?id=ONUT.E4bcNVJCtWMJareHEcpjcw&pid=News&w=912": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.EU78r-YTXYYRvTu7bNz3gw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -7346,12 +7424,6 @@
  "https://www.bing.com/th?id=ONUT.EbgsVSeJ_xtmG4mWKpf00Q&pid=News&w=1200": {
   "w": 700,
   "h": 393,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.HFqABAavs_JBZCWvfTdGWA&pid=News&w=700": {
-  "w": 700,
-  "h": 525,
   "target": 720,
   "v": 3
  },
@@ -7423,12 +7495,6 @@
  "https://www.bing.com/th?id=ONUT.Q6x_Uv8OtNRn4vbytr7PzA&pid=News&w=708": {
   "w": 700,
   "h": 492,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.QMAtfj6cWAIw78S-tPk5aA&pid=News&w=640": {
-  "w": 640,
-  "h": 363,
   "target": 720,
   "v": 3
  },
@@ -7662,6 +7728,12 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.mGBibvs8C1sq-geQqiz_Tw&pid=News&w=640": {
+  "w": 640,
+  "h": 480,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.qWiATvEw15puPVYDxWtgUA&pid=News&w=1024": {
   "w": 700,
   "h": 525,
@@ -7712,6 +7784,12 @@
    0.947,
    0.923
   ]
+ },
+ "https://www.bing.com/th?id=ONUT.rrCnOBbBLFs6LJyLrAgELw&pid=News&w=799": {
+  "w": 524,
+  "h": 700,
+  "target": 720,
+  "v": 3
  },
  "https://www.bing.com/th?id=ONUT.rsrxlT6LA_Pywv7IT7a5EQ&pid=News&w=700": {
   "w": 700,
@@ -8021,7 +8099,7 @@
   ],
   "p": null
  },
- "https://www.bing.com/th?id=ONUT.zitYyKzH3OKI3mfvG8WiTg&pid=News&w=800": {
+ "https://www.bing.com/th?id=ONUT.xUjZn3jRf9Ye3iC3uJjuSw&pid=News&w=1200": {
   "w": 700,
   "h": 393,
   "target": 720,
@@ -8469,6 +8547,12 @@
   "w": 1200,
   "h": 675,
   "target": 720,
+  "v": 3
+ },
+ "https://www.techritual.com/wp-content/uploads/2026/11/avengers-doomsday-hk-presale-nov27-cover.webp": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
   "v": 3
  },
  "https://www.thehypemagazine.com/wp-content/uploads/2026/11/elden-ring-meets-minecraft-dark-craft-free-rpg.jpg": {
