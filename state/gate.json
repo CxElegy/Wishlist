@@ -1,10 +1,10 @@
 {
  "changed": true,
- "checked": "2026-11-27T07:17:59+00:00",
+ "checked": "2026-11-27T07:33:38+00:00",
  "fired": {
-  "at": "2026-11-27T04:26:55+00:00",
+  "at": "2026-11-27T07:33:38+00:00",
   "results": {
-   "edit": "Claude を起こした（3 回目：前は動かなかった）",
+   "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
   }
  },
@@ -70,23 +70,29 @@
    "edit": 12
   },
   "2026-11-27": {
-   "edit": 8
+   "edit": 9
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-27T04:26:55+00:00",
-    "attempts": 3,
+    "at": "2026-11-27T07:33:38+00:00",
+    "attempts": 1,
     "day": "2026-11-27",
-    "prog": 288,
-    "resp": "cse_01W4x6f5fc6hZDDi6nGfMbfh",
-    "sig": "4f040a056cbc"
+    "prog": 409,
+    "resp": "",
+    "sig": "76d7ce927535"
    },
    "items": [
     "Astrae Oratio",
     "FROM",
+    "GTA 6",
+    "ILLIT",
+    "MMORPG 新作",
+    "Vaundy",
+    "dota2",
+    "gelato pique",
     "lib:F1",
     "lib:King Gnu",
     "lib:Mrs. GREEN APPLE",
@@ -96,7 +102,15 @@
     "lib:葬送のフリーレン",
     "lib:鬼滅の刃",
     "あつ森",
-    "チェーンソーマン"
+    "ぐでたま",
+    "チェーンソーマン",
+    "三星手机",
+    "周杰伦",
+    "哈利波特剧集",
+    "星巴克马克杯",
+    "滑雪",
+    "漫威电影",
+    "绝区零"
    ],
    "last_batch": "2026-11-27T04:46:23+00:00",
    "last_error": {
@@ -106,35 +120,46 @@
    "need": true,
    "prog": 409,
    "prog_day": "2026-11-27",
-   "ripe": [],
-   "sig": "ccd3441b6c4a",
+   "ripe": [
+    "Astrae Oratio",
+    "GTA 6",
+    "ILLIT",
+    "あつ森",
+    "チェーンソーマン",
+    "三星手机",
+    "周杰伦",
+    "滑雪",
+    "漫威电影"
+   ],
+   "sig": "76d7ce927535",
    "token_cap": 1000000,
    "tokens_today": 365533,
-   "why": "整理待ちの記事 102 件（12 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 172 件（26 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [],
-   "need": false,
-   "sig": "b1312ab4623e",
-   "waiting": [
-    "A2O LITE",
-    "Astrae Oratio",
-    "BLEACH Mirrors High",
-    "FROM",
-    "GTA 6",
-    "The Mandalorian",
-    "Vaundy",
-    "dota2",
-    "あつ森",
-    "ぐでたま",
+   "items": [
     "チェーンソーマン",
-    "周杰伦",
+    "dota2",
     "哈利波特剧集",
     "漫威电影",
-    "绝区零"
+    "GTA 6",
+    "Astrae Oratio",
+    "绝区零",
+    "ぐでたま",
+    "Vaundy",
+    "周杰伦"
    ],
-   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "need": true,
+   "sig": "b87af282144e",
+   "waiting": [
+    "A2O LITE",
+    "BLEACH Mirrors High",
+    "FROM",
+    "The Mandalorian",
+    "あつ森"
+   ],
+   "why": "足りない 10 版面（Actions で Python が埋める）・失敗 5 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
