@@ -1,6 +1,6 @@
 {
  "date": "2026-11-28",
- "edit_sig": "386934836400",
+ "edit_sig": "94b97723673a",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -539,47 +539,22 @@
    }
   },
   {
-   "cover": "https://1500066419.vod-qcloud.com/lite-og.jpg",
-   "facts": [],
-   "name": "A2O LITE",
-   "pending": [
-    {
-     "date": "2026-11-27",
-     "n": 1,
-     "source": "新浪网",
-     "title": "A2O LITE 自我介绍简历",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5LeDkxdEVzeGczTUczMHhYbGZDWGFHQ2xBdl96OXUtcG4xRWRjX0hxa0J0LXR2ZnkyNUFud2I4QjZ0RU5wMTFndVRaa0U4WFNqSE90X3gtb1ZBRWZ1bEtQMlJhSQ?oc=5"
-    }
-   ],
-   "section": "演出",
-   "stories": [],
-   "subtitle": "",
-   "theme": {
-    "accent": "#B5285F",
-    "alt_accent": "#F07AA8",
-    "alt_bg": "#1E1218",
-    "alt_fg": "#F4EEE4",
-    "bg": "#FBEFF4",
-    "fg": "#1E1A18",
-    "font": "serif",
-    "split": true
-   }
-  },
-  {
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
+   "section": "运动",
+   "stories": [
     {
+     "blurb": "冷え込みが強まり、愛媛のスキー場でオープンに向けた雪づくりが本格化している。",
      "date": "2026-11-25",
-     "n": 1,
-     "source": "ｄメニューニュース",
-     "title": "「凍えるような寒さ」冷え込み強まる スキー場ではオープンへ\"雪づくり\"本格化 愛媛",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9EMUZVMkc1NTdSTVlpTk41Qm1fdDB0NUNMeDRFQVoxZUpwU1M1eFdDbWo2YnlCNGM1aDFGeFZ2NXNIeU5ybnhtUkxDT2M0RHJhNXhTeE1FTmVoSi1VLVpVS1ZTZGpGQjd1bDFENE1POG1HQdIBd0FVX3lxTE1BSGlZNTBEUGhYdjQ5MEUtakstNFBPeEtYa1hDN2ZQLS1UU2U2amxqa1RycUN2SDZXaFcyX1V6Nl9QSW9oOHBEZkwxdjgwUG5jUTcwcGZmd1R1QThKN19uXzA2ZW9xT3QzNW1uNHY1Um03Wi1vS2FV?oc=5"
+     "headline": "「凍えるような寒さ」冷え込み強まる スキー場ではオープンへ\"雪づくり\"本格化 愛媛",
+     "highlight": "雪づくり",
+     "image": "https://img.topics.smt.news.goo.ne.jp/picture/itv6/m_itv6-3111660.jpg",
+     "image_via": "og:image",
+     "url": "https://topics.smt.docomo.ne.jp/article/itv6/region/itv6-3111660",
+     "weight": "lead"
     }
    ],
-   "section": "运动",
-   "stories": [],
    "subtitle": "日本雪场 · 雪板装备 · 2026-27",
    "theme": {
     "accent": "#D9412B",
@@ -788,6 +763,31 @@
     "alt_fg": "#1C1826",
     "bg": "#15131C",
     "fg": "#EEEAF4",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://1500066419.vod-qcloud.com/lite-og.jpg",
+   "facts": [],
+   "last": {
+    "date": "2026-11-27",
+    "headline": "ゴールデンディスク賞の出演者第1弾発表！CORTIS、A2O LITE、RESCENEらが出演",
+    "url": "https://news.vocofm.com/ja/%E5%A8%9B%E6%A8%82%E6%96%B0%E8%81%9E/212765/"
+   },
+   "name": "A2O LITE",
+   "quiet": true,
+   "section": "演出",
+   "status": "",
+   "stories": [],
+   "subtitle": "",
+   "theme": {
+    "accent": "#B5285F",
+    "alt_accent": "#F07AA8",
+    "alt_bg": "#1E1218",
+    "alt_fg": "#F4EEE4",
+    "bg": "#FBEFF4",
+    "fg": "#1E1A18",
     "font": "serif",
     "split": true
    }

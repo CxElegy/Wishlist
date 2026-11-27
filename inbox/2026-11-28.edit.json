@@ -212,7 +212,9 @@
   "周杰伦": 5,
   "ILLIT": 4,
   "MMORPG 新作": 4,
-  "The Mandalorian": 1
+  "The Mandalorian": 1,
+  "A2O LITE": 1,
+  "滑雪": 1
  },
  "MMORPG 新作": [
   {
@@ -234,5 +236,18 @@
    ]
   }
  ],
- "The Mandalorian": []
+ "The Mandalorian": [],
+ "A2O LITE": [],
+ "滑雪": [
+  {
+   "headline": "「凍えるような寒さ」冷え込み強まる スキー場ではオープンへ\"雪づくり\"本格化 愛媛",
+   "highlight": "雪づくり",
+   "blurb": "冷え込みが強まり、愛媛のスキー場でオープンに向けた雪づくりが本格化している。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://img.topics.smt.news.goo.ne.jp/picture/itv6/m_itv6-3111660.jpg"
+  }
+ ]
 }
