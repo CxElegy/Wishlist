@@ -1,6 +1,6 @@
 {
  "date": "2026-11-28",
- "edit_sig": "7508ee752cd6",
+ "edit_sig": "c9cb53ba5246",
  "items": [
   {
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
@@ -579,38 +579,39 @@
    "cover": null,
    "facts": [],
    "name": "あつ森",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "『あつ森』で再現した神田明神が神社界で話題に。制作者が「途切れかけたカルチャーを繋ぐハブになりたい」と語る。",
      "date": "2026-11-27",
-     "n": 1,
-     "source": "note",
-     "title": "【ゲーム感想】あつ森でサンクスギビングデーがあったよ！",
-     "url": "https://note.com/dear_oriole1078/n/n6084b3e4610d"
+     "headline": "『あつ森』で再現した神田明神が神社界をざわつかせた？「途切れかけたカルチャーを繋ぐハブになりたい」",
+     "highlight": "",
+     "image": "https://news.walkerplus.com/article/1007171/10054638_615.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.walkerplus.com/trend/matome/article/1007171/image10054638.html",
+     "weight": "lead"
     },
     {
-     "date": "2026-11-27",
-     "n": 2,
-     "source": "ウォーカープラス",
-     "title": "画像3 / 29＞『あつ森』で再現した神田明神が神社界をざわつかせた？「途切れかけたカルチャーを繋ぐハブになりたい」",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFA3RWJRQjY3b1hSX1JLRnlXb0FJcTh2bFd3ZmtZMkVJZTQtV0VhV3pUUWxmTzgzRFhuZklscDhXMnZnV2hLajQ1TXN6OTdHZExuV09JM0U2Vk15RzVzQ2pjSENSNnJwUG9YMDZBZmJqZ3J6bldIUW9ZNDIxRFBEb1E?oc=5"
-    },
-    {
+     "blurb": "",
      "date": "2026-11-26",
-     "n": 3,
-     "source": "ウォーカープラス",
-     "title": "＜画像6 / 23＞【編集部が体験】話題の「あつ森」マイデザインで歴代仮面ライダーを作ってみた！",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5vMG5sWDRDZ3B0a19zaDczQ3NLZ1Z1Tl84VEVDTkVhT3ZYU3UzLUxKODFOUlVIMmI5emFONE1rZnpOcVV1X3R1eUYzSVFNTi1fZEFGbjZISlgxY1JjSVJ6OEptaVVrOTVDaUw5RXNqRUcwWUU5MjVqcWxwRVpkWEU?oc=5"
+     "headline": "【編集部が体験】話題の「あつ森」マイデザインで歴代仮面ライダーを作ってみた！",
+     "highlight": "",
+     "image": "https://news.walkerplus.com/article/1006802/10051184_615.jpg",
+     "image_via": "og:image",
+     "url": "https://www.walkerplus.com/trend/matome/article/1006802/image10051202.html",
+     "weight": "normal"
     },
     {
+     "blurb": "",
      "date": "2026-11-26",
-     "n": 4,
-     "source": "ウォーカープラス",
-     "title": "画像23 / 27＞「あつ森」で卒業式！「はんなんだいがく島」に行ってみたら学生時代のノスタルジーが満載だった",
-     "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1Wamo1RTZOVW5pczF5bDJ4UlFIZEdYaGpFdHMtODdMUjdFczVBTWh0dUZlWVdmcFg3d1BZN25KQzBQMUFEUG5HbjBuOWZhcmFiS3ZER1BnN0Fqd1JyRjBIaGYycldydmFMYVdBdUFB?oc=5"
+     "headline": "「あつ森」で卒業式！「はんなんだいがく島」に行ってみたら学生時代のノスタルジーが満載だった",
+     "highlight": "",
+     "image": "https://news.walkerplus.com/article/1023819/10211254_615.jpg",
+     "image_via": "og:image",
+     "url": "https://www.walkerplus.com/article/1023819/image10211626.html",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "あつまれ どうぶつの森",
    "theme": {
     "accent": "#9B5A22",
