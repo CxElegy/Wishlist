@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-27T23:09:39+00:00",
+ "checked": "2026-11-27T23:15:38+00:00",
  "fired": {
   "at": "2026-11-27T22:53:06+00:00",
   "results": {
@@ -88,47 +88,28 @@
     "sig": "346fef5aab56"
    },
    "items": [
-    "A2O LITE",
-    "GTA 6",
-    "ILLIT",
     "MMORPG 新作",
     "The Mandalorian",
     "Vaundy",
-    "gelato pique",
-    "lib:King Gnu",
-    "lib:Mrs. GREEN APPLE",
-    "lib:iPhone",
-    "lib:スプラトゥーン3",
-    "lib:ゼルダの伝説",
-    "lib:原神",
-    "lib:観葉植物",
-    "lib:鬼滅の刃",
-    "三星手机",
-    "周杰伦",
-    "哈利波特剧集",
-    "滑雪",
-    "漫威电影"
+    "lib:FINAL FANTASY VII REBIRTH",
+    "lib:ONE PIECE",
+    "lib:ドラゴンクエストモンスターズ４　枯れ木の国のビアンカ・フローラ",
+    "lib:台風・天気",
+    "lib:広島旅行",
+    "lib:牧野植物園",
+    "lib:美術館の企画展",
+    "lib:転生したら剣でした 第2期"
    ],
-   "last_batch": "2026-11-27T21:40:25+00:00",
+   "last_batch": "2026-11-27T23:08:03+00:00",
    "last_error": {},
    "need": true,
-   "prog": 161,
+   "prog": 233,
    "prog_day": "2026-11-28",
-   "ripe": [
-    "A2O LITE",
-    "GTA 6",
-    "ILLIT",
-    "gelato pique",
-    "三星手机",
-    "周杰伦",
-    "哈利波特剧集",
-    "滑雪",
-    "漫威电影"
-   ],
-   "sig": "346fef5aab56",
+   "ripe": [],
+   "sig": "81305520052c",
    "token_cap": 1000000,
-   "tokens_today": 236996,
-   "why": "整理待ちの記事 164 件（20 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 309521,
+   "why": "整理待ちの記事 82 件（11 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
@@ -341,12 +322,12 @@
    "runs": 12
   },
   "2026-11-28": {
-   "batches": 8,
-   "cr": 5009152,
-   "cw": 214493,
-   "in": 135,
-   "out": 22368,
-   "runs": 4
+   "batches": 10,
+   "cr": 6764503,
+   "cw": 279828,
+   "in": 177,
+   "out": 29516,
+   "runs": 5
   }
  }
 }
