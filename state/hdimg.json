@@ -1413,6 +1413,13 @@
   "v": 3,
   "blur": 0.371
  },
+ "https://cdn.duckhub.co.kr/news/photo/202611/2508_11535_5315.jpg": {
+  "w": 600,
+  "h": 338,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.388
+ },
  "https://cdn.en.sportalkorea.com/news/photo/202611/48939_94327_1795165857.jpg": {
   "w": 1400,
   "h": 954,
@@ -1568,13 +1575,6 @@
   "target": 1280,
   "v": 3,
   "blur": 0.42
- },
- "https://cdn.gameple.co.kr/news/photo/202611/217080_251246_4232.png": {
-  "w": 800,
-  "h": 367,
-  "target": 1280,
-  "v": 3,
-  "blur": 0.357
  },
  "https://cdn.iwate-np.co.jp/media-static/article/198833/thumbnail/sw4b0-tm6b0779a8_fd5e5f980.jpg": {
   "w": 1200,
@@ -1787,6 +1787,12 @@
  "https://cdn.sounova.com/upload/qPx_J7lz-efqlVEzmsTsJ.webp": {
   "w": 1200,
   "h": 630,
+  "target": 720,
+  "v": 3
+ },
+ "https://cdn.theplaylist.net/wp-content/uploads/2026/11/26090217/SHANG-CHI-2_UPDATE_DAVE-CALLAHAM_SIMU-LIU_AVENGERS-DOOMSDAY_.jpg": {
+  "w": 1500,
+  "h": 896,
   "target": 720,
   "v": 3
  },
@@ -2174,12 +2180,6 @@
   "target": 720,
   "v": 3
  },
- "https://escharts.com/metaImage/tournaments/esports-nations-cup-2026-europe-west-qualifier-dota2-2?v=1795729309": {
-  "w": 1200,
-  "h": 630,
-  "target": 720,
-  "v": 3
- },
  "https://escharts.com/metaImage/tournaments/esports-nations-cup-2026-southeast-asia-and-oceania-qualifier-dota2?v=1795616998": {
   "w": 1200,
   "h": 630,
@@ -2497,12 +2497,6 @@
   "w": 1280,
   "h": 720,
   "target": 720,
-  "v": 3
- },
- "https://i.abcnewsfe.com/a/3f4d22ad-8045-4791-a537-3773774a4769/doomsday-1-ht-jef-260720_1784553718149_hpMain_16x9.jpg?w=1600": {
-  "w": 1600,
-  "h": 900,
-  "target": 1280,
   "v": 3
  },
  "https://i.abcnewsfe.com/a/77b6f167-999d-433a-9332-93938dc147c3/MANDO1-DISNEY-AB-260513_1778708196774_hpMain_16x9.jpg?w=1600": {
@@ -5860,6 +5854,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://root-nation.com/wp-content/uploads/2026/11/new-one-ui-9.5-leaks-show-samsungs-vision-for-the-galaxy-s27-series.jpg": {
+  "w": 1200,
+  "h": 675,
+  "target": 1280,
+  "v": 3
+ },
  "https://s.yimg.com/lo/mysterio/api/1b108eafd04ed847d8a6a998c3fed5677d7dd204c45e16a8da144f7163e9d823/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fforbes_contributor_845%2F6c270f9ef0d9ad6bf8171902a767b177.jpg_up.jpg": {
   "w": 1200,
   "h": 800,
@@ -7474,12 +7474,6 @@
  "https://www.bing.com/th?id=ONUT.hdcN_qqkHErDWLILgTB6NA&pid=News&w=500": {
   "w": 500,
   "h": 281,
-  "target": 720,
-  "v": 3
- },
- "https://www.bing.com/th?id=ONUT.k-Irmlbli9Hh2ubAiKRsUA&pid=News&w=480": {
-  "w": 480,
-  "h": 480,
   "target": 720,
   "v": 3
  },
