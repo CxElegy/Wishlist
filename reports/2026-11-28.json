@@ -1,41 +1,7 @@
 {
  "date": "2026-11-28",
- "edit_sig": "c9cb53ba5246",
+ "edit_sig": "ffa9f1b4217f",
  "items": [
-  {
-   "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
-   "facts": [],
-   "name": "BLEACH Mirrors High",
-   "pending": [
-    {
-     "date": "2026-11-24",
-     "n": 1,
-     "source": "AppMedia",
-     "title": "【ミラハイ】星2バンビの評価と性能【BLEACHミラーズハイ】",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1mM2hnZjFNZThmQ3phTzdCVGlJcHM3QjNzOHlZYnEtYThQREhSWXFCaHIwUXA5cDNqQUJIVTdzMFBMRW1IZElOak81WW9PVk0?oc=5"
-    },
-    {
-     "date": "2026-11-24",
-     "n": 2,
-     "source": "AppMedia",
-     "title": "【ミラハイ】課金要素のおすすめとパックまとめ【BLEACHミラーズハイ】",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1BVFo5RXVQOUVtRmxBNVl2V21iMHAzQVMtVzhaMGpxdjBWb01RU0VoVXhnblU0VE1VNGtOeGNyemZOLTlUakRUdW5hY1R1TVU?oc=5"
-    }
-   ],
-   "section": "游戏",
-   "stories": [],
-   "subtitle": "死神 新作手游",
-   "theme": {
-    "accent": "#9A550E",
-    "alt_accent": "#EE9944",
-    "alt_bg": "#211A12",
-    "alt_fg": "#F4EEE4",
-    "bg": "#F7F0E9",
-    "fg": "#1E1A18",
-    "font": "serif",
-    "split": true
-   }
-  },
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?6wC5t2qhtJZtllO-YhLcO",
    "facts": [],
@@ -354,17 +320,24 @@
    "cover": "https://d3vgbguy0yofad.cloudfront.net/images/og/logo.png",
    "facts": [],
    "name": "星巴克马克杯",
-   "pending": [
+   "section": "好物",
+   "stories": [
     {
+     "blurb": "中國星巴克與寶可夢聯名傳12月1日上市，皮卡丘發光馬克杯與磁吸萬年曆曝光。",
      "date": "2026-11-27",
-     "n": 1,
-     "source": "JUKSY 街星",
-     "title": "中國星巴克×寶可夢聯名傳12月1日上市！皮卡丘發光馬克杯、磁吸萬年曆曝光！",
-     "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE1VdzRBbmJuUmJMREpnTENOdzQ5MUJpc3ZmNzh2ai1BODZROFNQbVVxSTlpbG1XbmFjS1NRRENIOF9mZDIybkxDalpTbXI?oc=5"
+     "event": {
+      "date": "2026-12-01",
+      "label": "発売日",
+      "place": "中国"
+     },
+     "headline": "中國星巴克×寶可夢聯名傳12月1日上市！皮卡丘發光馬克杯、磁吸萬年曆曝光！",
+     "highlight": "12月1日上市",
+     "image": "https://assets.juksy.com/files/articles/155950/6b098b49536a3.png",
+     "image_via": "og:image",
+     "url": "https://www.juksy.com/article/155950",
+     "weight": "lead"
     }
    ],
-   "section": "好物",
-   "stories": [],
    "subtitle": "スターバックス マグ · 日本优先 · 海外好设计",
    "theme": {
     "accent": "#00704A",
@@ -525,17 +498,19 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "Chainsaw Man just beat a Naruto Shippuden fan favorite on Japan's latest karaoke chart.",
      "date": "2026-11-27",
-     "n": 1,
-     "source": "The Times of India",
-     "title": "Chainsaw Man beats Naruto Shippuden as Kenshi Yonezu's “IRIS OUT” takes over Japan's 2026 karaoke chart",
-     "url": "https://timesofindia.indiatimes.com/entertainment/anime/chainsaw-man-beats-naruto-shippuden-as-kenshi-yonezus-iris-out-takes-over-japans-2026-karaoke-chart/articleshow/136225388.cms"
+     "headline": "Chainsaw Man beats Naruto Shippuden as Kenshi Yonezu's “IRIS OUT” takes over Japan's 2026 karaoke chart",
+     "highlight": "“IRIS OUT”",
+     "image": "https://static.toiimg.com/thumb/msid-136225607,width-1280,height-720,resizemode-6,overlay-toi_sw,pt-32,y_pad-600/photo.jpg",
+     "image_via": "og:image",
+     "url": "https://timesofindia.indiatimes.com/entertainment/anime/chainsaw-man-beats-naruto-shippuden-as-kenshi-yonezus-iris-out-takes-over-japans-2026-karaoke-chart/articleshow/136225388.cms",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "チェンソーマン",
    "theme": {
     "accent": "#DD8355",
@@ -727,24 +702,19 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
+     "blurb": "杭州FES上的蕾米埃爾Cosplay直播傳出被中斷，海外實況主先前也曾因該角色畫面被YouTube加上年齡限制。",
      "date": "2026-11-27",
-     "n": 1,
-     "source": "Yahoo奇摩新聞",
-     "title": "拍到就被BAN？《絕區零》杭州FES菌燁Tako扮演蕾米埃爾 網傳直播意外遭中斷",
-     "url": "https://tw.news.yahoo.com/%E6%8B%8D%E5%88%B0%E5%B0%B1%E8%A2%ABban-%E7%B5%95%E5%8D%80%E9%9B%B6-%E6%9D%AD%E5%B7%9Efes%E8%8F%8C%E7%87%81tako%E6%89%AE%E6%BC%94%E8%95%BE%E7%B1%B3%E5%9F%83%E7%88%BE-%E7%B6%B2%E5%82%B3%E7%9B%B4%E6%92%AD%E6%84%8F%E5%A4%96%E9%81%AD%E4%B8%AD%E6%96%B7-161500614.html"
-    },
-    {
-     "date": "2026-11-27",
-     "n": 2,
-     "source": "note",
-     "title": "Redemption Code Verification Guide for Genshin Impact, Zenless Zone Zero, and Endfield | How to Cross-Check and Spot Expired Codes",
-     "url": "https://note.com/light_hebe5740/n/nb7840b7dddb3?hl=en"
+     "headline": "拍到就被BAN？《絕區零》杭州FES菌燁Tako扮演蕾米埃爾 網傳直播意外遭中斷",
+     "highlight": "直播意外遭中斷",
+     "image": "https://s.yimg.com/lo/mysterio/api/9296d71be3412f5d362a7016f9d16f1befe7a9ee4dcbce1d4ea51cb631a7e024/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fvi%2Fupmedia.mg.tw%2F7cc7d0119bec47d381b69faa8b4df6b9.jpg_up.jpg",
+     "image_via": "og:image",
+     "url": "https://tw.news.yahoo.com/%E6%8B%8D%E5%88%B0%E5%B0%B1%E8%A2%ABban-%E7%B5%95%E5%8D%80%E9%9B%B6-%E6%9D%AD%E5%B7%9Efes%E8%8F%8C%E7%87%81tako%E6%89%AE%E6%BC%94%E8%95%BE%E7%B1%B3%E5%9F%83%E7%88%BE-%E7%B6%B2%E5%82%B3%E7%9B%B4%E6%92%AD%E6%84%8F%E5%A4%96%E9%81%AD%E4%B8%AD%E6%96%B7-161500614.html",
+     "weight": "lead"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "ゼンレスゾーンゼロ",
    "theme": {
     "accent": "#A9898A",
@@ -850,6 +820,31 @@
     "alt_fg": "#1E1A18",
     "bg": "#211212",
     "fg": "#F4EEE4",
+    "font": "serif",
+    "split": true
+   }
+  },
+  {
+   "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
+   "facts": [],
+   "last": {
+    "date": "2026-11-27",
+    "headline": "ターゲットブレイクの攻略と報酬",
+    "url": "https://appmedia.jp/bleach-mh/80530717"
+   },
+   "name": "BLEACH Mirrors High",
+   "quiet": true,
+   "section": "游戏",
+   "status": "事前登录中 · 官方称 2026 年内上线，具体日期未定",
+   "stories": [],
+   "subtitle": "死神 新作手游",
+   "theme": {
+    "accent": "#9A550E",
+    "alt_accent": "#EE9944",
+    "alt_bg": "#211A12",
+    "alt_fg": "#F4EEE4",
+    "bg": "#F7F0E9",
+    "fg": "#1E1A18",
     "font": "serif",
     "split": true
    }

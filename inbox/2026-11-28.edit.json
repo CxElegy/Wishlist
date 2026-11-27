@@ -257,7 +257,11 @@
   "滑雪": 1,
   "哈利波特剧集": 6,
   "dota2": 4,
-  "あつ森": 4
+  "あつ森": 4,
+  "BLEACH Mirrors High": 2,
+  "绝区零": 2,
+  "チェーンソーマン": 1,
+  "星巴克马克杯": 1
  },
  "MMORPG 新作": [
   {
@@ -375,6 +379,45 @@
    "refs": [
     4
    ]
+  }
+ ],
+ "BLEACH Mirrors High": [],
+ "绝区零": [
+  {
+   "headline": "拍到就被BAN？《絕區零》杭州FES菌燁Tako扮演蕾米埃爾 網傳直播意外遭中斷",
+   "highlight": "直播意外遭中斷",
+   "blurb": "杭州FES上的蕾米埃爾Cosplay直播傳出被中斷，海外實況主先前也曾因該角色畫面被YouTube加上年齡限制。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "チェーンソーマン": [
+  {
+   "headline": "Chainsaw Man beats Naruto Shippuden as Kenshi Yonezu's “IRIS OUT” takes over Japan's 2026 karaoke chart",
+   "highlight": "“IRIS OUT”",
+   "blurb": "Chainsaw Man just beat a Naruto Shippuden fan favorite on Japan's latest karaoke chart.",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "星巴克马克杯": [
+  {
+   "headline": "中國星巴克×寶可夢聯名傳12月1日上市！皮卡丘發光馬克杯、磁吸萬年曆曝光！",
+   "highlight": "12月1日上市",
+   "blurb": "中國星巴克與寶可夢聯名傳12月1日上市，皮卡丘發光馬克杯與磁吸萬年曆曝光。",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "event": {
+    "date": "2026-12-01",
+    "label": "発売日",
+    "place": "中国"
+   }
   }
  ]
 }

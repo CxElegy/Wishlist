@@ -1,32 +1,32 @@
 {
- "admin": "de40bc42c32d",
- "admin-ai": "9ef13927d351",
+ "admin": "832be4b253b0",
+ "admin-ai": "5f4bb642dc3b",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "beb02bcb"
+   "d73f2e6c"
   ],
   "tokens": [
    "AI 編集のトークン",
-   "ebee1830"
+   "99cf3a56"
   ]
  },
- "admin-boards": "824d5c330763",
+ "admin-boards": "179676474e6f",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "2de5dd20"
+   "8e278966"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "fed034d42c01",
+ "admin-emblem": "3bbee8668252",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "5b0dc182"
+   "c3ccc4c8"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "14dbe4a108f8",
+ "admin-now": "dacd9004fb05",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "3e95b62c"
+   "d12e15c0"
   ],
   "queue": [
    "いまの状況",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "b7f21145"
+   "1601d07b"
   ]
  },
- "admin-system": "90b822fb12d2",
+ "admin-system": "45f5f6ed30cf",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "1783aa2d"
+   "ac4016e3"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "c6c4538e"
+   "e003e815"
   ]
  },
  "admin_marks": {},
- "heat": "5ba8fe415a2a",
+ "heat": "02368976bd68",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "29868dd4"
+   "64f51337"
   ],
   "ranking": [
    "ランキング",
-   "93dde726"
+   "d5b2f7d7"
   ]
  },
- "index": "079b13b12610",
+ "index": "015be4694960",
  "index_marks": {
   "front": [
    "トップ",
-   "7df48281"
+   "5192bb6d"
   ],
   "picks": [
    "気になるかも？",
@@ -133,7 +133,7 @@
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
-   "2af21a77"
+   "12cb18eb"
   ],
   "w-6676e624": [
    "三星手机",
@@ -169,7 +169,7 @@
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
-   "5439dac6"
+   "a8fc6550"
   ],
   "w-d06e9f3e": [
    "gelato pique",
@@ -193,9 +193,9 @@
   ],
   "w-f303ad09": [
    "绝区零",
-   "a6f8bc80"
+   "280947c3"
   ]
  },
- "updated": "11.28 06:33",
- "wishlist": "950fa4a3c42b"
+ "updated": "11.28 06:37",
+ "wishlist": "4839aa10ed00"
 }
