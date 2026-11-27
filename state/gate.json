@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-27T20:31:06+00:00",
+ "checked": "2026-11-27T21:29:27+00:00",
  "fired": {
   "at": "2026-11-27T20:31:06+00:00",
   "results": {
@@ -90,73 +90,64 @@
    "items": [
     "A2O LITE",
     "BLEACH Mirrors High",
-    "GTA 6",
     "ILLIT",
     "MMORPG 新作",
     "The Mandalorian",
     "Vaundy",
-    "dota2",
     "gelato pique",
-    "lib:ブラッククローバー 第2期",
-    "lib:ミャクミャク",
-    "lib:宮崎駿",
-    "lib:星野源",
-    "lib:生徒会にも穴はある！",
-    "lib:羽生善治",
-    "lib:薬屋のひとりごと 第3期",
-    "lib:貸した魔力は【リボ払い】で強制徴収",
-    "あつ森",
+    "lib:King Gnu",
+    "lib:Mrs. GREEN APPLE",
+    "lib:スプラトゥーン3",
+    "lib:ゼルダの伝説",
+    "lib:原神",
+    "lib:呪術廻戦",
+    "lib:葬送のフリーレン",
+    "lib:鬼滅の刃",
     "チェーンソーマン",
-    "三星手机",
     "周杰伦",
-    "哈利波特剧集",
     "星巴克马克杯",
     "滑雪",
-    "漫威电影",
     "绝区零"
    ],
-   "last_batch": "2026-11-27T18:45:43+00:00",
+   "last_batch": "2026-11-27T20:43:01+00:00",
    "last_error": {},
    "need": true,
-   "prog": 85,
+   "prog": 153,
    "prog_day": "2026-11-28",
    "ripe": [
-    "GTA 6",
-    "dota2",
-    "あつ森",
-    "三星手机",
-    "哈利波特剧集",
-    "漫威电影"
+    "BLEACH Mirrors High",
+    "チェーンソーマン",
+    "星巴克马克杯",
+    "绝区零"
    ],
-   "sig": "25e5c3181a3e",
+   "sig": "5569e8e9da0b",
    "token_cap": 1000000,
-   "tokens_today": 115469,
-   "why": "整理待ちの記事 175 件（26 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 179689,
+   "why": "整理待ちの記事 115 件（20 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
-   "items": [
-    "BLEACH Mirrors High",
-    "dota2",
-    "哈利波特剧集",
-    "漫威电影",
-    "GTA 6",
-    "あつ森",
+   "items": [],
+   "need": false,
+   "sig": "b1312ab4623e",
+   "waiting": [
     "A2O LITE",
+    "Astrae Oratio",
+    "BLEACH Mirrors High",
+    "FROM",
+    "GTA 6",
     "The Mandalorian",
     "Vaundy",
-    "周杰伦"
-   ],
-   "need": true,
-   "sig": "5561b48e08ec",
-   "waiting": [
-    "Astrae Oratio",
-    "FROM",
+    "dota2",
+    "あつ森",
     "ぐでたま",
     "チェーンソーマン",
+    "周杰伦",
+    "哈利波特剧集",
+    "漫威电影",
     "绝区零"
    ],
-   "why": "足りない 10 版面（Actions で Python が埋める）・失敗 5 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
+   "why": "失敗 15 版面は材料待ち（新しい記事・手がかり・規則の版が変わったらすぐ）"
   },
   "photos": {
    "claude": true,
@@ -345,12 +336,12 @@
    "runs": 12
   },
   "2026-11-28": {
-   "batches": 4,
-   "cr": 2167017,
-   "cw": 104094,
-   "in": 59,
-   "out": 11316,
-   "runs": 2
+   "batches": 6,
+   "cr": 3425401,
+   "cw": 162004,
+   "in": 91,
+   "out": 17594,
+   "runs": 3
   }
  }
 }
