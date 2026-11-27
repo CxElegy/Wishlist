@@ -1,728 +1,794 @@
 {
-  "漫威电影": [
-    {
-      "headline": "Doctor Doom vs. Magneto Takes Center Stage in New Avengers: Doomsday TV Spot",
-      "highlight": "Doctor Doom vs. Magneto",
-      "blurb": "New TV spot confirms the long-rumored clash between Doctor Doom and Magneto, with more reveals than the recent final trailer.",
-      "weight": "lead",
-      "refs": [
-        25,
-        19,
-        7,
-        2,
-        45,
-        52,
-        43,
-        17,
-        83,
-        108,
-        112
-      ],
-      "image": "https://www.bing.com/th?id=ONUT.889u-8VWT14BKF74jIsDhw&pid=News&w=1200"
-    },
-    {
-      "headline": "‘Avengers: Doomsday’ Presales Are Surging Overseas After the Final Trailer, and ‘Dune’ Can’t Keep Up",
-      "highlight": "Presales Are Surging",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        22,
-        23,
-        3,
-        37,
-        54,
-        51
-      ]
-    },
-    {
-      "headline": "Kevin Feige Confirms Battleworld for AVENGERS: SECRET WARS and Tells Fans Where to Find Spoilers",
-      "highlight": "Confirms Battleworld",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        9,
-        20,
-        109
-      ]
-    },
-    {
-      "headline": "Spider-Man: Brand New Day Rerelease Includes a Scene Cut From Avengers: Doomsday",
-      "highlight": "Scene Cut From Avengers: Doomsday",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        6,
-        38,
-        41,
-        35,
-        98,
-        106,
-        110
-      ]
-    },
-    {
-      "headline": "Simu Liu addresses Shang-Chi’s ‘Doomsday’ return after extended MCU absence (exclusive)",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        16,
-        56,
-        48
-      ]
-    }
-  ],
-  "GTA 6": [
-    {
-      "headline": "Grand Theft Auto VI Becomes Biggest Launch Ever, With 30 Million Players and $3.79 Billion Sales",
-      "highlight": "30 Million Players and $3.79 Billion",
-      "blurb": "Grand Theft Auto VI has become the biggest launch ever, with 30 million players and $3.79 billion in sales, according to a comparison of five outlets.",
-      "weight": "lead",
-      "refs": [
-        50,
-        54
-      ],
-      "image": "https://s.yimg.com/lo/mysterio/api/e712067fe5ff4b2c67664ac993822995275d04599968e947d0b292a8c7f34e20/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fko%2Fpeoplenews.tw%2F1d97a3c4c2cd71f63a06cbcfdd02fb2b"
-    },
-    {
-      "headline": "《GTA6》PC盜版移植代碼遭Take-Two重拳下架 GitHub連帶刪除3007組衍生複製專案",
-      "highlight": "GitHub連帶刪除3007組",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        1,
-        13,
-        5,
-        25,
-        27,
-        30,
-        32
-      ],
-      "image": "https://img.4gamers.com.tw/news-image/2b59cd55-bb59-40c1-88da-561bc076066b.jpg"
-    },
-    {
-      "headline": "《GTA6》多項刪減內容曝光！15 億美元預算仍然得割捨部分機制",
-      "highlight": "多項刪減內容曝光",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        4
-      ]
-    },
-    {
-      "headline": "Staff at Grand Theft Auto VI developer vote against union recognition",
-      "highlight": "vote against union recognition",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        7,
-        34,
-        83
-      ]
-    },
-    {
-      "headline": "GTA VI sends UK games retail sales soaring 99% to £142m in launch week",
-      "highlight": "99% to £142m",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        46,
-        45,
-        42,
-        53
-      ]
-    }
-  ],
-  "三星手机": [
-    {
-      "headline": "Galaxy S27シリーズのケースと実機大のダミーモデルが登場。ProとUltraのデザインも確認か",
-      "highlight": "ダミーモデルが登場",
-      "blurb": "Galaxy S27 シリーズの純正ケースと実機大ダミーが登場し、ProとUltraのデザインが確認できそうだ。",
-      "weight": "lead",
-      "refs": [
-        9,
-        3,
-        5,
-        11,
-        7,
-        15,
-        16,
-        29,
-        30,
-        25,
-        31,
-        26,
-        28,
-        22,
-        19,
-        20,
-        21,
-        34,
-        36
-      ],
-      "image": "https://www.bing.com/th?id=ONUT.NftOrlMlp0dZymF9YFbJsw&pid=News&w=1200"
-    },
-    {
-      "headline": "Samsung's Galaxy S27 Ultra might already have its first major disappointment",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        2,
-        1,
-        4,
-        10
-      ]
-    },
-    {
-      "headline": "三星 S27 Pro 欧洲版跑分曝光，Exynos 2700 单核3061 分",
-      "highlight": "单核3061 分",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        6,
-        12,
-        18,
-        23
-      ]
-    },
-    {
-      "headline": "Galaxy S27 Ultraの充電速度は60Wのまま発売か。日本向けも安全認証を通過",
-      "highlight": "60Wのまま",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        14,
-        38,
-        39
-      ]
-    },
-    {
-      "headline": "갤럭시S27, 새로운 AI 카메라 기능 탑재하나…'줌 인핸서' 포착",
-      "highlight": "'줌 인핸서'",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        27,
-        35,
-        37,
-        40
-      ]
-    }
-  ],
-  "周杰伦": [
-    {
-      "headline": "周杰伦霸气转发中国台北帖文！用行动表态立场坚定，网友：又有人破防了",
-      "highlight": "",
-      "blurb": "周杰伦转发中国台北帖文，引发网友热议。",
-      "weight": "lead",
-      "refs": [
-        2,
-        1,
-        6,
-        8,
-        9,
-        12,
-        15,
-        19,
-        17,
-        23
-      ],
-      "image": "https://inews.gtimg.com/news_ls/O-W9SvRzLrl0AWkOU22nFjHs7dtycvo9N88WR5zHL3OQUAA/0"
-    },
-    {
-      "headline": "速来抢周杰伦三亚演唱会门票！海南更多精彩活动",
-      "highlight": "三亚演唱会门票",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        20
-      ]
-    },
-    {
-      "headline": "周杰伦拒说韩语坚持中文，华流才是最顶的",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        5
-      ]
-    }
-  ],
-  "Astrae Oratio": [
-    {
-      "headline": "『アストラエ・オラティオ』初のPC試遊でCBT未登場キャラ6人をお披露目！韓国「AGF 2026」出展詳細が公開",
-      "highlight": "初のPC試遊",
-      "blurb": "韓国最大級のサブカルチャーフェスティバル「AGF 2026」で、CBTに登場しなかったキャラ6人と新たなボス戦を含む初のPC試遊を展開。",
-      "weight": "lead",
-      "refs": [
-        5,
-        7,
-        4,
-        6,
-        1,
-        2,
-        3,
-        8,
-        9,
-        10
-      ],
-      "event": {
-        "date": "2026-12-04",
-        "label": "AGF 2026",
-        "place": "韓国・一山キンテックス"
-      }
-    }
-  ],
-  "_covered": {
-    "漫威电影": 116,
-    "GTA 6": 119,
-    "三星手机": 41,
-    "周杰伦": 26,
-    "Astrae Oratio": 10,
-    "MMORPG 新作": 15,
-    "哈利波特剧集": 9,
-    "ILLIT": 22,
-    "The Mandalorian": 6,
-    "チェーンソーマン": 7,
-    "星巴克马克杯": 1,
-    "猫用品": 4,
-    "dota2": 12,
-    "BLEACH Mirrors High": 4,
-    "绝区零": 4,
-    "A2O LITE": 3,
-    "gelato pique": 4,
-    "あつ森": 2,
-    "滑雪": 12,
-    "FROM": 1
+ "漫威电影": [
+  {
+   "headline": "Doctor Doom vs. Magneto Takes Center Stage in New Avengers: Doomsday TV Spot",
+   "highlight": "Doctor Doom vs. Magneto",
+   "blurb": "New TV spot confirms the long-rumored clash between Doctor Doom and Magneto, with more reveals than the recent final trailer.",
+   "weight": "lead",
+   "refs": [
+    25,
+    19,
+    7,
+    2,
+    45,
+    52,
+    43,
+    17,
+    83,
+    108,
+    112,
+    117,
+    118,
+    122,
+    127
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.889u-8VWT14BKF74jIsDhw&pid=News&w=1200"
   },
-  "MMORPG 新作": [
-    {
-      "headline": "Gravity、ラグナロク8種のグローバル展開を予告",
-      "highlight": "ラグナロク8種",
-      "blurb": "GravityがラグナロクIP基盤の新作ゲーム8種の計画を公開。正式ナンバリングやMMORPGなど多彩なジャンルを含む。",
-      "weight": "lead",
-      "refs": [
-        1,
-        4
-      ],
-      "image": "https://www.bing.com/th?id=ONUT.wMDJDLbYtJdMj5WoIR677w&pid=News&w=1200"
-    },
-    {
-      "headline": "Kakao Games Confirms January 26, 2027 Launch for MMORPG Odin Q: Valkyrie’s Call",
-      "highlight": "January 26, 2027",
-      "blurb": "Kakao Games has confirmed the launch date of Odin Q: Valkyrie’s Call.",
-      "weight": "hero",
-      "refs": [
-        2
-      ],
-      "image": "https://www.enduins.com/wp-content/uploads/2026/11/i1795486631629415.jpeg"
-    },
-    {
-      "headline": "Nexon、「テンパル：Overgeared」正式サービス開始 PC・モバイルで配信",
-      "highlight": "正式サービス開始",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        6,
-        5
-      ]
-    }
-  ],
-  "哈利波特剧集": [
-    {
-      "headline": "Harry Potter TV Series Sets Christmas 2026 Premiere on HBO Max",
-      "highlight": "Christmas 2026 Premiere",
-      "blurb": "The Harry Potter TV series is set to premiere on HBO Max at Christmas 2026.",
-      "weight": "hero",
-      "refs": [
-        3,
-        1
-      ],
-      "image": "https://www.techjuice.pk/wp-content/uploads/2026/09/hbos-harry-potter-reboot-just-split-the-fandom-in-two-techjuice-252142.jpg"
-    },
-    {
-      "headline": "HBO's Harry Potter Season 1's Major Location Unveiled In Sneak Peek",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        2
-      ]
-    },
-    {
-      "headline": "HBO Harry Potter Star Confirms One Hogwarts Location Will Change With Every Season, But It Sounds Amazing",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        6,
-        7
-      ]
-    },
-    {
-      "headline": "Harry Potter Reboot Series Will Officially Reunite a Fractured Fanbase, According to Franchise Historian",
-      "highlight": "Reunite a Fractured Fanbase",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        9
-      ]
-    }
-  ],
-  "ILLIT": [
-    {
-      "headline": "ILLIT「It’s Me」、日本で1億回再生…2026年発売の海外アーティストの曲で初のプラチナ認定",
-      "highlight": "1億回再生",
-      "blurb": "ILLITの「It’s Me」が日本レコード協会のストリーミング部門でプラチナ認定。10月までの累計再生数が1億回を超えた。",
-      "weight": "lead",
-      "refs": [
-        5,
-        4,
-        12,
-        13,
-        8,
-        9,
-        14
-      ],
-      "image": "https://www.bing.com/th?id=ONUT.qWiATvEw15puPVYDxWtgUA&pid=News&w=1024"
-    },
-    {
-      "headline": "[Exclusive] ILLIT, whom I met on 'Mama,' says, \"I have many new challenges this year\"",
-      "highlight": "many new challenges this year",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        1
-      ]
-    },
-    {
-      "headline": "교복 확대범 달달하게 체포하러왔지 말입니다 I 돌아온 릿반장",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        2
-      ]
-    },
-    {
-      "headline": "ILLIT「It's Me」でMAMA・BP賞など受賞 イロハ「これからも皆さんの愛にお返しを」",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        3
-      ]
-    },
-    {
-      "headline": "活動休止中のILLIT・MOKA、Weverse再開 復帰を予告「ゆっくり待っていていただけたらと思います…!!」",
-      "highlight": "Weverse再開 復帰を予告",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        10,
-        6,
-        11,
-        15,
-        16,
-        17,
-        18,
-        19,
-        20
-      ]
-    },
-    {
-      "headline": "Stray Kids、ILLITら総勢42組が出演！「ベストアーティスト2026」タイムテーブル解禁",
-      "highlight": "タイムテーブル解禁",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        7
-      ]
-    }
-  ],
-  "The Mandalorian": [
-    {
-      "headline": "The Mandalorian Officially Returns In The Perfect Tribute To Seasons 1-2",
-      "highlight": "Officially Returns",
-      "blurb": "ScreenRant on The Mandalorian's official return, framed as a tribute to Seasons 1-2.",
-      "weight": "lead",
-      "refs": [
-        1,
-        2
-      ]
-    },
-    {
-      "headline": "The Mandalorian and Grogu Debut in 2026 Star Wars Topps Chrome Box, Now Available at Disneyland",
-      "highlight": "Topps Chrome Box",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        5
-      ]
-    },
-    {
-      "headline": "Everything to know about 'Star Wars: The Mandalorian and Grogu'",
-      "highlight": "Everything to know",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        6
-      ]
-    }
-  ],
-  "チェーンソーマン": [
-    {
-      "headline": "チェンソーマン 缶バッジの入荷日・価格",
-      "highlight": "入荷日・価格",
-      "blurb": "キャラグーでチェンソーマン缶バッジの入荷日と価格が公開。プライズ景品。",
-      "weight": "lead",
-      "refs": [
-        1
-      ]
-    },
-    {
-      "headline": "Chainsaw Man Officially Goes on a Warpath After Beating Naruto in Japan",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        3
-      ]
-    },
-    {
-      "headline": "「劇場版《鏈鋸人蕾潔篇》PLAZA」快閃店12 月西門町開幕多項主題限定商品登台",
-      "highlight": "12 月西門町開幕",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        7
-      ]
-    }
-  ],
-  "星巴克马克杯": [
-    {
-      "headline": "「見た瞬間に、欲しい！とすぐ買った」 スタバの“耐熱グラス”が話題",
-      "highlight": "スタバの“耐熱グラス”が話題",
-      "blurb": "スタバのクリスマス商品、耐熱グラスがSNSで話題。オンラインにはまだ在庫あり。",
-      "weight": "lead",
-      "refs": [
-        1
-      ]
-    }
-  ],
-  "猫用品": [
-    {
-      "headline": "猫の『ウンチ』から健康を確認する5つの方法 注意が必要な状態や取るべき対応を解説",
-      "highlight": "5つの方法",
-      "blurb": "",
-      "weight": "lead",
-      "refs": [
-        1
-      ]
-    },
-    {
-      "headline": "「もふもふねこ展」 （DAZZLE）",
-      "highlight": "もふもふねこ展",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        2
-      ]
-    }
-  ],
-  "dota2": [
-    {
-      "headline": "29 分钟就结束，XG 这次没进淘汰赛，但前八名够下届直邀了",
-      "highlight": "前八名够下届直邀",
-      "blurb": "BLAST SLAM 小组赛 XG 29 分钟结束比赛，未进淘汰赛，但前八名成绩足够获得下届直邀。",
-      "weight": "lead",
-      "refs": [
-        1
-      ]
-    },
-    {
-      "headline": "Esports Nations Cup 2026: Europe West Qualifier - Dota 2 - Viewership, Overview, Prize Pool",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        2
-      ]
-    },
-    {
-      "headline": "Dota 2 BLAST Slam IX季後賽首日 GamerLegion爆冷橫掃Aurora Yandex晉勝部決賽",
-      "highlight": "爆冷橫掃",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        10
-      ]
-    }
-  ],
-  "BLEACH Mirrors High": [
-    {
-      "headline": "ターゲットブレイクの攻略と報酬",
-      "highlight": "攻略と報酬",
-      "blurb": "BLEACH Mirrors High のターゲットブレイクの攻略法と報酬をまとめた攻略記事。",
-      "weight": "lead",
-      "refs": [
-        1
-      ]
-    },
-    {
-      "headline": "所属隊のおすすめは？変えられる？",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        2
-      ]
-    },
-    {
-      "headline": "戦術カスタムのやり方",
-      "highlight": "",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        3
-      ]
-    }
-  ],
-  "绝区零": [
-    {
-      "headline": "GSC 《绝区零》粘土人 南宫羽 情报公开，4日日本开启预定，预计发售：2027年7月",
-      "highlight": "预计发售：2027年7月",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        4
-      ],
-      "event": {
-        "date": "2026-12-04",
-        "label": "予約開始"
-      }
-    }
-  ],
-  "A2O LITE": [
-    {
-      "headline": "ゴールデンディスク賞の出演者第1弾発表！CORTIS、A2O LITE、RESCENEらが出演",
-      "highlight": "出演者第1弾発表",
-      "blurb": "ゴールデンディスク賞の出演者第1弾が発表され、A2O LITEの出演が決まった。",
-      "weight": "lead",
-      "refs": [
-        1,
-        3
-      ]
-    }
-  ],
-  "gelato pique": [
-    {
-      "headline": "「ジェラート ピケ」初のクリスマスケーキが登場！“かわいすぎるピケベア”をセブン-イレブンで予約しよう",
-      "highlight": "初のクリスマスケーキ",
-      "blurb": "ジェラート ピケ初のクリスマスケーキがセブン-イレブンで予約できる。",
-      "weight": "lead",
-      "refs": [
-        1
-      ]
-    },
-    {
-      "headline": "【スタバ新作】ふわふわ・もこもこ！見た目もかわいい“ジェラピケ”コラボの新ビバレッジ",
-      "highlight": "新ビバレッジ",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        3
-      ]
-    },
-    {
-      "headline": "ジェラピケ×ドラゴンクエストで癒しレベルMAX【ジェラート ピケ】のふわもこルームウェア",
-      "highlight": "ドラゴンクエスト",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        4
-      ]
-    }
-  ],
-  "あつ森": [
-    {
-      "headline": "お得に“スイッチ2ライフ”を充実！『ポケモンZ-A』『あつ森』『SQ I・II・III』が2,728円",
-      "highlight": "2,728円",
-      "blurb": "『あつ森』などが2,728円、『ドラクエVIIR』『エリオットの千年物語』は3,278円に。",
-      "weight": "lead",
-      "refs": [
-        2
-      ],
-      "price": {
-        "now": "2,728円"
-      }
-    }
-  ],
-  "滑雪": [
-    {
-      "headline": "安比高原スキー場 2026-27シーズン、12月5日（土）オープン！",
-      "highlight": "12月5日（土）オープン",
-      "blurb": "数日来の自然降雪と人工降雪により一部ゲレンデのオープンが可能となり、12月5日（土）に2026-27シーズンの営業を開始します。",
-      "weight": "hero",
-      "refs": [
-        3,
-        12
-      ],
-      "event": {
-        "date": "2026-12-05",
-        "label": "オープン",
-        "place": "安比高原スキー場"
-      },
-      "image": "https://prcdn.freetls.fastly.net/release_image/92870/26/92870-26-030e0c36967b9a1828163582a5b83319-3900x2059.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260"
-    },
-    {
-      "headline": "ニセコ、新ゴンドラが12月運行開始、リフトも更新。宿泊者、9割が外国人に",
-      "highlight": "新ゴンドラが12月運行開始",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        2
-      ]
-    },
-    {
-      "headline": "たんばらスキーパーク、11月27日（金）に2026-27シーズン開幕！小学生リフト券は最初の2週末も無料",
-      "highlight": "11月27日（金）",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        4
-      ]
-    },
-    {
-      "headline": "世界中のゲストを魅了する冬シーズンが開幕 ニセコ東急 グラン・ヒラフが 11 月 28 日（土）オープン",
-      "highlight": "11 月 28 日（土）",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        6
-      ]
-    },
-    {
-      "headline": "ふじてんスノーリゾート、12月5日から「富士山展望リフト＆デッキ」先行営業開始！スキー場オープンは12月中旬予定",
-      "highlight": "12月5日",
-      "blurb": "",
-      "weight": "normal",
-      "refs": [
-        5
-      ]
-    }
-  ],
-  "FROM": [
-    {
-      "headline": "TV’s Best Sci-Fi Thriller Is Officially the New King of Netflix",
-      "highlight": "New King of Netflix",
-      "blurb": "The Netflix release of MGM+’s FROM continues to be a massive success this Thanksgiving weekend.",
-      "weight": "lead",
-      "refs": [
-        1
-      ],
-      "image": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/05/from-season-4-episode-3-catalina-sandino-moreno.jpg"
-    }
-  ]
+  {
+   "headline": "‘Avengers: Doomsday’ Presales Are Surging Overseas After the Final Trailer, and ‘Dune’ Can’t Keep Up",
+   "highlight": "Presales Are Surging",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    22,
+    23,
+    3,
+    37,
+    54,
+    51
+   ]
+  },
+  {
+   "headline": "Kevin Feige Confirms Battleworld for AVENGERS: SECRET WARS and Tells Fans Where to Find Spoilers",
+   "highlight": "Confirms Battleworld",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9,
+    20,
+    109
+   ]
+  },
+  {
+   "headline": "Spider-Man: Brand New Day Rerelease Includes a Scene Cut From Avengers: Doomsday",
+   "highlight": "Scene Cut From Avengers: Doomsday",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6,
+    38,
+    41,
+    35,
+    98,
+    106,
+    110
+   ]
+  },
+  {
+   "headline": "Simu Liu addresses Shang-Chi’s ‘Doomsday’ return after extended MCU absence (exclusive)",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    16,
+    56,
+    48
+   ]
+  }
+ ],
+ "GTA 6": [
+  {
+   "headline": "Grand Theft Auto VI Becomes Biggest Launch Ever, With 30 Million Players and $3.79 Billion Sales",
+   "highlight": "30 Million Players and $3.79 Billion",
+   "blurb": "Grand Theft Auto VI has become the biggest launch ever, with 30 million players and $3.79 billion in sales, according to a comparison of five outlets.",
+   "weight": "lead",
+   "refs": [
+    50,
+    54,
+    127,
+    128,
+    120,
+    123
+   ],
+   "image": "https://s.yimg.com/lo/mysterio/api/e712067fe5ff4b2c67664ac993822995275d04599968e947d0b292a8c7f34e20/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fko%2Fpeoplenews.tw%2F1d97a3c4c2cd71f63a06cbcfdd02fb2b"
+  },
+  {
+   "headline": "《GTA6》PC盜版移植代碼遭Take-Two重拳下架 GitHub連帶刪除3007組衍生複製專案",
+   "highlight": "GitHub連帶刪除3007組",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1,
+    13,
+    5,
+    25,
+    27,
+    30,
+    32,
+    130,
+    129,
+    131,
+    132,
+    133,
+    136
+   ],
+   "image": "https://img.4gamers.com.tw/news-image/2b59cd55-bb59-40c1-88da-561bc076066b.jpg"
+  },
+  {
+   "headline": "《GTA6》多項刪減內容曝光！15 億美元預算仍然得割捨部分機制",
+   "highlight": "多項刪減內容曝光",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4,
+    126,
+    125,
+    134
+   ]
+  },
+  {
+   "headline": "Staff at Grand Theft Auto VI developer vote against union recognition",
+   "highlight": "vote against union recognition",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7,
+    34,
+    83
+   ]
+  },
+  {
+   "headline": "GTA VI sends UK games retail sales soaring 99% to £142m in launch week",
+   "highlight": "99% to £142m",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    46,
+    45,
+    42,
+    53
+   ]
+  }
+ ],
+ "三星手机": [
+  {
+   "headline": "Galaxy S27シリーズのケースと実機大のダミーモデルが登場。ProとUltraのデザインも確認か",
+   "highlight": "ダミーモデルが登場",
+   "blurb": "Galaxy S27 シリーズの純正ケースと実機大ダミーが登場し、ProとUltraのデザインが確認できそうだ。",
+   "weight": "lead",
+   "refs": [
+    9,
+    3,
+    5,
+    11,
+    7,
+    15,
+    16,
+    29,
+    30,
+    25,
+    31,
+    26,
+    28,
+    22,
+    19,
+    20,
+    21,
+    34,
+    36
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.NftOrlMlp0dZymF9YFbJsw&pid=News&w=1200"
+  },
+  {
+   "headline": "「Galaxy S27 Ultra」のリーク情報。コスト重視でカメラがしょぼくなる？",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    43,
+    2,
+    1,
+    4,
+    10,
+    42,
+    45
+   ]
+  },
+  {
+   "headline": "三星 S27 Pro 欧洲版跑分曝光，Exynos 2700 单核3061 分",
+   "highlight": "单核3061 分",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6,
+    12,
+    18,
+    23
+   ]
+  },
+  {
+   "headline": "Galaxy S27 Ultraの充電速度は60Wのまま発売か。日本向けも安全認証を通過",
+   "highlight": "60Wのまま",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    14,
+    38,
+    39,
+    44
+   ]
+  },
+  {
+   "headline": "갤럭시S27, 새로운 AI 카메라 기능 탑재하나…'줌 인핸서' 포착",
+   "highlight": "'줌 인핸서'",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    27,
+    35,
+    37,
+    40
+   ]
+  }
+ ],
+ "周杰伦": [
+  {
+   "headline": "周杰伦霸气转发中国台北帖文！用行动表态立场坚定，网友：又有人破防了",
+   "highlight": "",
+   "blurb": "周杰伦转发中国台北帖文，引发网友热议。",
+   "weight": "lead",
+   "refs": [
+    2,
+    1,
+    6,
+    8,
+    9,
+    12,
+    15,
+    19,
+    17,
+    23,
+    27
+   ],
+   "image": "https://inews.gtimg.com/news_ls/O-W9SvRzLrl0AWkOU22nFjHs7dtycvo9N88WR5zHL3OQUAA/0"
+  },
+  {
+   "headline": "速来抢周杰伦三亚演唱会门票！海南更多精彩活动",
+   "highlight": "三亚演唱会门票",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    20
+   ]
+  },
+  {
+   "headline": "周杰伦拒说韩语坚持中文，华流才是最顶的",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  },
+  {
+   "headline": "终于原谅综艺了？周杰伦手握球拍，这次带队去三城求学",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    30
+   ]
+  }
+ ],
+ "Astrae Oratio": [
+  {
+   "headline": "『アストラエ・オラティオ』初のPC試遊でCBT未登場キャラ6人をお披露目！韓国「AGF 2026」出展詳細が公開",
+   "highlight": "初のPC試遊",
+   "blurb": "韓国最大級のサブカルチャーフェスティバル「AGF 2026」で、CBTに登場しなかったキャラ6人と新たなボス戦を含む初のPC試遊を展開。",
+   "weight": "lead",
+   "refs": [
+    5,
+    7,
+    4,
+    6,
+    1,
+    2,
+    3,
+    8,
+    9,
+    10
+   ],
+   "event": {
+    "date": "2026-12-04",
+    "label": "AGF 2026",
+    "place": "韓国・一山キンテックス"
+   }
+  }
+ ],
+ "_covered": {
+  "漫威电影": 132,
+  "GTA 6": 138,
+  "三星手机": 45,
+  "周杰伦": 32,
+  "Astrae Oratio": 10,
+  "MMORPG 新作": 25,
+  "哈利波特剧集": 9,
+  "ILLIT": 22,
+  "The Mandalorian": 6,
+  "チェーンソーマン": 7,
+  "星巴克马克杯": 1,
+  "猫用品": 4,
+  "dota2": 12,
+  "BLEACH Mirrors High": 4,
+  "绝区零": 8,
+  "A2O LITE": 3,
+  "gelato pique": 4,
+  "あつ森": 2,
+  "滑雪": 12,
+  "FROM": 1
+ },
+ "MMORPG 新作": [
+  {
+   "headline": "Gravity、ラグナロク8種のグローバル展開を予告",
+   "highlight": "ラグナロク8種",
+   "blurb": "GravityがラグナロクIP基盤の新作ゲーム8種の計画を公開。正式ナンバリングやMMORPGなど多彩なジャンルを含む。",
+   "weight": "lead",
+   "refs": [
+    1,
+    4
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.wMDJDLbYtJdMj5WoIR677w&pid=News&w=1200"
+  },
+  {
+   "headline": "Kakao Games Confirms January 26, 2027 Launch for MMORPG Odin Q: Valkyrie’s Call",
+   "highlight": "January 26, 2027",
+   "blurb": "Kakao Games has confirmed the launch date of Odin Q: Valkyrie’s Call.",
+   "weight": "hero",
+   "refs": [
+    2
+   ],
+   "image": "https://www.enduins.com/wp-content/uploads/2026/11/i1795486631629415.jpeg"
+  },
+  {
+   "headline": "Nexon、「テンパル：Overgeared」正式サービス開始 PC・モバイルで配信",
+   "highlight": "正式サービス開始",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6,
+    5,
+    21,
+    25
+   ]
+  },
+  {
+   "headline": "韓国・KINTEXで「リネージュ」シリーズの大型オフラインイベント開催。会場の熱気をレポート",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    16
+   ]
+  },
+  {
+   "headline": "‘천상비M2’ 12월 8일 출시, 하루 앞서 캐릭터 선점",
+   "highlight": "12월 8일 출시",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    17,
+    18,
+    24
+   ],
+   "event": {
+    "date": "2026-12-08",
+    "label": "サービス開始"
+   }
+  }
+ ],
+ "哈利波特剧集": [
+  {
+   "headline": "Harry Potter TV Series Sets Christmas 2026 Premiere on HBO Max",
+   "highlight": "Christmas 2026 Premiere",
+   "blurb": "The Harry Potter TV series is set to premiere on HBO Max at Christmas 2026.",
+   "weight": "hero",
+   "refs": [
+    3,
+    1
+   ],
+   "image": "https://www.techjuice.pk/wp-content/uploads/2026/09/hbos-harry-potter-reboot-just-split-the-fandom-in-two-techjuice-252142.jpg"
+  },
+  {
+   "headline": "HBO's Harry Potter Season 1's Major Location Unveiled In Sneak Peek",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "HBO Harry Potter Star Confirms One Hogwarts Location Will Change With Every Season, But It Sounds Amazing",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6,
+    7
+   ]
+  },
+  {
+   "headline": "Harry Potter Reboot Series Will Officially Reunite a Fractured Fanbase, According to Franchise Historian",
+   "highlight": "Reunite a Fractured Fanbase",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9
+   ]
+  }
+ ],
+ "ILLIT": [
+  {
+   "headline": "ILLIT「It’s Me」、日本で1億回再生…2026年発売の海外アーティストの曲で初のプラチナ認定",
+   "highlight": "1億回再生",
+   "blurb": "ILLITの「It’s Me」が日本レコード協会のストリーミング部門でプラチナ認定。10月までの累計再生数が1億回を超えた。",
+   "weight": "lead",
+   "refs": [
+    5,
+    4,
+    12,
+    13,
+    8,
+    9,
+    14
+   ],
+   "image": "https://www.bing.com/th?id=ONUT.qWiATvEw15puPVYDxWtgUA&pid=News&w=1024"
+  },
+  {
+   "headline": "[Exclusive] ILLIT, whom I met on 'Mama,' says, \"I have many new challenges this year\"",
+   "highlight": "many new challenges this year",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "교복 확대범 달달하게 체포하러왔지 말입니다 I 돌아온 릿반장",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "ILLIT「It's Me」でMAMA・BP賞など受賞 イロハ「これからも皆さんの愛にお返しを」",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "活動休止中のILLIT・MOKA、Weverse再開 復帰を予告「ゆっくり待っていていただけたらと思います…!!」",
+   "highlight": "Weverse再開 復帰を予告",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10,
+    6,
+    11,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+   ]
+  },
+  {
+   "headline": "Stray Kids、ILLITら総勢42組が出演！「ベストアーティスト2026」タイムテーブル解禁",
+   "highlight": "タイムテーブル解禁",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
+   ]
+  }
+ ],
+ "The Mandalorian": [
+  {
+   "headline": "The Mandalorian Officially Returns In The Perfect Tribute To Seasons 1-2",
+   "highlight": "Officially Returns",
+   "blurb": "ScreenRant on The Mandalorian's official return, framed as a tribute to Seasons 1-2.",
+   "weight": "lead",
+   "refs": [
+    1,
+    2
+   ]
+  },
+  {
+   "headline": "The Mandalorian and Grogu Debut in 2026 Star Wars Topps Chrome Box, Now Available at Disneyland",
+   "highlight": "Topps Chrome Box",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  },
+  {
+   "headline": "Everything to know about 'Star Wars: The Mandalorian and Grogu'",
+   "highlight": "Everything to know",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  }
+ ],
+ "チェーンソーマン": [
+  {
+   "headline": "チェンソーマン 缶バッジの入荷日・価格",
+   "highlight": "入荷日・価格",
+   "blurb": "キャラグーでチェンソーマン缶バッジの入荷日と価格が公開。プライズ景品。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "Chainsaw Man Officially Goes on a Warpath After Beating Naruto in Japan",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "「劇場版《鏈鋸人蕾潔篇》PLAZA」快閃店12 月西門町開幕多項主題限定商品登台",
+   "highlight": "12 月西門町開幕",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
+   ]
+  }
+ ],
+ "星巴克马克杯": [
+  {
+   "headline": "「見た瞬間に、欲しい！とすぐ買った」 スタバの“耐熱グラス”が話題",
+   "highlight": "スタバの“耐熱グラス”が話題",
+   "blurb": "スタバのクリスマス商品、耐熱グラスがSNSで話題。オンラインにはまだ在庫あり。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  }
+ ],
+ "猫用品": [
+  {
+   "headline": "猫の『ウンチ』から健康を確認する5つの方法 注意が必要な状態や取るべき対応を解説",
+   "highlight": "5つの方法",
+   "blurb": "",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "「もふもふねこ展」 （DAZZLE）",
+   "highlight": "もふもふねこ展",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  }
+ ],
+ "dota2": [
+  {
+   "headline": "29 分钟就结束，XG 这次没进淘汰赛，但前八名够下届直邀了",
+   "highlight": "前八名够下届直邀",
+   "blurb": "BLAST SLAM 小组赛 XG 29 分钟结束比赛，未进淘汰赛，但前八名成绩足够获得下届直邀。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "Esports Nations Cup 2026: Europe West Qualifier - Dota 2 - Viewership, Overview, Prize Pool",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "Dota 2 BLAST Slam IX季後賽首日 GamerLegion爆冷橫掃Aurora Yandex晉勝部決賽",
+   "highlight": "爆冷橫掃",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    10
+   ]
+  }
+ ],
+ "BLEACH Mirrors High": [
+  {
+   "headline": "ターゲットブレイクの攻略と報酬",
+   "highlight": "攻略と報酬",
+   "blurb": "BLEACH Mirrors High のターゲットブレイクの攻略法と報酬をまとめた攻略記事。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "所属隊のおすすめは？変えられる？",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "戦術カスタムのやり方",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  }
+ ],
+ "绝区零": [
+  {
+   "headline": "GSC 《绝区零》粘土人 南宫羽 情报公开，4日日本开启预定，预计发售：2027年7月",
+   "highlight": "预计发售：2027年7月",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ],
+   "event": {
+    "date": "2026-12-04",
+    "label": "予約開始"
+   }
+  },
+  {
+   "headline": "一车欧气 满场绳匠！雅迪×「绝区零」“欧气调频所”惊艳2026 FES",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
+   ]
+  }
+ ],
+ "A2O LITE": [
+  {
+   "headline": "ゴールデンディスク賞の出演者第1弾発表！CORTIS、A2O LITE、RESCENEらが出演",
+   "highlight": "出演者第1弾発表",
+   "blurb": "ゴールデンディスク賞の出演者第1弾が発表され、A2O LITEの出演が決まった。",
+   "weight": "lead",
+   "refs": [
+    1,
+    3
+   ]
+  }
+ ],
+ "gelato pique": [
+  {
+   "headline": "「ジェラート ピケ」初のクリスマスケーキが登場！“かわいすぎるピケベア”をセブン-イレブンで予約しよう",
+   "highlight": "初のクリスマスケーキ",
+   "blurb": "ジェラート ピケ初のクリスマスケーキがセブン-イレブンで予約できる。",
+   "weight": "lead",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "【スタバ新作】ふわふわ・もこもこ！見た目もかわいい“ジェラピケ”コラボの新ビバレッジ",
+   "highlight": "新ビバレッジ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "ジェラピケ×ドラゴンクエストで癒しレベルMAX【ジェラート ピケ】のふわもこルームウェア",
+   "highlight": "ドラゴンクエスト",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  }
+ ],
+ "あつ森": [
+  {
+   "headline": "お得に“スイッチ2ライフ”を充実！『ポケモンZ-A』『あつ森』『SQ I・II・III』が2,728円",
+   "highlight": "2,728円",
+   "blurb": "『あつ森』などが2,728円、『ドラクエVIIR』『エリオットの千年物語』は3,278円に。",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "price": {
+    "now": "2,728円"
+   }
+  }
+ ],
+ "滑雪": [
+  {
+   "headline": "安比高原スキー場 2026-27シーズン、12月5日（土）オープン！",
+   "highlight": "12月5日（土）オープン",
+   "blurb": "数日来の自然降雪と人工降雪により一部ゲレンデのオープンが可能となり、12月5日（土）に2026-27シーズンの営業を開始します。",
+   "weight": "hero",
+   "refs": [
+    3,
+    12
+   ],
+   "event": {
+    "date": "2026-12-05",
+    "label": "オープン",
+    "place": "安比高原スキー場"
+   },
+   "image": "https://prcdn.freetls.fastly.net/release_image/92870/26/92870-26-030e0c36967b9a1828163582a5b83319-3900x2059.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260"
+  },
+  {
+   "headline": "ニセコ、新ゴンドラが12月運行開始、リフトも更新。宿泊者、9割が外国人に",
+   "highlight": "新ゴンドラが12月運行開始",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
+  },
+  {
+   "headline": "たんばらスキーパーク、11月27日（金）に2026-27シーズン開幕！小学生リフト券は最初の2週末も無料",
+   "highlight": "11月27日（金）",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ]
+  },
+  {
+   "headline": "世界中のゲストを魅了する冬シーズンが開幕 ニセコ東急 グラン・ヒラフが 11 月 28 日（土）オープン",
+   "highlight": "11 月 28 日（土）",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  },
+  {
+   "headline": "ふじてんスノーリゾート、12月5日から「富士山展望リフト＆デッキ」先行営業開始！スキー場オープンは12月中旬予定",
+   "highlight": "12月5日",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  }
+ ],
+ "FROM": [
+  {
+   "headline": "TV’s Best Sci-Fi Thriller Is Officially the New King of Netflix",
+   "highlight": "New King of Netflix",
+   "blurb": "The Netflix release of MGM+’s FROM continues to be a massive success this Thanksgiving weekend.",
+   "weight": "lead",
+   "refs": [
+    1
+   ],
+   "image": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/05/from-season-4-episode-3-catalina-sandino-moreno.jpg"
+  }
+ ]
 }
