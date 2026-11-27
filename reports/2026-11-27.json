@@ -1,6 +1,6 @@
 {
  "date": "2026-11-27",
- "edit_sig": "e56f1f62541f",
+ "edit_sig": "6069b63a5e5e",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -1073,22 +1073,6 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
-    {
-     "date": "2026-11-27",
-     "n": 5,
-     "source": "PR TIMES",
-     "title": "《ブラックフライデー③》tamaプレミアムキャットフードなどが最大15％オフ",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9LYW5nZWJIeEFsUElfalp3X0kwOXRESEUzY3pFTWdRaDZXSG5nRHUwcHJFUnBEQWV5ei1xZXhIal91X21yY09ZTkxYWFVyLXo1Uy12S3VFUTgxaHZ0VXg3bWZNNUpQbzJJZ0E?oc=5"
-    },
-    {
-     "date": "2026-11-27",
-     "n": 6,
-     "source": "USA TODAY on MSN",
-     "title": "Cat owners can try tofu litter for 30% off this Black Friday",
-     "url": "https://www.msn.com/en-us/news/other/cat-owners-can-try-tofu-litter-for-30-off-this-black-friday/ar-AA2imHZD"
-    }
-   ],
    "section": "生活",
    "stories": [
     {
@@ -1109,6 +1093,16 @@
      "image": "https://tab-prod-public.s3.ap-northeast-1.amazonaws.com/asset_files/uploaded/2026-11/1d1c625f/ffcfcc4c-fd59-4301-a7a5-6e77d2421d5f.jpg?w=1200",
      "image_via": "og:image",
      "url": "https://www.tokyoartbeat.com/events/-/Mofumofu-Cats/09-B6-B254/2026-12-08",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-27",
+     "headline": "《ブラックフライデー③》tamaプレミアムキャットフードなどが最大15％オフ",
+     "highlight": "最大15％オフ",
+     "image": "https://prcdn.freetls.fastly.net/release_image/11627/363/11627-363-929b4c1083ebe2ae2c2b6c50293ffd16-860x275.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+     "image_via": "og:image",
+     "url": "https://prtimes.jp/main/html/rd/p/000000363.000011627.html",
      "weight": "normal"
     }
    ],

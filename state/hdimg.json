@@ -2933,6 +2933,12 @@
   ],
   "p": null
  },
+ "https://image.news.livedoor.com/newsimage/stf/3/1/31da1_1717_b630c9dc_050a354f.jpg": {
+  "w": 600,
+  "h": 1047,
+  "target": 720,
+  "v": 3
+ },
  "https://image.news.livedoor.com/newsimage/stf/3/a/3a9e6_1682_e99a10d7_3a64e2c4.jpg": {
   "w": 1200,
   "h": 900,
@@ -6095,7 +6101,7 @@
  "https://prcdn.freetls.fastly.net/release_image/11627/363/11627-363-929b4c1083ebe2ae2c2b6c50293ffd16-860x275.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
   "w": 860,
   "h": 275,
-  "target": 720,
+  "target": 1280,
   "v": 3
  },
  "https://prcdn.freetls.fastly.net/release_image/18505/4522/18505-4522-07e624aa4e3f158508c312e7abc24baf-2160x2700.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {

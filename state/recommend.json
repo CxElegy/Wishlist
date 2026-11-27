@@ -33,6 +33,7 @@
   "https://my-best.com/12473": "https://img.my-best.com/contents/78cad12f0b4ce34b6a0aba75c043645a.jpeg?ixlib=rails-4.3.1&q=70&lossless=0&w=1200&h=900&fit=crop&s=60c09410532229589cd52bff59aea54a",
   "https://news.dellows.jp/992392/": "https://news.dellows.jp/wp-content/uploads/2026/11/992392_1.jpg",
   "https://news.livedoor.com/article/detail/32879734/": "https://image.news.livedoor.com/newsimage/stf/c/4/c42ff_1845_710c7af6_a73f31f6.jpg",
+  "https://news.livedoor.com/topics/detail/32906353/": "https://image.news.livedoor.com/newsimage/stf/3/1/31da1_1717_b630c9dc_050a354f.jpg",
   "https://news.livedoor.com/topics/detail/32911327/": "https://image.news.livedoor.com/newsimage/stf/9/9/992be_1838_52303757c3fef1b5ce51d52f2bfde838.jpg",
   "https://news.nicovideo.jp/watch/nw20022169?news_ref=search_search": "https://nijimen.kusuguru.co.jp/wp-content/uploads/2026/11/1611ed0e350f4aae827a46188684efd2.png",
   "https://news.para-daily.com/2026/11/23/pokemon-30th-anv-pop-up-store-1123/": "https://news-cdn.para-daily.com/wp-content/uploads/2026/11/1795414871-36z81nv632jiy355zt8l.webp",
@@ -42,7 +43,6 @@
   "https://nlab.itmedia.co.jp/research/articles/4114058/2/": "https://www.bing.com/th?id=ONUT.wVLSKtCbow8pj59yEvb88A&pid=News&w=300",
   "https://note.com/fine_avocet511/n/nd5a4bd9d4e12": "https://d2l930y2yx77uc.cloudfront.net/production/social_images/c8d89e7055a22c38ddbcc48ad44ef2b0bf3c4116.png",
   "https://prtimes.jp/main/html/rd/p/000000093.000047181.html": "https://prcdn.freetls.fastly.net/release_image/47181/93/47181-93-a0654a9ddc6e0f6861e734a0a36fa37a-3000x1688.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
-  "https://prtimes.jp/main/html/rd/p/000000363.000011627.html": "https://prcdn.freetls.fastly.net/release_image/11627/363/11627-363-929b4c1083ebe2ae2c2b6c50293ffd16-860x275.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
   "https://rurubu.jp/andmore/article/16584?page=3": "https://rurubu.jp/img_srw/andmore/images/0000757572/l_uBtSB0lIfY8JoBIu1xbN4PDVOXBCcinzSEY1tvpT.jpg",
   "https://sporked.com/article/starbucks-just-dropped-the-cutest-cloudy-cups-mugs/": "https://sporked.com/wp-content/uploads/2026/04/starbucks-65-subscription.jpg",
   "https://thepakistanconnect.com/mohsin-raza-khan-bunny/": "https://thepakistanconnect.com/wp-content/uploads/2026/11/Untitled-Design-27-1.png",
@@ -1043,27 +1043,6 @@
    "because": "猫用品",
    "date": "2026-11-27",
    "hits": [],
-   "image": "https://prcdn.freetls.fastly.net/release_image/11627/363/11627-363-929b4c1083ebe2ae2c2b6c50293ffd16-860x275.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
-   "kind": "board",
-   "liked": "10/8 人气「ねこ休み展」首次来到多摩",
-   "score": 8,
-   "source": "PR TIMES",
-   "taste": [
-    [
-     "作品:猫用品",
-     5
-    ]
-   ],
-   "title": "《ブラックフライデー③》tamaプレミアムキャットフードなどが最大15％オフ",
-   "url": "https://prtimes.jp/main/html/rd/p/000000363.000011627.html",
-   "words": [],
-   "work": "猫用品"
-  },
-  {
-   "batch": 1,
-   "because": "猫用品",
-   "date": "2026-11-27",
-   "hits": [],
    "image": "https://www.bing.com/th?id=ONUT.xUjZn3jRf9Ye3iC3uJjuSw&pid=News&w=1200",
    "kind": "board",
    "liked": "10/8 人气「ねこ休み展」首次来到多摩",
@@ -1081,7 +1060,7 @@
    "work": "猫用品"
   },
   {
-   "batch": 2,
+   "batch": 1,
    "because": "ILLIT",
    "date": "2026-11-27",
    "hits": [],
@@ -1198,7 +1177,7 @@
    "work": "dota2"
   },
   {
-   "batch": 3,
+   "batch": 2,
    "because": "あつ森",
    "date": "2026-11-26",
    "hits": [],
@@ -1259,6 +1238,35 @@
    "url": "https://www.sina.cn/news/detail/5369525912207572.html",
    "words": [],
    "work": "绝区零"
+  },
+  {
+   "batch": 3,
+   "because": "猫用品",
+   "date": "2026-11-26",
+   "hits": [
+    "猫"
+   ],
+   "image": "https://image.news.livedoor.com/newsimage/stf/3/1/31da1_1717_b630c9dc_050a354f.jpg",
+   "kind": "board",
+   "liked": "10/8 人气「ねこ休み展」首次来到多摩",
+   "score": 8,
+   "source": "ライブドアニュース",
+   "taste": [
+    [
+     "猫",
+     6
+    ],
+    [
+     "作品:猫用品",
+     5
+    ]
+   ],
+   "title": "シニア猫2匹にキャットタワー新調 2日後に見た光景 (2026年11月26日掲載)",
+   "url": "https://news.livedoor.com/topics/detail/32906353/",
+   "words": [
+    "猫"
+   ],
+   "work": "猫用品"
   },
   {
    "batch": 3,
@@ -2198,11 +2206,11 @@
    8
   ],
   [
-   "三星 Galaxy",
+   "作品:三星手机",
    7
   ],
   [
-   "作品:三星手机",
+   "三星 Galaxy",
    7
   ],
   [
