@@ -1,6 +1,6 @@
 {
  "admin": "31fbd23e2150",
- "admin-ai": "4b85375fcc63",
+ "admin-ai": "6ba48a708990",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
@@ -8,7 +8,7 @@
   ],
   "tokens": [
    "AI 編集のトークン",
-   "89d14b49"
+   "f7fc643d"
   ]
  },
  "admin-boards": "0f8cdf6fbffd",
@@ -22,11 +22,11 @@
    "8068ac57"
   ]
  },
- "admin-emblem": "24f87b82a7fe",
+ "admin-emblem": "0a34fecefcb5",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "bbc192ab"
+   "feec195b"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,7 +43,7 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "b49819f49fbd",
+ "admin-now": "aa1cff58da92",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
@@ -59,14 +59,14 @@
   ],
   "term-panel": [
    "ライブログ",
-   "44983fcb"
+   "b2652e80"
   ]
  },
- "admin-system": "ca3988470003",
+ "admin-system": "fba228c305b0",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "2146a19f"
+   "645605ae"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,7 +74,7 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "c8311094"
+   "5ef0ad22"
   ]
  },
  "admin_marks": {},
@@ -93,7 +93,7 @@
    "dde3544b"
   ]
  },
- "index": "2e1aa1a61638",
+ "index": "3a6da7df497a",
  "index_marks": {
   "front": [
    "トップ",
@@ -133,7 +133,7 @@
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
-   "20b0af91"
+   "06a53ae3"
   ],
   "w-6676e624": [
    "三星手机",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "28e35a5e"
+   "679d221b"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -189,13 +189,13 @@
   ],
   "w-edd2b6ae": [
    "ILLIT",
-   "21ec2d66"
+   "75776dfc"
   ],
   "w-f303ad09": [
    "绝区零",
    "d172fb13"
   ]
  },
- "updated": "11.27 20:28",
+ "updated": "11.27 20:35",
  "wishlist": "2bb653d77712"
 }
