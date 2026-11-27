@@ -258,16 +258,16 @@
   "周杰伦": 22,
   "Astrae Oratio": 3,
   "MMORPG 新作": 15,
-  "哈利波特剧集": 8,
+  "哈利波特剧集": 9,
   "ILLIT": 14,
-  "The Mandalorian": 4,
+  "The Mandalorian": 6,
   "チェーンソーマン": 4,
   "星巴克马克杯": 1,
   "猫用品": 4,
   "dota2": 12,
-  "BLEACH Mirrors High": 3,
-  "绝区零": 2,
-  "A2O LITE": 1,
+  "BLEACH Mirrors High": 4,
+  "绝区零": 4,
+  "A2O LITE": 3,
   "gelato pique": 4,
   "あつ森": 1,
   "滑雪": 8
@@ -334,6 +334,15 @@
    "refs": [
     6,
     7
+   ]
+  },
+  {
+   "headline": "Harry Potter Reboot Series Will Officially Reunite a Fractured Fanbase, According to Franchise Historian",
+   "highlight": "Reunite a Fractured Fanbase",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    9
    ]
   }
  ],
@@ -411,6 +420,24 @@
    "refs": [
     1,
     2
+   ]
+  },
+  {
+   "headline": "The Mandalorian and Grogu Debut in 2026 Star Wars Topps Chrome Box, Now Available at Disneyland",
+   "highlight": "Topps Chrome Box",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
+  },
+  {
+   "headline": "Everything to know about 'Star Wars: The Mandalorian and Grogu'",
+   "highlight": "Everything to know",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
    ]
   }
  ],
@@ -523,7 +550,21 @@
    ]
   }
  ],
- "绝区零": [],
+ "绝区零": [
+  {
+   "headline": "GSC 《绝区零》粘土人 南宫羽 情报公开，4日日本开启预定，预计发售：2027年7月",
+   "highlight": "预计发售：2027年7月",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    4
+   ],
+   "event": {
+    "date": "2026-12-04",
+    "label": "予約開始"
+   }
+  }
+ ],
  "A2O LITE": [
   {
    "headline": "ゴールデンディスク賞の出演者第1弾発表！CORTIS、A2O LITE、RESCENEらが出演",
@@ -531,7 +572,8 @@
    "blurb": "ゴールデンディスク賞の出演者第1弾が発表され、A2O LITEの出演が決まった。",
    "weight": "lead",
    "refs": [
-    1
+    1,
+    3
    ]
   }
  ],

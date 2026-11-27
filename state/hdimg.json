@@ -784,6 +784,62 @@
    0.39
   ]
  },
+ "http://wx4.sinaimg.cn/middle/6f5ef307gy1ijgkodympej20p00xcjvf.jpg": {
+  "w": 900,
+  "h": 1200,
+  "target": 1280,
+  "v": 3,
+  "local": "pics/8dc6a7d71611183d.webp",
+  "out": [
+   900,
+   1200
+  ],
+  "why": "防盗链",
+  "ref": true,
+  "m": [
+   [
+    13,
+    14,
+    10,
+    9,
+    9,
+    8,
+    6,
+    5,
+    5,
+    5,
+    9,
+    8
+   ],
+   [
+    11,
+    14,
+    10,
+    7,
+    5,
+    6,
+    5,
+    9,
+    6,
+    6,
+    10,
+    11
+   ]
+  ],
+  "c": "#766077",
+  "k": [
+   0.0,
+   0.024,
+   0.97,
+   0.974
+  ],
+  "p": [
+   0.116,
+   0.156,
+   1.0,
+   1.0
+  ]
+ },
  "https://MKnews.com.tw/wp-content/uploads/2026/11/dota-2-blast-slam-ix-playoffs-tournament-stage-lights-20261127-1024x576-1.jpg": {
   "w": 1024,
   "h": 576,
@@ -2434,6 +2490,12 @@
  "https://i.17173cdn.com/gdthue/YWxqaGBf/kidhub/20261126/sQuAXbbuiklBCCi.jpg": {
   "w": 1280,
   "h": 720,
+  "target": 720,
+  "v": 3
+ },
+ "https://i.abcnewsfe.com/a/77b6f167-999d-433a-9332-93938dc147c3/MANDO1-DISNEY-AB-260513_1778708196774_hpMain_16x9.jpg?w=1600": {
+  "w": 1600,
+  "h": 900,
   "target": 720,
   "v": 3
  },
@@ -6209,6 +6271,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/11/copy-of-collider-template-2026-11-26t130106-546.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 720,
+  "v": 3
+ },
  "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2026/11/chris-evans-steve-rogers-avengers-doomsday.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
@@ -6270,6 +6338,12 @@
   "v": 3
  },
  "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/11/jason-from-behind-gta-6.jpg?w=1600&h=900&fit=crop": {
+  "w": 1600,
+  "h": 900,
+  "target": 1280,
+  "v": 3
+ },
+ "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/11/pedro-pascal-as-din-djarin-in-the-mandalorian-season-3-episode-8.jpg?w=1600&h=900&fit=crop": {
   "w": 1600,
   "h": 900,
   "target": 1280,

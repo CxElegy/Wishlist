@@ -1,6 +1,6 @@
 {
  "date": "2026-11-27",
- "edit_sig": "7beade0a2f8d",
+ "edit_sig": "3cad2f996c87",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -51,15 +51,6 @@
    "cover": "https://bleach-mh.bn-ent.net/ogp/ogp-ja-0a955d37.jpg",
    "facts": [],
    "name": "BLEACH Mirrors High",
-   "pending": [
-    {
-     "date": "2026-11-22",
-     "n": 4,
-     "source": "AppMedia",
-     "title": "【ミラハイ】星3石田雨竜の評価と性能【BLEACHミラーズハイ】",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5zZ2VLamR0VFp6Z3NLcXBld05Oc0JpRVR1WC1jVThlUlQtb1lIUHRPUUJhYXY3UFZ3bkZsZWE5STJtSzI0UnlQQ1Vza19FaGc?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -296,15 +287,6 @@
    "cover": null,
    "facts": [],
    "name": "哈利波特剧集",
-   "pending": [
-    {
-     "date": "2026-11-26",
-     "n": 9,
-     "source": "Collider",
-     "title": "Harry Potter Reboot Series Will Officially Reunite a Fractured Fanbase, According to Franchise Historian",
-     "url": "https://collider.com/hbo-harry-potter-reboot-fandom-melissa-anelli/"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -335,6 +317,16 @@
      "image": "https://comicbook.com/wp-content/uploads/sites/4/2026/11/Harry-Potter-HBO-TV-Show-Forbidden-Forest-Set-Facts-2.jpg?w=1200",
      "image_via": "og:image",
      "url": "https://comicbook.com/tv-shows/news/hbo-harry-potter-star-confirms-one-hogwarts-location-will-change-with-every-season-but-it-sounds-amazing/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-26",
+     "headline": "Harry Potter Reboot Series Will Officially Reunite a Fractured Fanbase, According to Franchise Historian",
+     "highlight": "Reunite a Fractured Fanbase",
+     "image": "https://static0.colliderimages.com/wordpress/wp-content/uploads/2026/11/copy-of-collider-template-2026-11-26t130106-546.jpg?w=1600&h=900&fit=crop",
+     "image_via": "og:image",
+     "url": "https://collider.com/hbo-harry-potter-reboot-fandom-melissa-anelli/",
      "weight": "normal"
     }
    ],
@@ -612,22 +604,6 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
-    {
-     "date": "2026-11-26",
-     "n": 5,
-     "source": "WDW News Today",
-     "title": "The Mandalorian and Grogu Debut in 2026 Star Wars Topps Chrome Box, Now Available at Disneyland",
-     "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPaXhUeExWWnlRbzd0U1FqZW1Qal9BQzlzak5ieFpWaXJ6alBqRWlvcFU5MlVLWmk3ZXBFLWtVZEJ5aDBqbzdHb0YtM2xGYlBxTjNibXhQNmxUaFJnekMxa3ZkamFibmZuelVUYUZoa25BamJ2S0lFeVFvcHoxTE5wQWk0ckd5S29EZGItUG9mQmtxWXVPWjdzWmlhYnVWZXV0aWd1SnJBN2lLSjM0VEp0WG0yN00xd05lX18zVzhyQQ?oc=5"
-    },
-    {
-     "date": "2026-11-26",
-     "n": 6,
-     "source": "ABC News - Breaking News, Latest News and Videos",
-     "title": "Everything to know about 'Star Wars: The Mandalorian and Grogu'",
-     "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQbWc3bnVBTm5DNExva3ZJZ1g4bC02eTI3ZkM1YXBDRUFMZGFzbnpMZ2FEdnVKb19CTVVNZHlzc0Z1RDczS3I2Vmd4dm5GSHRZVVdFMTFQYjFPWDJiLU1ocE9id2ZpZ3FPYkZPY1RhNzB0V2J4dlRLbU16NTRzdzJIMnpfMV_SAYoBQVVfeXFMUFQwdnRVczAwTnRmb3lCU3ZFWEkwVjdBYU5OekxDVXhIQ0oxdDJ3blhXRVB1eTNjZVR3Yk5Gd3JMb05DMFp0eUFfOThPQ2Rsc29vNW43SnF0Ykk2dUdabVROSVFMZWIweXdCRmZDMFFSQ1JaNXpRLTVqT3UwclRpNzFDSTZuSEMyRGN3?oc=5"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -639,6 +615,26 @@
      "image_via": "og:image",
      "url": "https://screenrant.com/the-mandalorian-and-grogu-pop-up-storybook/",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-26",
+     "headline": "The Mandalorian and Grogu Debut in 2026 Star Wars Topps Chrome Box, Now Available at Disneyland",
+     "highlight": "Topps Chrome Box",
+     "image": "https://static0.srcdn.com/wordpress/wp-content/uploads/2026/11/pedro-pascal-as-din-djarin-in-the-mandalorian-season-3-episode-8.jpg?w=1600&h=900&fit=crop",
+     "image_via": "同一件事的别家报道 screenrant.com",
+     "url": "https://wdwnt.com/2026/11/the-mandalorian-and-grogu-debut-in-2026-star-wars-topps-chrome-box-now-avaialable-at-disneyland/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-26",
+     "headline": "Everything to know about 'Star Wars: The Mandalorian and Grogu'",
+     "highlight": "Everything to know",
+     "image": "https://i.abcnewsfe.com/a/77b6f167-999d-433a-9332-93938dc147c3/MANDO1-DISNEY-AB-260513_1778708196774_hpMain_16x9.jpg?w=1600",
+     "image_via": "og:image",
+     "url": "https://abcnews.com/GMA/Culture/star-wars-mandalorian-grogu/story?id=132936904",
+     "weight": "normal"
     }
    ],
    "subtitle": "ザ・マンダロリアン",
@@ -733,24 +729,23 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4162040/22b56d833834d90674b30498f78e0839e48792db/header_alt_assets_2.jpg?t=1792533213",
    "facts": [],
    "name": "绝区零",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
-     "date": "2026-11-24",
-     "n": 3,
-     "source": "手机新浪网",
-     "title": "绝区零德蕾琪娜Cosplay 写真|hongbai|德蕾琪娜|绝区零",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1EczNrektZektsbmJMTDZXLThVTWE0cVNKa0RlOE5IYklXVXFyN19sb21EVlByOG43ZW55YnpwYWptV25ZcjZfdU9McVcyeU1wQW9MS3ZzcW5DQXVEMkZpV01jNA?oc=5"
-    },
-    {
+     "blurb": "",
      "date": "2026-11-27",
-     "n": 4,
-     "source": "新浪网",
-     "title": "GSC 《#绝区零[超话]# 》粘土人 南宫羽 情报公开~ 4日日本开启预定预计发售：2027年7月 ​",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE53SjVlNGxsMF9iTlFKTDU5a2h2S3NiUmJjVDRzNHRRU2N2bVN2eGUwc09HWV9qa2lOc3FhZU5Ddmx2VnRDTDVnNWdxWVZ5djd3aXdlTEZnc0hUQ2pCSXBLTWhBUQ?oc=5"
+     "event": {
+      "date": "2026-12-04",
+      "label": "予約開始"
+     },
+     "headline": "GSC 《绝区零》粘土人 南宫羽 情报公开，4日日本开启预定，预计发售：2027年7月",
+     "highlight": "预计发售：2027年7月",
+     "image": "http://wx4.sinaimg.cn/middle/6f5ef307gy1ijgkodympej20p00xcjvf.jpg",
+     "image_via": "正文图（本站保存）",
+     "url": "https://www.sina.cn/news/detail/5369830414483790.html",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "ゼンレスゾーンゼロ",
    "theme": {
     "accent": "#A9898A",
@@ -774,7 +769,7 @@
      "date": "2026-11-24",
      "headline": "29 分钟就结束，XG 这次没进淘汰赛，但前八名够下届直邀了",
      "highlight": "前八名够下届直邀",
-     "image": "https://mknews.com.tw/wp-content/uploads/2024/04/cropped-%E7%B0%A1%E5%A0%B11-1.jpg",
+     "image": "https://MKnews.com.tw/wp-content/uploads/2026/11/dota-2-blast-slam-ix-playoffs-tournament-stage-lights-20261127-1024x576-1.jpg",
      "image_via": "同一件事的别家报道 mknews.com.tw",
      "url": "https://www.sina.cn/news/detail/5368990224613688.html",
      "weight": "lead"
@@ -795,8 +790,8 @@
      "date": "2026-11-27",
      "headline": "Dota 2 BLAST Slam IX季後賽首日 GamerLegion爆冷橫掃Aurora Yandex晉勝部決賽",
      "highlight": "爆冷橫掃",
-     "image": "https://MKnews.com.tw/wp-content/uploads/2026/11/dota-2-blast-slam-ix-playoffs-tournament-stage-lights-20261127-1024x576-1.jpg",
-     "image_via": "正文图（2 枚から）",
+     "image": "https://mknews.com.tw/wp-content/uploads/2024/04/cropped-%E7%B0%A1%E5%A0%B11-1.jpg",
+     "image_via": "og:image",
      "url": "https://mknews.com.tw/2026/11/1024811/",
      "weight": "normal"
     }
@@ -817,22 +812,6 @@
    "cover": "https://1500066419.vod-qcloud.com/lite-og.jpg",
    "facts": [],
    "name": "A2O LITE",
-   "pending": [
-    {
-     "date": "2026-11-22",
-     "n": 2,
-     "source": "新浪财经",
-     "title": "a2olite音乐银行再上班啦 妹妹们人气太火了 这几天刷到了不同造型的NEON",
-     "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNeHZ5WkNHdFFGajJwa2wwbEcxeFZKN1RiclpBbFRKUVFSXzlFYkdlNkNmS1ZrX0I1bVhMRGxvTXZLTlY5dW1FemE4SXJCTHFWWmVkcDc0UlJydWFWY1JLbUZsamRDdF9iWkI1enNRT2kwOW1xR0NJYl9uYWtUZ2h1X2lDT3RJbnZ5a0ZPMXhzZTBmNFNyRlE?oc=5"
-    },
-    {
-     "date": "2026-11-26",
-     "n": 3,
-     "source": "新浪网",
-     "title": "金唱片第一轮阵容公开，这九张海报里藏着多少期待|ALLDAY PROJECT|Hearts2Hearts|A2O LITE|KiiiKiii|金唱片颁奖典礼|AND2BLE|RESCENE|CORTIS|ALD1|YENA_新浪新闻",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFAtQkZBYjFhc1Zhbm5WVEhjT0wyajdyNk5SbTJzTkdtV0UwWThRWDc2Mi1KMk5sQmZNQkp6cWRIVjIzZGdXd2MyOFRvM3pJcnRWa29md2VDVmh1bVd3WGNLQ3ByNA?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
     {
