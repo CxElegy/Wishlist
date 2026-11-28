@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-28T00:18:04+00:00",
+ "checked": "2026-11-28T01:17:57+00:00",
  "fired": {
   "at": "2026-11-27T22:53:06+00:00",
   "results": {
@@ -105,11 +105,15 @@
    "need": true,
    "prog": 233,
    "prog_day": "2026-11-28",
-   "ripe": [],
-   "sig": "e92babf9ec83",
+   "ripe": [
+    "MMORPG 新作",
+    "The Mandalorian",
+    "Vaundy"
+   ],
+   "sig": "c9576704b579",
    "token_cap": 1000000,
    "tokens_today": 309521,
-   "why": "整理待ちの記事 100 件（11 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 100 件（11 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
