@@ -319,7 +319,8 @@
   "チェーンソーマン": 1,
   "星巴克马克杯": 1,
   "gelato pique": 3,
-  "Vaundy": 2
+  "Vaundy": 2,
+  "ぐでたま": 3
  },
  "MMORPG 新作": [
   {
@@ -633,6 +634,35 @@
     2
    ],
    "image": "https://static.sanyonews.jp/image/article/size1/6/4/c/c/64cc48e73587c37f03fa2e28982661d5_1.jpg"
+  }
+ ],
+ "ぐでたま": [
+  {
+   "headline": "「ぐでたま」がついに宇宙へ！5周年記念コラボカフェが池袋にオープン",
+   "highlight": "池袋にオープン",
+   "blurb": "5周年記念コラボカフェが池袋にオープン。",
+   "weight": "lead",
+   "refs": [
+    3
+   ]
+  },
+  {
+   "headline": "ぐでたまが駅員に変身！東京駅に期間限定ショップがオープン",
+   "highlight": "東京駅に期間限定ショップ",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    1
+   ]
+  },
+  {
+   "headline": "ペコちゃんが“ぐでたま”にコスプレ！新スイーツ登場",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    2
+   ]
   }
  ]
 }

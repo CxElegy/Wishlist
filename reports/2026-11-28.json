@@ -1,6 +1,6 @@
 {
  "date": "2026-11-28",
- "edit_sig": "acf0e2db60c2",
+ "edit_sig": "b40f39b1c30d",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -588,34 +588,34 @@
    "section": "好物",
    "stories": [
     {
-     "blurb": "",
+     "blurb": "5周年記念コラボカフェが池袋にオープン。",
      "date": "2026-11-27",
-     "headline": "＜画像1 / 2＞ぐでたまが駅員に変身！東京駅に期間限定ショップがオープン",
-     "highlight": "",
-     "image": "https://news.walkerplus.com/article/52948/288968_615.jpg",
+     "headline": "「ぐでたま」がついに宇宙へ！5周年記念コラボカフェが池袋にオープン",
+     "highlight": "池袋にオープン",
+     "image": "https://news.walkerplus.com/article/150620/858239_615.jpg",
      "image_via": "og:image",
-     "url": "https://www.walkerplus.com/article/52948/image288968.html",
-     "weight": "hero"
+     "url": "https://www.walkerplus.com/article/150620/",
+     "weight": "lead"
     },
     {
      "blurb": "",
      "date": "2026-11-27",
-     "headline": "＜画像6 / 6＞ペコちゃんが“ぐでたま”にコスプレ！新スイーツ登場",
+     "headline": "ぐでたまが駅員に変身！東京駅に期間限定ショップがオープン",
+     "highlight": "東京駅に期間限定ショップ",
+     "image": "https://news.walkerplus.com/article/52948/288968_615.jpg",
+     "image_via": "og:image",
+     "url": "https://www.walkerplus.com/article/52948/image288968.html",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-27",
+     "headline": "ペコちゃんが“ぐでたま”にコスプレ！新スイーツ登場",
      "highlight": "",
      "image": "https://news.walkerplus.com/article/55811/307224_615.jpg",
      "image_via": "og:image",
      "url": "https://www.walkerplus.com/article/55811/image307229.html",
-     "weight": "hero"
-    },
-    {
-     "blurb": "",
-     "date": "2026-11-27",
-     "headline": "「ぐでたま」がついに宇宙へ！5周年記念コラボカフェが池袋にオープン",
-     "highlight": "",
-     "image": "https://news.walkerplus.com/article/150620/858239_615.jpg",
-     "image_via": "og:image",
-     "url": "https://www.walkerplus.com/article/150620/",
-     "weight": "hero"
+     "weight": "normal"
     }
    ],
    "subtitle": "Gudetama",

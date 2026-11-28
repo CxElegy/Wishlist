@@ -35,7 +35,6 @@
   "https://mobile.zol.com.cn/1277/12770346.html": "https://doc-fd.zol-img.com.cn/t_s2000x2000/g2/M00/0D/04/ChMlWlz97l-IKGmEAAHXvQRxV3sAAKuuwFNdsMAAdfV044.jpg",
   "https://motoryokoblog.com/?p=4843": "https://motoryokoblog.com/wp-content/uploads/2026/09/radwimps_4843_fv.png",
   "https://my-best.com/12473": "https://img.my-best.com/contents/78cad12f0b4ce34b6a0aba75c043645a.jpeg?ixlib=rails-4.3.1&q=70&lossless=0&w=1200&h=900&fit=crop&s=60c09410532229589cd52bff59aea54a",
-  "https://news.google.com/rss/articles/CBMibkFVX3lxTFBGVjNsS3lhNDczRjdySHhoR1dlczV4bkN3N1FLUk9mNWxqUmh5S05kSzhlNzJXbmYyWkRBZ3UtdGJlRU13aG5HajVPNmRqY1lSRkNfUmlYZ0hOckE4djN1YU5ScFhQanVUdFdxcUtB?oc=5": "https://www.bing.com/th?id=ONUT.U4e88_DnYQb6ae0Iwr7XgQ&pid=News&w=1200",
   "https://news.livedoor.com/topics/detail/32906353/": "https://image.news.livedoor.com/newsimage/stf/3/1/31da1_1717_b630c9dc_050a354f.jpg",
   "https://news.livedoor.com/topics/detail/32911327/": "https://image.news.livedoor.com/newsimage/stf/9/9/992be_1838_52303757c3fef1b5ce51d52f2bfde838.jpg",
   "https://news.nicovideo.jp/watch/nw20021007?news_ref=search_search": "https://www.bing.com/th?id=ONUT.L3DynvbqmOKmjPSYk3_tSg&pid=News&w=1200",
@@ -89,6 +88,7 @@
   "https://www.superherohype.com/news/708323-batman-knightfall-part-1-hbo-max-streaming-release-date": "https://www.superherohype.com/wp-content/uploads/sites/4/2026/09/Untitled-design-2026-09-21T171424.351.jpg?resize=1200,630",
   "https://www.techritual.com/2026/11/27/607238/": "https://www.techritual.com/wp-content/uploads/2026/11/avengers-doomsday-hk-presale-nov27-cover.webp",
   "https://www.toy-people.com/en/?p=117066": "https://img.toy-people.com/member/179576390872.webp",
+  "https://www.tv-tokyo.co.jp/plus/external-pr/entry/328473.html": "https://prtimes.jp/img/24163/170/resize/d24163-170-2f9a605687a1d4f41f0f-0.jpg",
   "https://www.vietnam.vn/ja/lo-tinh-nang-khien-galaxy-a38-kem-hon-ca-galaxy-a37": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/24/1795513028886_1-1795509892929490605889-21-0-649-1200-crop-1795509916922611737688.jpeg",
   "https://www.walkerland.com.tw/subject/view/425746": "https://media.walkerland.com.tw/wlk_media/thumbnail/2026/11/1795265411810-5f16989da27141be94c40fd9afa2b6f8-850x446.webp",
   "https://www.walkerplus.com/article/1018080/": "https://news.walkerplus.com/article/1018080/10157455_615.jpg",
@@ -1864,12 +1864,12 @@
    "hits": [
     "无线直发夹"
    ],
-   "image": "https://www.bing.com/th?id=ONUT.U4e88_DnYQb6ae0Iwr7XgQ&pid=News&w=1200",
+   "image": "https://prtimes.jp/img/24163/170/resize/d24163-170-2f9a605687a1d4f41f0f-0.jpg",
    "kind": "hesitate",
    "source": "www.tv-tokyo.co.jp",
    "taste": [],
    "title": "ツヤとまとまりを、いつでもどこでも。フェスティノ［コードレス スティック ヘアアイロン］新発売",
-   "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBGVjNsS3lhNDczRjdySHhoR1dlczV4bkN3N1FLUk9mNWxqUmh5S05kSzhlNzJXbmYyWkRBZ3UtdGJlRU13aG5HajVPNmRqY1lSRkNfUmlYZ0hOckE4djN1YU5ScFhQanVUdFdxcUtB?oc=5",
+   "url": "https://www.tv-tokyo.co.jp/plus/external-pr/entry/328473.html",
    "words": [
     "スチーマー",
     "ヘアアイロン"
@@ -2220,11 +2220,11 @@
    9
   ],
   [
-   "starbucks",
+   "星巴克",
    8
   ],
   [
-   "星巴克",
+   "starbucks",
    8
   ],
   [
@@ -2232,15 +2232,15 @@
    8
   ],
   [
+   "galaxy",
+   7
+  ],
+  [
    "三星 Galaxy",
    7
   ],
   [
    "作品:三星手机",
-   7
-  ],
-  [
-   "galaxy",
    7
   ]
  ]
