@@ -1,46 +1,5 @@
 [
 {
-"at": "2026-11-26T17:45:20+00:00",
-"text": "2026-11-27 第 2 バッチを出刊：MMORPG 新作（1 版面・2 本・今日の整理待ちは全部終わり） · token 新規入力 4,918・キャッシュ読み 52.8万・出力 2,105",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.35,
-"mem_total": 16868675584,
-"mem_free": 15781142528,
-"disk_used": 10419216384,
-"disk_free": 63393882112,
-"disk_total": 73813098496,
-"peak": 596377600
-},
-"batch": 2,
-"boards": [
-"MMORPG 新作"
-],
-"stories": 2,
-"left": 0,
-"edited": 7,
-"run": 1795714313.6293726,
-"tok": {
-"in": 11,
-"cw": 4907,
-"cr": 528385,
-"out": 2105,
-"calls": 6,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 535408,
-"secs": 807,
-"run_tok": {
-"in": 36,
-"cw": 62481,
-"cr": 1435141,
-"out": 7741,
-"calls": 19,
-"model": "claude-sonnet-5-5"
-}
-},
-{
 "at": "2026-11-26T18:45:18+00:00",
 "text": "2026-11-27 第 1 バッチを出刊：ILLIT、The Mandalorian、チェーンソーマン、星巴克马克杯、猫用品（5 版面・6 本・今日の整理待ちは全部終わり） · token 新規入力 4.4万・キャッシュ読み 49.7万・出力 2,672",
 "level": "ok",
@@ -2198,5 +2157,50 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 2025342
+},
+{
+"at": "2026-11-28T05:38:43+00:00",
+"text": "2026-11-28 第 1 バッチを出刊：BLEACH Mirrors High、GTA 6、MMORPG 新作、The Mandalorian、Vaundy、dota2 ほか 8（14 版面・48 本・残り 1 版面） · token 新規入力 6.1万・キャッシュ読み 213.6万・出力 8,809",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.82,
+"mem_total": 16868675584,
+"mem_free": 15910453248,
+"disk_used": 11234185216,
+"disk_free": 62578913280,
+"disk_total": 73813098496,
+"peak": 448634880
+},
+"batch": 1,
+"boards": [
+"BLEACH Mirrors High",
+"GTA 6",
+"MMORPG 新作",
+"The Mandalorian",
+"Vaundy",
+"dota2",
+"gelato pique",
+"ぐでたま",
+"チェーンソーマン",
+"三星手机",
+"周杰伦",
+"哈利波特剧集",
+"漫威电影",
+"猫用品"
+],
+"stories": 48,
+"left": 1,
+"edited": 20,
+"run": null,
+"tok": {
+"in": 53,
+"cw": 60762,
+"cr": 2135763,
+"out": 8809,
+"calls": 28,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 2205387
 }
 ]

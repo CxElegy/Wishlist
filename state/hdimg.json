@@ -4834,6 +4834,12 @@
   "k": null,
   "p": null
  },
+ "https://news.walkerplus.com/article/40701/210689_615.jpg": {
+  "w": 615,
+  "h": 409,
+  "target": 720,
+  "v": 3
+ },
  "https://news.walkerplus.com/article/49841/268601_615.jpg": {
   "w": 615,
   "h": 409,
@@ -6001,6 +6007,12 @@
  "https://portal.auone.jp/media/thumbnails/2026/11/25/https___nonno_hpplus_jp_lifestyle_food_424630__w1280.webp": {
   "w": 1280,
   "h": 1280,
+  "target": 1280,
+  "v": 3
+ },
+ "https://prcdn.freetls.fastly.net/release_image/112568/38/112568-38-3990eb825c77712348e4c903f654eaac-1920x1005.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260": {
+  "w": 1920,
+  "h": 1005,
   "target": 1280,
   "v": 3
  },

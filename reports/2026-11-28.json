@@ -1,6 +1,6 @@
 {
  "date": "2026-11-28",
- "edit_sig": "913b52080f3c",
+ "edit_sig": "3deaf97a0745",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -1024,24 +1024,29 @@
    "cover": null,
    "facts": [],
    "name": "猫用品",
-   "pending": [
+   "section": "生活",
+   "stories": [
     {
-     "date": "2026-11-27",
-     "n": 1,
-     "source": "ウォーカープラス",
-     "title": "＜画像13 / 18＞ペットイベント「インターペット」でわんにゃんWalker表紙パネル展を開催中",
-     "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE91Q0l0ODlHbF94UFU0QWlmc25xb1J5X3A5VGpxYVJWXzNTbXZ1WHBJTGxQXzVaWlhsU1o0NlN3bVgwYUNNSTFoaVJfOFRkTUhVSE1yb2tRbThDZ2FXSUs5M3JEVy1wVW9S?oc=5"
+     "blurb": "獣医師発ねこヘルスケアブランド uniam の「猫狂研究所」がローンチ。",
+     "date": "2026-11-28",
+     "headline": "みりちゃむさんとユニアム代表 獣医師・杉本亜衣が、ねこへの偏愛と毎日の健康を語る。「猫狂研究所」ローンチ",
+     "highlight": "猫狂研究所",
+     "image": "https://prcdn.freetls.fastly.net/release_image/112568/38/112568-38-3990eb825c77712348e4c903f654eaac-1920x1005.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260",
+     "image_via": "og:image",
+     "url": "https://prtimes.jp/main/html/rd/p/000000038.000112568.html",
+     "weight": "lead"
     },
     {
-     "date": "2026-11-28",
-     "n": 2,
-     "source": "PR TIMES",
-     "title": "【獣医師発ねこヘルスケアブランド uniam】みりちゃむさんとユニアム代表 獣医師・杉本亜衣が、ねこへの偏愛と毎日の健康を語る。「猫狂研究所」ローンチイベントを開催",
-     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBOTFdvRnpDSlN4aG11WFM3cUF5YXJvSXQ3NzZtNXBVcTlRU280UWdoMWItYmNYR3gxLXhuMTZ3OWVCWklfV2IwR1hVOU5JU0daX2RGUWVKVnpEVUZ6d2FrYU5rbUpvVTkxbUE?oc=5"
+     "blurb": "",
+     "date": "2026-11-27",
+     "headline": "ペットイベント「インターペット」でわんにゃんWalker表紙パネル展を開催中",
+     "highlight": "",
+     "image": "https://news.walkerplus.com/article/40701/210689_615.jpg",
+     "image_via": "og:image",
+     "url": "https://www.walkerplus.com/article/40701/image210701.html",
+     "weight": "normal"
     }
    ],
-   "section": "生活",
-   "stories": [],
    "subtitle": "猫グッズ · 家里两只猫",
    "theme": {
     "accent": "#E8875B",
