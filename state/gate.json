@@ -1,6 +1,6 @@
 {
- "changed": false,
- "checked": "2026-11-28T01:22:21+00:00",
+ "changed": true,
+ "checked": "2026-11-28T02:28:05+00:00",
  "fired": {
   "at": "2026-11-28T01:21:29+00:00",
   "results": {
@@ -88,32 +88,43 @@
     "sig": "c9576704b579"
    },
    "items": [
-    "MMORPG 新作",
-    "The Mandalorian",
-    "Vaundy",
-    "lib:F1",
-    "lib:NBA",
-    "lib:ONE PIECE",
-    "lib:YOASOBI",
-    "lib:サッカー日本代表",
-    "lib:台風・天気",
-    "lib:大谷翔平",
-    "lib:転生したら剣でした 第2期"
+    "GTA 6",
+    "dota2",
+    "gelato pique",
+    "lib:Nintendo Switch 2",
+    "lib:ガンプラ",
+    "lib:コーヒー",
+    "lib:ドラゴンクエストモンスターズ４　枯れ木の国のビアンカ・フローラ",
+    "lib:ユニクロ",
+    "lib:ラーメン",
+    "lib:大相撲",
+    "lib:無印良品",
+    "あつ森",
+    "ぐでたま",
+    "チェーンソーマン",
+    "三星手机",
+    "周杰伦",
+    "哈利波特剧集",
+    "滑雪",
+    "漫威电影",
+    "猫用品",
+    "绝区零"
    ],
-   "last_batch": "2026-11-27T23:08:03+00:00",
+   "last_batch": "2026-11-28T01:27:17+00:00",
    "last_error": {},
    "need": true,
-   "prog": 233,
+   "prog": 245,
    "prog_day": "2026-11-28",
    "ripe": [
-    "MMORPG 新作",
-    "The Mandalorian",
-    "Vaundy"
+    "GTA 6",
+    "滑雪",
+    "漫威电影",
+    "绝区零"
    ],
-   "sig": "c9576704b579",
+   "sig": "8f73d130ed41",
    "token_cap": 1000000,
-   "tokens_today": 309521,
-   "why": "整理待ちの記事 100 件（11 版面・AI 編集まで版面に載らない）"
+   "tokens_today": 358653,
+   "why": "整理待ちの記事 154 件（21 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
@@ -326,12 +337,12 @@
    "runs": 12
   },
   "2026-11-28": {
-   "batches": 10,
-   "cr": 6764503,
-   "cw": 279828,
-   "in": 177,
-   "out": 29516,
-   "runs": 5
+   "batches": 11,
+   "cr": 7265125,
+   "cw": 326393,
+   "in": 192,
+   "out": 32068,
+   "runs": 6
   }
  }
 }
