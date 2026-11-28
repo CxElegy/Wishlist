@@ -321,7 +321,7 @@
   "The Mandalorian": 2,
   "A2O LITE": 4,
   "滑雪": 9,
-  "哈利波特剧集": 9,
+  "哈利波特剧集": 12,
   "dota2": 7,
   "あつ森": 4,
   "BLEACH Mirrors High": 2,
@@ -493,7 +493,8 @@
    "weight": "normal",
    "refs": [
     5,
-    3
+    3,
+    10
    ]
   },
   {
@@ -521,6 +522,15 @@
    "weight": "normal",
    "refs": [
     7
+   ]
+  },
+  {
+   "headline": "First look inside massive new Harry Potter TV series sets ahead of HBO premiere at Christmas",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    12
    ]
   }
  ],
