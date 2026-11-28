@@ -307,7 +307,7 @@
   "三星手机": 23,
   "周杰伦": 10,
   "ILLIT": 7,
-  "MMORPG 新作": 5,
+  "MMORPG 新作": 8,
   "The Mandalorian": 2,
   "A2O LITE": 4,
   "滑雪": 9,
@@ -337,7 +337,8 @@
    "blurb": "",
    "weight": "normal",
    "refs": [
-    4
+    4,
+    8
    ]
   },
   {
@@ -348,6 +349,28 @@
    "refs": [
     5
    ]
+  },
+  {
+   "headline": "MMORPG『メイプルストーリー』大型アプデ「OVERDRIVE」盛りだくさんな詳細お披露目。新職業「レテ」、一撃ダメージ上限「10兆」のほか『ブルーアーカイブ』との",
+   "highlight": "",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    6
+   ]
+  },
+  {
+   "headline": "정통 무협 MMORPG ‘천상비M2’, 12월 8일 출격… 하루 전 캐릭터 선점",
+   "highlight": "12월 8일",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    7
+   ],
+   "event": {
+    "date": "2026-12-08",
+    "label": "発売日"
+   }
   }
  ],
  "The Mandalorian": [

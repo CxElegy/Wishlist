@@ -1,37 +1,5 @@
 [
 {
-"at": "2026-11-26T14:57:18+00:00",
-"text": "2026-11-26 第 6 バッチを出刊：三星手机（1 版面・8 本・残り 4 版面） · token 新規入力 2,464・キャッシュ読み 16.8万・出力 608",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.3,
-"mem_total": 16868675584,
-"mem_free": 15916744704,
-"disk_used": 10439331840,
-"disk_free": 63373766656,
-"disk_total": 73813098496,
-"peak": 415518720
-},
-"batch": 6,
-"boards": [
-"三星手机"
-],
-"stories": 8,
-"left": 4,
-"edited": 20,
-"run": 1795702957.3239474,
-"tok": {
-"in": 4,
-"cw": 2460,
-"cr": 168163,
-"out": 608,
-"calls": 2,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 171235
-},
-{
 "at": "2026-11-26T15:02:44+00:00",
 "text": "2026-11-26 第 7 バッチを出刊：MMORPG 新作（1 版面・5 本・残り 3 版面） · token 新規入力 1,688・キャッシュ読み 17.3万・出力 555",
 "level": "ok",
@@ -2144,5 +2112,43 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 771933
+},
+{
+"at": "2026-11-28T04:57:57+00:00",
+"text": "2026-11-28 第 1 バッチを出刊：BLEACH Mirrors High、GTA 6、MMORPG 新作、The Mandalorian、Vaundy、三星手机 ほか 1（7 版面・25 本・残り 5 版面） · token 新規入力 4.8万・キャッシュ読み 79.8万・出力 3,660",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.64,
+"mem_total": 16868675584,
+"mem_free": 15959715840,
+"disk_used": 11190067200,
+"disk_free": 62623031296,
+"disk_total": 73813098496,
+"peak": 422739968
+},
+"batch": 1,
+"boards": [
+"BLEACH Mirrors High",
+"GTA 6",
+"MMORPG 新作",
+"The Mandalorian",
+"Vaundy",
+"三星手机",
+"漫威电影"
+],
+"stories": 25,
+"left": 5,
+"edited": 18,
+"run": null,
+"tok": {
+"in": 23,
+"cw": 47567,
+"cr": 798077,
+"out": 3660,
+"calls": 12,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 849327
 }
 ]
