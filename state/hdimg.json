@@ -1167,6 +1167,12 @@
   "target": 1280,
   "v": 3
  },
+ "https://assets.juksy.com/files/articles/155950/6b098b4599079.jpg": {
+  "target": 1280,
+  "v": 3,
+  "fail": "ModuleNotFoundError: No module named 'cv2'",
+  "day": "2026-11-28"
+ },
  "https://assets.st-note.com/production/uploads/images/336983412/rectangle_large_type_2_6ab3f3f2b8f17348b881bc944d8c523f.jpeg?fit=bounds&quality=85&width=1280": {
   "w": 1280,
   "h": 670,
@@ -8693,7 +8699,7 @@
  "https://www.techritual.com/wp-content/uploads/2026/11/avengers-doomsday-hk-presale-nov27-cover.webp": {
   "w": 1280,
   "h": 720,
-  "target": 1280,
+  "target": 720,
   "v": 3
  },
  "https://www.thehypemagazine.com/wp-content/uploads/2026/11/elden-ring-meets-minecraft-dark-craft-free-rpg.jpg": {

@@ -1,78 +1,5 @@
 [
 {
-"at": "2026-11-26T14:33:56+00:00",
-"text": "2026-11-26 第 2 バッチを出刊：猫用品（1 版面・5 本・今日の整理待ちは全部終わり） · token 新規入力 1,734・キャッシュ読み 21.8万・出力 784",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.58,
-"mem_total": 16868675584,
-"mem_free": 15945801728,
-"disk_used": 10412904448,
-"disk_free": 63400194048,
-"disk_total": 73813098496,
-"peak": 411852800
-},
-"batch": 2,
-"boards": [
-"猫用品"
-],
-"stories": 5,
-"left": 0,
-"edited": 20,
-"run": 1795702957.3239474,
-"tok": {
-"in": 6,
-"cw": 1728,
-"cr": 218092,
-"out": 784,
-"calls": 3,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 220610,
-"secs": 679,
-"run_tok": {
-"in": 23,
-"cw": 44895,
-"cr": 783890,
-"out": 2768,
-"calls": 12,
-"model": "claude-sonnet-5-5"
-}
-},
-{
-"at": "2026-11-26T14:44:59+00:00",
-"text": "2026-11-26 第 3 バッチを出刊：GTA 6（1 版面・5 本・残り 7 版面） · token 新規入力 5,094・キャッシュ読み 37.9万・出力 1,040",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.34,
-"mem_total": 16868675584,
-"mem_free": 15929536512,
-"disk_used": 10429825024,
-"disk_free": 63383273472,
-"disk_total": 73813098496,
-"peak": 432697344
-},
-"batch": 3,
-"boards": [
-"GTA 6"
-],
-"stories": 5,
-"left": 7,
-"edited": 20,
-"run": 1795702957.3239474,
-"tok": {
-"in": 10,
-"cw": 5084,
-"cr": 378569,
-"out": 1040,
-"calls": 5,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 384703
-},
-{
 "at": "2026-11-26T14:49:11+00:00",
 "text": "2026-11-26 第 4 バッチを出刊：漫威电影（1 版面・5 本・残り 6 版面） · token 新規入力 2,830・キャッシュ読み 15.9万・出力 582",
 "level": "ok",
@@ -2168,5 +2095,45 @@
 "calls": 15,
 "model": "claude-sonnet-5-5"
 }
+},
+{
+"at": "2026-11-28T04:40:01+00:00",
+"text": "出刊に失敗：No module named 'requests'",
+"level": "error"
+},
+{
+"at": "2026-11-28T04:43:35+00:00",
+"text": "2026-11-28 第 1 バッチを出刊：BLEACH Mirrors High、GTA 6、The Mandalorian、Vaundy（4 版面・7 本・残り 8 版面） · token 新規入力 4.2万・キャッシュ読み 43.2万・出力 1,646",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.5,
+"mem_total": 16868675584,
+"mem_free": 15910682624,
+"disk_used": 11173609472,
+"disk_free": 62639489024,
+"disk_total": 73813098496,
+"peak": 453672960
+},
+"batch": 1,
+"boards": [
+"BLEACH Mirrors High",
+"GTA 6",
+"The Mandalorian",
+"Vaundy"
+],
+"stories": 7,
+"left": 8,
+"edited": 18,
+"run": null,
+"tok": {
+"in": 14,
+"cw": 42483,
+"cr": 432213,
+"out": 1646,
+"calls": 7,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 476356
 }
 ]
