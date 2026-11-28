@@ -1,6 +1,6 @@
 {
  "date": "2026-11-28",
- "edit_sig": "e18adfff8242",
+ "edit_sig": "acf0e2db60c2",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -918,31 +918,21 @@
    "cover": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
    "facts": [],
    "name": "dota2",
-   "pending": [
+   "section": "游戏",
+   "stories": [
     {
-     "date": "2026-11-26",
-     "n": 5,
-     "source": "新浪网",
-     "title": "霸气队和森哥队的比赛已经82分钟了…… #dota2# ​",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5ESHNBbUxWT1JEYXh2NWU0dHR4cGc0N2EwbWRPVHFTaG5mYVgyam9qN3A5MmIwSi1QOVZjMV9yNFNqTnI4SW5uZmNSdWRrOEcxaFJ1Z1dMcFJWREtEYXdBcVZZRQ?oc=5"
-    },
-    {
+     "blurb": "",
      "date": "2026-11-28",
-     "n": 6,
+     "headline": "PARIVISION eliminates Aurora Gaming to stay alive at Dota 2 BLAST Slam 9",
+     "highlight": "",
+     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1791407503",
+     "image_via": "作品封面",
      "source": "Esports.gg",
-     "title": "PARIVISION eliminates Aurora Gaming to stay alive at Dota 2 BLAST Slam 9",
-     "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPS2hNYmszUEdxSEphMnhEU0IzZkdiekJPMS1CSmUwVXFUdXBSOFFwekFjc0w4RWhsVWZYOTBGYVRHUUFCaTVqd1VvZ1JTX3VIeUxMT1Q4TDJob0luYXh0ZlVFN2txUGc0RHhtLXZWek5IZnIwWnI3NGJYTHNocmY4X2l0SElVdkNoSkhuUUNOYw?oc=5"
-    },
-    {
-     "date": "2026-11-28",
-     "n": 7,
-     "source": "直播吧",
-     "title": "DOTA2解说Ams分享孩子照片：Hi，感恩节突然来找我的小宝贝～",
-     "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBQZGVjelJoUE5BT2pXcTVCb3RhSkNzZGJsbHVvS1dkZFVaUjlMV0R0dU1sUDBUWlRqZEk3MEZMWF8yLVNQbERZTW1oT19OMXNjZW1QcWtKQ1BTNWpwRXpaWVduaGd6bWp2dWgzajhBazFDVmRuWE5Kdg?oc=5"
+     "source_icon": "https://www.google.com/s2/favicons?domain=esports.gg&sz=128",
+     "url": "https://esports.gg/news/dota-2/parivision-eliminate-aurora-gaming-dota-2-blast-slam-9/",
+     "weight": "normal"
     }
    ],
-   "section": "游戏",
-   "stories": [],
    "subtitle": "Dota 2",
    "theme": {
     "accent": "#E0503C",

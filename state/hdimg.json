@@ -6076,12 +6076,6 @@
   "target": 1280,
   "v": 3
  },
- "https://prtimes.jp/img/24163/170/resize/d24163-170-2f9a605687a1d4f41f0f-0.jpg": {
-  "w": 650,
-  "h": 434,
-  "target": 720,
-  "v": 3
- },
  "https://q0.itc.cn/q_70/images03/20260628/075522392593446799b29e6263affc54.jpeg": {
   "w": 720,
   "h": 1280,
@@ -7604,6 +7598,12 @@
  "https://www.bing.com/th?id=ONUT.Q6x_Uv8OtNRn4vbytr7PzA&pid=News&w=708": {
   "w": 700,
   "h": 492,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.U4e88_DnYQb6ae0Iwr7XgQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 367,
   "target": 720,
   "v": 3
  },
