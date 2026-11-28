@@ -1,8 +1,8 @@
 {
- "changed": true,
- "checked": "2026-11-28T02:28:05+00:00",
+ "changed": false,
+ "checked": "2026-11-28T02:30:38+00:00",
  "fired": {
-  "at": "2026-11-28T01:21:29+00:00",
+  "at": "2026-11-28T02:30:38+00:00",
   "results": {
    "edit": "Claude を起こした",
    "photos": "仕事なし（起こさない）"
@@ -73,19 +73,19 @@
    "edit": 14
   },
   "2026-11-28": {
-   "edit": 6
+   "edit": 7
   }
  },
  "jobs": {
   "edit": {
    "claude": true,
    "fired": {
-    "at": "2026-11-28T01:21:29+00:00",
+    "at": "2026-11-28T02:30:38+00:00",
     "attempts": 1,
     "day": "2026-11-28",
-    "prog": 233,
-    "resp": "cse_01W4x6f7qL4Nr9ASGrMF4Ege",
-    "sig": "c9576704b579"
+    "prog": 245,
+    "resp": "",
+    "sig": "8f73d130ed41"
    },
    "items": [
     "GTA 6",
