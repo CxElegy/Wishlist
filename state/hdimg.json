@@ -1167,12 +1167,6 @@
   "target": 1280,
   "v": 3
  },
- "https://assets.juksy.com/files/articles/155950/6b098b4599079.jpg": {
-  "target": 1280,
-  "v": 3,
-  "fail": "ModuleNotFoundError: No module named 'cv2'",
-  "day": "2026-11-28"
- },
  "https://assets.st-note.com/production/uploads/images/336983412/rectangle_large_type_2_6ab3f3f2b8f17348b881bc944d8c523f.jpeg?fit=bounds&quality=85&width=1280": {
   "w": 1280,
   "h": 670,
@@ -1879,6 +1873,12 @@
  "https://cdn01.dcfever.com/articles/news/2026/11/42532_1795657780_8d4d53_fb.jpg": {
   "w": 1200,
   "h": 630,
+  "target": 1280,
+  "v": 3
+ },
+ "https://cdn3.am730.com.hk/processed/2026-11/1066208/article/1066208/df/01M8F360XRERFNHBGZ6W1FVD5B.jpg?updatedAt=1795803270": {
+  "w": 1748,
+  "h": 983,
   "target": 1280,
   "v": 3
  },
@@ -7625,9 +7625,21 @@
   "target": 720,
   "v": 3
  },
+ "https://www.bing.com/th?id=ONUT.QSkN0Qq39maJEDyE91BIyQ&pid=News&w=1200": {
+  "w": 700,
+  "h": 466,
+  "target": 720,
+  "v": 3
+ },
  "https://www.bing.com/th?id=ONUT.V9oUOErfpMDYxDF0Sjo6Hg&pid=News&w=800": {
   "w": 700,
   "h": 700,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.bing.com/th?id=ONUT.VvktSUQTIVQC3SZfJYfG_Q&pid=News&w=800": {
+  "w": 700,
+  "h": 386,
   "target": 720,
   "v": 3
  },
@@ -7899,12 +7911,6 @@
   "target": 720,
   "v": 3
  },
- "https://www.bing.com/th?id=ONUT.hB6H5egG57z4wY8nlvMwVg&pid=News&w=1200": {
-  "w": 700,
-  "h": 393,
-  "target": 720,
-  "v": 3
- },
  "https://www.bing.com/th?id=ONUT.hSK1x_UwmELq3M2x6HEyvg&pid=News&w=1200": {
   "w": 700,
   "h": 393,
@@ -7962,62 +7968,6 @@
   "h": 480,
   "target": 720,
   "v": 3
- },
- "https://www.bing.com/th?id=ONUT.o1plSbJPRc6O0h724ebPEA&pid=News&w=330": {
-  "w": 330,
-  "h": 330,
-  "target": 720,
-  "v": 3,
-  "blur": 0.492,
-  "local": "pics/8a34b407187b2870.webp",
-  "out": [
-   720,
-   720
-  ],
-  "why": "看不清",
-  "m": [
-   [
-    4,
-    4,
-    7,
-    10,
-    8,
-    9,
-    13,
-    10,
-    8,
-    14,
-    6,
-    8
-   ],
-   [
-    2,
-    4,
-    9,
-    8,
-    5,
-    6,
-    9,
-    7,
-    12,
-    11,
-    12,
-    14
-   ]
-  ],
-  "c": "#b8b0c3",
-  "k": [
-   0.692,
-   0.135,
-   0.804,
-   0.372
-  ],
-  "p": [
-   0.251,
-   0.108,
-   0.696,
-   0.651
-  ]
  },
  "https://www.bing.com/th?id=ONUT.qWiATvEw15puPVYDxWtgUA&pid=News&w=1024": {
   "w": 700,
@@ -8614,12 +8564,6 @@
  "https://www.lanacion.com.ar/resizer/v2/la-oficinas-de-rockstar-north-en-edimburgo-el-dia-6H2XLSKT5FBP7OLF44NGDHUSJE.jpg?auth=e2a3a72a51066a2c6ebf2d7cf8d20efc58cd23703a7befb5501ff193b921b127&width=1200&height=800&quality=70&smart=true": {
   "w": 1200,
   "h": 800,
-  "target": 720,
-  "v": 3
- },
- "https://www.livemint.com/lm-img/img/2026/11/27/600x338/Avengers_Doomsday_infinity_vision_1795799416698_oyj0_1795799416823_FsPC_5184e7d3-1b8d-4e37-9e1d-4ab13437ac32_pg7j.png": {
-  "w": 600,
-  "h": 338,
   "target": 720,
   "v": 3
  },

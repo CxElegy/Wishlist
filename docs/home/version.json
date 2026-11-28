@@ -1,32 +1,32 @@
 {
- "admin": "6f929b2a6ebf",
- "admin-ai": "5c3312044d3a",
+ "admin": "3957399c1200",
+ "admin-ai": "92daefe785d7",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "4e00c894"
+   "3aabe3f6"
   ],
   "tokens": [
    "AI 編集のトークン",
    "8ecacf1f"
   ]
  },
- "admin-boards": "c0c005bb4892",
+ "admin-boards": "02bfd71a472b",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "7a3718f0"
+   "70e545da"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "890c16205473",
+ "admin-emblem": "b3285a17e229",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "13d2ea10"
+   "a039f534"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "944a6b7b741c",
+ "admin-now": "761288875e1c",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "deb8416b"
+   "8c4a6da1"
   ],
   "queue": [
    "いまの状況",
@@ -55,18 +55,18 @@
   ],
   "status": [
    "運行状況",
-   "816fb13a"
+   "e8e969aa"
   ],
   "term-panel": [
    "ライブログ",
-   "3b1667b7"
+   "da17362e"
   ]
  },
- "admin-system": "9170fb8bb321",
+ "admin-system": "c90dfe97dde3",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "0eec28ae"
+   "9431bc8c"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -74,11 +74,11 @@
   ],
   "res": [
    "リソース・並列と制限",
-   "65f633e5"
+   "10fa859f"
   ]
  },
  "admin_marks": {},
- "heat": "2b60da4c6ab3",
+ "heat": "654005df9899",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "417fde05"
+   "0e289904"
   ],
   "ranking": [
    "ランキング",
-   "7f68a9ba"
+   "9143ad5f"
   ]
  },
- "index": "8ea4d88a6ced",
+ "index": "e4e9ab8d4ae6",
  "index_marks": {
   "front": [
    "トップ",
-   "14b4b43f"
+   "6c9dbe51"
   ],
   "picks": [
    "気になるかも？",
@@ -121,7 +121,7 @@
   ],
   "w-3f993d04": [
    "漫威电影",
-   "1b4064b5"
+   "3b6775c2"
   ],
   "w-5417e9f1": [
    "日本顶级网球赛事",
@@ -133,7 +133,7 @@
   ],
   "w-65d60fb4": [
    "星巴克马克杯",
-   "db029e47"
+   "99c9d980"
   ],
   "w-6676e624": [
    "三星手机",
@@ -149,7 +149,7 @@
   ],
   "w-9cb26dba": [
    "FROM",
-   "5fcf4c2d"
+   "8f613bb6"
   ],
   "w-b867582f": [
    "あつ森",
@@ -196,6 +196,6 @@
    "71b1045f"
   ]
  },
- "updated": "11.28 16:18",
+ "updated": "11.28 16:27",
  "wishlist": "9d5be45947de"
 }
