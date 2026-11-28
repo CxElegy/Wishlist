@@ -1,6 +1,6 @@
 {
  "date": "2026-11-28",
- "edit_sig": "fff05f4d8b0b",
+ "edit_sig": "11a88f62a13f",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?6wC5t2qhtJZtllO-YhLcO",
@@ -75,15 +75,6 @@
    "cover": null,
    "facts": [],
    "name": "MMORPG 新作",
-   "pending": [
-    {
-     "date": "2026-11-25",
-     "n": 5,
-     "source": "Mobile01",
-     "title": "《裝備仔OVERGEARED》11月25日正式上線NEXON 改編自知名IP《裝備仔》 以裝備為核心MMORPG 新作 | 重現原作經典英雄與熱血冒險四大武器系列、多元職業自由搭配",
-     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBSUDMxVU5HRHdrZHBPd2d3ZFJHbUNtU0xjZFJxdVNvN29wdXlseGdBTkVqNTIzVmFtQkVZSTZPUWJDbHNMb3pfdnpZZU5zeWxyd3Zzcnp2clhiTkMxcUIwMC1FcmZEYU0?oc=5"
-    }
-   ],
    "section": "游戏",
    "stories": [
     {
@@ -104,6 +95,17 @@
      "image": "https://cdn.news33.net/news/photo/202611/119639_85460_199.jpg",
      "image_via": "JSON-LD",
      "url": "https://www.news33.net/news/articleView.html?idxno=119639",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-25",
+     "headline": "《裝備仔OVERGEARED》11月25日正式上線NEXON 改編自知名IP《裝備仔》 以裝備為核心MMORPG 新作",
+     "highlight": "11月25日正式上線",
+     "image": null,
+     "source": "Mobile01",
+     "source_icon": "https://www.google.com/s2/favicons?domain=www.mobile01.com&sz=128",
+     "url": "https://www.mobile01.com/topicdetail.php?f=675&t=7318844",
      "weight": "normal"
     }
    ],
@@ -531,17 +533,19 @@
    "cover": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/1ad30d58-1079-41ee-bd75-8020a34e0ccb/compose?aspectRatio=1.78&format=webp&width=1200",
    "facts": [],
    "name": "The Mandalorian",
-   "pending": [
+   "section": "影视",
+   "stories": [
     {
+     "blurb": "Star Wars is officially bringing back Solo and The Mandalorian for a collab.",
      "date": "2026-11-27",
-     "n": 2,
-     "source": "The Direct",
-     "title": "Star Wars Is Officially Bringing Back Solo And The Mandalorian For An Exciting Collab",
-     "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE5GZUt3M1JGLVlhNWdfMFd1R3gtcVVBR2lNTTEyS2pLanh6VklEc0wwdmdRUWpLUlpPX2FuQ09oX1l0eGhqb0h3ak1LYlEzUGU1SzVGN254WGJvbkRYbWJ1SWhkMDNRT2dienhyMGx3SlpSb0dIdTIxN3ktNFE?oc=5"
+     "headline": "Star Wars Is Officially Bringing Back Solo And The Mandalorian For An Exciting Collab",
+     "highlight": "Solo And The Mandalorian",
+     "image": "https://images.thedirect.com/media/article_full/star-wars-is-bringing-back-solo-and-the-mandalorian-for-an-exciting-collab.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://thedirect.com/article/star-wars-solo-mandalorian-exciting-collab",
+     "weight": "lead"
     }
    ],
-   "section": "影视",
-   "stories": [],
    "subtitle": "ザ・マンダロリアン",
    "theme": {
     "accent": "#C9A66B",
@@ -607,24 +611,19 @@
    "cover": "https://vaundy.jp/og_image.png",
    "facts": [],
    "name": "Vaundy",
-   "pending": [
+   "section": "演出",
+   "stories": [
     {
+     "blurb": "夏の高校野球応援ソングに込めた思いを語った。「あえて答えを用意していません」とコメント。",
      "date": "2026-11-25",
-     "n": 1,
-     "source": "Mikiki by TOWER RECORDS",
-     "title": "SWEET LOVE SHOWER 2026が大盛況のうちに終幕! あいみょん、Creepy Nuts、レミオロメン、アジカン、Vaundyら96組が集結した3日間",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5OcXRGUWFaMGxlM3F3eE03bkhuNHZaVGJ2RktjVXl3cmtaRFFkMEVpSTVXSW04UGNSdWQ4SjAwQXUxZzdBNUxrRDZZeG13WG9KQnc?oc=5"
-    },
-    {
-     "date": "2026-11-25",
-     "n": 2,
-     "source": "山陽新聞",
-     "title": "Vaundy、初の甲子園球場で貴重ショット 夏の高校野球応援ソングに込めた思い「あえて答えを用意していません」【コメント】",
-     "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQdUI5bC1mcFRDb1I4RjFWang4YmRzOVRCZk5xZ2laZ1ZVaFg0UVJlYUtjY1l0eW1WTDBVQXQxdmNNMm14a1pibXNzMElacXRNTDFGaUw3RTRrMVIwY1VDOHBEQ2x6MTcySGpRNExicWxlMWx4Ui1iQXdzQk5HVzhDdkI4R2pBdw?oc=5"
+     "headline": "Vaundy、初の甲子園球場で貴重ショット 夏の高校野球応援ソングに込めた思い「あえて答えを用意していません」",
+     "highlight": "初の甲子園球場",
+     "image": "https://static.sanyonews.jp/image/article/size1/6/4/c/c/64cc48e73587c37f03fa2e28982661d5_1.jpg",
+     "image_via": "AI 挑选",
+     "url": "https://www.sanyonews.jp/article/1965453?rct=oricon_music&kw=%E7%A6%8F%E7%A5%B1",
+     "weight": "lead"
     }
    ],
-   "section": "演出",
-   "stories": [],
    "subtitle": "演唱会",
    "theme": {
     "accent": "#B9A6F2",

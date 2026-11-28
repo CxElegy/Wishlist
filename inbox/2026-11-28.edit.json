@@ -284,8 +284,8 @@
   "三星手机": 16,
   "周杰伦": 10,
   "ILLIT": 7,
-  "MMORPG 新作": 4,
-  "The Mandalorian": 1,
+  "MMORPG 新作": 5,
+  "The Mandalorian": 2,
   "A2O LITE": 4,
   "滑雪": 6,
   "哈利波特剧集": 9,
@@ -295,7 +295,8 @@
   "绝区零": 2,
   "チェーンソーマン": 1,
   "星巴克马克杯": 1,
-  "gelato pique": 3
+  "gelato pique": 3,
+  "Vaundy": 2
  },
  "MMORPG 新作": [
   {
@@ -315,9 +316,29 @@
    "refs": [
     4
    ]
+  },
+  {
+   "headline": "《裝備仔OVERGEARED》11月25日正式上線NEXON 改編自知名IP《裝備仔》 以裝備為核心MMORPG 新作",
+   "highlight": "11月25日正式上線",
+   "blurb": "",
+   "weight": "normal",
+   "refs": [
+    5
+   ]
   }
  ],
- "The Mandalorian": [],
+ "The Mandalorian": [
+  {
+   "headline": "Star Wars Is Officially Bringing Back Solo And The Mandalorian For An Exciting Collab",
+   "highlight": "Solo And The Mandalorian",
+   "blurb": "Star Wars is officially bringing back Solo and The Mandalorian for a collab.",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://images.thedirect.com/media/article_full/star-wars-is-bringing-back-solo-and-the-mandalorian-for-an-exciting-collab.jpg"
+  }
+ ],
  "A2O LITE": [
   {
    "headline": "「A2O LITE」のデビュー曲「NEON」をキレッキレで踊るイ・スマン？ サニー（少女時代）、叔父のAI動画をさらし、テギョン（2PM）も「大丈夫？」",
@@ -529,6 +550,18 @@
    "refs": [
     3
    ]
+  }
+ ],
+ "Vaundy": [
+  {
+   "headline": "Vaundy、初の甲子園球場で貴重ショット 夏の高校野球応援ソングに込めた思い「あえて答えを用意していません」",
+   "highlight": "初の甲子園球場",
+   "blurb": "夏の高校野球応援ソングに込めた思いを語った。「あえて答えを用意していません」とコメント。",
+   "weight": "lead",
+   "refs": [
+    2
+   ],
+   "image": "https://static.sanyonews.jp/image/article/size1/6/4/c/c/64cc48e73587c37f03fa2e28982661d5_1.jpg"
   }
  ]
 }

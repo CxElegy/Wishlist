@@ -3023,6 +3023,12 @@
   "target": 720,
   "v": 3
  },
+ "https://images.thedirect.com/media/article_full/star-wars-is-bringing-back-solo-and-the-mandalorian-for-an-exciting-collab.jpg": {
+  "w": 1280,
+  "h": 720,
+  "target": 1280,
+  "v": 3
+ },
  "https://img-cdn.publive.online/fit-in/1200x675/pcq/media/media_files/2026/11/25/will-samsung-galaxy-s27-become-more-expensive-in-india-2026-11-25-12-05-21.jpeg": {
   "w": 1200,
   "h": 675,
@@ -6382,6 +6388,13 @@
   "c": "#9a8564",
   "k": null,
   "p": null
+ },
+ "https://static.sanyonews.jp/image/article/size1/6/4/c/c/64cc48e73587c37f03fa2e28982661d5_1.jpg": {
+  "w": 640,
+  "h": 433,
+  "target": 1280,
+  "v": 3,
+  "blur": 0.389
  },
  "https://static.sanyonews.jp/image/article/size1/6/b/d/5/6bd5ae98a8676317af2175d8ef86b187_1.jpg": {
   "w": 450,
