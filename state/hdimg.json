@@ -3298,12 +3298,6 @@
   "target": 720,
   "v": 3
  },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2ind2n.img": {
-  "w": 1600,
-  "h": 900,
-  "target": 720,
-  "v": 3
- },
  "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2inlF7.img": {
   "w": 1200,
   "h": 675,
@@ -6914,6 +6908,12 @@
   "v": 3
  },
  "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/24/1795513028886_1-1795509892929490605889-21-0-649-1200-crop-1795509916922611737688.jpeg": {
+  "w": 1200,
+  "h": 630,
+  "target": 1280,
+  "v": 3
+ },
+ "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/11/28/1795834095346_img_90e9024a.jpeg": {
   "w": 1200,
   "h": 630,
   "target": 1280,
