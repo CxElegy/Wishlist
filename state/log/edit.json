@@ -1,37 +1,5 @@
 [
 {
-"at": "2026-11-26T15:10:58+00:00",
-"text": "2026-11-26 第 9 バッチを出刊：A2O LITE（1 版面・3 本・残り 2 版面） · token 新規入力 1,340・キャッシュ読み 17.9万・出力 663",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.53,
-"mem_total": 16868675584,
-"mem_free": 15891763200,
-"disk_used": 10449305600,
-"disk_free": 63363792896,
-"disk_total": 73813098496,
-"peak": 436486144
-},
-"batch": 9,
-"boards": [
-"A2O LITE"
-],
-"stories": 3,
-"left": 2,
-"edited": 20,
-"run": 1795702957.3239474,
-"tok": {
-"in": 4,
-"cw": 1336,
-"cr": 178989,
-"out": 663,
-"calls": 2,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 180992
-},
-{
 "at": "2026-11-26T15:15:10+00:00",
 "text": "2026-11-26 第 10 バッチを出刊：绝区零（1 版面・3 本・残り 1 版面） · token 新規入力 1,779・キャッシュ読み 27.4万・出力 815",
 "level": "ok",
@@ -2165,5 +2133,46 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 1006670
+},
+{
+"at": "2026-11-28T05:09:49+00:00",
+"text": "2026-11-28 第 1 バッチを出刊：BLEACH Mirrors High、GTA 6、MMORPG 新作、The Mandalorian、Vaundy、dota2 ほか 4（10 版面・31 本・残り 2 版面） · token 新規入力 5.1万・キャッシュ読み 103.1万・出力 5,332",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.79,
+"mem_total": 16868675584,
+"mem_free": 15941275648,
+"disk_used": 11199778816,
+"disk_free": 62613319680,
+"disk_total": 73813098496,
+"peak": 435843072
+},
+"batch": 1,
+"boards": [
+"BLEACH Mirrors High",
+"GTA 6",
+"MMORPG 新作",
+"The Mandalorian",
+"Vaundy",
+"dota2",
+"ぐでたま",
+"チェーンソーマン",
+"三星手机",
+"漫威电影"
+],
+"stories": 31,
+"left": 2,
+"edited": 19,
+"run": null,
+"tok": {
+"in": 29,
+"cw": 50495,
+"cr": 1030957,
+"out": 5332,
+"calls": 15,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 1086813
 }
 ]

@@ -1,6 +1,6 @@
 {
  "date": "2026-11-28",
- "edit_sig": "b40f39b1c30d",
+ "edit_sig": "a0b1902fd41d",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -640,29 +640,6 @@
     }
    ],
    "name": "チェーンソーマン",
-   "pending": [
-    {
-     "date": "2026-11-27",
-     "n": 2,
-     "source": "note",
-     "title": "『イカゲーム』も『チェンソーマン』も、結局この「究極の二択」で僕らを揺さぶってくる",
-     "url": "https://note.com/riimanpapatsumu/n/n8bf842f938c1"
-    },
-    {
-     "date": "2026-11-27",
-     "n": 3,
-     "source": "note",
-     "title": "『오징어 게임』도 『체인소 맨』도, 결국 이 '궁극의 양자택일'로 우리를 뒤흔든다",
-     "url": "https://note.com/riimanpapatsumu/n/n8bf842f938c1?hl=ko"
-    },
-    {
-     "date": "2026-11-27",
-     "n": 4,
-     "source": "上報",
-     "title": "《鏈鋸人 蕾潔篇》日本官方快閃店登台！12月25日西門町開幕 部分限定商品搶先日本販售",
-     "url": "https://www.upmedia.mg/tw/game/toy/275568"
-    }
-   ],
    "section": "影视",
    "stories": [
     {
@@ -674,6 +651,21 @@
      "image_via": "og:image",
      "url": "https://timesofindia.indiatimes.com/entertainment/anime/chainsaw-man-beats-naruto-shippuden-as-kenshi-yonezus-iris-out-takes-over-japans-2026-karaoke-chart/articleshow/136225388.cms",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-27",
+     "event": {
+      "date": "2026-12-25",
+      "label": "開幕",
+      "place": "西門町"
+     },
+     "headline": "《鏈鋸人 蕾潔篇》日本官方快閃店登台！12月25日西門町開幕",
+     "highlight": "12月25日",
+     "image": "https://cdn.upmedia.mg/upfile/img/2026/1127/202611271944270062.webp",
+     "image_via": "og:image",
+     "url": "https://www.upmedia.mg/tw/game/toy/275568",
+     "weight": "normal"
     }
    ],
    "subtitle": "チェンソーマン",
