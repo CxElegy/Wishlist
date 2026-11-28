@@ -19,6 +19,7 @@
   "https://dmksnowboard.com/kagamiganaru-ski-resort-open-2026-27/": "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/kagamiganaru.jpg",
   "https://eeo.today/media/2026/11/27/416468/": "https://eeo.today/media/wp-content/uploads/2026/11/sub3-2-4.jpg",
   "https://ent.sina.cn/tv/euro_usa/2026-11-27/detail-inkaesmx1058873.d.html?vt=4": "https://www.bing.com/th?id=ONUT.3kbt6yvjrIHBXY1jiHbZdw&pid=News&w=300",
+  "https://film-book.com/avengers-doomsday-2026-movie-trailer-3-time-to-stand-against-dr-doom-in-marvels-crossover-epic/": "https://film-book.com/wp-content/uploads/2026/11/james-marsden-battlefield-avengers-doomsday.jpg",
   "https://gamerant.com/gta-6-best-missions-free-roam-robberies/": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2026/11/jason-and-lucia-robbing-a-bank-in-grand-theft-auto-6.jpg?&fit=crop",
   "https://gamewith.jp/pokemon-champions/554986": "https://img.gamewith.jp/article/thumbnail/rectangle_l/554986.png?date=1775803395",
   "https://gnn.gamer.com.tw/detail.php?sn=315488": "https://p2.bahamut.com.tw/B/2KU/22/1704db57c3c7041543681553ed217qq5.JPG",
@@ -61,7 +62,6 @@
   "https://www.chiba-tv.com/plus/detail/amp/2026112255945": "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1498078293455767050/origin_1.jpg",
   "https://www.chiba-tv.com/plus/detail/amp/2026112256091": "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1498082097369318476/origin_1.jpg",
   "https://www.delish.com/food-news/a74520846/starbucks-friends-with-you-merch/": "https://hips.hearstapps.com/hmg-prod/images/917cdaef-ba64-4119-866c-f10c9bfc9078.jpg?crop=0.339xw:0.262xh;0.25xw,0.344xh&resize=640:*",
-  "https://www.dotdotnews.com/a/202611/27/AP6b09788be4b091a65a30dfde.html": "https://dw-media.dotdotnews.com/dams/product/image/202611/27/6b096b82e4b08bfc21006d561.jpg",
   "https://www.fashion-press.net/news/153772": "https://www.fashion-press.net/img/news/153772/top.jpg?1795500792",
   "https://www.financialpost.co.kr/news/articleView.html?idxno=302340": "https://cdn.financialpost.co.kr/news/photo/202611/302340_404553_255.jpg",
   "https://www.i-boss.co.kr/ab-6141-73667": null,
@@ -1450,6 +1450,27 @@
   },
   {
    "batch": 5,
+   "because": "漫威电影",
+   "date": "2026-11-27",
+   "hits": [],
+   "image": "https://film-book.com/wp-content/uploads/2026/11/james-marsden-battlefield-avengers-doomsday.jpg",
+   "kind": "board",
+   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
+   "score": 6,
+   "source": "Film-Book.com",
+   "taste": [
+    [
+     "作品:漫威电影",
+     2
+    ]
+   ],
+   "title": "AVENGERS: DOOMSDAY (2026) Movie Trailer 3: Time to stand against Dr. Doom in Marvel's Crossover Epic",
+   "url": "https://film-book.com/avengers-doomsday-2026-movie-trailer-3-time-to-stand-against-dr-doom-in-marvels-crossover-epic/",
+   "words": [],
+   "work": "漫威电影"
+  },
+  {
+   "batch": 5,
    "because": "哈利波特剧集",
    "date": "2026-11-27",
    "hits": [],
@@ -1512,7 +1533,7 @@
    "work": "A2O LITE"
   },
   {
-   "batch": 5,
+   "batch": 6,
    "because": "漫威电影",
    "date": "2026-11-27",
    "hits": [],
@@ -1529,27 +1550,6 @@
    ],
    "title": "《復仇者聯盟5：末日降臨》香港次輪預售12月1日中午12時起，週六特典場贈末日博士襟章及海報",
    "url": "https://www.techritual.com/2026/11/27/607238/",
-   "words": [],
-   "work": "漫威电影"
-  },
-  {
-   "batch": 6,
-   "because": "漫威电影",
-   "date": "2026-11-27",
-   "hits": [],
-   "image": "https://dw-media.dotdotnews.com/dams/product/image/202611/27/6b096b82e4b08bfc21006d561.jpg",
-   "kind": "board",
-   "liked": "Avengers Doomsday final trailer update! Deaths teased & character removed?",
-   "score": 6,
-   "source": "dotdotnews",
-   "taste": [
-    [
-     "作品:漫威电影",
-     2
-    ]
-   ],
-   "title": "《復仇者聯盟5》 12·1次輪預售撲飛即送限量版電影紀念品- 娛樂",
-   "url": "https://www.dotdotnews.com/a/202611/27/AP6b09788be4b091a65a30dfde.html",
    "words": [],
    "work": "漫威电影"
   },
@@ -2260,15 +2260,15 @@
    8
   ],
   [
+   "galaxy",
+   7
+  ],
+  [
+   "作品:三星手机",
+   7
+  ],
+  [
    "三星 Galaxy",
-   7
-  ],
-  [
-   "galaxy",
-   7
-  ],
-  [
-   "galaxy",
    7
   ]
  ]
