@@ -1,6 +1,6 @@
 {
  "date": "2026-11-28",
- "edit_sig": "3c105c125b13",
+ "edit_sig": "a5e629c282ce",
  "items": [
   {
    "cover": "https://www.rockstargames.com/VI/_next/static/media/meta.0t8ty~nlmxq2s.jpg?6wC5t2qhtJZtllO-YhLcO",
@@ -914,29 +914,6 @@
    "cover": null,
    "facts": [],
    "name": "滑雪",
-   "pending": [
-    {
-     "date": "2026-11-28",
-     "n": 7,
-     "source": "dmksnowboard.com",
-     "title": "【鳥取・鏡ヶ成スキー場】12月19日オープン！初日はリフト料金無料、西日本トップクラスの雪質と雪量が魅力",
-     "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE4xdE52aUNJbmZJOUozekJFWlFCN040cVMwUVBhS24taC1qN21jZTVDcXZKVU5PN2VaNXVFVktvWTM3a2pGTXRpaWM0NlR0dXNKYThWQl90MTl5TW9xRUJTUThhbXJBa0NOdmtnRjRzYw?oc=5"
-    },
-    {
-     "date": "2026-11-28",
-     "n": 8,
-     "source": "HotelBank",
-     "title": "湯沢町の12月ブッキングカーブ — スキー場開幕が重なる12/19土は45日前62.3%→68.6%、大晦日は85.1%",
-     "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOcnpPeTVYMEswVVE5Tk9MLTFxYVRFQmhQTDVyMEpsZHhuSk1zR181MHNaYnFhSFBiZ0ZwbDEwRkFqOU5LYU5VcjFKQUs4VjQ2akZSTFBLUDAxRVpBRkRQLXNQRl9MLVhkODBDVXJxTHh1Y29FZS1MV3pXeTFmSnJuM2VVaUoydkU5SE0yeHJJTTU?oc=5"
-    },
-    {
-     "date": "2026-11-27",
-     "n": 9,
-     "source": "PR TIMES",
-     "title": "西日本トップクラスの雪質・雪量 休暇村奥大山「鏡ヶ成（かがみがなる）スキー場」が12月19日（土）オープン ～初滑りをお得に ...",
-     "url": "https://prtimes.jp/main/html/rd/p/000000849.000085653.html"
-    }
-   ],
    "section": "运动",
    "stories": [
     {
@@ -977,6 +954,21 @@
      "image": "https://stupiddope.com/wp-content/uploads/2026/11/01-featured-13.jpg",
      "image_via": "og:image",
      "url": "https://stupiddope.com/2026/11/niseko-in-december-niseko-united-guide/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-28",
+     "event": {
+      "date": "2026-12-19",
+      "label": "オープン",
+      "place": "鳥取・鏡ヶ成スキー場"
+     },
+     "headline": "【鳥取・鏡ヶ成スキー場】12月19日オープン！初日はリフト料金無料、西日本トップクラスの雪質と雪量が魅力",
+     "highlight": "12月19日オープン",
+     "image": "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/kagamiganaru.jpg",
+     "image_via": "og:image",
+     "url": "https://dmksnowboard.com/kagamiganaru-ski-resort-open-2026-27/",
      "weight": "normal"
     }
    ],

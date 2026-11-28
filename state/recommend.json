@@ -1,6 +1,7 @@
 {
  "image_misses": {
   "https://lee.hpplus.jp/column/3457347/?utm_source=news.yahoo.co.jp&utm_medium=referral&utm_campaign=lee_ynews.261124.4": "2026-11-28",
+  "https://www.falstaff.com/en/news/skiing-is-getting-more-expensive-ski-pass-prices-for-202627": "2026-11-28",
   "https://www.i-boss.co.kr/ab-6141-73667": "2026-11-28",
   "https://www.imdb.com/de/list/ls4112430034/mediaviewer/rm3133505537/?ref_=ls_3_2": "2026-11-28",
   "https://www.laoyaoba.com/wiki/QTi7LfhNJEGW.php": "2026-11-28"
@@ -16,7 +17,6 @@
   "https://collider.com/star-wars-the-mandalorian-and-grogu-pop-up-storybook-release-november-2026/": "https://www.bing.com/th?id=ONUT.EbgsVSeJ_xtmG4mWKpf00Q&pid=News&w=1200",
   "https://crea.bunshun.jp/ud/pressrelease/6b08e7d37079c84687000013": "https://crea.bunshun.jp/common/crea/images/crea-ogp-image.png",
   "https://dengekionline.com/article/202611/95172": "https://cimg.kgl-systems.io/camion/files/95172/ogp_mOso.jpg?x=1280",
-  "https://dmksnowboard.com/kagamiganaru-ski-resort-open-2026-27/": "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/kagamiganaru.jpg",
   "https://eeo.today/media/2026/11/27/416468/": "https://eeo.today/media/wp-content/uploads/2026/11/sub3-2-4.jpg",
   "https://ent.sina.cn/tv/euro_usa/2026-11-27/detail-inkaesmx1058873.d.html?vt=4": "https://www.bing.com/th?id=ONUT.3kbt6yvjrIHBXY1jiHbZdw&pid=News&w=300",
   "https://film-book.com/avengers-doomsday-2026-movie-trailer-3-time-to-stand-against-dr-doom-in-marvels-crossover-epic/": "https://film-book.com/wp-content/uploads/2026/11/james-marsden-battlefield-avengers-doomsday.jpg",
@@ -62,6 +62,7 @@
   "https://www.chiba-tv.com/plus/detail/amp/2026112255945": "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1498078293455767050/origin_1.jpg",
   "https://www.chiba-tv.com/plus/detail/amp/2026112256091": "https://img.jp.ekkowassets.com/c_limit,w_360,f_auto,q_auto:eco/ch/images/1498082097369318476/origin_1.jpg",
   "https://www.delish.com/food-news/a74520846/starbucks-friends-with-you-merch/": "https://hips.hearstapps.com/hmg-prod/images/917cdaef-ba64-4119-866c-f10c9bfc9078.jpg?crop=0.339xw:0.262xh;0.25xw,0.344xh&resize=640:*",
+  "https://www.falstaff.com/en/news/skiing-is-getting-more-expensive-ski-pass-prices-for-202627": null,
   "https://www.fashion-press.net/news/153772": "https://www.fashion-press.net/img/news/153772/top.jpg?1795500792",
   "https://www.financialpost.co.kr/news/articleView.html?idxno=302340": "https://cdn.financialpost.co.kr/news/photo/202611/302340_404553_255.jpg",
   "https://www.i-boss.co.kr/ab-6141-73667": null,
@@ -1747,21 +1748,6 @@
    "because": "滑雪",
    "date": "2026-11-28",
    "hits": [],
-   "image": "https://dmksnowboard.com/wpdmk/wp-content/uploads/2026/11/kagamiganaru.jpg",
-   "kind": "board",
-   "score": 4,
-   "source": "dmksnowboard.com",
-   "taste": [],
-   "title": "【鳥取・鏡ヶ成スキー場】12月19日オープン！初日はリフト料金無料、西日本トップクラスの雪質と雪量が魅力",
-   "url": "https://dmksnowboard.com/kagamiganaru-ski-resort-open-2026-27/",
-   "words": [],
-   "work": "滑雪"
-  },
-  {
-   "batch": 8,
-   "because": "滑雪",
-   "date": "2026-11-28",
-   "hits": [],
    "image": "https://hotelbank.jp/wp-content/uploads/eyecatch-196068-auto.png",
    "kind": "board",
    "score": 4,
@@ -1769,6 +1755,21 @@
    "taste": [],
    "title": "湯沢町の12月ブッキングカーブ — スキー場開幕が重なる12/19土は45日前62.3%→68.6%、大晦日は85.1%",
    "url": "https://hotelbank.jp/revenue-management/yuzawa-december-2026-booking-curve-ski-opening/",
+   "words": [],
+   "work": "滑雪"
+  },
+  {
+   "batch": 8,
+   "because": "滑雪",
+   "date": "2026-11-27",
+   "hits": [],
+   "image": null,
+   "kind": "board",
+   "score": 4,
+   "source": "Falstaff",
+   "taste": [],
+   "title": "Skiing Is Getting More Expensive: Ski Pass Prices for 2026/27",
+   "url": "https://www.falstaff.com/en/news/skiing-is-getting-more-expensive-ski-pass-prices-for-202627",
    "words": [],
    "work": "滑雪"
   },
@@ -2264,11 +2265,11 @@
    7
   ],
   [
-   "galaxy",
+   "作品:三星手机",
    7
   ],
   [
-   "作品:三星手机",
+   "galaxy",
    7
   ]
  ]
