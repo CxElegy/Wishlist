@@ -1,37 +1,5 @@
 [
 {
-"at": "2026-11-26T17:38:49+00:00",
-"text": "2026-11-27 第 1 バッチを出刊：漫威电影（1 版面・5 本・残り 2 版面） · token 新規入力 5.8万・キャッシュ読み 90.7万・出力 5,636",
-"level": "ok",
-"res": {
-"cpu": 4,
-"load": 0.45,
-"mem_total": 16868675584,
-"mem_free": 15789424640,
-"disk_used": 10409684992,
-"disk_free": 63403413504,
-"disk_total": 73813098496,
-"peak": 598376448
-},
-"batch": 1,
-"boards": [
-"漫威电影"
-],
-"stories": 5,
-"left": 2,
-"edited": 5,
-"run": 1795714313.6293726,
-"tok": {
-"in": 25,
-"cw": 57574,
-"cr": 906756,
-"out": 5636,
-"calls": 13,
-"model": "claude-sonnet-5-5"
-},
-"tokens": 969991
-},
-{
 "at": "2026-11-26T17:45:20+00:00",
 "text": "2026-11-27 第 2 バッチを出刊：MMORPG 新作（1 版面・2 本・今日の整理待ちは全部終わり） · token 新規入力 4,918・キャッシュ読み 52.8万・出力 2,105",
 "level": "ok",
@@ -2186,5 +2154,49 @@
 "model": "claude-sonnet-5-5"
 },
 "tokens": 1250253
+},
+{
+"at": "2026-11-28T05:34:51+00:00",
+"text": "2026-11-28 第 1 バッチを出刊：BLEACH Mirrors High、GTA 6、MMORPG 新作、The Mandalorian、Vaundy、dota2 ほか 7（13 版面・46 本・残り 2 版面） · token 新規入力 6.0万・キャッシュ読み 195.7万・出力 8,151",
+"level": "ok",
+"res": {
+"cpu": 4,
+"load": 0.6,
+"mem_total": 16868675584,
+"mem_free": 15940530176,
+"disk_used": 11231043584,
+"disk_free": 62582054912,
+"disk_total": 73813098496,
+"peak": 421629952
+},
+"batch": 1,
+"boards": [
+"BLEACH Mirrors High",
+"GTA 6",
+"MMORPG 新作",
+"The Mandalorian",
+"Vaundy",
+"dota2",
+"gelato pique",
+"ぐでたま",
+"チェーンソーマン",
+"三星手机",
+"周杰伦",
+"哈利波特剧集",
+"漫威电影"
+],
+"stories": 46,
+"left": 2,
+"edited": 19,
+"run": null,
+"tok": {
+"in": 50,
+"cw": 59818,
+"cr": 1957323,
+"out": 8151,
+"calls": 26,
+"model": "claude-sonnet-5-5"
+},
+"tokens": 2025342
 }
 ]

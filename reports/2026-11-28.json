@@ -1,6 +1,6 @@
 {
  "date": "2026-11-28",
- "edit_sig": "e8efbceeb71b",
+ "edit_sig": "913b52080f3c",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -494,27 +494,8 @@
    "cover": "http://gelatopique.us/cdn/shop/files/logo_gelatopique_01_copy_f53f0090-0b3c-434e-839f-0c1492d89d9f_1200x628_pad_fff.png?v=1672357718",
    "facts": [],
    "name": "gelato pique",
-   "pending": [
-    {
-     "date": "2026-11-27",
-     "n": 4,
-     "source": "ウォーカープラス",
-     "title": "スヌーピー×ジェラピケがコラボ！おうち時間にぴったりの大人かわいいアイテム",
-     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9LUjcxNUFlVkEyVkJFeWJkbEk0UzlnSUxpZ2dvLXVrbjY1d0pCckxJdVlDN2VCamk2TlU0c21mWm1GcDExOERVZXJ3UUJETEtvVVd5eU1B0gFbQVVfeXFMTXFTZTVNam5ZQmlzTWozTUszRTAzMFFReEs0anN0bng0c3I2eEdPNlRwOG1mNmhGM1lfb291Zkg5SHRuRTJETXpXdWxPUHA5c3lJUWlRZjFTNlR6bw?oc=5"
-    }
-   ],
    "section": "好物",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-11-28",
-     "headline": "「ジェラピケ」×「シュタイフ」コラボ第4弾登場！ アイスクリームショップを表現したクラシカルなデザイン (2026年11月28日掲載)",
-     "highlight": "",
-     "image": "https://image.news.livedoor.com/newsimage/stf/7/3/73079_1729_8cd05854_0134c590.jpg",
-     "image_via": "og:image",
-     "url": "https://news.livedoor.com/topics/detail/32923820/",
-     "weight": "hero"
-    },
     {
      "blurb": "ピッピ＆マリルなどが新登場するジェラート ピケ×ポケモンのコラボ第3弾。",
      "date": "2026-11-24",
@@ -543,6 +524,16 @@
      "image": "https://news.walkerplus.com/article/1304828/15600677_615.jpg",
      "image_via": "og:image",
      "url": "https://www.walkerplus.com/article/1304828/",
+     "weight": "normal"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-28",
+     "headline": "「ジェラピケ」×「シュタイフ」コラボ第4弾登場！ アイスクリームショップを表現したクラシカルなデザイン",
+     "highlight": "コラボ第4弾",
+     "image": "https://image.news.livedoor.com/newsimage/stf/7/3/73079_1729_8cd05854_0134c590.jpg",
+     "image_via": "og:image",
+     "url": "https://news.livedoor.com/topics/detail/32923820/",
      "weight": "normal"
     }
    ],

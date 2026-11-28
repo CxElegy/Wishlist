@@ -1,32 +1,32 @@
 {
- "admin": "e2163c2f1646",
- "admin-ai": "5d4919af343f",
+ "admin": "31fbd23e2150",
+ "admin-ai": "d078a659e462",
  "admin-ai_marks": {
   "editdiff": [
    "AI 編集の前後",
-   "6119d414"
+   "d815c711"
   ],
   "tokens": [
    "AI 編集のトークン",
    "cddb9fd7"
   ]
  },
- "admin-boards": "1ccea8dfd200",
+ "admin-boards": "c0c005bb4892",
  "admin-boards_marks": {
   "items": [
    "ウォッチ項目",
-   "06c15fec"
+   "7a3718f0"
   ],
   "votes": [
    "投票",
    "8068ac57"
   ]
  },
- "admin-emblem": "02ed1ae4b11b",
+ "admin-emblem": "f303b14ca310",
  "admin-emblem_marks": {
   "backend": [
    "版面ごとの状態",
-   "333a05c7"
+   "7bddc572"
   ],
   "emblem-ex": [
    "小元素の判断の例",
@@ -43,11 +43,11 @@
  },
  "admin-members": "5976552bbd3d",
  "admin-members_marks": {},
- "admin-now": "77b07ae5e338",
+ "admin-now": "61d926954959",
  "admin-now_marks": {
   "nextrun": [
    "次の実行",
-   "4cecbfab"
+   "ec6d263d"
   ],
   "queue": [
    "いまの状況",
@@ -62,11 +62,11 @@
    "44ac6c26"
   ]
  },
- "admin-system": "93f680ef6158",
+ "admin-system": "920e6d778f97",
  "admin-system_marks": {
   "ov": [
    "しくみの全体図",
-   "56807af9"
+   "9d611a55"
   ],
   "procs": [
    "全体の構成（詳しい図）",
@@ -78,7 +78,7 @@
   ]
  },
  "admin_marks": {},
- "heat": "09e5022ae97e",
+ "heat": "2b60da4c6ab3",
  "heat_marks": {
   "method": [
    "計算方法",
@@ -86,18 +86,18 @@
   ],
   "movers": [
    "前週比",
-   "3c7716b2"
+   "417fde05"
   ],
   "ranking": [
    "ランキング",
-   "1c2516bd"
+   "7f68a9ba"
   ]
  },
- "index": "771ed46e5bc1",
+ "index": "07c424fdd5f6",
  "index_marks": {
   "front": [
    "トップ",
-   "9bb38499"
+   "5b9b062e"
   ],
   "picks": [
    "気になるかも？",
@@ -165,7 +165,7 @@
   ],
   "w-c2dcfb63": [
    "MMORPG 新作",
-   "ea1cfcdd"
+   "8977975b"
   ],
   "w-cdea10ae": [
    "チェーンソーマン",
@@ -173,7 +173,7 @@
   ],
   "w-d06e9f3e": [
    "gelato pique",
-   "50d2866f"
+   "78e04194"
   ],
   "w-d3621ce3": [
    "The Mandalorian",
@@ -196,6 +196,6 @@
    "71b1045f"
   ]
  },
- "updated": "11.28 14:27",
+ "updated": "11.28 14:34",
  "wishlist": "9d5be45947de"
 }
