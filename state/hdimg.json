@@ -3310,12 +3310,6 @@
   "target": 720,
   "v": 3
  },
- "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2ioqMc.img": {
-  "w": 1500,
-  "h": 1000,
-  "target": 1280,
-  "v": 3
- },
  "https://img-s.msn.cn/tenant/amp/entityid/AA2hU8TF.img": {
   "w": 1920,
   "h": 1023,
@@ -8602,6 +8596,12 @@
  "https://www.lanacion.com.ar/resizer/v2/la-oficinas-de-rockstar-north-en-edimburgo-el-dia-6H2XLSKT5FBP7OLF44NGDHUSJE.jpg?auth=e2a3a72a51066a2c6ebf2d7cf8d20efc58cd23703a7befb5501ff193b921b127&width=1200&height=800&quality=70&smart=true": {
   "w": 1200,
   "h": 800,
+  "target": 720,
+  "v": 3
+ },
+ "https://www.livemint.com/lm-img/img/2026/11/27/600x338/Avengers_Doomsday_infinity_vision_1795799416698_oyj0_1795799416823_FsPC_5184e7d3-1b8d-4e37-9e1d-4ab13437ac32_pg7j.png": {
+  "w": 600,
+  "h": 338,
   "target": 720,
   "v": 3
  },
