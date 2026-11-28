@@ -1,6 +1,6 @@
 {
  "date": "2026-11-28",
- "edit_sig": "a0b1902fd41d",
+ "edit_sig": "010386276ae1",
  "items": [
   {
    "cover": "https://fizz-download.playnccdn.com/download/v2/buckets/conti-upload/files/19ddc16eef5-5817c881-4d91-4c54-9b91-a4f984cd5717",
@@ -800,34 +800,8 @@
    "cover": null,
    "facts": [],
    "name": "周杰伦",
-   "pending": [
-    {
-     "date": "2026-11-27",
-     "n": 12,
-     "source": "腾讯网",
-     "title": "今日开播！今晚十点，周杰伦综艺《周游记》带着一台摄像机又出发了",
-     "url": "https://news.qq.com/rain/a/20261127A08MMK00"
-    },
-    {
-     "date": "2026-11-28",
-     "n": 13,
-     "source": "手机新浪网",
-     "title": "周杰伦脱口而出全台湾省，用音乐筑起文化自信",
-     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE95d0hOT2NlSUd5bkRyTkVVQTZkRkhBNHZraXVSQ1RpS0NJU1YtWWt1M2kwdi1XWm5TOEJPU3FXdnp2QjRTQWxYQ21IYVVTUEd0ajMybm42YjZhU2huWU1hZ2RyN0ZnNFBwNlNWMFZ4ajF3U2M?oc=5"
-    }
-   ],
    "section": "演出",
    "stories": [
-    {
-     "blurb": "",
-     "date": "2026-11-27",
-     "headline": "周杰伦《湘女多情》官方MV惊喜上线",
-     "highlight": "",
-     "image": "http://n.sinaimg.cn/sinakd20261127ac/201/w641h360/20261127/7719-639758333371527e87414e528752024d.jpg",
-     "image_via": "og:image",
-     "url": "https://k.sina.com.cn/article_2640993657_m9d6a5d7903301exem.html",
-     "weight": "hero"
-    },
     {
      "blurb": "周杰伦转发中国台北预告，定档11月28日。",
      "date": "2026-11-26",
@@ -837,6 +811,16 @@
      "image_via": "AI 挑选",
      "url": "https://www.hkcna.hk/cn/content/s6b07fe90e4b0f1a1d8daf4cf.html",
      "weight": "lead"
+    },
+    {
+     "blurb": "",
+     "date": "2026-11-27",
+     "headline": "周杰伦《湘女多情》官方MV惊喜上线",
+     "highlight": "官方MV",
+     "image": "http://n.sinaimg.cn/sinakd20261127ac/201/w641h360/20261127/7719-639758333371527e87414e528752024d.jpg",
+     "image_via": "og:image",
+     "url": "https://k.sina.com.cn/article_2640993657_m9d6a5d7903301exem.html",
+     "weight": "normal"
     },
     {
      "blurb": "",
