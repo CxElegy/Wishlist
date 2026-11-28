@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-27T23:15:38+00:00",
+ "checked": "2026-11-28T00:18:04+00:00",
  "fired": {
   "at": "2026-11-27T22:53:06+00:00",
   "results": {
@@ -91,13 +91,13 @@
     "MMORPG 新作",
     "The Mandalorian",
     "Vaundy",
-    "lib:FINAL FANTASY VII REBIRTH",
+    "lib:F1",
+    "lib:NBA",
     "lib:ONE PIECE",
-    "lib:ドラゴンクエストモンスターズ４　枯れ木の国のビアンカ・フローラ",
+    "lib:YOASOBI",
+    "lib:サッカー日本代表",
     "lib:台風・天気",
-    "lib:広島旅行",
-    "lib:牧野植物園",
-    "lib:美術館の企画展",
+    "lib:大谷翔平",
     "lib:転生したら剣でした 第2期"
    ],
    "last_batch": "2026-11-27T23:08:03+00:00",
@@ -106,10 +106,10 @@
    "prog": 233,
    "prog_day": "2026-11-28",
    "ripe": [],
-   "sig": "81305520052c",
+   "sig": "e92babf9ec83",
    "token_cap": 1000000,
    "tokens_today": 309521,
-   "why": "整理待ちの記事 82 件（11 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
+   "why": "整理待ちの記事 100 件（11 版面・AI 編集まで版面に載らない）・まだ溜まっていない（3 件か 4 時間で編集）"
   },
   "emblem": {
    "claude": false,
