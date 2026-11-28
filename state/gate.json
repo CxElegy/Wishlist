@@ -1,6 +1,6 @@
 {
  "changed": true,
- "checked": "2026-11-28T11:17:57+00:00",
+ "checked": "2026-11-28T12:26:16+00:00",
  "fired": {
   "at": "2026-11-28T04:35:20+00:00",
   "results": {
@@ -95,6 +95,7 @@
     "ILLIT",
     "MMORPG 新作",
     "dota2",
+    "gelato pique",
     "lib:Mrs. GREEN APPLE",
     "lib:ゼルダの伝説",
     "lib:ポケットモンスター",
@@ -122,9 +123,11 @@
    "ripe": [
     "A2O LITE",
     "Astrae Oratio",
+    "FROM",
     "GTA 6",
     "ILLIT",
     "MMORPG 新作",
+    "dota2",
     "lib:Mrs. GREEN APPLE",
     "lib:ゼルダの伝説",
     "lib:ポケットモンスター",
@@ -133,16 +136,18 @@
     "lib:呪術廻戦",
     "lib:葬送のフリーレン",
     "lib:鬼滅の刃",
+    "チェーンソーマン",
     "三星手机",
+    "周杰伦",
     "星巴克马克杯",
     "滑雪",
     "漫威电影",
     "绝区零"
    ],
-   "sig": "d80fead3969f",
+   "sig": "fc62dfa81054",
    "token_cap": 1000000,
    "tokens_today": 1095718,
-   "why": "整理待ちの記事 163 件（22 版面・AI 編集まで版面に載らない）"
+   "why": "整理待ちの記事 226 件（23 版面・AI 編集まで版面に載らない）"
   },
   "emblem": {
    "claude": false,
